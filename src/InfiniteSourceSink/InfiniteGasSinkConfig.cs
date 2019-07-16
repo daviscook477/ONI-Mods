@@ -40,13 +40,27 @@ namespace InfiniteSourceSink
 			go.AddOrGet<InfiniteSink>().Type = ConduitType.Gas;
 		}
 
-		public override void DoPostConfigureComplete(GameObject go)
-		{
-			Object.DestroyImmediate(go.GetComponent<RequireInputs>());
-			Object.DestroyImmediate(go.GetComponent<ConduitConsumer>());
-			Object.DestroyImmediate(go.GetComponent<ConduitDispenser>());
+        public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
+        {
+            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
+        }
 
-			BuildingTemplates.DoPostConfigure(go);
-		}
-	}
+        public override void DoPostConfigureUnderConstruction(GameObject go)
+        {
+            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
+        }
+
+        public override void DoPostConfigureComplete(GameObject go)
+        {
+            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
+            go.AddOrGet<LogicOperationalController>();
+            go.AddOrGet<Operational>();
+
+            Object.DestroyImmediate(go.GetComponent<RequireInputs>());
+            Object.DestroyImmediate(go.GetComponent<ConduitConsumer>());
+            Object.DestroyImmediate(go.GetComponent<ConduitDispenser>());
+
+            BuildingTemplates.DoPostConfigure(go);
+        }
+    }
 }

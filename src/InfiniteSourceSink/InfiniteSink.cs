@@ -33,10 +33,18 @@ namespace InfiniteSourceSink
 			base.OnCleanUp();
 		}
 
+        private bool IsOperational
+        {
+            get
+            {
+                return GetComponent<Operational>().IsOperational;
+            }
+        }
+
 		private void ConduitUpdate(float dt)
 		{
 			var flowManager = Conduit.GetFlowManager(Type);
-			if (flowManager == null || !flowManager.HasConduit(inputCell))
+			if (flowManager == null || !flowManager.HasConduit(inputCell) || !IsOperational)
 			{
 				return;
 			}

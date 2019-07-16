@@ -1,5 +1,4 @@
 ﻿using System;
-using Harmony;
 using UnityEngine;
 using System.Runtime.Serialization;
 using STRINGS;
@@ -10,7 +9,7 @@ namespace InfiniteSourceSink
 	[SerializationConfig(MemberSerialization.OptIn)]
 	public class InfiniteSource : KMonoBehaviour, ISaveLoadable, ISingleSliderControl
 	{
-		private static StatusItem filterStatusItem = (StatusItem)null;
+		private static StatusItem filterStatusItem = null;
 
 		public const int MinAllowedTemperature = 1;
 		public const int MaxAllowedTemperature = 7500;
@@ -37,8 +36,8 @@ namespace InfiniteSourceSink
 		{
 			base.OnPrefabInit();
 			filterable = GetComponent<Filterable>();
-			accumulator = Game.Instance.accumulators.Add("Source", (KMonoBehaviour)this);
-			this.InitializeStatusItems();
+			accumulator = Game.Instance.accumulators.Add("Source", this);
+			InitializeStatusItems();
 		}
 
 		protected override void OnSpawn()
@@ -51,8 +50,8 @@ namespace InfiniteSourceSink
 			Conduit.GetFlowManager(Type).AddConduitUpdater(ConduitUpdate);
 
 			OnFilterChanged(ElementLoader.FindElementByHash(FilteredElement).tag);
-			this.filterable.onFilterChanged += new System.Action<Tag>(this.OnFilterChanged);
-			this.GetComponent<KSelectable>().SetStatusItem(Db.Get().StatusItemCategories.Main, InfiniteSource.filterStatusItem, (object)this);
+			filterable.onFilterChanged += new Action<Tag>(OnFilterChanged);
+			GetComponent<KSelectable>().SetStatusItem(Db.Get().StatusItemCategories.Main, filterStatusItem, this);
 		}
 
 		protected override void OnCleanUp()
@@ -62,12 +61,21 @@ namespace InfiniteSourceSink
 			base.OnCleanUp();
 		}
 
-		private Boolean IsOperational
+        private bool IsValidFilter
+        {
+            get
+            {
+                return (FilteredTag != null) && (FilteredElement != SimHashes.Void)
+                    && (FilteredElement != SimHashes.Vacuum);
+            }
+
+        }
+
+		private bool IsOperational
 		{
 			get
 			{
-				return (FilteredTag != null) && (FilteredElement != SimHashes.Void)
-					&& (FilteredElement != SimHashes.Vacuum);
+                return IsValidFilter && GetComponent<Operational>().IsOperational;
 			}
 		}
 
@@ -95,17 +103,17 @@ namespace InfiniteSourceSink
 			}
 		}
 
-		private Boolean inUpdate = false;
+		private bool inUpdate = false;
 
 		private void OnFilterChanged(Tag tag)
 		{
-			this.FilteredTag = tag;
-			Element element = ElementLoader.GetElement(this.FilteredTag);
+			FilteredTag = tag;
+			Element element = ElementLoader.GetElement(FilteredTag);
 			if (element != null)
 			{
-				this.FilteredElement = element.id;
+				FilteredElement = element.id;
 			}
-			this.GetComponent<KSelectable>().ToggleStatusItem(Db.Get().BuildingStatusItems.NoFilterElementSelected, !IsOperational, (object)null);
+			GetComponent<KSelectable>().ToggleStatusItem(Db.Get().BuildingStatusItems.NoFilterElementSelected, !IsValidFilter, null);
 			Temp = Math.Max(Temp, element.lowTemp);
 			Temp = Math.Min(Temp, element.highTemp);
 			Temp = Math.Max(Temp, MinAllowedTemperature);
@@ -128,30 +136,30 @@ namespace InfiniteSourceSink
 		{
 			if (ElementLoader.GetElement(FilteredTag) == null)
 				return;
-			this.filterable.SelectedTag = FilteredTag;
+			filterable.SelectedTag = FilteredTag;
 			OnFilterChanged(FilteredTag);
 		}
 
 		private void InitializeStatusItems()
 		{
-			if (InfiniteSource.filterStatusItem != null)
+			if (filterStatusItem != null)
 				return;
-			InfiniteSource.filterStatusItem = new StatusItem("Filter", "BUILDING", "", StatusItem.IconType.Info, NotificationType.Neutral, false, OverlayModes.LiquidConduits.ID, true, 129022);
-			InfiniteSource.filterStatusItem.resolveStringCallback = (Func<string, object, string>)((str, data) =>
-			{
-				InfiniteSource infiniteSource = (InfiniteSource)data;
-				if (infiniteSource.FilteredElement == SimHashes.Void)
-				{
-					str = string.Format((string)BUILDINGS.PREFABS.GASFILTER.STATUS_ITEM, (object)BUILDINGS.PREFABS.GASFILTER.ELEMENT_NOT_SPECIFIED);
-				}
-				else
-				{
-					Element elementByHash = ElementLoader.FindElementByHash(infiniteSource.FilteredElement);
-					str = string.Format((string)BUILDINGS.PREFABS.GASFILTER.STATUS_ITEM, (object)elementByHash.name);
-				}
-				return str;
-			});
-			InfiniteSource.filterStatusItem.conditionalOverlayCallback = new Func<HashedString, object, bool>(this.ShowInUtilityOverlay);
+            filterStatusItem = new StatusItem("Filter", "BUILDING", "", StatusItem.IconType.Info, NotificationType.Neutral, false, OverlayModes.LiquidConduits.ID, true, 129022);
+            filterStatusItem.resolveStringCallback = (str, data) =>
+            {
+                InfiniteSource infiniteSource = (InfiniteSource)data;
+                if (infiniteSource.FilteredElement == SimHashes.Void)
+                {
+                    str = string.Format(BUILDINGS.PREFABS.GASFILTER.STATUS_ITEM, BUILDINGS.PREFABS.GASFILTER.ELEMENT_NOT_SPECIFIED);
+                }
+                else
+                {
+                    Element elementByHash = ElementLoader.FindElementByHash(infiniteSource.FilteredElement);
+                    str = string.Format(BUILDINGS.PREFABS.GASFILTER.STATUS_ITEM, elementByHash.name);
+                }
+                return str;
+            };
+            filterStatusItem.conditionalOverlayCallback = new Func<HashedString, object, bool>(ShowInUtilityOverlay);
 		}
 
 
