@@ -50,9 +50,7 @@ namespace TeleStorage
             filterable.onFilterChanged += new Action<Tag>(OnFilterChanged);
             GetComponent<KSelectable>().SetStatusItem(Db.Get().StatusItemCategories.Main, filterStatusItem, this);
 
-            GetComponent<Storage>().items.Clear();
             TeleStorageData.Instance.storageContainers.Add(this);
-            FullBuildStorage();
         }
 
         protected override void OnCleanUp()
@@ -80,39 +78,16 @@ namespace TeleStorage
             }
         }
 
-        public void FullBuildStorage()
+        public void FireRefresh()
         {
-            Storage storage = GetComponent<Storage>();
-            foreach (SimHashes element in TeleStorageData.Instance.storedElementsMap.Keys)
+            try
             {
-                StoredItem item = TeleStorageData.Instance.storedElementsMap[element];
-                if (item.mass > 0.0f)
-                {
-                    SubstanceChunk chunk = LiquidSourceManager.Instance.CreateChunk(element, item.mass, item.temperature, item.diseaseIdx, item.diseaseCount, this.transform.GetPosition());
-                    storage.items.Add(chunk.gameObject);
-                }
+                Trigger(-1697596308);
             }
-        }
+            catch (Exception)
+            {
 
-        public void RefreshStorage(SimHashes element, StoredItem item)
-        {
-            Storage storage = GetComponent<Storage>();
-            GameObject toRemove = null;
-            foreach (GameObject gameObject in storage.items)
-            {
-                if (!((UnityEngine.Object)gameObject == (UnityEngine.Object)null))
-                {
-                    PrimaryElement component = gameObject.GetComponent<PrimaryElement>();
-                    if (component.ElementID == element)
-                    {
-                        toRemove = gameObject;
-                        break;;
-                    }
-                }
             }
-            storage.items.Remove(toRemove);
-            storage.AddLiquid(element, item.mass, item.temperature, item.diseaseIdx, item.diseaseCount);
-            Trigger(-1697596308);
         }
 
         private void OnFilterChanged(Tag tag)
@@ -193,7 +168,7 @@ namespace TeleStorage
                 SimUtil.DiseaseInfo diseaseInfo = SimUtil.CalculateFinalDiseaseInfo(inputContents.diseaseIdx, inputContents.diseaseCount, inputStored.diseaseIdx, inputStored.diseaseCount);
                 inputStored.diseaseIdx = diseaseInfo.idx;
                 inputStored.diseaseCount = diseaseInfo.count;
-                TeleStorageData.Instance.FireRefresh(inputContents.element, inputStored);
+                TeleStorageData.Instance.FireRefresh();
                 flowManager.RemoveElement(inputCell, inputContents.mass);
             }
             
@@ -207,7 +182,7 @@ namespace TeleStorage
             {
                 var delta = flowManager.AddElement(outputCell, FilteredElement, possibleOutput, outputStored.temperature, 0, 0);
                 outputStored.mass -= delta;
-                TeleStorageData.Instance.FireRefresh(FilteredElement, outputStored);
+                TeleStorageData.Instance.FireRefresh();
             }
         }
 

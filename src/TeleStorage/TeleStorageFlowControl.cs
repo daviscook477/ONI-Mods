@@ -27,7 +27,7 @@ namespace TeleStorage
 
         public string GetSliderTooltipKey(int index)
         {
-            return "STRINGS.UI.UISIDESCREENS.FLOWSOURCE.FLOW.TOOLTIP";
+            return "STRINGS.UI.UISIDESCREENS.TELESTORAGE.FLOW.TOOLTIP";
         }
 
         public float GetSliderValue(int index)

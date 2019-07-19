@@ -32,11 +32,11 @@ namespace TeleStorage
         [JsonIgnore]
         public List<TeleStorage> storageContainers = new List<TeleStorage>();
 
-        public void FireRefresh(SimHashes element, StoredItem item)
+        public void FireRefresh()
         {
             foreach (TeleStorage storageContainer in storageContainers)
             {
-                storageContainer.RefreshStorage(element, item);
+                storageContainer.FireRefresh();
             }
         }
 

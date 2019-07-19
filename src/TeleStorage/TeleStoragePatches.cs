@@ -1,6 +1,7 @@
 ﻿using System;
 using Harmony;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace TeleStorage
 {
@@ -17,10 +18,71 @@ namespace TeleStorage
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{TeleStorageLiquidConfig.Id.ToUpperInvariant()}.DESC", TeleStorageLiquidConfig.Description);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{TeleStorageLiquidConfig.Id.ToUpperInvariant()}.EFFECT", TeleStorageLiquidConfig.Effect);
 
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{TeleStorageGasConfig.Id.ToUpperInvariant()}.NAME", TeleStorageGasConfig.DisplayName);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{TeleStorageGasConfig.Id.ToUpperInvariant()}.DESC", TeleStorageGasConfig.Description);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{TeleStorageGasConfig.Id.ToUpperInvariant()}.EFFECT", TeleStorageGasConfig.Effect);
+
                 Strings.Add($"STRINGS.UI.UISIDESCREENS.TELESTORAGE.FLOW.TITLE", TeleStorageFlowControl.FlowTitle);
                 Strings.Add($"STRINGS.UI.UISIDESCREENS.TELESTORAGE.FLOW.TOOLTIP", TeleStorageFlowControl.FlowTooltip);
 
                 ModUtil.AddBuildingToPlanScreen("Base", TeleStorageLiquidConfig.Id);
+                ModUtil.AddBuildingToPlanScreen("Base", TeleStorageGasConfig.Id);
+            }
+        }
+
+        [HarmonyPatch(typeof(SimpleInfoScreen))]
+        [HarmonyPatch("RefreshStorage")]
+        public class SimpleInfoScreen_RefreshStorage_Patch
+        {
+            private static void Postfix(SimpleInfoScreen __instance, 
+                GameObject ___storagePanel, GameObject ___selectedTarget, 
+                Dictionary<string, GameObject> ___storageLabels)
+            {
+                if (___selectedTarget.GetComponent<TeleStorage>() == null)
+                {
+                    return;
+                }
+                ConduitType type = ___selectedTarget.GetComponent<TeleStorage>().Type;
+                ___storagePanel.gameObject.SetActive(true);
+                ___storagePanel.GetComponent<CollapsibleDetailContentPanel>().HeaderLabel.text = (string)(!(___selectedTarget.GetComponent<MinionIdentity>() != (UnityEngine.Object)null) ? STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_CONTENTS : STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_MINION_CONTENTS);
+                foreach (KeyValuePair<string, GameObject> storageLabel in ___storageLabels)
+                    storageLabel.Value.SetActive(false);
+                int num = 0;
+                foreach (SimHashes element in TeleStorageData.Instance.storedElementsMap.Keys)
+                {
+                    StoredItem item = TeleStorageData.Instance.storedElementsMap[element];
+                    if (item.mass > 0.0f)
+                    {
+                        Element elementObj = ElementLoader.FindElementByHash(element);
+                        if (elementObj.IsLiquid && !type.Equals(ConduitType.Liquid))
+                        {
+                            continue;
+                        }
+                        if (elementObj.IsGas && !type.Equals(ConduitType.Gas))
+                        {
+                            continue;
+                        }
+                        GameObject storageLabel = Traverse.Create(__instance).Method("AddOrGetStorageLabel", new Type[] { typeof(Dictionary<string, GameObject>), typeof(GameObject), typeof(string) }).GetValue<GameObject>(new object[] { ___storageLabels, ___storagePanel, "storage_" + num.ToString() });
+                        ++num;
+                        storageLabel.GetComponentInChildren<ToolTip>().ClearMultiStringTooltip();
+                        string formattedName = elementObj.name;
+                        string str1 = string.Format(STRINGS.UI.DETAILTABS.DETAILS.CONTENTS_MASS, formattedName, GameUtil.GetFormattedMass(item.mass, GameUtil.TimeSlice.None, GameUtil.MetricMassFormat.UseThreshold, true, "{0:0.#}"));
+                        string str2 = string.Format(STRINGS.UI.DETAILTABS.DETAILS.CONTENTS_TEMPERATURE, str1, GameUtil.GetFormattedTemperature(item.temperature, GameUtil.TimeSlice.None, GameUtil.TemperatureInterpretation.Absolute, true, false));
+                        if (item.diseaseIdx != byte.MaxValue)
+                        {
+                            str2 += string.Format(STRINGS.UI.DETAILTABS.DETAILS.CONTENTS_DISEASED, GameUtil.GetFormattedDisease(item.diseaseIdx, item.diseaseCount, false));
+                            string formattedDisease = GameUtil.GetFormattedDisease(item.diseaseIdx, item.diseaseCount, true);
+                            storageLabel.GetComponentInChildren<ToolTip>().AddMultiStringTooltip(formattedDisease, (ScriptableObject)PluginAssets.Instance.defaultTextStyleSetting);
+                        }
+                        storageLabel.GetComponentInChildren<LocText>().text = str2;
+                    }
+                }
+                if (num == 0)
+                {
+                    Traverse.Create(__instance).Method("AddOrGetStorageLabel", new Type[] { typeof(Dictionary<string, GameObject>), typeof(GameObject), typeof(string) }).GetValue<GameObject>(___storageLabels, ___storagePanel, "empty").GetComponentInChildren<LocText>().text = STRINGS.UI.DETAILTABS.DETAILS.STORAGE_EMPTY;
+
+                }
+                Traverse.Create(___storagePanel.GetComponent<CollapsibleDetailContentPanel>().scalerMask).Method("Update").GetValue();
             }
         }
 
@@ -30,11 +92,8 @@ namespace TeleStorage
         {
             private static void Prefix()
             {
-                var liquid = new List<string>(Database.Techs.TECH_GROUPING["LiquidPiping"]) { TeleStorageLiquidConfig.Id };
-                Database.Techs.TECH_GROUPING["LiquidPiping"] = liquid.ToArray();
-
-                //var gas = new List<string>(Database.Techs.TECH_GROUPING["GasPiping"]) { InfiniteGasSinkConfig.Id, InfiniteGasSourceConfig.Id };
-                //Database.Techs.TECH_GROUPING["GasPiping"] = gas.ToArray();
+                var catalytics = new List<string>(Database.Techs.TECH_GROUPING["Catalytics"]) { TeleStorageLiquidConfig.Id, TeleStorageGasConfig.Id };
+                Database.Techs.TECH_GROUPING["Catalytics"] = catalytics.ToArray();
             }
         }
 

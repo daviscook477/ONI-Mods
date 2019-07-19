@@ -1,15 +1,14 @@
-﻿using UnityEngine;
-using TUNING;
-using System.Collections.Generic;
+﻿using TUNING;
+using UnityEngine;
 
 namespace TeleStorage
 {
-    public class TeleStorageLiquidConfig : IBuildingConfig
+    public class TeleStorageGasConfig : IBuildingConfig
     {
-        public const string Id = "TeleStorageLiquid";
-        public const string DisplayName = "Advanced Liquid Storage";
-        public const string Description = "Stores liquid inside an alternate dimension.";
-        public const string Effect = "Compresses liquids into an alternate dimension for more effective storage.";
+        public const string Id = "TeleStorageGas";
+        public const string DisplayName = "Advanced Gas Storage";
+        public const string Description = "Stores gasses inside an alternate dimension.";
+        public const string Effect = "Compresses gasses into an alternate dimension for more effective storage.";
 
         public override BuildingDef CreateBuildingDef()
         {
@@ -28,9 +27,9 @@ namespace TeleStorage
 
             var buildingDef = BuildingTemplates.CreateBuildingDef(
                 id: Id,
-                width: 2,
+                width: 5,
                 height: 3,
-                anim: "liquidtele",
+                anim: "gastele",
                 hitpoints: BUILDINGS.HITPOINTS.TIER2,
                 construction_time: BUILDINGS.CONSTRUCTION_TIME_SECONDS.TIER4,
                 construction_mass: construction_mass,
@@ -41,10 +40,10 @@ namespace TeleStorage
                 noise: NOISE_POLLUTION.NOISY.TIER0,
                 0.2f
                 );
-            buildingDef.InputConduitType = ConduitType.Liquid;
-            buildingDef.OutputConduitType = ConduitType.Liquid;
+            buildingDef.InputConduitType = ConduitType.Gas;
+            buildingDef.OutputConduitType = ConduitType.Gas;
             buildingDef.Floodable = false;
-            buildingDef.ViewMode = OverlayModes.LiquidConduits.ID;
+            buildingDef.ViewMode = OverlayModes.GasConduits.ID;
             buildingDef.AudioCategory = "HollowMetal";
             buildingDef.UtilityInputOffset = new CellOffset(1, 2);
             buildingDef.UtilityOutputOffset = new CellOffset(0, 0);
@@ -53,9 +52,9 @@ namespace TeleStorage
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
         {
-            go.AddOrGet<Filterable>().filterElementState = Filterable.ElementState.Liquid;
+            go.AddOrGet<Filterable>().filterElementState = Filterable.ElementState.Gas;
             go.AddOrGet<TeleStorageFlowControl>();
-            go.AddOrGet<TeleStorage>().Type = ConduitType.Liquid;
+            go.AddOrGet<TeleStorage>().Type = ConduitType.Gas;
         }
 
         public override void DoPostConfigurePreview(BuildingDef def, GameObject go)

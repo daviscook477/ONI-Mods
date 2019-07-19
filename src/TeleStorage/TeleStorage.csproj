@@ -59,6 +59,7 @@
     <Compile Include="TeleStorage.cs" />
     <Compile Include="TeleStorageData.cs" />
     <Compile Include="TeleStorageFlowControl.cs" />
+    <Compile Include="TeleStorageGasConfig.cs" />
     <Compile Include="TeleStorageLiquidConfig.cs" />
     <Compile Include="TeleStoragePatches.cs" />
   </ItemGroup>
