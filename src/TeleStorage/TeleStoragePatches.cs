@@ -1,6 +1,6 @@
 ﻿using System;
-using Harmony;
 using System.Collections.Generic;
+using Harmony;
 using UnityEngine;
 
 namespace TeleStorage
@@ -34,8 +34,8 @@ namespace TeleStorage
         [HarmonyPatch("RefreshStorage")]
         public class SimpleInfoScreen_RefreshStorage_Patch
         {
-            private static void Postfix(SimpleInfoScreen __instance, 
-                GameObject ___storagePanel, GameObject ___selectedTarget, 
+            private static void Postfix(SimpleInfoScreen __instance,
+                GameObject ___storagePanel, GameObject ___selectedTarget,
                 ref Dictionary<string, GameObject> ___storageLabels)
             {
                 if (___selectedTarget.GetComponent<TeleStorage>() == null)
@@ -117,7 +117,7 @@ namespace TeleStorage
 
         [HarmonyPatch(typeof(SaveLoader))]
         [HarmonyPatch("Load")]
-        [HarmonyPatch(new [] { typeof(string) })]
+        [HarmonyPatch(new[] { typeof(string) })]
         public static class SaveLoader_Load_Patch
         {
             public static void Postfix(string filename)
@@ -129,7 +129,7 @@ namespace TeleStorage
 
         [HarmonyPatch(typeof(SaveLoader))]
         [HarmonyPatch("Save")]
-        [HarmonyPatch(new [] { typeof(string), typeof(bool), typeof(bool) })]
+        [HarmonyPatch(new[] { typeof(string), typeof(bool), typeof(bool) })]
         public static class SaveLoader_Save_Patch
         {
             public static void Postfix(string filename)

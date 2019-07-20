@@ -1,10 +1,10 @@
 ﻿using System;
-using UnityEngine;
-using System.Runtime.Serialization;
-using STRINGS;
-using KSerialization;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Klei;
+using KSerialization;
+using STRINGS;
+using UnityEngine;
 
 namespace TeleStorage
 {
@@ -102,7 +102,7 @@ namespace TeleStorage
         }
 
         [OnDeserialized]
-        private void OnDeserialized()
+        private void OnDeserialized(StreamingContext context)
         {
             if (ElementLoader.GetElement(FilteredTag) == null)
                 return;
@@ -171,7 +171,7 @@ namespace TeleStorage
                 TeleStorageData.Instance.FireRefresh();
                 flowManager.RemoveElement(inputCell, inputContents.mass);
             }
-            
+
             if (!IsOperational || !TeleStorageData.Instance.storedElementsMap.ContainsKey(FilteredElement))
             {
                 return;

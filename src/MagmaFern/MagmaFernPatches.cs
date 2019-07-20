@@ -1,9 +1,7 @@
-﻿using Harmony;
-using TUNING;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Database;
-using System;
-using ProcGen;
+using Harmony;
+using TUNING;
 
 namespace MagmaFern
 {
@@ -114,7 +112,7 @@ namespace MagmaFern
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{MagmaFernConfig.Id.ToUpperInvariant()}.NAME", MagmaFernConfig.Name);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{MagmaFernConfig.Id.ToUpperInvariant()}.DESC", MagmaFernConfig.Description);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{MagmaFernConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", MagmaFernConfig.DomesticatedDescription);
-                    
+
                 Strings.Add($"STRINGS.ITEMS.FOOD.{MagmaFernConfig.Id.ToUpperInvariant()}.NAME", MagmaFernConfig.SeedName);
                 Strings.Add($"STRINGS.ITEMS.FOOD.{MagmaFernConfig.Id.ToUpperInvariant()}.DESC", MagmaFernConfig.SeedDescription);
 

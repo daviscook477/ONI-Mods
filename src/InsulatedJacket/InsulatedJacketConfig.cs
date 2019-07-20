@@ -1,6 +1,6 @@
-﻿using Klei.AI;
+﻿using System.Collections.Generic;
+using Klei.AI;
 using STRINGS;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RpgClothes
@@ -51,16 +51,16 @@ namespace RpgClothes
                 Id: Id,
                 Slot: TUNING.EQUIPMENT.CLOTHING.SLOT,
                 OutputElement: SimHashes.SuperInsulator,
-                Mass: TUNING.EQUIPMENT.VESTS.FUNKY_VEST_MASS, 
+                Mass: TUNING.EQUIPMENT.VESTS.FUNKY_VEST_MASS,
                 Anim: "newshirticon",
                 SnapOn: TUNING.EQUIPMENT.VESTS.SNAPON0,
                 BuildOverride: "newshirt",
-                BuildOverridePriority: 4, 
+                BuildOverridePriority: 4,
                 AttributeModifiers: attributeModifiers,
                 SnapOn1: TUNING.EQUIPMENT.VESTS.SNAPON1,
                 IsBody: true,
                 CollisionShape: EntityTemplates.CollisionShape.RECTANGLE,
-                width: 0.75f, 
+                width: 0.75f,
                 height: 0.4f,
                 additional_tags: null,
                 RecipeTechUnlock: null);
@@ -69,7 +69,7 @@ namespace RpgClothes
                     GameUtil.GetFormattedDistance(clothingInfo.conductivityMod));
             equipment.additionalDescriptors.Add(new Descriptor(
                 thermalConductivityDescriptor, thermalConductivityDescriptor,
-                Descriptor.DescriptorType.Effect, false)) ;
+                Descriptor.DescriptorType.Effect, false));
             string decorDescriptor = string.Format("{0}: {1}",
                 DUPLICANTS.ATTRIBUTES.DECOR.NAME,
                 clothingInfo.decorMod);

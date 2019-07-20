@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using STRINGS;
+using UnityEngine;
 
 namespace MagmaFern
 {
@@ -32,7 +32,7 @@ namespace MagmaFern
         public GameObject CreatePrefab()
         {
             var placedEntity = EntityTemplates.CreatePlacedEntity(
-                id: Id, 
+                id: Id,
                 name: Name,
                 desc: Description,
                 mass: 1f,
@@ -46,7 +46,7 @@ namespace MagmaFern
 
             EntityTemplates.ExtendEntityToBasicPlant(
                 template: placedEntity,
-                temperature_lethal_low: TemperatureLethalLow, 
+                temperature_lethal_low: TemperatureLethalLow,
                 temperature_warning_low: TemperatureWarningLow,
                 temperature_warning_high: TemperatureWarningHigh,
                 temperature_lethal_high: TemperatureLethalHigh,
@@ -78,7 +78,7 @@ namespace MagmaFern
             var seed = EntityTemplates.CreateAndRegisterSeedForPlant(
                 plant: placedEntity,
                 productionType: SeedProducer.ProductionType.DigOnly,
-                id: SeedId, 
+                id: SeedId,
                 name: SeedName,
                 desc: SeedDescription,
                 anim: Assets.GetAnim("seed_magmafern"),
@@ -91,7 +91,7 @@ namespace MagmaFern
                 domesticatedDescription: DomesticatedDescription,
                 collisionShape: EntityTemplates.CollisionShape.CIRCLE,
                 width: 0.2f,
-                height: 0.2f, 
+                height: 0.2f,
                 ignoreDefaultSeedTag: true);
 
             var foodInfo = new EdiblesManager.FoodInfo(
@@ -103,7 +103,7 @@ namespace MagmaFern
                 spoilTime: TUNING.FOOD.SPOIL_TIME.SLOW,
                 can_rot: true);
             EntityTemplates.ExtendEntityToFood(
-                template: seed, 
+                template: seed,
                 foodInfo: foodInfo);
 
             EntityTemplates.CreateAndRegisterPreviewForPlant(

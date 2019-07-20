@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Harmony;
+﻿using Harmony;
 
 namespace RpgClothes
 {
