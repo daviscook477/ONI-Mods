@@ -36,7 +36,7 @@ namespace TeleStorage
         {
             private static void Postfix(SimpleInfoScreen __instance, 
                 GameObject ___storagePanel, GameObject ___selectedTarget, 
-                Dictionary<string, GameObject> ___storageLabels)
+                ref Dictionary<string, GameObject> ___storageLabels)
             {
                 if (___selectedTarget.GetComponent<TeleStorage>() == null)
                 {
@@ -45,6 +45,10 @@ namespace TeleStorage
                 ConduitType type = ___selectedTarget.GetComponent<TeleStorage>().Type;
                 ___storagePanel.gameObject.SetActive(true);
                 ___storagePanel.GetComponent<CollapsibleDetailContentPanel>().HeaderLabel.text = (string)(!(___selectedTarget.GetComponent<MinionIdentity>() != (UnityEngine.Object)null) ? STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_CONTENTS : STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_MINION_CONTENTS);
+                if (___storageLabels == null)
+                {
+                    ___storageLabels = new Dictionary<string, GameObject>();
+                }
                 foreach (KeyValuePair<string, GameObject> storageLabel in ___storageLabels)
                     storageLabel.Value.SetActive(false);
                 int num = 0;
