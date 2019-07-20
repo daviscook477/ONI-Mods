@@ -44,7 +44,7 @@ namespace TeleStorage
                 }
                 ConduitType type = ___selectedTarget.GetComponent<TeleStorage>().Type;
                 ___storagePanel.gameObject.SetActive(true);
-                ___storagePanel.GetComponent<CollapsibleDetailContentPanel>().HeaderLabel.text = (string)(!(___selectedTarget.GetComponent<MinionIdentity>() != (UnityEngine.Object)null) ? STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_CONTENTS : STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_MINION_CONTENTS);
+                ___storagePanel.GetComponent<CollapsibleDetailContentPanel>().HeaderLabel.text = (!(___selectedTarget.GetComponent<MinionIdentity>() != null) ? STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_CONTENTS : STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_MINION_CONTENTS);
                 if (___storageLabels == null)
                 {
                     ___storageLabels = new Dictionary<string, GameObject>();
@@ -76,7 +76,7 @@ namespace TeleStorage
                         {
                             str2 += string.Format(STRINGS.UI.DETAILTABS.DETAILS.CONTENTS_DISEASED, GameUtil.GetFormattedDisease(item.diseaseIdx, item.diseaseCount, false));
                             string formattedDisease = GameUtil.GetFormattedDisease(item.diseaseIdx, item.diseaseCount, true);
-                            storageLabel.GetComponentInChildren<ToolTip>().AddMultiStringTooltip(formattedDisease, (ScriptableObject)PluginAssets.Instance.defaultTextStyleSetting);
+                            storageLabel.GetComponentInChildren<ToolTip>().AddMultiStringTooltip(formattedDisease, PluginAssets.Instance.defaultTextStyleSetting);
                         }
                         storageLabel.GetComponentInChildren<LocText>().text = str2;
                     }
