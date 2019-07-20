@@ -35,7 +35,7 @@ namespace RpgClothes
                 ingredients, results), ingredients, results)
             {
                 time = TUNING.EQUIPMENT.VESTS.WARM_VEST_FABTIME,
-                description = EQUIPMENT.PREFABS.WARM_VEST.RECIPE_DESC,
+                description = RecipeDescription,
                 nameDisplay = ComplexRecipe.RecipeNameDisplay.Result,
                 fabricators = new List<Tag>() { "ClothingFabricator" },
                 sortOrder = 1
