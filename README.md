@@ -15,7 +15,7 @@ Check out the Oxygen Not Included Discord [here](https://discord.gg/EBncbX2) for
 
 <a name="list-of-mods"></a>
 # List of Mods
-* [Infinite Liquid/Gas Sources](https://steamcommunity.com/sharedfiles/filedetails/?id=1711115962): Adds infinite sources and sinks for liquids and gasses. Useful for sandbox mode testing. Preview it on Github [here](src/InfinteSourceSink/README.md).
+* [Infinite Liquid/Gas Sources](https://steamcommunity.com/sharedfiles/filedetails/?id=1711115962): Adds infinite sources and sinks for liquids and gasses. Useful for sandbox mode testing. Preview it on Github [here](src/InfiniteSourceSink/README.md).
 * [Advanced Storage](https://steamcommunity.com/sharedfiles/filedetails/?id=1808602247): Adds a higher tier of storage containers to the game that all share the same inventory and that can infinitely compress their contents. Makes late game liquid and gas manage somewhat simpler for a heavy resource investment. Preview it on Github [here](src/TeleStorage/README.md).
 * [Insulated Jacket](https://steamcommunity.com/sharedfiles/filedetails/?id=1809475355): Adds a new clothing type called the insulated jacket that highly increases duplicant scalding threshold and highly decreases duplicant thermal conductivity. Made out of insulation. Preview it on Github [here](src/InsulatedJacket/README.md)
 * [Professional Attire](https://steamcommunity.com/sharedfiles/filedetails/?id=1810563583): Adds 10 new clothing styles - one for each duplicant skill that provide a bonus to the corresponding skill of duplicants that wear them. E.g. the farmer's outfit will provide `+2` to the duplicant's agriculture skill. Preview it on Github [here](src/ProfessionalAttire/README.md)
