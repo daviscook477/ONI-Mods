@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Harmony;
 using ProcGen;
@@ -13,6 +12,10 @@ namespace EthanolGeyser
         public const string Id = "chilled_ethanol";
         public static string Name = UI.FormatAsLink("Chilled Ethanol Geyser", $"GeyserGeneric_{Id.ToUpper()}");
         public static string Description = $"A highly pressurized geyser that periodically erupts with {UI.FormatAsLink("Chilled Ethanol", "ETHANOL")}.";
+
+        public const string SubworldPrefix = "subworlds/rust/";
+        public const string RequiredGeyserList = "geysers_a";
+        public const string EthanolGeyserPOI = "poi_rust_geyser_ethanol";
 
         [HarmonyPatch(typeof(SettingsCache))]
         [HarmonyPatch("LoadSubworlds")]
@@ -28,7 +31,7 @@ namespace EthanolGeyser
                 foreach (WeightedName subworld in subworlds)
                 {
                     string key = subworld.name;
-                    if (!key.StartsWith("subworlds/rust/"))
+                    if (!key.StartsWith(SubworldPrefix))
                     {
                         continue;
                     }
@@ -37,9 +40,9 @@ namespace EthanolGeyser
                     {
                         Traverse.Create(SettingsCache.subworlds[key]).Property("pointsOfInterest").SetValue(new Dictionary<string, string[]>());
                     }
-                    if (!SettingsCache.subworlds[key].pointsOfInterest.ContainsKey("geysers_a"))
+                    if (!SettingsCache.subworlds[key].pointsOfInterest.ContainsKey(RequiredGeyserList))
                     {
-                        SettingsCache.subworlds[key].pointsOfInterest["geysers_a"] = new string[] { };
+                        SettingsCache.subworlds[key].pointsOfInterest[RequiredGeyserList] = new string[] { };
                     }
                     foreach (string poiKey in SettingsCache.subworlds[key].pointsOfInterest.Keys.ToList())
                     {
@@ -48,7 +51,7 @@ namespace EthanolGeyser
                             continue;
                         }
 
-                        var geysers = new List<string>(SettingsCache.subworlds[key].pointsOfInterest[poiKey]) { "poi_rust_geyser_ethanol" };
+                        var geysers = new List<string>(SettingsCache.subworlds[key].pointsOfInterest[poiKey]) { EthanolGeyserPOI };
                         SettingsCache.subworlds[key].pointsOfInterest[poiKey] = geysers.ToArray();
                     }
                 }

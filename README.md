@@ -19,6 +19,7 @@ Check out the Oxygen Not Included Discord [here](https://discord.gg/EBncbX2) for
 * [Advanced Storage](https://steamcommunity.com/sharedfiles/filedetails/?id=1808602247): Adds a higher tier of storage containers to the game that all share the same inventory and that can infinitely compress their contents. Makes late game liquid and gas manage somewhat simpler for a heavy resource investment. Preview it on Github [here](src/TeleStorage/README.md).
 * [Insulated Jacket](https://steamcommunity.com/sharedfiles/filedetails/?id=1809475355): Adds a new clothing type called the insulated jacket that highly increases duplicant scalding threshold and highly decreases duplicant thermal conductivity. Made out of insulation. Preview it on Github [here](src/InsulatedJacket/README.md)
 * [Professional Attire](https://steamcommunity.com/sharedfiles/filedetails/?id=1810563583): Adds 10 new clothing styles - one for each duplicant skill that provide a bonus to the corresponding skill of duplicants that wear them. E.g. the farmer's outfit will provide `+2` to the duplicant's agriculture skill. Preview it on Github [here](src/ProfessionalAttire/README.md)
+* [Ethanol Geyser](https://steamcommunity.com/sharedfiles/filedetails/?id=1810801031): Adds a guaranteed chilled ethanol geyser spawn to the rust biome. Preview it on Github [here](src/EthanolGeyser/README.md)
 
 <a name="instructions"></a>
 # Instructions
