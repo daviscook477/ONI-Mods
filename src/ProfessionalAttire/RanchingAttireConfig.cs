@@ -5,26 +5,25 @@ using UnityEngine;
 
 namespace ProfessionalAttire
 {
-    public class DiggingAttireConfig : IEquipmentConfig
+    public class RanchingAttireConfig : IEquipmentConfig
     {
-        public const string Id = "DiggingAttire";
-        public const string DisplayName = "Digger's Outfit";
+        public const string Id = "Raching Attire";
+        public const string DisplayName = "Ranchers's Outfit";
         public const string GenericName = "Clothing";
-        public const string RecipeDescription = "Lightweight and strong mineral fibers keep this clothing from getting in a duplicant's way while digging.";
+        public static string RecipeDescription = $"Caring for critters in a {DisplayName} helps a duplicant to work more effectively.";
 
         public static int DecorModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.decorMod;
         public static float ConductivityModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.conductivityMod;
         public static float HomeostasisEfficiencyModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.homeostasisEfficiencyMultiplier;
         public const float AttributeIncrease = ProfessionalAttirePatches.BasicAttributeIncrease;
-        public const float VestClothMass = 2.0f;
+        public const float VestClothMass = 6.0f;
 
         public static readonly ClothingWearer.ClothingInfo NEW_CLOTHING =
             new ClothingWearer.ClothingInfo(DisplayName, DecorModifier, ConductivityModifier, HomeostasisEfficiencyModifier);
 
         public static readonly ComplexRecipe.RecipeElement[] ingredients = new ComplexRecipe.RecipeElement[]
         {
-            new ComplexRecipe.RecipeElement("BasicFabric".ToTag(), VestClothMass),
-            new ComplexRecipe.RecipeElement(ElementLoader.FindElementByHash(SimHashes.Obsidian).tag, 2000.0f)
+            new ComplexRecipe.RecipeElement("BasicFabric".ToTag(), VestClothMass)
         };
         public static readonly ComplexRecipe.RecipeElement[] results = new ComplexRecipe.RecipeElement[]
         {
@@ -48,15 +47,15 @@ namespace ProfessionalAttire
         {
             ClothingWearer.ClothingInfo clothingInfo = NEW_CLOTHING;
             List<AttributeModifier> attributeModifiers = new List<AttributeModifier>();
-            attributeModifiers.Add(new AttributeModifier(Db.Get().Attributes.Digging.Id, AttributeIncrease, DisplayName, false, false, true));
+            attributeModifiers.Add(new AttributeModifier(Db.Get().Attributes.Ranching.Id, AttributeIncrease, DisplayName, false, false, true));
             EquipmentDef equipment = EquipmentTemplates.CreateEquipmentDef(
                 Id: Id,
                 Slot: TUNING.EQUIPMENT.CLOTHING.SLOT,
                 OutputElement: SimHashes.Carbon,
                 Mass: TUNING.EQUIPMENT.VESTS.FUNKY_VEST_MASS,
-                Anim: "diggershirt",
+                Anim: "ranchershirt",
                 SnapOn: TUNING.EQUIPMENT.VESTS.SNAPON0,
-                BuildOverride: "diggerbodyshirt",
+                BuildOverride: "rancherbodyshirt",
                 BuildOverridePriority: 4,
                 AttributeModifiers: attributeModifiers,
                 SnapOn1: TUNING.EQUIPMENT.VESTS.SNAPON1,

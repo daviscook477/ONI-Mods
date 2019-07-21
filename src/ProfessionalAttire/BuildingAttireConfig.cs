@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace ProfessionalAttire
 {
-    public class DiggingAttireConfig : IEquipmentConfig
+    public class BuildingAttireConfig : IEquipmentConfig
     {
-        public const string Id = "DiggingAttire";
-        public const string DisplayName = "Digger's Outfit";
+        public const string Id = "BuildingAttire";
+        public const string DisplayName = "Builder's Outfit";
         public const string GenericName = "Clothing";
-        public const string RecipeDescription = "Lightweight and strong mineral fibers keep this clothing from getting in a duplicant's way while digging.";
+        public const string RecipeDescription = "This stylish and hardy vest helps duplicants to work effectively and safely while performing construction tasks.";
 
         public static int DecorModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.decorMod;
         public static float ConductivityModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.conductivityMod;
@@ -24,7 +24,7 @@ namespace ProfessionalAttire
         public static readonly ComplexRecipe.RecipeElement[] ingredients = new ComplexRecipe.RecipeElement[]
         {
             new ComplexRecipe.RecipeElement("BasicFabric".ToTag(), VestClothMass),
-            new ComplexRecipe.RecipeElement(ElementLoader.FindElementByHash(SimHashes.Obsidian).tag, 2000.0f)
+            new ComplexRecipe.RecipeElement(ElementLoader.FindElementByHash(SimHashes.Iron).tag, 400.0f)
         };
         public static readonly ComplexRecipe.RecipeElement[] results = new ComplexRecipe.RecipeElement[]
         {
@@ -48,15 +48,15 @@ namespace ProfessionalAttire
         {
             ClothingWearer.ClothingInfo clothingInfo = NEW_CLOTHING;
             List<AttributeModifier> attributeModifiers = new List<AttributeModifier>();
-            attributeModifiers.Add(new AttributeModifier(Db.Get().Attributes.Digging.Id, AttributeIncrease, DisplayName, false, false, true));
+            attributeModifiers.Add(new AttributeModifier(Db.Get().Attributes.Construction.Id, AttributeIncrease, DisplayName, false, false, true));
             EquipmentDef equipment = EquipmentTemplates.CreateEquipmentDef(
                 Id: Id,
                 Slot: TUNING.EQUIPMENT.CLOTHING.SLOT,
                 OutputElement: SimHashes.Carbon,
                 Mass: TUNING.EQUIPMENT.VESTS.FUNKY_VEST_MASS,
-                Anim: "diggershirt",
+                Anim: "buildershirt",
                 SnapOn: TUNING.EQUIPMENT.VESTS.SNAPON0,
-                BuildOverride: "diggerbodyshirt",
+                BuildOverride: "builderbodyshirt",
                 BuildOverridePriority: 4,
                 AttributeModifiers: attributeModifiers,
                 SnapOn1: TUNING.EQUIPMENT.VESTS.SNAPON1,

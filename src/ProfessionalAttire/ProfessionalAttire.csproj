@@ -51,6 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtistAttireConfig.cs" />
+    <Compile Include="CookAttireConfig.cs" />
+    <Compile Include="ScientistAttireConfig.cs" />
+    <Compile Include="FarmingAttireConfig.cs" />
+    <Compile Include="BuildingAttireConfig.cs" />
+    <Compile Include="RanchingAttireConfig.cs" />
     <Compile Include="DiggingAttireConfig.cs" />
     <Compile Include="ProfessionalAttirePatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
