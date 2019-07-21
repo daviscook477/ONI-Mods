@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsulatedJacket", "Insulate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfessionalAttire", "ProfessionalAttire\ProfessionalAttire.csproj", "{3943ACBB-9689-4AFA-ADFD-8CE7A6C19026}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EthanolGeyser", "EthanolGeyser\EthanolGeyser.csproj", "{EE8F9D20-0B09-46F0-BC6E-1715270919E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3943ACBB-9689-4AFA-ADFD-8CE7A6C19026}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3943ACBB-9689-4AFA-ADFD-8CE7A6C19026}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3943ACBB-9689-4AFA-ADFD-8CE7A6C19026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
