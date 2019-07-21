@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace ProfessionalAttire
 {
-    public class ScientistAttireConfig : IEquipmentConfig
+    public class DoctorAttireConfig : IEquipmentConfig
     {
-        public const string Id = "ScientistAttire";
-        public const string DisplayName = "Researcher's Outfit";
+        public const string Id = "DoctorAttire";
+        public const string DisplayName = "Doctor's Outfit";
         public const string GenericName = "Clothing";
-        public static string RecipeDescription = $"It's much easier to learn new things while wearing a {DisplayName}.";
-        public static string Description = "Improves the learning capabilities of one duplicant.";
+        public static string RecipeDescription = $"Tending to duplicants in a {DisplayName} helps to speed up the recovery process.";
+        public static string Description = "Improves the caring capabilities of one duplicant.";
 
         public static int DecorModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.decorMod;
         public static float ConductivityModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.conductivityMod;
@@ -25,7 +25,7 @@ namespace ProfessionalAttire
         public static readonly ComplexRecipe.RecipeElement[] ingredients = new ComplexRecipe.RecipeElement[]
         {
             new ComplexRecipe.RecipeElement("BasicFabric".ToTag(), VestClothMass),
-            new ComplexRecipe.RecipeElement("ResearchDatabank".ToTag(), 20.0f)
+            new ComplexRecipe.RecipeElement("IntermediateCure".ToTag(), 2.0f)
         };
         public static readonly ComplexRecipe.RecipeElement[] results = new ComplexRecipe.RecipeElement[]
         {
@@ -49,15 +49,15 @@ namespace ProfessionalAttire
         {
             ClothingWearer.ClothingInfo clothingInfo = NEW_CLOTHING;
             List<AttributeModifier> attributeModifiers = new List<AttributeModifier>();
-            attributeModifiers.Add(new AttributeModifier(Db.Get().Attributes.Learning.Id, AttributeIncrease, DisplayName, false, false, true));
+            attributeModifiers.Add(new AttributeModifier(Db.Get().Attributes.Caring.Id, AttributeIncrease, DisplayName, false, false, true));
             EquipmentDef equipment = EquipmentTemplates.CreateEquipmentDef(
                 Id: Id,
                 Slot: TUNING.EQUIPMENT.CLOTHING.SLOT,
                 OutputElement: SimHashes.Carbon,
                 Mass: TUNING.EQUIPMENT.VESTS.FUNKY_VEST_MASS,
-                Anim: "scientistshirt",
+                Anim: "doctorshirt",
                 SnapOn: TUNING.EQUIPMENT.VESTS.SNAPON0,
-                BuildOverride: "scientistbodyshirt",
+                BuildOverride: "doctorbodyshirt",
                 BuildOverridePriority: 4,
                 AttributeModifiers: attributeModifiers,
                 SnapOn1: TUNING.EQUIPMENT.VESTS.SNAPON1,

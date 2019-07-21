@@ -11,6 +11,7 @@ namespace ProfessionalAttire
         public const string DisplayName = "Digger's Outfit";
         public const string GenericName = "Clothing";
         public const string RecipeDescription = "Lightweight and strong mineral fibers keep this clothing from getting in a duplicant's way while digging.";
+        public static string Description = "Improves the digging capabilities of one duplicant.";
 
         public static int DecorModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.decorMod;
         public static float ConductivityModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.conductivityMod;

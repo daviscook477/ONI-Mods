@@ -53,6 +53,9 @@
   <ItemGroup>
     <Compile Include="ArtistAttireConfig.cs" />
     <Compile Include="CookAttireConfig.cs" />
+    <Compile Include="DoctorAttireConfig.cs" />
+    <Compile Include="StrongAttireConfig.cs" />
+    <Compile Include="TinkerAttireConfig.cs" />
     <Compile Include="ScientistAttireConfig.cs" />
     <Compile Include="FarmingAttireConfig.cs" />
     <Compile Include="BuildingAttireConfig.cs" />

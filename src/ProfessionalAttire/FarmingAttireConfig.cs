@@ -11,6 +11,7 @@ namespace ProfessionalAttire
         public const string DisplayName = "Farmers's Outfit";
         public const string GenericName = "Clothing";
         public static string RecipeDescription = $"Tending to plants in a {DisplayName} helps a duplicant to work more effectively.";
+        public static string Description = "Improves the farming capabilities of one duplicant.";
 
         public static int DecorModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.decorMod;
         public static float ConductivityModifier = ClothingWearer.ClothingInfo.BASIC_CLOTHING.conductivityMod;
