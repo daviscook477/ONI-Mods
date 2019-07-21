@@ -132,7 +132,7 @@ namespace InfiniteSourceSink
         }
 
         [OnDeserialized]
-        private void OnDeserialized(StreamingContext context)
+        private void OnDeserialized()
         {
             if (ElementLoader.GetElement(FilteredTag) == null)
                 return;

@@ -25,7 +25,6 @@ namespace TeleStorage
         private Filterable filterable = null;
         private int inputCell = -1;
         private int outputCell = -1;
-        private Dictionary<SimHashes, SubstanceChunk> chunks = new Dictionary<SimHashes, SubstanceChunk>();
 
         public SimHashes FilteredElement { get; private set; } = SimHashes.Void;
 
@@ -102,7 +101,7 @@ namespace TeleStorage
         }
 
         [OnDeserialized]
-        private void OnDeserialized(StreamingContext context)
+        private void OnDeserialized()
         {
             if (ElementLoader.GetElement(FilteredTag) == null)
                 return;
