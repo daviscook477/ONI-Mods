@@ -1,5 +1,5 @@
-﻿using Harmony;
-using System;
+﻿using System;
+using Harmony;
 
 namespace ProfessionalAttire
 {
