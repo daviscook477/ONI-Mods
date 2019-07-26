@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfessionalAttire", "Profe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EthanolGeyser", "EthanolGeyser\EthanolGeyser.csproj", "{EE8F9D20-0B09-46F0-BC6E-1715270919E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalBiome", "CrystalBiome\CrystalBiome.csproj", "{C7D02B48-FEDB-4E55-9141-D8FFEF10D451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8F9D20-0B09-46F0-BC6E-1715270919E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D02B48-FEDB-4E55-9141-D8FFEF10D451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D02B48-FEDB-4E55-9141-D8FFEF10D451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D02B48-FEDB-4E55-9141-D8FFEF10D451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D02B48-FEDB-4E55-9141-D8FFEF10D451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
