@@ -8,8 +8,7 @@ namespace CrystalBiome.Plants
     {
         public const float CyclesForGrowth = 0.1f;
 
-        [HarmonyPatch(typeof(EntityConfigManager))]
-        [HarmonyPatch("LoadGeneratedEntities")]
+        [HarmonyPatch(typeof(EntityConfigManager), "LoadGeneratedEntities")]
         public class EntityConfigManager_LoadGeneratedEntities_Patch
         {
             private static void Prefix()

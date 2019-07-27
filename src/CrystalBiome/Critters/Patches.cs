@@ -8,9 +8,7 @@ namespace CrystalBiome.Critters
 {
     public class Patches
     {
-        [HarmonyPatch(typeof(KSerialization.Manager))]
-        [HarmonyPatch("GetType")]
-        [HarmonyPatch(new[] { typeof(string) })]
+        [HarmonyPatch(typeof(KSerialization.Manager), "GetType", new[] { typeof(string) })]
         public static class Manager_GetType_Patch
         {
             private static void Postfix(string type_name, ref Type __result)
@@ -22,8 +20,7 @@ namespace CrystalBiome.Critters
             }
         }
 
-        [HarmonyPatch(typeof(GasAndLiquidConsumerMonitor.Instance))]
-        [HarmonyPatch("OnMassConsumed")]
+        [HarmonyPatch(typeof(GasAndLiquidConsumerMonitor.Instance), "OnMassConsumed")]
         public class GasAndLiquidConsumerMonitorInstance_OnMassConsumed_Patch
         {
             private static void Prefix(GasAndLiquidConsumerMonitor.Instance __instance, Sim.MassConsumedCallback mcd)
@@ -41,8 +38,7 @@ namespace CrystalBiome.Critters
             }
         }
 
-        [HarmonyPatch(typeof(CreatureCalorieMonitor.Stomach))]
-        [HarmonyPatch("Poop")]
+        [HarmonyPatch(typeof(CreatureCalorieMonitor.Stomach), "Poop")]
         public class Stomach_Poop_Patch
         {
             private static float temperature = 100.0f;
@@ -74,8 +70,7 @@ namespace CrystalBiome.Critters
             }
         }
 
-        [HarmonyPatch(typeof(CodexEntryGenerator))]
-        [HarmonyPatch("GenerateCreatureEntries")]
+        [HarmonyPatch(typeof(CodexEntryGenerator), "GenerateCreatureEntries")]
         public class CodexEntryGenerator_GenerateCreatureEntries_Patch
         {
             private static void Postfix(Dictionary<string, CodexEntry> __result)

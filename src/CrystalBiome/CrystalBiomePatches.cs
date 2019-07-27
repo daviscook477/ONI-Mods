@@ -6,7 +6,6 @@ namespace CrystalBiome
 {
     public class CrystalBiomePatches
     {
-
         [HarmonyPatch(typeof(Db), "Initialize")]
         public static class Db_Initialize_Patch
         {
@@ -16,8 +15,7 @@ namespace CrystalBiome
             }
         }
 
-        [HarmonyPatch(typeof(GeneratedBuildings))]
-        [HarmonyPatch("LoadGeneratedBuildings")]
+        [HarmonyPatch(typeof(GeneratedBuildings), "LoadGeneratedBuildings")]
         public class GeneratedBuildings_LoadGeneratedBuildings_Patch
         {
             private static void Prefix()
@@ -28,8 +26,5 @@ namespace CrystalBiome
                 ModUtil.AddBuildingToPlanScreen("Plumbing", GemTileConfig.Id);
             }
         }
-
-        
-
     }
 }
