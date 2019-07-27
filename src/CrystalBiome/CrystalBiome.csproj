@@ -63,30 +63,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssetLoading\AssetLoader.cs" />
-    <Compile Include="AssetLoading\Patches.cs" />
-    <Compile Include="BlockTileDecorInfoHandler.cs" />
-    <Compile Include="Buildings\Patches.cs" />
-    <Compile Include="Critters\Patches.cs" />
-    <Compile Include="Elements\AluminumSaltElement.cs" />
-    <Compile Include="Elements\BaseElement.cs" />
-    <Compile Include="Elements\CorundumElement.cs" />
-    <Compile Include="CrystalBiomePatches.cs" />
-    <Compile Include="Elements\MineralIceElement.cs" />
-    <Compile Include="Elements\MineralWaterElement.cs" />
-    <Compile Include="Plants\CrystalPlantConfig.cs" />
-    <Compile Include="Elements\Patches.cs" />
-    <Compile Include="GemTileConfig.cs" />
-    <Compile Include="Elements\KyaniteElement.cs" />
-    <Compile Include="Critters\LivingCrystal.cs" />
-    <Compile Include="Critters\LivingCrystalConfig.cs" />
-    <Compile Include="Plants\Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Elements\SodaliteElement.cs" />
-    <Compile Include="TextureAtlasHandler.cs" />
+    <Compile Include="src\AssetLoading\AssetLoader.cs" />
+    <Compile Include="src\AssetLoading\Patches.cs" />
+    <Compile Include="src\BlockTileDecorInfoHandler.cs" />
+    <Compile Include="src\Buildings\Patches.cs" />
+    <Compile Include="src\Critters\LivingCrystal.cs" />
+    <Compile Include="src\Critters\LivingCrystalConfig.cs" />
+    <Compile Include="src\Critters\Patches.cs" />
+    <Compile Include="src\CrystalBiomePatches.cs" />
+    <Compile Include="src\Elements\AluminumSaltElement.cs" />
+    <Compile Include="src\Elements\BaseElement.cs" />
+    <Compile Include="src\Elements\CorundumElement.cs" />
+    <Compile Include="src\Elements\KyaniteElement.cs" />
+    <Compile Include="src\Elements\MineralIceElement.cs" />
+    <Compile Include="src\Elements\MineralWaterElement.cs" />
+    <Compile Include="src\Elements\Patches.cs" />
+    <Compile Include="src\Elements\SodaliteElement.cs" />
+    <Compile Include="src\GemTileConfig.cs" />
+    <Compile Include="src\Plants\CrystalPlantConfig.cs" />
+    <Compile Include="src\Plants\Patches.cs" />
+    <Compile Include="src\TextureAtlasHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="anims\aluminum_salt" />
+    <None Include="anims\corundum" />
+    <None Include="anims\crystal_plant" />
+    <None Include="anims\floor_gem" />
+    <None Include="anims\kyanite" />
+    <None Include="anims\living_crystal" />
+    <None Include="anims\mineral_ice" />
+    <None Include="anims\sodalite" />
     <None Include="app.config" />
+    <None Include="atlas\tiles_gem" />
+    <None Include="atlas\tiles_gem_place" />
+    <None Include="README.md" />
+    <None Include="textures\aluminum_salt_mat" />
+    <None Include="textures\corundum_mat" />
+    <None Include="textures\kyanite_mat" />
+    <None Include="textures\mineral_ice_mat" />
+    <None Include="textures\sodalite_mat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
