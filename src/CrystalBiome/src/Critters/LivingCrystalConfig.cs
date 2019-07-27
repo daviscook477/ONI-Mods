@@ -93,8 +93,8 @@ namespace CrystalBiome
                 navType: NavType.Floor,
                 max_probing_radius: 32,
                 moveSpeed: 2f,
-                onDeathDropID: "Meat",
-                onDeathDropCount: 3,
+                onDeathDropID: Elements.AluminumSaltElement.Id,
+                onDeathDropCount: 300,
                 drownVulnerable: false,
                 entombVulnerable: true,
                 warningLowTemperature: WarningLowTemperature,
@@ -139,8 +139,8 @@ namespace CrystalBiome
             {
               new Diet.Info(new HashSet<Tag>()
               {
-                ElementLoader.FindElementByHash(SimHashes.Ethanol).tag
-              }, ElementLoader.FindElementByHash(SimHashes.SolidEthanol).tag, CaloriesPerKg, ProducedConversionRate, null, 0.0f, false)
+                ElementLoader.FindElementByHash(Elements.MineralWaterElement.SimHash).tag
+              }, ElementLoader.FindElementByHash(Elements.MineralWaterElement.SimHash).tag, CaloriesPerKg, ProducedConversionRate, null, 0.0f, false)
             });
             CreatureCalorieMonitor.Def calorieMonitor = placedEntity.AddOrGetDef<CreatureCalorieMonitor.Def>();
             calorieMonitor.diet = diet;

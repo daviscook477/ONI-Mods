@@ -55,7 +55,7 @@ namespace CrystalBiome
                 template: placedEntity,
                 info: new PlantElementAbsorber.ConsumeInfo()
                 {
-                    tag = ElementLoader.FindElementByHash(SimHashes.SaltWater).tag,
+                    tag = ElementLoader.FindElementByHash(Elements.MineralWaterElement.SimHash).tag,
                     massConsumptionRate = IrrigationRate
                 });
 

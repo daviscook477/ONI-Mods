@@ -16,6 +16,7 @@ namespace CrystalBiome.Elements
     defaultTemperature: 232.15
     defaultMass: 1000
     maxMass: 1100
+    hardness: 25
     molarMass: 18.01528
     lightAbsorptionFactor: 0.33333
     materialCategory: Liquifiable
@@ -24,7 +25,7 @@ namespace CrystalBiome.Elements
     - BuildableAny
     isDisabled: false
     state: Solid
-    localizationID: STRINGS.ELEMENTS.MINERAL_ICE.NAME";
+    localizationID: STRINGS.ELEMENTS.MINERALICE.NAME";
 
         public const string Id = "MineralIce";
         public static string Name = UI.FormatAsLink("Mineral Ice", Id.ToUpper());

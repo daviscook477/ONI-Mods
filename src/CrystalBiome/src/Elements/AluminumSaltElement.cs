@@ -17,14 +17,14 @@ namespace CrystalBiome.Elements
     defaultTemperature:  290
     defaultMass: 700
     maxMass: 2000
-    hardness: 10
+    hardness: 5
     molarMass: 50
     lightAbsorptionFactor: 1
     materialCategory: ConsumableOre
     buildMenuSort: 5
     isDisabled: false
     state: Solid
-    localizationID: STRINGS.ELEMENTS.ALUMINUM_SALT.NAME";
+    localizationID: STRINGS.ELEMENTS.ALUMINUMSALT.NAME";
 
         public const string Id = "AluminumSalt";
         public static string Name = UI.FormatAsLink("Aluminum Salt", Id.ToUpper());

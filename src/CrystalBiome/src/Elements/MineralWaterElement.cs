@@ -31,7 +31,7 @@ namespace CrystalBiome.Elements
     - AnyWater
     isDisabled: false
     state: Liquid
-    localizationID: STRINGS.ELEMENTS.MINERAL_WATER.NAME";
+    localizationID: STRINGS.ELEMENTS.MINERALWATER.NAME";
 
         public const string Id = "MineralWater";
         public static string Name = UI.FormatAsLink("Mineral Water", Id.ToUpper());

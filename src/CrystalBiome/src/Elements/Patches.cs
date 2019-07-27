@@ -12,23 +12,6 @@ namespace CrystalBiome.Elements
 {
     public class Patches
     {
-        private static string ToUpperSnakeCase(string camelCase)
-        {
-            StringBuilder builder = new StringBuilder();
-            for(int i = 0; i < camelCase.Length; i++)
-            {
-                if (i > 0 && char.IsUpper(camelCase[i]))
-                {
-                    builder.Append("_" + camelCase[i].ToString());
-                }
-                else
-                {
-                    builder.Append(camelCase[i].ToString());
-                }
-            }
-            return builder.ToString().ToUpperInvariant();
-        }
-
         [HarmonyPatch(typeof(Enum), "ToString", new Type[] { })]
         public static class SimHashes_ToString_Patch
         {
@@ -54,18 +37,18 @@ namespace CrystalBiome.Elements
         {
             private static void Postfix(ref List<ElementLoader.ElementEntry> __result)
             {
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(SodaliteElement.Id)}.NAME", SodaliteElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(SodaliteElement.Id)}.DESC", SodaliteElement.Description);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(CorundumElement.Id)}.NAME", CorundumElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(CorundumElement.Id)}.DESC", CorundumElement.Description);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(KyaniteElement.Id)}.NAME", KyaniteElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(KyaniteElement.Id)}.DESC", KyaniteElement.Description);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(AluminumSaltElement.Id)}.NAME", AluminumSaltElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(AluminumSaltElement.Id)}.DESC", AluminumSaltElement.Description);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralWaterElement.Id)}.NAME", MineralWaterElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralWaterElement.Id)}.DESC", MineralWaterElement.Description);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralIceElement.Id)}.NAME", MineralIceElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralIceElement.Id)}.DESC", MineralIceElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{SodaliteElement.Id.ToUpper()}.NAME", SodaliteElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{SodaliteElement.Id.ToUpper()}.DESC", SodaliteElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{CorundumElement.Id.ToUpper()}.NAME", CorundumElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{CorundumElement.Id.ToUpper()}.DESC", CorundumElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{KyaniteElement.Id.ToUpper()}.NAME", KyaniteElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{KyaniteElement.Id.ToUpper()}.DESC", KyaniteElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{AluminumSaltElement.Id.ToUpper()}.NAME", AluminumSaltElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{AluminumSaltElement.Id.ToUpper()}.DESC", AluminumSaltElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{MineralWaterElement.Id.ToUpper()}.NAME", MineralWaterElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{MineralWaterElement.Id.ToUpper()}.DESC", MineralWaterElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{MineralIceElement.Id.ToUpper()}.NAME", MineralIceElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{MineralIceElement.Id.ToUpper()}.DESC", MineralIceElement.Description);
 
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(SodaliteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CorundumElement.Data, null).elements);
