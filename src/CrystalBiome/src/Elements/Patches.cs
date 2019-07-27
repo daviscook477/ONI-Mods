@@ -1,18 +1,49 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 using Harmony;
 using UnityEngine;
 
 using Klei;
+using Klei.AI;
 
 namespace CrystalBiome.Elements
 {
     public class Patches
     {
-        [HarmonyPatch(typeof(Enum), "ToString", new Type[] { })]
+        [HarmonyPatch(typeof(Db), nameof(Db.Initialize))]
+        public static class Db_Initialize_Patch
+        {
+            private static void ApplyDecorModifierToElement(SimHashes hash, float amount, bool isMultiplier)
+            {
+                ApplyAttributeToElement(hash, new AttributeModifier(Db.Get().BuildingAttributes.Decor.Id, amount, null, isMultiplier, false, true));
+            }
+
+            private static void ApplyOverheatTemperatureModifierToElement(SimHashes hash, float amount, bool isMultiplier)
+            {
+                ApplyAttributeToElement(hash, new AttributeModifier(Db.Get().BuildingAttributes.OverheatTemperature.Id, amount, null, isMultiplier, false, true));
+
+            }
+
+            private static void ApplyAttributeToElement(SimHashes hash, AttributeModifier attr)
+            {
+                ElementLoader.FindElementByHash(hash).attributeModifiers.Add(attr);
+            }
+
+            private static void Postfix()
+            {
+                ApplyDecorModifierToElement(CorundumElement.SimHash, 0.1f, true);
+                ApplyDecorModifierToElement(CorundumElement.SimHash, 20.0f, false);
+
+                ApplyDecorModifierToElement(KyaniteElement.SimHash, 0.3f, true);
+                ApplyDecorModifierToElement(KyaniteElement.SimHash, -20.0f, false);
+
+                ApplyDecorModifierToElement(SodaliteElement.SimHash, 0.2f, true);
+            }
+        }
+
+        [HarmonyPatch(typeof(Enum), nameof(Enum.ToString), new Type[] { })]
         public static class SimHashes_ToString_Patch
         {
             public static Dictionary<SimHashes, string> SimHashTable = new Dictionary<SimHashes, string>
@@ -32,7 +63,7 @@ namespace CrystalBiome.Elements
             }
         }
 
-        [HarmonyPatch(typeof(ElementLoader), "CollectElementsFromYAML")]
+        [HarmonyPatch(typeof(ElementLoader), nameof(ElementLoader.CollectElementsFromYAML))]
         public static class ElementLoader_CollectElementsFromYAML_Patch
         {
             private static void Postfix(ref List<ElementLoader.ElementEntry> __result)
@@ -59,7 +90,7 @@ namespace CrystalBiome.Elements
             }
         }
 
-        [HarmonyPatch(typeof(ElementLoader), "Load")]
+        [HarmonyPatch(typeof(ElementLoader), nameof(ElementLoader.Load))]
         public static class ElementLoader_Load_Patch
         {
             private static void Prefix(ref Hashtable substanceList, SubstanceTable substanceTable)
@@ -67,9 +98,9 @@ namespace CrystalBiome.Elements
                 Traverse.Create(typeof(Assets)).Field("AnimTable").GetValue<Dictionary<HashedString, KAnimFile>>().Clear();
                 foreach (KAnimFile anim in Assets.Anims)
                 {
-                    if ((UnityEngine.Object)anim != (UnityEngine.Object)null)
+                    if (anim != null)
                     {
-                        HashedString name = (HashedString)anim.name;
+                        HashedString name = anim.name;
                         Traverse.Create(typeof(Assets)).Field("AnimTable").GetValue<Dictionary<HashedString, KAnimFile>>()[name] = anim;
                     }
                 }
