@@ -1,0 +1,125 @@
+
+living_crystal.png
+size: 512,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arm_left
+  rotate: false
+  xy: 425, 478
+  size: 40, 32
+  orig: 40, 32
+  offset: 0, 0
+  index: 0
+arm_right
+  rotate: false
+  xy: 248, 375
+  size: 44, 53
+  orig: 44, 53
+  offset: 0, 0
+  index: 0
+body
+  rotate: false
+  xy: 82, 242
+  size: 77, 66
+  orig: 77, 66
+  offset: 0, 0
+  index: 0
+hand_left
+  rotate: false
+  xy: 2, 213
+  size: 78, 95
+  orig: 78, 95
+  offset: 0, 0
+  index: 0
+hand_right
+  rotate: false
+  xy: 161, 262
+  size: 39, 46
+  orig: 39, 46
+  offset: 0, 0
+  index: 0
+head_center
+  rotate: false
+  xy: 2, 106
+  size: 52, 105
+  orig: 52, 105
+  offset: 0, 0
+  index: 0
+head_left
+  rotate: false
+  xy: 2, 28
+  size: 50, 76
+  orig: 50, 76
+  offset: 0, 0
+  index: 0
+head_right
+  rotate: false
+  xy: 292, 436
+  size: 60, 74
+  orig: 60, 74
+  offset: 0, 0
+  index: 0
+leg_bottom
+  rotate: false
+  xy: 354, 443
+  size: 64, 30
+  orig: 64, 30
+  offset: 0, 0
+  index: 0
+leg_top
+  rotate: false
+  xy: 354, 475
+  size: 69, 35
+  orig: 69, 35
+  offset: 0, 0
+  index: 0
+rope
+  rotate: false
+  xy: 204, 330
+  size: 42, 98
+  orig: 42, 98
+  offset: 0, 0
+  index: 0
+rope_bits
+  rotate: false
+  xy: 204, 430
+  size: 86, 80
+  orig: 86, 80
+  offset: 0, 0
+  index: 3
+rope_bits
+  rotate: false
+  xy: 294, 390
+  size: 54, 44
+  orig: 54, 44
+  offset: 0, 0
+  index: 0
+rope_bits
+  rotate: false
+  xy: 2, 2
+  size: 30, 24
+  orig: 30, 24
+  offset: 0, 0
+  index: 1
+rope_bits
+  rotate: false
+  xy: 82, 214
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: 2
+tag
+  rotate: false
+  xy: 248, 341
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+ui
+  rotate: false
+  xy: 2, 310
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 0
