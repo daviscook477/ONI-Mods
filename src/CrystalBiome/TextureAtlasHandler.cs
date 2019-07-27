@@ -1,29 +1,50 @@
 ﻿using Klei;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
+using System.Reflection;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace CrystalBiome
 {
-    public class TextureAtlasBuilder
+    public class TextureAtlasHandler
     {
-        public static HashSet<string> seen = new HashSet<string>();
+        private static TextureAtlasHandler instance = null;
+        private static readonly object _lock = new object();
+        TextureAtlasHandler() { }
 
-        public static List<TextureAtlas> loadDirectory(string directoryPath)
+        public static TextureAtlasHandler Instance
         {
-            Console.WriteLine("attempt load atlas for " + directoryPath);
-            if (seen.Contains(directoryPath))
+            get
             {
-                DebugUtil.LogWarningArgs(string.Format("trying to double load atlas for {0}", directoryPath));
-                return new List<TextureAtlas>();
+                lock (_lock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new TextureAtlasHandler();
+                    }
+                    return instance;
+                }
             }
-            seen.Add(directoryPath);
+        }
+
+        private bool loaded = false;
+        
+        public TextureAtlas GetTextureAtlas(string name)
+        {
+            if (!loaded)
+            {
+                string executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
+                string executingAssemblyDirectory = Path.GetDirectoryName(executingAssemblyPath);
+                Assets.TextureAtlases.AddRange(loadDirectory(FileSystem.Normalize(Path.Combine(executingAssemblyDirectory, "atlas"))));
+                loaded = true;
+            }
+
+            return Assets.GetTextureAtlas(name);
+        }
+
+        private List<TextureAtlas> loadDirectory(string directoryPath)
+        {
             if (!Directory.Exists(directoryPath))
             {
                 return new List<TextureAtlas>();
@@ -60,7 +81,7 @@ namespace CrystalBiome
             return textureAtlasList;
         }
 
-        private static TextureAtlas makeTextureAtlas(TextAsset jsonData, Texture2D texture)
+        public TextureAtlas makeTextureAtlas(TextAsset jsonData, Texture2D texture)
         {
             TextureAtlas atlas = TextureAtlas.CreateInstance<TextureAtlas>();
             atlas.texture = texture;

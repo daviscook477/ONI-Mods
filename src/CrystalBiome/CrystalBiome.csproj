@@ -58,15 +58,31 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\lib\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssetLoading\AssetLoader.cs" />
+    <Compile Include="AssetLoading\Patches.cs" />
+    <Compile Include="BlockTileDecorInfoHandler.cs" />
+    <Compile Include="Buildings\Patches.cs" />
+    <Compile Include="Critters\Patches.cs" />
+    <Compile Include="Elements\AluminumSaltElement.cs" />
+    <Compile Include="Elements\BaseElement.cs" />
+    <Compile Include="Elements\CorundumElement.cs" />
     <Compile Include="CrystalBiomePatches.cs" />
-    <Compile Include="CrystalPlantConfig.cs" />
+    <Compile Include="Elements\MineralWaterElement.cs" />
+    <Compile Include="Plants\CrystalPlantConfig.cs" />
+    <Compile Include="Elements\Patches.cs" />
     <Compile Include="GemTileConfig.cs" />
-    <Compile Include="LivingCrystal.cs" />
-    <Compile Include="LivingCrystalConfig.cs" />
+    <Compile Include="Elements\KyaniteElement.cs" />
+    <Compile Include="Critters\LivingCrystal.cs" />
+    <Compile Include="Critters\LivingCrystalConfig.cs" />
+    <Compile Include="Plants\Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextureAtlasBuilder.cs" />
+    <Compile Include="Elements\SodaliteElement.cs" />
+    <Compile Include="TextureAtlasHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -76,13 +92,13 @@
     <PostBuildEvent>mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST "$(ProjectDir)\anims" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anims")
 IF EXIST "$(ProjectDir)\atlas" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\atlas")
-IF EXIST "$(ProjectDir)\texture" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\texture")
+IF EXIST "$(ProjectDir)\textures" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\textures")
 copy "$(TargetPath)" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST  "$(TargetPath)*.json" ( copy "$(TargetPath)*.json" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(TargetPath)*.txt" ( copy "$(TargetPath)*.txt" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(ProjectDir)\anims" ( copy "$(ProjectDir)\anims" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anims" )
 IF EXIST  "$(ProjectDir)\preview.png" ( copy "$(ProjectDir)\preview.png" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\preview.png" )
 IF EXIST  "$(ProjectDir)\atlas" ( copy "$(ProjectDir)\atlas" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\atlas" )
-IF EXIST  "$(ProjectDir)\texture" ( copy "$(ProjectDir)\texture" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\texture" )</PostBuildEvent>
+IF EXIST  "$(ProjectDir)\textures" ( copy "$(ProjectDir)\textures" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\textures" )</PostBuildEvent>
   </PropertyGroup>
 </Project>

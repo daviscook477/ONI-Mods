@@ -42,22 +42,10 @@ namespace CrystalBiome
             buildingDef.isKAnimTile = true;
             buildingDef.isSolidTile = true;
             buildingDef.BlockTileIsTransparent = true;
-            /*if (!CrystalBiomePatches.loadedAtlas)
-            {
-                CrystalBiomePatches.loadedAtlas = true;
-                foreach(TextureAtlas atlas2 in CrystalBiomePatches.modAtlasList)
-                {
-                    Console.WriteLine("Loading atlas with name = " + atlas2 + " and value is " + atlas2.ToString());
-                    atlas2.texture = CrystalBiomePatches.specialTex;
-                }
-                Assets.TextureAtlases.AddRange(CrystalBiomePatches.modAtlasList);
-            }*/
-            TextureAtlas atlas = Assets.GetTextureAtlas("tiles_gem");
-            /*Console.WriteLine("found gem atlas, was " + atlas.ToString());*/
-            buildingDef.BlockTileAtlas = atlas;
-            buildingDef.BlockTilePlaceAtlas = Assets.GetTextureAtlas("tiles_gem_place");
+            buildingDef.BlockTileAtlas = TextureAtlasHandler.Instance.GetTextureAtlas("tiles_gem");
+            buildingDef.BlockTilePlaceAtlas = TextureAtlasHandler.Instance.GetTextureAtlas("tiles_gem_place");
             buildingDef.BlockTileMaterial = Assets.GetMaterial("tiles_solid");
-            buildingDef.DecorBlockTileInfo = Assets.GetBlockTileDecorInfo("tiles_glass_tops_decor_info");
+            buildingDef.DecorBlockTileInfo = BlockTileDecorInfoHandler.Instance.GetBlockTileDecorInfo("tiles_gem_tops_decor_info");
             buildingDef.DecorPlaceBlockTileInfo = Assets.GetBlockTileDecorInfo("tiles_glass_tops_decor_place_info");
             buildingDef.ConstructionOffsetFilter = BuildingDef.ConstructionOffsetFilter_OneDown;
             buildingDef.ReplacementTags = new List<Tag>();
