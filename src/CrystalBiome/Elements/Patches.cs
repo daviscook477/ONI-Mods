@@ -38,7 +38,8 @@ namespace CrystalBiome.Elements
                 { CorundumElement.SimHash, CorundumElement.Id },
                 { KyaniteElement.SimHash, KyaniteElement.Id },
                 { AluminumSaltElement.SimHash, AluminumSaltElement.Id },
-                { MineralWaterElement.SimHash, MineralWaterElement.Id }
+                { MineralWaterElement.SimHash, MineralWaterElement.Id },
+                { MineralIceElement.SimHash, MineralIceElement.Id }
             };
 
             private static bool Prefix(ref Enum __instance, ref string __result)
@@ -63,12 +64,15 @@ namespace CrystalBiome.Elements
                 Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(AluminumSaltElement.Id)}.DESC", AluminumSaltElement.Description);
                 Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralWaterElement.Id)}.NAME", MineralWaterElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralWaterElement.Id)}.DESC", MineralWaterElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralIceElement.Id)}.NAME", MineralIceElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{ToUpperSnakeCase(MineralIceElement.Id)}.DESC", MineralIceElement.Description);
 
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(SodaliteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CorundumElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(KyaniteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(AluminumSaltElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(MineralWaterElement.Data, null).elements);
+                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(MineralIceElement.Data, null).elements);
             }
         }
 
@@ -94,7 +98,7 @@ namespace CrystalBiome.Elements
                 substanceList[KyaniteElement.SimHash] = BaseElement.CreateSolidSubstance(KyaniteElement.Id, solid.material, "kyanite", AssetLoading.AssetLoader.Instance.TextureTable["kyanite_mat"]);
                 substanceList[AluminumSaltElement.SimHash] = BaseElement.CreateSolidSubstance(AluminumSaltElement.Id, solid.material, "aluminum_salt", AssetLoading.AssetLoader.Instance.TextureTable["aluminum_salt_mat"]);
                 substanceList[MineralWaterElement.SimHash] = BaseElement.CreateLiquidSubstance(MineralWaterElement.Id, liquid, new Color32(255, 204, 230, 255));
-
+                substanceList[MineralIceElement.SimHash] = BaseElement.CreateSolidSubstance(MineralIceElement.Id, solid.material, "mineral_ice", AssetLoading.AssetLoader.Instance.TextureTable["mineral_ice_mat"]);
             }
         }
     }

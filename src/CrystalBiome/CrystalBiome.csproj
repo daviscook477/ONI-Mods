@@ -72,6 +72,7 @@
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Elements\CorundumElement.cs" />
     <Compile Include="CrystalBiomePatches.cs" />
+    <Compile Include="Elements\MineralIceElement.cs" />
     <Compile Include="Elements\MineralWaterElement.cs" />
     <Compile Include="Plants\CrystalPlantConfig.cs" />
     <Compile Include="Elements\Patches.cs" />
