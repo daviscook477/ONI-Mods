@@ -22,13 +22,8 @@ namespace CrystalBiome.Plants
             return BaseCrystalPlant.CreateCrystalPlantPrefab(Id, SeedId, Name, SeedName, Description, SeedDescription, DomesticatedDescription, "crystal_plant_down", Direction);
         }
 
-        public void OnPrefabInit(GameObject inst)
-        {
-        }
+        public void OnPrefabInit(GameObject inst) { }
 
-        public void OnSpawn(GameObject inst)
-        {
-        }
-
+        public void OnSpawn(GameObject inst) { }
     }
 }
