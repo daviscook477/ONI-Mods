@@ -44,7 +44,7 @@ namespace CrystalBiome.Elements
         }
 
         public static Dictionary<SimHashes, string> SimHashTable = new Dictionary<SimHashes, string>();
-        public static Dictionary<string, SimHashes> SimHashReverseTable = new Dictionary<string, SimHashes>();
+        public static Dictionary<string, object> SimHashReverseTable = new Dictionary<string, object>();
 
         private static void AddHashToTable(SimHashes hash, string id)
         {
@@ -79,48 +79,9 @@ namespace CrystalBiome.Elements
             private static bool Prefix(Type enumType, string value, ref object __result)
             {
                 if (!enumType.Equals(typeof(SimHashes))) return true;
-                if (SimHashReverseTable.ContainsKey(value))
-                {
-                    __result = SimHashReverseTable[value];
-                    return false;
-                }
-                return true;
+                return !SimHashReverseTable.TryGetValue(value, out __result);
             }
         }
-
-        /*[HarmonyPatch(typeof(Type), nameof(Type.IsAssignableFrom))]
-        public static class SimHashes_IsAssignableFrom_Patch
-        {
-            private static bool Prefix(Type __instance, Type c, ref bool __result)
-            {
-                if (c == null) return true;
-                Console.WriteLine(string.Format("checking assinability of {0} to {1}", c, __instance));
-                return true;
-            }
-        }
-
-        [HarmonyPatch(typeof(Enum), nameof(Enum.IsDefined))]
-        public static class SimHashes_IsDefined_Patch
-        {
-            private static bool Prefix(Type enumType, object value, ref bool __result)
-            {
-                Console.WriteLine(string.Format("Called to check if {0} is a {1}", value, enumType));
-                if (!enumType.Equals(typeof(SimHashes)))
-                {
-                    Console.WriteLine("called on type not SimHashes, ignoring");
-                    return true;
-                }
-                Console.WriteLine("called on type SimHashes");
-                if (SimHashTable.ContainsKey((SimHashes)value))
-                {
-                    Console.WriteLine("found it in element table, forcing result to true");
-                    __result = true;
-                    return false;
-                }
-                Console.WriteLine("did not find in element table, resuming normal control");
-                return true;
-            }
-        }*/
 
         [HarmonyPatch(typeof(ElementLoader), nameof(ElementLoader.CollectElementsFromYAML))]
         public static class ElementLoader_CollectElementsFromYAML_Patch
