@@ -81,6 +81,8 @@
     <Compile Include="src\Elements\Patches.cs" />
     <Compile Include="src\Elements\SodaliteElement.cs" />
     <Compile Include="src\GemTileConfig.cs" />
+    <Compile Include="src\Geysers\MineralWaterGeyser.cs" />
+    <Compile Include="src\Geysers\Patches.cs" />
     <Compile Include="src\Plants\BaseCrystalPlant.cs" />
     <Compile Include="src\Plants\CrystalPlantCeilingConfig.cs" />
     <Compile Include="src\Plants\CrystalPlantFloorConfig.cs" />

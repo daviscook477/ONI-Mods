@@ -43,26 +43,84 @@ namespace CrystalBiome.Elements
             }
         }
 
+        public static Dictionary<SimHashes, string> SimHashTable = new Dictionary<SimHashes, string>();
+        public static Dictionary<string, SimHashes> SimHashReverseTable = new Dictionary<string, SimHashes>();
+
+        private static void AddHashToTable(SimHashes hash, string id)
+        {
+            SimHashTable.Add(hash, id);
+            SimHashReverseTable.Add(id, hash);
+        }
+
+        static Patches()
+        {
+            AddHashToTable(SodaliteElement.SimHash, SodaliteElement.Id);
+            AddHashToTable(CorundumElement.SimHash, CorundumElement.Id);
+            AddHashToTable(KyaniteElement.SimHash, KyaniteElement.Id);
+            AddHashToTable(AluminumSaltElement.SimHash, AluminumSaltElement.Id);
+            AddHashToTable(MineralWaterElement.SimHash, MineralWaterElement.Id);
+            AddHashToTable(MineralIceElement.SimHash, MineralIceElement.Id);
+            AddHashToTable(CrystalElement.SimHash, CrystalElement.Id);
+        }
+
         [HarmonyPatch(typeof(Enum), nameof(Enum.ToString), new Type[] { })]
         public static class SimHashes_ToString_Patch
         {
-            public static Dictionary<SimHashes, string> SimHashTable = new Dictionary<SimHashes, string>
-            {
-                { SodaliteElement.SimHash, SodaliteElement.Id },
-                { CorundumElement.SimHash, CorundumElement.Id },
-                { KyaniteElement.SimHash, KyaniteElement.Id },
-                { AluminumSaltElement.SimHash, AluminumSaltElement.Id },
-                { MineralWaterElement.SimHash, MineralWaterElement.Id },
-                { MineralIceElement.SimHash, MineralIceElement.Id },
-                { CrystalElement.SimHash, CrystalElement.Id }
-            };
-
             private static bool Prefix(ref Enum __instance, ref string __result)
             {
                 if (!(__instance is SimHashes)) return true;
                 return !SimHashTable.TryGetValue((SimHashes)__instance, out __result);
             }
         }
+
+        [HarmonyPatch(typeof(Enum), nameof(Enum.Parse), new Type[] { typeof(Type), typeof(string), typeof(bool) })]
+        public static class SimHashes_Parse_Patch
+        {
+            private static bool Prefix(Type enumType, string value, ref object __result)
+            {
+                if (!enumType.Equals(typeof(SimHashes))) return true;
+                if (SimHashReverseTable.ContainsKey(value))
+                {
+                    __result = SimHashReverseTable[value];
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        /*[HarmonyPatch(typeof(Type), nameof(Type.IsAssignableFrom))]
+        public static class SimHashes_IsAssignableFrom_Patch
+        {
+            private static bool Prefix(Type __instance, Type c, ref bool __result)
+            {
+                if (c == null) return true;
+                Console.WriteLine(string.Format("checking assinability of {0} to {1}", c, __instance));
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(Enum), nameof(Enum.IsDefined))]
+        public static class SimHashes_IsDefined_Patch
+        {
+            private static bool Prefix(Type enumType, object value, ref bool __result)
+            {
+                Console.WriteLine(string.Format("Called to check if {0} is a {1}", value, enumType));
+                if (!enumType.Equals(typeof(SimHashes)))
+                {
+                    Console.WriteLine("called on type not SimHashes, ignoring");
+                    return true;
+                }
+                Console.WriteLine("called on type SimHashes");
+                if (SimHashTable.ContainsKey((SimHashes)value))
+                {
+                    Console.WriteLine("found it in element table, forcing result to true");
+                    __result = true;
+                    return false;
+                }
+                Console.WriteLine("did not find in element table, resuming normal control");
+                return true;
+            }
+        }*/
 
         [HarmonyPatch(typeof(ElementLoader), nameof(ElementLoader.CollectElementsFromYAML))]
         public static class ElementLoader_CollectElementsFromYAML_Patch
@@ -83,6 +141,8 @@ namespace CrystalBiome.Elements
                 Strings.Add($"STRINGS.ELEMENTS.{MineralIceElement.Id.ToUpper()}.DESC", MineralIceElement.Description);
                 Strings.Add($"STRINGS.ELEMENTS.{CrystalElement.Id.ToUpper()}.NAME", CrystalElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{CrystalElement.Id.ToUpper()}.DESC", CrystalElement.Description);
+
+                Console.WriteLine("Adding all elements to pool of know elements");
 
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(SodaliteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CorundumElement.Data, null).elements);
