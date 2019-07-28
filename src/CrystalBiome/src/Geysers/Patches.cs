@@ -9,9 +9,25 @@ namespace CrystalBiome.Geysers
 {
     public class Patches
     {
+        private class GeyserData
+        {
+            public string GeyserList;
+            public string GeyserPOI;
+
+            public GeyserData(string GeyserList, string GeyserPOI)
+            {
+                this.GeyserList = GeyserList;
+                this.GeyserPOI = GeyserPOI;
+            }
+        }
+
         public const string SubworldPrefix = "subworlds/crystal/";
-        public const string RequiredGeyserList = "geysers_a";
-        public const string EthanolGeyserPOI = "poi_crystal_geyser_mineral_water";
+        private static List<GeyserData> geyserOptions = new List<GeyserData>
+        {
+            new GeyserData("geysers_a", "poi_crystal_geyser_mineral_water_a"),
+            new GeyserData("geysers_b", "poi_crystal_geyser_mineral_water_b"),
+            new GeyserData("geysers_c", "poi_crystal_geyser_mineral_water_c")
+        };
 
         [HarmonyPatch(typeof(SettingsCache))]
         [HarmonyPatch("LoadSubworlds")]
@@ -38,19 +54,23 @@ namespace CrystalBiome.Geysers
                     {
                         Traverse.Create(SettingsCache.subworlds[key]).Property("pointsOfInterest").SetValue(new Dictionary<string, string[]>());
                     }
-                    if (!SettingsCache.subworlds[key].pointsOfInterest.ContainsKey(RequiredGeyserList))
+                    foreach (GeyserData geyserData in geyserOptions)
                     {
-                        SettingsCache.subworlds[key].pointsOfInterest[RequiredGeyserList] = new string[] { };
+                        if (!SettingsCache.subworlds[key].pointsOfInterest.ContainsKey(geyserData.GeyserList))
+                        {
+                            SettingsCache.subworlds[key].pointsOfInterest[geyserData.GeyserList] = new string[] { };
+                        }
                     }
                     foreach (string poiKey in SettingsCache.subworlds[key].pointsOfInterest.Keys.ToList())
                     {
-                        if (!poiKey.StartsWith("geysers_"))
+                        foreach (GeyserData geyserData in geyserOptions)
                         {
-                            continue;
+                            if (poiKey.Equals(geyserData.GeyserList))
+                            {
+                                var geysers = new List<string>(SettingsCache.subworlds[key].pointsOfInterest[poiKey]) { geyserData.GeyserPOI };
+                                SettingsCache.subworlds[key].pointsOfInterest[poiKey] = geysers.ToArray();
+                            }
                         }
-
-                        var geysers = new List<string>(SettingsCache.subworlds[key].pointsOfInterest[poiKey]) { EthanolGeyserPOI };
-                        SettingsCache.subworlds[key].pointsOfInterest[poiKey] = geysers.ToArray();
                     }
                 }
             }
