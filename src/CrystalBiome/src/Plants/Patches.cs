@@ -13,14 +13,20 @@ namespace CrystalBiome.Plants
         {
             private static void Prefix()
             {
-                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CrystalPlantConfig.Id.ToUpperInvariant()}.NAME", CrystalPlantConfig.SeedName);
-                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CrystalPlantConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantConfig.SeedDescription);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CrystalPlantFloorConfig.Id.ToUpperInvariant()}.NAME", CrystalPlantFloorConfig.SeedName);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CrystalPlantFloorConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantFloorConfig.SeedDescription);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.NAME", CrystalPlantCeilingConfig.SeedName);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantCeilingConfig.SeedDescription);
 
-                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantConfig.Id.ToUpperInvariant()}.NAME", CrystalPlantConfig.Name);
-                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantConfig.Description);
-                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CrystalPlantConfig.DomesticatedDescription);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantFloorConfig.Id.ToUpperInvariant()}.NAME", CrystalPlantFloorConfig.Name);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantFloorConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantFloorConfig.Description);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantFloorConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CrystalPlantFloorConfig.DomesticatedDescription);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.NAME", CrystalPlantCeilingConfig.Name);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantCeilingConfig.Description);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CrystalPlantCeilingConfig.DomesticatedDescription);
 
-                CROPS.CROP_TYPES.Add(new Crop.CropVal(CrystalPlantConfig.SeedId, CyclesForGrowth * 600.0f, 12));
+                CROPS.CROP_TYPES.Add(new Crop.CropVal(CrystalPlantFloorConfig.SeedId, CyclesForGrowth * 600.0f, 12));
+                CROPS.CROP_TYPES.Add(new Crop.CropVal(CrystalPlantCeilingConfig.SeedId, CyclesForGrowth * 600.0f, 12));
             }
         }
     }

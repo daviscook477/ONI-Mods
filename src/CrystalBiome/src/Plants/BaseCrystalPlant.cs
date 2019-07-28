@@ -2,20 +2,11 @@
 using STRINGS;
 using UnityEngine;
 
-namespace CrystalBiome
+namespace CrystalBiome.Plants
 {
-    public class CrystalPlantConfig : IEntityConfig
+
+    public class BaseCrystalPlant
     {
-        public const string Id = "CrystalPlant";
-        public const string SeedId = "CrystalPlantSeed";
-
-        public static string Name = UI.FormatAsLink("Galvanized Outcrop", Id.ToUpper());
-        public static string Description = $"An electrified crystal {UI.FormatAsLink("formation", "PLANTS")} that grows by absorbing all of the solid mass in mineral water.";
-        public static string DomesticatedDescription = $"This {UI.FormatAsLink("outcrop", "PLANTS")} of crystals produces high energy density fragments that can be mined off when fully grown.";
-
-        public static string SeedName = UI.FormatAsLink("Crystal Starter", Id.ToUpper());
-        public static string SeedDescription = $"The beginnings of a {Name}. Just add {UI.FormatAsLink("mineral water", ElementLoader.FindElementByHash(SimHashes.SaltWater).nameUpperCase)}";
-
         public const float DefaultTemperature = 273.15f;
         public const float TemperatureLethalLow = 223.15f;
         public const float TemperatureWarningLow = 243.15f;
@@ -24,20 +15,21 @@ namespace CrystalBiome
 
         public const float IrrigationRate = 0.05f;
 
-        public GameObject CreatePrefab()
+        public static GameObject CreateCrystalPlantPrefab(string Id, string SeedId, string Name, string SeedName, 
+            string Description, string SeedDescription, string DomesticatedDescription, string anim, SingleEntityReceptacle.ReceptacleDirection direction)
         {
             var placedEntity = EntityTemplates.CreatePlacedEntity(
-                id: Id,
-                name: Name,
-                desc: Description,
-                mass: 1f,
-                anim: Assets.GetAnim("crystal_plant"),
-                initialAnim: "idle_empty",
-                sceneLayer: Grid.SceneLayer.BuildingFront,
-                width: 1,
-                height: 2,
-                decor: TUNING.DECOR.BONUS.TIER2,
-                defaultTemperature: DefaultTemperature);
+                    id: Id,
+                    name: Name,
+                    desc: Description,
+                    mass: 1f,
+                    anim: Assets.GetAnim(anim),
+                    initialAnim: "idle_empty",
+                    sceneLayer: Grid.SceneLayer.BuildingFront,
+                    width: 1,
+                    height: 2,
+                    decor: TUNING.DECOR.BONUS.TIER2,
+                    defaultTemperature: DefaultTemperature);
 
             EntityTemplates.ExtendEntityToBasicPlant(
                 template: placedEntity,
@@ -59,6 +51,12 @@ namespace CrystalBiome
                     massConsumptionRate = IrrigationRate
                 });
 
+            if (direction == SingleEntityReceptacle.ReceptacleDirection.Bottom)
+            {
+                EntityTemplates.MakeHangingOffsets(placedEntity, 1, 2);
+                placedEntity.GetComponent<UprootedMonitor>().monitorCell = new CellOffset(0, 1);
+            }
+
             placedEntity.AddOrGet<StandardCropPlant>();
 
             var seed = EntityTemplates.CreateAndRegisterSeedForPlant(
@@ -67,11 +65,11 @@ namespace CrystalBiome
                 id: SeedId,
                 name: SeedName,
                 desc: SeedDescription,
-                anim: Assets.GetAnim("crystal_plant"),
+                anim: Assets.GetAnim(anim),
                 initialAnim: "object",
                 numberOfSeeds: 1,
                 additionalTags: new List<Tag>() { GameTags.CropSeed },
-                planterDirection: SingleEntityReceptacle.ReceptacleDirection.Top,
+                planterDirection: direction,
                 replantGroundTag: new Tag(),
                 sortOrder: 2,
                 domesticatedDescription: DomesticatedDescription,
@@ -83,23 +81,14 @@ namespace CrystalBiome
             EntityTemplates.CreateAndRegisterPreviewForPlant(
                 seed: seed,
                 id: $"{Id}_preview",
-                anim: Assets.GetAnim("crystal_plant"),
+                anim: Assets.GetAnim(anim),
                 initialAnim: "place",
                 width: 1,
                 height: 1);
 
-            SoundEventVolumeCache.instance.AddVolume("crystal_plant", $"{Id}_grow", TUNING.NOISE_POLLUTION.CREATURES.TIER3);
-            SoundEventVolumeCache.instance.AddVolume("crystal_plant", $"{Id}_harvest", TUNING.NOISE_POLLUTION.CREATURES.TIER3);
+            SoundEventVolumeCache.instance.AddVolume(anim, $"{Id}_grow", TUNING.NOISE_POLLUTION.CREATURES.TIER3);
+            SoundEventVolumeCache.instance.AddVolume(anim, $"{Id}_harvest", TUNING.NOISE_POLLUTION.CREATURES.TIER3);
             return placedEntity;
         }
-
-        public void OnPrefabInit(GameObject inst)
-        {
-        }
-
-        public void OnSpawn(GameObject inst)
-        {
-        }
-
     }
 }
