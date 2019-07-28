@@ -25,8 +25,8 @@ namespace CrystalBiome.Plants
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.DESC", CrystalPlantCeilingConfig.Description);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CrystalPlantCeilingConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CrystalPlantCeilingConfig.DomesticatedDescription);
 
-                CROPS.CROP_TYPES.Add(new Crop.CropVal(CrystalPlantFloorConfig.SeedId, CyclesForGrowth * 600.0f, 12));
-                CROPS.CROP_TYPES.Add(new Crop.CropVal(CrystalPlantCeilingConfig.SeedId, CyclesForGrowth * 600.0f, 12));
+                CROPS.CROP_TYPES.Add(new Crop.CropVal(Elements.CrystalElement.Id, CyclesForGrowth * 600.0f, 12));
+                CROPS.CROP_TYPES.Add(new Crop.CropVal(Elements.CrystalElement.Id, CyclesForGrowth * 600.0f, 12));
             }
         }
     }

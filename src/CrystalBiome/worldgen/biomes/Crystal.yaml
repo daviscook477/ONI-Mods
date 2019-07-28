@@ -1,0 +1,16 @@
+TerrainBiomeLookupTable:
+  # keys to remove from in-memory structure when this file is loaded
+  remove: []
+  # elements to add from in-memory structure when this file is loaded
+  add:
+    Wet:
+    - content: Oxygen
+      bandSize: 0.6
+    - content: Corundum
+      bandSize: 0.6
+    - content: Kyanite
+      bandSize: 0.6
+    - content: Sodalite
+      bandSize: 0.6
+    - content: Oxygen
+      bandSize: 0.6

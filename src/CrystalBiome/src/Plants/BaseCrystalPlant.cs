@@ -41,7 +41,7 @@ namespace CrystalBiome.Plants
                 pressure_sensitive: true,
                 pressure_lethal_low: 0.0f,
                 pressure_warning_low: 0.15f,
-                crop_id: SeedId);
+                crop_id: Elements.CrystalElement.Id);
 
             EntityTemplates.ExtendPlantToIrrigated(
                 template: placedEntity,

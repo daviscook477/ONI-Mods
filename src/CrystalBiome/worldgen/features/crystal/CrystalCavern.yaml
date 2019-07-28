@@ -1,0 +1,23 @@
+tags:
+  - AllowExceedNodeBorders
+shape: Square
+borders:
+  - 1
+blobSize:
+  min: 4
+  max: 5
+ElementChoiceGroups:
+  RoomCenterElements:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Oxygen
+        weight: 2
+  RoomBorderChoices0:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Corundum
+        weight: 1
+      - element: Sodalite
+        weight: 1
+      - element: Kyanite
+        weight: 1

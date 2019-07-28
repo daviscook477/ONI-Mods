@@ -1,0 +1,34 @@
+shape: Circle
+borders:
+  - 1
+  - 1
+
+blobSize:
+  min: 2.0
+  max: 3.0
+ElementChoiceGroups:
+  RoomCenterElements:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Diamond
+        weight: 1
+        overrides:
+          massMultiplier: 2
+  RoomBorderChoices0:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Sodalite
+        weight: 1
+      - element: Corundum
+        weight: 1
+      - element: Kyanite
+        weight: 1
+  RoomBorderChoices1:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Sodalite
+        weight: 1
+      - element: Corundum
+        weight: 1
+      - element: Kyanite
+        weight: 1

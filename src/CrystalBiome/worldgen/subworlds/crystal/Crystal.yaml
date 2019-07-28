@@ -1,0 +1,27 @@
+biomeNoise: noise/subworldCrystal
+temperatureRange: Mild
+minChildCount: 4
+density:
+  min: 10
+  max: 20
+avoidRadius: 20.0
+doAvoidPoints: false
+dontRelaxChildren: true
+sampleBehaviour: PoissonDisk
+features:
+  - type: features/crystal/DiamondGeode
+  - type: features/crystal/MineralLake
+  - type: features/crystal/CrystalCavern
+biomes:
+  - name: biomes/Crystal/Wet
+    weight: 2
+    tags:
+      - CrystalPlantFloor
+      - CrystalPlantCeiling
+      - LivingCrystal
+      - ElectrifiedCrystal
+tags:
+  - IgnoreCaveOverride
+pointsOfInterest:
+
+zoneType: CrystalCaverns

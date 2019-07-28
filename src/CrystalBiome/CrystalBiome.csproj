@@ -74,6 +74,7 @@
     <Compile Include="src\Elements\AluminumSaltElement.cs" />
     <Compile Include="src\Elements\BaseElement.cs" />
     <Compile Include="src\Elements\CorundumElement.cs" />
+    <Compile Include="src\Elements\CrystalElement.cs" />
     <Compile Include="src\Elements\KyaniteElement.cs" />
     <Compile Include="src\Elements\MineralIceElement.cs" />
     <Compile Include="src\Elements\MineralWaterElement.cs" />

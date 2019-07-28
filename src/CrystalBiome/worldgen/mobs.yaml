@@ -1,0 +1,40 @@
+MobLookupTable:
+  # keys to remove from in-memory structure when this file is loaded
+  remove: []
+  # elements to add from in-memory structure when this file is loaded
+  add:
+    CrystalPlantFloor:
+      location: Floor
+      selectMethod: Centroid
+      density:
+        min: 0.23
+        max: 0.25
+      width: 1
+      height: 2
+    CrystalPlantCeiling:
+      location: Ceiling
+      selectMethod: Centroid
+      density:
+        min: 0.23
+        max: 0.23
+      width: 1
+      height: 2
+    LivingCrystal:
+      location: Floor
+      selectMethod: Centroid
+      density:
+        min: 0.065
+        max: 0.1
+      width: 1
+      height: 2
+    ElectrifiedCrystal:
+      location: Solid
+      selectMethod: Centroid
+      units:
+        min: 400
+        max: 600
+      density:
+        min: 0.04
+        max: 0.06
+      width: 1
+      height: 1

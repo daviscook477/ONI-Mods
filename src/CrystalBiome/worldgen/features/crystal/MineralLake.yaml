@@ -1,0 +1,33 @@
+tags:
+  - AllowExceedNodeBorders
+  - Wet
+shape: ShortWide
+borders:
+  - 1
+  - 1
+
+blobSize:
+  min: 8
+  max: 14
+ElementChoiceGroups:
+  RoomCenterElements:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Oxygen
+        weight: 2
+      - element: MineralWater
+        weight: 2
+  RoomBorderChoices0:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Sodalite
+        weight: 1
+      - element: Corundum
+        weight: 1
+      - element: Kyanite
+        weight: 1
+  RoomBorderChoices1:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Katairite
+        weight: 1

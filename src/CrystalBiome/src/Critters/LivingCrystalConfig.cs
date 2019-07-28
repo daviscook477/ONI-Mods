@@ -56,18 +56,6 @@ namespace CrystalBiome
             }
         }
 
-        private static int AdjustSpawnLocation(int cell)
-        {
-            int nextCell;
-            for (; !Grid.Solid[cell]; cell = nextCell)
-            {
-                nextCell = Grid.CellBelow(cell);
-                if (!Grid.IsValidCell(cell))
-                    break;
-            }
-            return cell;
-        }
-
         private static GameObject GeneratePlacedEntity()
         {
             GameObject placedEntity = EntityTemplates.CreatePlacedEntity(
@@ -104,7 +92,6 @@ namespace CrystalBiome
             placedEntity.AddOrGet<Trappable>();
             placedEntity.AddOrGetDef<CreatureFallMonitor.Def>();
             WorldSpawnableMonitor.Def def = placedEntity.AddOrGetDef<WorldSpawnableMonitor.Def>();
-            def.adjustSpawnLocationCb = AdjustSpawnLocation;
             placedEntity.AddOrGetDef<ThreatMonitor.Def>().fleethresholdState = Health.HealthState.Scuffed;
             placedEntity.AddOrGetDef<RanchableMonitor.Def>();
             EntityTemplates.CreateAndRegisterBaggedCreature(placedEntity, true, true, false);
