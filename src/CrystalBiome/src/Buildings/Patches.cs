@@ -19,7 +19,7 @@ namespace CrystalBiome.Buildings
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.DESC", RockPolisherConfig.Description);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.EFFECT", RockPolisherConfig.Effect);
 
-                ModUtil.AddBuildingToPlanScreen("Refinement", RockPolisherConfig.Id);
+                ModUtil.AddBuildingToPlanScreen("Refining", RockPolisherConfig.Id);
             }
         }
 

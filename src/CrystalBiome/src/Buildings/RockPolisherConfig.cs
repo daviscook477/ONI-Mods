@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using TUNING;
 using UnityEngine;
@@ -70,17 +67,65 @@ namespace CrystalBiome.Buildings
             ComplexRecipe.RecipeElement[] results1 = new ComplexRecipe.RecipeElement[1]
             {
                   new ComplexRecipe.RecipeElement(
-                      ElementLoader.FindElementByHash(SimHashes.Lime).tag,
+                      ElementLoader.FindElementByHash(Elements.PolishedCorundumElement.SimHash).tag,
                       outputAmount)
             };
             string str1 = ComplexRecipeManager.MakeRecipeID(Id, 
                 ingredients1, results1);
-            string desc1 = "Turn corundum into lime.";
+            string desc1 = $"Polishes {STRINGS.UI.FormatAsLink(Elements.CorundumElement.Name, Elements.CorundumElement.Id)} into a shiny gemstone.";
             new ComplexRecipe(str1, ingredients1, results1)
             {
                 time = BUILDINGS.FABRICATION_TIME_SECONDS.SHORT,
                 nameDisplay = ComplexRecipe.RecipeNameDisplay.Result,
                 description = desc1
+            }.fabricators = new List<Tag>()
+            {
+              TagManager.Create(Id)
+            };
+            ComplexRecipe.RecipeElement[] ingredients2 = new ComplexRecipe.RecipeElement[1]
+            {
+                new ComplexRecipe.RecipeElement(
+                    ElementLoader.FindElementByHash(Elements.KyaniteElement.SimHash).tag,
+                    inputAmount)
+            };
+            ComplexRecipe.RecipeElement[] results2 = new ComplexRecipe.RecipeElement[1]
+            {
+                  new ComplexRecipe.RecipeElement(
+                      ElementLoader.FindElementByHash(Elements.PolishedKyaniteElement.SimHash).tag,
+                      outputAmount)
+            };
+            string str2 = ComplexRecipeManager.MakeRecipeID(Id,
+                ingredients2, results2);
+            string desc2 = $"Polishes {STRINGS.UI.FormatAsLink(Elements.KyaniteElement.Name, Elements.KyaniteElement.Id)} into a shiny gemstone.";
+            new ComplexRecipe(str2, ingredients2, results2)
+            {
+                time = BUILDINGS.FABRICATION_TIME_SECONDS.SHORT,
+                nameDisplay = ComplexRecipe.RecipeNameDisplay.Result,
+                description = desc2
+            }.fabricators = new List<Tag>()
+            {
+              TagManager.Create(Id)
+            };
+            ComplexRecipe.RecipeElement[] ingredients3 = new ComplexRecipe.RecipeElement[1]
+            {
+                new ComplexRecipe.RecipeElement(
+                    ElementLoader.FindElementByHash(Elements.SodaliteElement.SimHash).tag,
+                    inputAmount)
+            };
+            ComplexRecipe.RecipeElement[] results3 = new ComplexRecipe.RecipeElement[1]
+            {
+                  new ComplexRecipe.RecipeElement(
+                      ElementLoader.FindElementByHash(Elements.PolishedSodaliteElement.SimHash).tag,
+                      outputAmount)
+            };
+            string str3 = ComplexRecipeManager.MakeRecipeID(Id,
+                ingredients3, results3);
+            string desc3 = $"Polishes {STRINGS.UI.FormatAsLink(Elements.SodaliteElement.Name, Elements.SodaliteElement.Id)} into a shiny gemstone.";
+            new ComplexRecipe(str3, ingredients3, results3)
+            {
+                time = BUILDINGS.FABRICATION_TIME_SECONDS.SHORT,
+                nameDisplay = ComplexRecipe.RecipeNameDisplay.Result,
+                description = desc3
             }.fabricators = new List<Tag>()
             {
               TagManager.Create(Id)

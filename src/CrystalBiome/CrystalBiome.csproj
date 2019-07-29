@@ -80,6 +80,9 @@
     <Compile Include="src\Elements\MineralIceElement.cs" />
     <Compile Include="src\Elements\MineralWaterElement.cs" />
     <Compile Include="src\Elements\Patches.cs" />
+    <Compile Include="src\Elements\PolishedCorundumElement.cs" />
+    <Compile Include="src\Elements\PolishedKyaniteElement.cs" />
+    <Compile Include="src\Elements\PolishedSodaliteElement.cs" />
     <Compile Include="src\Elements\SodaliteElement.cs" />
     <Compile Include="src\GemTileConfig.cs" />
     <Compile Include="src\Geysers\MineralWaterGeyser.cs" />

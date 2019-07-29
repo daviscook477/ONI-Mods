@@ -54,13 +54,17 @@ namespace CrystalBiome.Elements
 
         static Patches()
         {
-            AddHashToTable(SodaliteElement.SimHash, SodaliteElement.Id);
             AddHashToTable(CorundumElement.SimHash, CorundumElement.Id);
             AddHashToTable(KyaniteElement.SimHash, KyaniteElement.Id);
+            AddHashToTable(SodaliteElement.SimHash, SodaliteElement.Id);
+            AddHashToTable(PolishedCorundumElement.SimHash, PolishedCorundumElement.Id);
+            AddHashToTable(PolishedKyaniteElement.SimHash, PolishedKyaniteElement.Id);
+            AddHashToTable(PolishedSodaliteElement.SimHash, PolishedSodaliteElement.Id);
             AddHashToTable(AluminumSaltElement.SimHash, AluminumSaltElement.Id);
             AddHashToTable(MineralWaterElement.SimHash, MineralWaterElement.Id);
             AddHashToTable(MineralIceElement.SimHash, MineralIceElement.Id);
             AddHashToTable(CrystalElement.SimHash, CrystalElement.Id);
+
         }
 
         [HarmonyPatch(typeof(Enum), nameof(Enum.ToString), new Type[] { })]
@@ -88,12 +92,18 @@ namespace CrystalBiome.Elements
         {
             private static void Postfix(ref List<ElementLoader.ElementEntry> __result)
             {
-                Strings.Add($"STRINGS.ELEMENTS.{SodaliteElement.Id.ToUpper()}.NAME", SodaliteElement.Name);
-                Strings.Add($"STRINGS.ELEMENTS.{SodaliteElement.Id.ToUpper()}.DESC", SodaliteElement.Description);
                 Strings.Add($"STRINGS.ELEMENTS.{CorundumElement.Id.ToUpper()}.NAME", CorundumElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{CorundumElement.Id.ToUpper()}.DESC", CorundumElement.Description);
                 Strings.Add($"STRINGS.ELEMENTS.{KyaniteElement.Id.ToUpper()}.NAME", KyaniteElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{KyaniteElement.Id.ToUpper()}.DESC", KyaniteElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{SodaliteElement.Id.ToUpper()}.NAME", SodaliteElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{SodaliteElement.Id.ToUpper()}.DESC", SodaliteElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{PolishedCorundumElement.Id.ToUpper()}.NAME", PolishedCorundumElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{PolishedCorundumElement.Id.ToUpper()}.DESC", PolishedCorundumElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{PolishedKyaniteElement.Id.ToUpper()}.NAME", PolishedKyaniteElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{PolishedKyaniteElement.Id.ToUpper()}.DESC", PolishedKyaniteElement.Description);
+                Strings.Add($"STRINGS.ELEMENTS.{PolishedSodaliteElement.Id.ToUpper()}.NAME", PolishedSodaliteElement.Name);
+                Strings.Add($"STRINGS.ELEMENTS.{PolishedSodaliteElement.Id.ToUpper()}.DESC", PolishedSodaliteElement.Description);
                 Strings.Add($"STRINGS.ELEMENTS.{AluminumSaltElement.Id.ToUpper()}.NAME", AluminumSaltElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{AluminumSaltElement.Id.ToUpper()}.DESC", AluminumSaltElement.Description);
                 Strings.Add($"STRINGS.ELEMENTS.{MineralWaterElement.Id.ToUpper()}.NAME", MineralWaterElement.Name);
@@ -103,11 +113,12 @@ namespace CrystalBiome.Elements
                 Strings.Add($"STRINGS.ELEMENTS.{CrystalElement.Id.ToUpper()}.NAME", CrystalElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{CrystalElement.Id.ToUpper()}.DESC", CrystalElement.Description);
 
-                Console.WriteLine("Adding all elements to pool of know elements");
-
-                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(SodaliteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CorundumElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(KyaniteElement.Data, null).elements);
+                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(SodaliteElement.Data, null).elements);
+                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(PolishedCorundumElement.Data, null).elements);
+                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(PolishedKyaniteElement.Data, null).elements);
+                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(PolishedSodaliteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(AluminumSaltElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(MineralWaterElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(MineralIceElement.Data, null).elements);
@@ -132,9 +143,12 @@ namespace CrystalBiome.Elements
 
                 var solid = substanceTable.GetSubstance(SimHashes.SandStone);
                 var liquid = substanceTable.GetSubstance(SimHashes.Water);
-                substanceList[SodaliteElement.SimHash] = BaseElement.CreateSolidSubstance(SodaliteElement.Id, solid.material, "sodalite", AssetLoading.AssetLoader.Instance.TextureTable["sodalite_mat"]);
                 substanceList[CorundumElement.SimHash] = BaseElement.CreateSolidSubstance(CorundumElement.Id, solid.material, "corundum", AssetLoading.AssetLoader.Instance.TextureTable["corundum_mat"]);
                 substanceList[KyaniteElement.SimHash] = BaseElement.CreateSolidSubstance(KyaniteElement.Id, solid.material, "kyanite", AssetLoading.AssetLoader.Instance.TextureTable["kyanite_mat"]);
+                substanceList[SodaliteElement.SimHash] = BaseElement.CreateSolidSubstance(SodaliteElement.Id, solid.material, "sodalite", AssetLoading.AssetLoader.Instance.TextureTable["sodalite_mat"]);
+                substanceList[PolishedCorundumElement.SimHash] = BaseElement.CreateSolidSubstance(PolishedCorundumElement.Id, solid.material, "corundum_item", AssetLoading.AssetLoader.Instance.TextureTable["aluminum_salt_mat"]);
+                substanceList[PolishedKyaniteElement.SimHash] = BaseElement.CreateSolidSubstance(PolishedKyaniteElement.Id, solid.material, "kyanite_item", AssetLoading.AssetLoader.Instance.TextureTable["aluminum_salt_mat"]);
+                substanceList[PolishedSodaliteElement.SimHash] = BaseElement.CreateSolidSubstance(PolishedSodaliteElement.Id, solid.material, "sodalite_item", AssetLoading.AssetLoader.Instance.TextureTable["aluminum_salt_mat"]);
                 substanceList[AluminumSaltElement.SimHash] = BaseElement.CreateSolidSubstance(AluminumSaltElement.Id, solid.material, "aluminum_salt", AssetLoading.AssetLoader.Instance.TextureTable["aluminum_salt_mat"]);
                 substanceList[MineralWaterElement.SimHash] = BaseElement.CreateLiquidSubstance(MineralWaterElement.Id, liquid, new Color32(255, 204, 230, 255));
                 substanceList[MineralIceElement.SimHash] = BaseElement.CreateSolidSubstance(MineralIceElement.Id, solid.material, "mineral_ice", AssetLoading.AssetLoader.Instance.TextureTable["mineral_ice_mat"]);

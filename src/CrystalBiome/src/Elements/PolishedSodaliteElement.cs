@@ -1,0 +1,36 @@
+﻿using STRINGS;
+
+namespace CrystalBiome.Elements
+{
+    public class PolishedSodaliteElement
+    {
+        public const string Data = @"elements:
+  - elementId: PolishedSodalite
+    specificHeatCapacity: 1
+    thermalConductivity: 2
+    solidSurfaceAreaMultiplier: 1
+    liquidSurfaceAreaMultiplier: 1
+    gasSurfaceAreaMultiplier: 1
+    strength: 1
+    highTemp: 1683
+    highTempTransitionTarget: Magma
+    defaultTemperature: 283.15
+    defaultMass: 1840
+    maxMass: 1840
+    hardness: 25
+    molarMass: 50
+    lightAbsorptionFactor: 1
+    materialCategory: Gemstone
+    tags:
+    - BuildableAny
+    buildMenuSort: 5 
+    isDisabled: false
+    state: Solid
+    localizationID: STRINGS.ELEMENTS.POLISHEDSODALITE.NAME";
+
+        public const string Id = "PolishedSodalite";
+        public static string Name = UI.FormatAsLink("Polished Sodalite", Id.ToUpper());
+        public static string Description = $"Sodalite that has been tumbled in a {UI.FormatAsLink("Rock Polisher", Buildings.RockPolisherConfig.Id)} to give it a pretty shimmering surface.";
+        public static SimHashes SimHash = (SimHashes)Hash.SDBMLower(Id);
+    }
+}
