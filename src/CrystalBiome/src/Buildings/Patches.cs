@@ -58,6 +58,8 @@ namespace CrystalBiome.Buildings
             {
                 var basicRefinement = new List<string>(Database.Techs.TECH_GROUPING["BasicRefinement"]) { RockPolisherConfig.Id };
                 Database.Techs.TECH_GROUPING["BasicRefinement"] = basicRefinement.ToArray();
+                var refractiveDecor = new List<string>(Database.Techs.TECH_GROUPING["RefractiveDecor"]) { GemstoneSculptureConfig.Id };
+                Database.Techs.TECH_GROUPING["RefractiveDecor"] = refractiveDecor.ToArray();
             }
         }
 
