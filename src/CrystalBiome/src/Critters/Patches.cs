@@ -8,18 +8,6 @@ namespace CrystalBiome.Critters
 {
     public class Patches
     {
-        [HarmonyPatch(typeof(KSerialization.Manager), "GetType", new[] { typeof(string) })]
-        public static class Manager_GetType_Patch
-        {
-            private static void Postfix(string type_name, ref Type __result)
-            {
-                if (type_name == "CrystalBiome.LivingCrystal")
-                {
-                    __result = typeof(LivingCrystal);
-                }
-            }
-        }
-
         [HarmonyPatch(typeof(GasAndLiquidConsumerMonitor.Instance), "OnMassConsumed")]
         public class GasAndLiquidConsumerMonitorInstance_OnMassConsumed_Patch
         {
