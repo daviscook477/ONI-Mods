@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data generator="BrashMonkey Spriter" generator_version="r11" scml_version="1.0">
+   <folder id="0">
+      <file height="220" id="0" name="place_0" pivot_x="0.49496529" pivot_y="-1.7046928E-4" width="216" />
+      <file height="218" id="1" name="sculpt_gem_0" pivot_x="0.4956597" pivot_y="0.001204133" width="216" />
+      <file height="220" id="2" name="sculpt_gem_1" pivot_x="0.4956597" pivot_y="-5.686283E-5" width="216" />
+      <file height="208" id="3" name="sculpt_gem_2" pivot_x="0.49571759" pivot_y="6.610155E-4" width="216" />
+      <file height="122" id="4" name="ui_0" pivot_x="0.49393657" pivot_y="-0.034733653" width="134" />
+      <file height="218" id="5" name="pink_sculpt_gem_0" pivot_x="0.4956597" pivot_y="0.001204133" width="216" />
+      <file height="220" id="6" name="pink_sculpt_gem_1" pivot_x="0.4956597" pivot_y="-5.686283E-5" width="216" />
+      <file height="208" id="7" name="pink_sculpt_gem_2" pivot_x="0.49571759" pivot_y="6.610155E-4" width="216" />
+      <file height="218" id="8" name="cyan_sculpt_gem_0" pivot_x="0.4956597" pivot_y="0.001204133" width="216" />
+      <file height="220" id="9" name="cyan_sculpt_gem_1" pivot_x="0.4956597" pivot_y="-5.686283E-5" width="216" />
+      <file height="208" id="10" name="cyan_sculpt_gem_2" pivot_x="0.49571759" pivot_y="6.610155E-4" width="216" />
+   </folder>
+   <entity id="0" name="gemSculpture">
+      <animation id="0" interval="33" length="132" name="slab">
+         <mainline>
+            <key id="0" time="0">
+               <object_ref id="0" key="0" timeline="0" z_index="1" />
+            </key>
+            <key id="1" time="33">
+               <object_ref id="0" key="1" timeline="0" z_index="1" />
+            </key>
+            <key id="2" time="66">
+               <object_ref id="0" key="2" timeline="0" z_index="1" />
+            </key>
+            <key id="3" time="99">
+               <object_ref id="0" key="3" timeline="0" z_index="1" />
+            </key>
+         </mainline>
+         <timeline id="0" name="sculpt_gem_1_0">
+            <key id="0" time="0">
+               <object angle="0.0" file="2" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="1" time="33">
+               <object angle="0.0" file="2" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="2" time="66">
+               <object angle="0.0" file="2" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="3" time="99">
+               <object angle="0.0" file="2" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+         </timeline>
+      </animation>
+      <animation id="1" interval="33" length="132" name="idle">
+         <mainline>
+            <key id="0" time="0">
+               <object_ref id="0" key="0" timeline="0" z_index="1" />
+            </key>
+            <key id="1" time="33">
+               <object_ref id="0" key="1" timeline="0" z_index="1" />
+            </key>
+            <key id="2" time="66">
+               <object_ref id="0" key="2" timeline="0" z_index="1" />
+            </key>
+            <key id="3" time="99">
+               <object_ref id="0" key="3" timeline="0" z_index="1" />
+            </key>
+         </mainline>
+         <timeline id="0" name="sculpt_gem_0_0">
+            <key id="0" time="0">
+               <object angle="0.0" file="1" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="1" time="33">
+               <object angle="0.0" file="1" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="2" time="66">
+               <object angle="0.0" file="1" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="3" time="99">
+               <object angle="0.0" file="1" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+         </timeline>
+      </animation>
+      <animation id="2" interval="33" length="165" name="crap">
+         <mainline>
+            <key id="0" time="0">
+               <object_ref id="0" key="0" timeline="0" z_index="1" />
+            </key>
+            <key id="1" time="33">
+               <object_ref id="0" key="1" timeline="0" z_index="1" />
+            </key>
+            <key id="2" time="66">
+               <object_ref id="0" key="2" timeline="0" z_index="1" />
+            </key>
+            <key id="3" time="99">
+               <object_ref id="0" key="3" timeline="0" z_index="1" />
+            </key>
+            <key id="4" time="132">
+               <object_ref id="0" key="4" timeline="0" z_index="1" />
+            </key>
+         </mainline>
+         <timeline id="0" name="sculpt_gem_2_0">
+            <key id="0" time="0">
+               <object angle="0.0" file="3" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="1" time="33">
+               <object angle="0.0" file="3" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="2" time="66">
+               <object angle="0.0" file="3" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="3" time="99">
+               <object angle="0.0" file="3" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="4" time="132">
+               <object angle="0.0" file="3" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+         </timeline>
+      </animation>
+      <animation id="3" interval="33" length="165" name="place">
+         <mainline>
+            <key id="0" time="0">
+               <object_ref id="0" key="0" timeline="0" z_index="1" />
+            </key>
+            <key id="1" time="33">
+               <object_ref id="0" key="1" timeline="0" z_index="1" />
+            </key>
+            <key id="2" time="66">
+               <object_ref id="0" key="2" timeline="0" z_index="1" />
+            </key>
+            <key id="3" time="99">
+               <object_ref id="0" key="3" timeline="0" z_index="1" />
+            </key>
+            <key id="4" time="132">
+               <object_ref id="0" key="4" timeline="0" z_index="1" />
+            </key>
+         </mainline>
+         <timeline id="0" name="place_0_0">
+            <key id="0" time="0">
+               <object angle="0.0" file="0" folder="0" scale_x="1.0" scale_y="1.0" x="-0.15" y="-12.0" />
+            </key>
+            <key id="1" time="33">
+               <object angle="0.0" file="0" folder="0" scale_x="1.0" scale_y="1.0" x="-0.15" y="-12.0" />
+            </key>
+            <key id="2" time="66">
+               <object angle="0.0" file="0" folder="0" scale_x="1.0" scale_y="1.0" x="-0.15" y="-12.0" />
+            </key>
+            <key id="3" time="99">
+               <object angle="0.0" file="0" folder="0" scale_x="1.0" scale_y="1.0" x="-0.15" y="-12.0" />
+            </key>
+            <key id="4" time="132">
+               <object angle="0.0" file="0" folder="0" scale_x="1.0" scale_y="1.0" x="-0.15" y="-12.0" />
+            </key>
+         </timeline>
+      </animation>
+      <animation id="4" interval="33" length="165" name="ui">
+         <mainline>
+            <key id="0" time="0">
+               <object_ref id="0" key="0" timeline="0" z_index="1" />
+            </key>
+            <key id="1" time="33">
+               <object_ref id="0" key="1" timeline="0" z_index="1" />
+            </key>
+            <key id="2" time="66">
+               <object_ref id="0" key="2" timeline="0" z_index="1" />
+            </key>
+            <key id="3" time="99">
+               <object_ref id="0" key="3" timeline="0" z_index="1" />
+            </key>
+            <key id="4" time="132">
+               <object_ref id="0" key="4" timeline="0" z_index="1" />
+            </key>
+         </mainline>
+         <timeline id="0" name="ui_0_0">
+            <key id="0" time="0">
+               <object angle="0.0" file="4" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="1" time="33">
+               <object angle="0.0" file="4" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="2" time="66">
+               <object angle="0.0" file="4" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="3" time="99">
+               <object angle="0.0" file="4" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+            <key id="4" time="132">
+               <object angle="0.0" file="4" folder="0" scale_x="1.0" scale_y="1.0" x="0.0" y="-12.0" />
+            </key>
+         </timeline>
+      </animation>
+   </entity>
+</spriter_data>

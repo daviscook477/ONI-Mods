@@ -12,6 +12,11 @@ namespace CrystalBiome.Elements
 {
     public class Patches
     {
+        public static void OnLoad()
+        {
+            Strings.Add("STRINGS.MISC.TAGS.GEMSTONE", "Gemstones");
+        }
+
         [HarmonyPatch(typeof(Db), nameof(Db.Initialize))]
         public static class Db_Initialize_Patch
         {

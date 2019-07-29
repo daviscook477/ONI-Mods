@@ -18,8 +18,36 @@ namespace CrystalBiome.Buildings
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.NAME", RockPolisherConfig.DisplayName);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.DESC", RockPolisherConfig.Description);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.EFFECT", RockPolisherConfig.Effect);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{GemstoneSculptureConfig.Id.ToUpperInvariant()}.NAME", GemstoneSculptureConfig.DisplayName);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{GemstoneSculptureConfig.Id.ToUpperInvariant()}.DESC", GemstoneSculptureConfig.Description);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{GemstoneSculptureConfig.Id.ToUpperInvariant()}.EFFECT", GemstoneSculptureConfig.Effect);
 
                 ModUtil.AddBuildingToPlanScreen("Refining", RockPolisherConfig.Id);
+                ModUtil.AddBuildingToPlanScreen("Furniture", GemstoneSculptureConfig.Id);
+            }
+        }
+
+        [HarmonyPatch(typeof(Building), "OnSpawn")]
+        public class Building_OnSpawn_Patch
+        {
+            private static void Prefix(Building __instance)
+            {
+                if (__instance.Def == null) return;
+                if (!__instance.Def.name.Equals(GemstoneSculptureConfig.Id)) return;
+                var primaryElement = __instance.gameObject.GetComponent<PrimaryElement>();
+                if (primaryElement == null || primaryElement.Element == null)
+                {
+                    DebugUtil.LogWarningArgs(GemstoneSculptureConfig.Id + " building did not have a primary element! Unable to properly apply texture override.");
+                    return;
+                }
+                if (primaryElement.Element.id == Elements.PolishedCorundumElement.SimHash)
+                {
+                    __instance.gameObject.AddOrGet<SymbolOverrideController>().ApplySymbolOverridesByAffix(Assets.GetAnim("gem_sculpture"), "pink_", null, 0);
+                }
+                else if (primaryElement.Element.id == Elements.PolishedKyaniteElement.SimHash)
+                {
+                    __instance.gameObject.AddOrGet<SymbolOverrideController>().ApplySymbolOverridesByAffix(Assets.GetAnim("gem_sculpture"), "cyan_", null, 0);
+                }
             }
         }
 
