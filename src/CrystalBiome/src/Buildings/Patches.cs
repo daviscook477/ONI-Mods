@@ -18,11 +18,15 @@ namespace CrystalBiome.Buildings
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.NAME", RockPolisherConfig.DisplayName);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.DESC", RockPolisherConfig.Description);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{RockPolisherConfig.Id.ToUpperInvariant()}.EFFECT", RockPolisherConfig.Effect);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{MineralizerConfig.Id.ToUpperInvariant()}.NAME", MineralizerConfig.DisplayName);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{MineralizerConfig.Id.ToUpperInvariant()}.DESC", MineralizerConfig.Description);
+                Strings.Add($"STRINGS.BUILDINGS.PREFABS.{MineralizerConfig.Id.ToUpperInvariant()}.EFFECT", MineralizerConfig.Effect);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{GemstoneSculptureConfig.Id.ToUpperInvariant()}.NAME", GemstoneSculptureConfig.DisplayName);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{GemstoneSculptureConfig.Id.ToUpperInvariant()}.DESC", GemstoneSculptureConfig.Description);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{GemstoneSculptureConfig.Id.ToUpperInvariant()}.EFFECT", GemstoneSculptureConfig.Effect);
 
                 ModUtil.AddBuildingToPlanScreen("Refining", RockPolisherConfig.Id);
+                ModUtil.AddBuildingToPlanScreen("Refining", MineralizerConfig.Id);
                 ModUtil.AddBuildingToPlanScreen("Furniture", GemstoneSculptureConfig.Id);
             }
         }
@@ -56,7 +60,7 @@ namespace CrystalBiome.Buildings
         {
             private static void Prefix()
             {
-                var basicRefinement = new List<string>(Database.Techs.TECH_GROUPING["BasicRefinement"]) { RockPolisherConfig.Id };
+                var basicRefinement = new List<string>(Database.Techs.TECH_GROUPING["BasicRefinement"]) { RockPolisherConfig.Id, MineralizerConfig.Id };
                 Database.Techs.TECH_GROUPING["BasicRefinement"] = basicRefinement.ToArray();
                 var refractiveDecor = new List<string>(Database.Techs.TECH_GROUPING["RefractiveDecor"]) { GemstoneSculptureConfig.Id };
                 Database.Techs.TECH_GROUPING["RefractiveDecor"] = refractiveDecor.ToArray();

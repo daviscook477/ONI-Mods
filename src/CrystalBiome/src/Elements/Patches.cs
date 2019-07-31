@@ -15,6 +15,7 @@ namespace CrystalBiome.Elements
         public static void OnLoad()
         {
             Strings.Add("STRINGS.MISC.TAGS.GEMSTONE", "Gemstones");
+            Strings.Add("STRINGS.MISC.TAGS.CRYSTAL", "Crystals");
         }
 
         [HarmonyPatch(typeof(Db), nameof(Db.Initialize))]

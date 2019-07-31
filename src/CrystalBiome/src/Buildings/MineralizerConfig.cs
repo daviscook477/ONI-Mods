@@ -58,6 +58,7 @@ namespace CrystalBiome.Buildings
             storage.showInUI = true;
             storage.capacityKg = 600 * MINERAL_INPUT_RATE;
             go.AddOrGet<LoopingSounds>();
+            go.AddOrGet<Mineralizer>();
             ElementConverter elementConverter1 = go.AddComponent<ElementConverter>();
             elementConverter1.consumedElements = new ElementConverter.ConsumedElement[2]
             {
@@ -68,12 +69,14 @@ namespace CrystalBiome.Buildings
             {
               new ElementConverter.OutputElement(OUTPUT_RATE, Elements.MineralWaterElement.SimHash, 0.0f, false, true, 0.0f, 0.5f, 0.75f, byte.MaxValue, 0),
             };
+            elementConverter1.SetStorage(storage);
             ConduitConsumer conduitConsumer = go.AddOrGet<ConduitConsumer>();
             conduitConsumer.conduitType = ConduitType.Liquid;
             conduitConsumer.consumptionRate = 10f;
             conduitConsumer.capacityKG = 4 * WATER_WITH_MINERAL_INPUT_RATE;
             conduitConsumer.capacityTag = ElementLoader.FindElementByHash(SimHashes.Water).tag;
             conduitConsumer.wrongElementResult = ConduitConsumer.WrongElementResult.Dump;
+            conduitConsumer.storage = storage;
             ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
             conduitDispenser.conduitType = ConduitType.Liquid;
             conduitDispenser.elementFilter = new SimHashes[1] { Elements.MineralWaterElement.SimHash };
@@ -100,7 +103,6 @@ namespace CrystalBiome.Buildings
         {
             GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
             go.AddOrGet<LogicOperationalController>();
-            go.AddOrGetDef<PoweredActiveController.Def>();
             SymbolOverrideControllerUtil.AddToPrefab(go);
         }
     }

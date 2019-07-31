@@ -67,6 +67,8 @@
     <Compile Include="src\AssetLoading\AssetLoader.cs" />
     <Compile Include="src\BlockTileDecorInfoHandler.cs" />
     <Compile Include="src\Buildings\GemstoneSculptureConfig.cs" />
+    <Compile Include="src\Buildings\Mineralizer.cs" />
+    <Compile Include="src\Buildings\MineralizerConfig.cs" />
     <Compile Include="src\Buildings\Patches.cs" />
     <Compile Include="src\Buildings\RockPolisherConfig.cs" />
     <Compile Include="src\Critters\LivingCrystal.cs" />
