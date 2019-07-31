@@ -90,6 +90,20 @@ namespace TeleStorage
             }
         }
 
+        [HarmonyPatch(typeof(FilterSideScreen), nameof(FilterSideScreen.IsValidForTarget))]
+        public class FilterSideScreen_IsValidForTarget
+        {
+            private static bool Prefix(GameObject target, FilterSideScreen __instance, ref bool __result)
+            {
+                if (target.GetComponent<TeleStorageFlowControl>() != null)
+                {
+                    __result = !__instance.isLogicFilter;
+                    return false;
+                }
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(Db))]
         [HarmonyPatch("Initialize")]
         public class Db_Initialize_Patch

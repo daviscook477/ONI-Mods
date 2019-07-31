@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Harmony;
+using UnityEngine;
 
 namespace InfiniteSourceSink
 {
@@ -41,6 +42,20 @@ namespace InfiniteSourceSink
                 ModUtil.AddBuildingToPlanScreen("Plumbing", InfiniteLiquidSourceConfig.Id);
                 ModUtil.AddBuildingToPlanScreen("HVAC", InfiniteGasSinkConfig.Id);
                 ModUtil.AddBuildingToPlanScreen("HVAC", InfiniteGasSourceConfig.Id);
+            }
+        }
+
+        [HarmonyPatch(typeof(FilterSideScreen), nameof(FilterSideScreen.IsValidForTarget))]
+        public class FilterSideScreen_IsValidForTarget
+        {
+            private static bool Prefix(GameObject target, FilterSideScreen __instance, ref bool __result)
+            {
+                if (target.GetComponent<InfiniteSourceFlowControl>() != null)
+                {
+                    __result = !__instance.isLogicFilter;
+                    return false;
+                }
+                return true;
             }
         }
 

@@ -25,6 +25,7 @@ namespace CrystalBiome.Elements
     - Plumbable
     - Crushable
     - BuildableAny
+    - Crystal
     buildMenuSort: 5
     isDisabled: false
     state: Solid
