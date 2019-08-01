@@ -12,7 +12,6 @@ namespace CrystalBiome.Buildings
         public static string Description = $"Washing minerals with water dissolves them and creates {STRINGS.UI.FormatAsLink("Mineral Water", Elements.MineralWaterElement.Id)}.";
         public static string Effect = $"Adds minerals to {STRINGS.UI.FormatAsLink("Water", "WATER")}, producing {STRINGS.UI.FormatAsLink("Mineral Water", Elements.MineralWaterElement.Id)}.";
 
-        private const ConduitType conduitType = ConduitType.Liquid;
         private const float MINERAL_INPUT_RATE = 1.5f;
         private const float WATER_WITH_MINERAL_INPUT_RATE = 3.5f;
         private const float OUTPUT_RATE = 5.0f;
@@ -31,8 +30,8 @@ namespace CrystalBiome.Buildings
                 construction_materials: MATERIALS.ALL_METALS,
                 melting_point: BUILDINGS.MELTING_POINT_KELVIN.TIER0,
                 build_location_rule: BuildLocationRule.OnFloor,
-                decor: BUILDINGS.DECOR.PENALTY.TIER1,
-                noise: NOISE_POLLUTION.NOISY.TIER5,
+                decor: BUILDINGS.DECOR.NONE,
+                noise: NOISE_POLLUTION.NOISY.TIER2,
                 0.2f
                 );
             buildingDef.RequiresPowerInput = true;
@@ -59,6 +58,7 @@ namespace CrystalBiome.Buildings
             storage.capacityKg = 600 * MINERAL_INPUT_RATE;
             go.AddOrGet<LoopingSounds>();
             go.AddOrGet<Mineralizer>();
+            Prioritizable.AddRef(go);
             ElementConverter elementConverter1 = go.AddComponent<ElementConverter>();
             elementConverter1.consumedElements = new ElementConverter.ConsumedElement[2]
             {
@@ -69,24 +69,24 @@ namespace CrystalBiome.Buildings
             {
               new ElementConverter.OutputElement(OUTPUT_RATE, Elements.MineralWaterElement.SimHash, 0.0f, false, true, 0.0f, 0.5f, 0.75f, byte.MaxValue, 0),
             };
-            elementConverter1.SetStorage(storage);
-            ConduitConsumer conduitConsumer = go.AddOrGet<ConduitConsumer>();
-            conduitConsumer.conduitType = ConduitType.Liquid;
-            conduitConsumer.consumptionRate = 10f;
-            conduitConsumer.capacityKG = 4 * WATER_WITH_MINERAL_INPUT_RATE;
-            conduitConsumer.capacityTag = ElementLoader.FindElementByHash(SimHashes.Water).tag;
-            conduitConsumer.wrongElementResult = ConduitConsumer.WrongElementResult.Dump;
-            conduitConsumer.storage = storage;
-            ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
-            conduitDispenser.conduitType = ConduitType.Liquid;
-            conduitDispenser.elementFilter = new SimHashes[1] { Elements.MineralWaterElement.SimHash };
+
             ManualDeliveryKG manualDeliveryKg = go.AddOrGet<ManualDeliveryKG>();
             manualDeliveryKg.SetStorage(storage);
             manualDeliveryKg.requestedItemTag = new Tag("Crystal");
             manualDeliveryKg.capacity = storage.capacityKg;
             manualDeliveryKg.refillMass = 100 * MINERAL_INPUT_RATE;
             manualDeliveryKg.choreTypeIDHash = Db.Get().ChoreTypes.MachineFetch.IdHash;
-            Prioritizable.AddRef(go);
+
+            ConduitConsumer conduitConsumer = go.AddOrGet<ConduitConsumer>();
+            conduitConsumer.conduitType = ConduitType.Liquid;
+            conduitConsumer.consumptionRate = 10f;
+            conduitConsumer.capacityKG = 4 * WATER_WITH_MINERAL_INPUT_RATE;
+            conduitConsumer.capacityTag = ElementLoader.FindElementByHash(SimHashes.Water).tag;
+            conduitConsumer.wrongElementResult = ConduitConsumer.WrongElementResult.Dump;
+
+            ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
+            conduitDispenser.conduitType = ConduitType.Liquid;
+            conduitDispenser.elementFilter = new SimHashes[1] { Elements.MineralWaterElement.SimHash };
         }
 
         public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
@@ -103,7 +103,6 @@ namespace CrystalBiome.Buildings
         {
             GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
             go.AddOrGet<LogicOperationalController>();
-            SymbolOverrideControllerUtil.AddToPrefab(go);
         }
     }
 }

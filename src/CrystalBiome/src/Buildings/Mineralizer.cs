@@ -26,21 +26,10 @@ namespace CrystalBiome.Buildings
         public class SMInstance : GameStateMachine<States, SMInstance, Mineralizer, object>.GameInstance
         {
             private readonly Operational _operational;
-            private readonly ElementConverter[] _converters;
 
             public SMInstance(Mineralizer master) : base(master)
             {
                 _operational = master.GetComponent<Operational>();
-                _converters = master.GetComponents<ElementConverter>();
-            }
-
-            public bool CanConvert()
-            {
-                foreach (ElementConverter converter in _converters)
-                {
-                    if (converter.HasEnoughMassToStartConverting()) return true;
-                }
-                return false;
             }
                 
             public bool IsOperational => _operational.IsOperational;
@@ -67,15 +56,19 @@ namespace CrystalBiome.Buildings
 
                 Operational
                     .QueueAnim("on")
-                    .EventTransition(GameHashes.OnStorageChange, StartWorking, smi => smi.CanConvert());
+                    .EventTransition(GameHashes.OnStorageChange, StartWorking, smi => smi.master.GetComponent<ElementConverter>().HasEnoughMassToStartConverting());
 
                 StartWorking
                     .PlayAnim("working_pre")
                     .OnAnimQueueComplete(Working);
 
                 Working
+                    .Enter(smi => smi.master._operational.SetActive(true, false))
+                    .Enter(smi => smi.master.GetComponent<LoopingSounds>().StartSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"))
                     .QueueAnim("working_loop", true)
-                    .EventTransition(GameHashes.OnStorageChange, StopWorking, smi => !smi.CanConvert());
+                    .EventTransition(GameHashes.OnStorageChange, StopWorking, smi => !smi.master.GetComponent<ElementConverter>().CanConvertAtAll())
+                    .Exit(smi => smi.master._operational.SetActive(false, false))
+                    .Exit(smi => smi.master.GetComponent<LoopingSounds>().StopSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"));
 
                 StopWorking
                     .PlayAnim("working_pst")

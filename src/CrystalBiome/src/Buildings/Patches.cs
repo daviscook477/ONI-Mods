@@ -10,6 +10,44 @@ namespace CrystalBiome.Buildings
 {
     public class Patches
     {
+
+        /*[HarmonyPatch(typeof(HashedString), MethodType.Constructor, new Type[] { typeof(string) })]
+        public class AAABBB
+        {
+            private static void Postfix(string name)
+            {
+                Console.WriteLine(name);
+            }
+        }*/
+        
+        [HarmonyPatch(typeof(LoopingSounds), nameof(LoopingSounds.StartSound), new Type[] { typeof(string) })]
+        public class AAAABBBB
+        {
+            private static void Prefix(string asset)
+            {
+                Console.WriteLine(asset);
+            }
+        }
+
+        [HarmonyPatch(typeof(LoopingSounds), nameof(LoopingSounds.StartSound), new Type[] { typeof(string), typeof(AnimEventManager.EventPlayerData), typeof(EffectorValues), typeof(bool), typeof(bool) })]
+        public class AAAABBBBB
+        {
+            private static void Prefix(string asset)
+            {
+                Console.WriteLine(asset);
+            }
+        }
+
+        [HarmonyPatch(typeof(LoopingSounds), nameof(LoopingSounds.StartSound), new Type[] { typeof(string), typeof(bool), typeof(bool), typeof(bool) })]
+        public class AAAABBBBBB
+        {
+            private static void Prefix(string asset)
+            {
+                Console.WriteLine(asset);
+            }
+        }
+
+
         [HarmonyPatch(typeof(GeneratedBuildings), nameof(GeneratedBuildings.LoadGeneratedBuildings))]
         public class GeneratedBuildings_LoadGeneratedBuildings_Patch
         {
