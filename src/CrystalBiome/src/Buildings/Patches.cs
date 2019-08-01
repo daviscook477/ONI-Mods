@@ -9,18 +9,14 @@ using STRINGS;
 namespace CrystalBiome.Buildings
 {
     public class Patches
-    {
+    {   
 
-        /*[HarmonyPatch(typeof(HashedString), MethodType.Constructor, new Type[] { typeof(string) })]
-        public class AAABBB
-        {
-            private static void Postfix(string name)
-            {
-                Console.WriteLine(name);
-            }
-        }*/
-        
-        [HarmonyPatch(typeof(LoopingSounds), nameof(LoopingSounds.StartSound), new Type[] { typeof(string) })]
+        /*
+         * This code logs the calls of starting player a sound with the actual string that is used to identify the sound
+         * since the only stored versions of these strings are with hashes it is necessary to log them here in order
+         * to identify which string to use when playing custom sounds
+         */
+        /*[HarmonyPatch(typeof(LoopingSounds), nameof(LoopingSounds.StartSound), new Type[] { typeof(string) })]
         public class AAAABBBB
         {
             private static void Prefix(string asset)
@@ -45,8 +41,7 @@ namespace CrystalBiome.Buildings
             {
                 Console.WriteLine(asset);
             }
-        }
-
+        }*/
 
         [HarmonyPatch(typeof(GeneratedBuildings), nameof(GeneratedBuildings.LoadGeneratedBuildings))]
         public class GeneratedBuildings_LoadGeneratedBuildings_Patch

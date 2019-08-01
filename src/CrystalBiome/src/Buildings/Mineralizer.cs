@@ -4,13 +4,8 @@ namespace CrystalBiome.Buildings
 {
     public class Mineralizer : StateMachineComponent<Mineralizer.SMInstance>
     {
-        [MyCmpGet]
-        private readonly Operational _operational;
 
-        public Mineralizer(Operational operational)
-        {
-            _operational = operational;
-        }
+        public Mineralizer() { }
 
         protected override void OnPrefabInit()
         {
@@ -25,14 +20,7 @@ namespace CrystalBiome.Buildings
 
         public class SMInstance : GameStateMachine<States, SMInstance, Mineralizer, object>.GameInstance
         {
-            private readonly Operational _operational;
-
-            public SMInstance(Mineralizer master) : base(master)
-            {
-                _operational = master.GetComponent<Operational>();
-            }
-                
-            public bool IsOperational => _operational.IsOperational;
+            public SMInstance(Mineralizer master) : base(master) { }
         }
 
         public class States : GameStateMachine<States, SMInstance, Mineralizer>
@@ -47,31 +35,32 @@ namespace CrystalBiome.Buildings
             {
                 defaultState = NotOperational;
 
-                root
-                    .EventTransition(GameHashes.OperationalChanged, NotOperational, smi => !smi.IsOperational);
-
                 NotOperational
                     .QueueAnim("off")
-                    .EventTransition(GameHashes.OperationalChanged, Operational, smi => smi.IsOperational);
+                    .EventTransition(GameHashes.OperationalChanged, Operational, smi => smi.GetComponent<Operational>().IsOperational);
 
                 Operational
                     .QueueAnim("on")
-                    .EventTransition(GameHashes.OnStorageChange, StartWorking, smi => smi.master.GetComponent<ElementConverter>().HasEnoughMassToStartConverting());
+                    .EventTransition(GameHashes.OperationalChanged, NotOperational, smi => !smi.GetComponent<Operational>().IsOperational)
+                    .EventTransition(GameHashes.OnStorageChange, StartWorking, smi => smi.GetComponent<ElementConverter>().HasEnoughMassToStartConverting());
 
                 StartWorking
                     .PlayAnim("working_pre")
+                    .Enter(smi => smi.GetComponent<LoopingSounds>().PlayEvent(new GameSoundEvents.Event("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_start")))
                     .OnAnimQueueComplete(Working);
 
                 Working
-                    .Enter(smi => smi.master._operational.SetActive(true, false))
-                    .Enter(smi => smi.master.GetComponent<LoopingSounds>().StartSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"))
+                    .Enter(smi => smi.GetComponent<Operational>().SetActive(true, false))
+                    .Enter(smi => smi.GetComponent<LoopingSounds>().StartSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"))
                     .QueueAnim("working_loop", true)
-                    .EventTransition(GameHashes.OnStorageChange, StopWorking, smi => !smi.master.GetComponent<ElementConverter>().CanConvertAtAll())
-                    .Exit(smi => smi.master._operational.SetActive(false, false))
-                    .Exit(smi => smi.master.GetComponent<LoopingSounds>().StopSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"));
+                    .EventTransition(GameHashes.OnStorageChange, StopWorking, smi => !smi.GetComponent<ElementConverter>().CanConvertAtAll())
+                    .EventTransition(GameHashes.OperationalChanged, StopWorking, smi => !smi.GetComponent<Operational>().IsOperational)
+                    .Exit(smi => smi.GetComponent<Operational>().SetActive(false, false))
+                    .Exit(smi => smi.GetComponent<LoopingSounds>().StopSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"));
 
                 StopWorking
                     .PlayAnim("working_pst")
+                    .Enter(smi => smi.GetComponent<LoopingSounds>().PlayEvent(new GameSoundEvents.Event("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_end")))
                     .OnAnimQueueComplete(Operational);
             }
         }
