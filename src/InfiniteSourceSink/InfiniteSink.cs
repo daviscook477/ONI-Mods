@@ -33,25 +33,24 @@ namespace InfiniteSourceSink
             base.OnCleanUp();
         }
 
-        private bool IsOperational
-        {
-            get
-            {
-                return GetComponent<Operational>().IsOperational;
-            }
-        }
+        private Operational.Flag incomingFlag = new Operational.Flag("incoming", Operational.Flag.Type.Requirement);
 
         private void ConduitUpdate(float dt)
         {
             var flowManager = Conduit.GetFlowManager(Type);
-            if (flowManager == null || !flowManager.HasConduit(inputCell) || !IsOperational)
+            if (flowManager == null || !flowManager.HasConduit(inputCell))
             {
+                GetComponent<Operational>().SetFlag(incomingFlag, false);
                 return;
             }
 
             var contents = flowManager.GetContents(inputCell);
-            flowManager.RemoveElement(inputCell, contents.mass);
-            Game.Instance.accumulators.Accumulate(accumulator, contents.mass);
+            GetComponent<Operational>().SetFlag(incomingFlag, contents.mass > 0.0f);
+            if (GetComponent<Operational>().IsOperational)
+            {
+                flowManager.RemoveElement(inputCell, contents.mass);
+                Game.Instance.accumulators.Accumulate(accumulator, contents.mass);
+            }
         }
 
     }

@@ -71,14 +71,6 @@ namespace InfiniteSourceSink
 
         }
 
-        private bool IsOperational
-        {
-            get
-            {
-                return IsValidFilter && GetComponent<Operational>().IsOperational;
-            }
-        }
-
         public string SliderTitleKey
         {
             get
@@ -105,6 +97,8 @@ namespace InfiniteSourceSink
 
         private bool inUpdate = false;
 
+        private Operational.Flag filterFlag = new Operational.Flag("filter", Operational.Flag.Type.Requirement);
+
         private void OnFilterChanged(Tag tag)
         {
             FilteredTag = tag;
@@ -114,6 +108,7 @@ namespace InfiniteSourceSink
                 FilteredElement = element.id;
             }
             GetComponent<KSelectable>().ToggleStatusItem(Db.Get().BuildingStatusItems.NoFilterElementSelected, !IsValidFilter, null);
+            GetComponent<Operational>().SetFlag(filterFlag, IsValidFilter);
             Temp = Math.Max(Temp, element.lowTemp);
             Temp = Math.Min(Temp, element.highTemp);
             Temp = Math.Max(Temp, MinAllowedTemperature);
@@ -181,7 +176,7 @@ namespace InfiniteSourceSink
         private void ConduitUpdate(float dt)
         {
             var flowManager = Conduit.GetFlowManager(Type);
-            if (flowManager == null || !flowManager.HasConduit(outputCell) || !IsOperational)
+            if (flowManager == null || !flowManager.HasConduit(outputCell) || !GetComponent<Operational>().IsOperational)
             {
                 return;
             }

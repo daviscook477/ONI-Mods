@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="base_0.png" width="189" height="81" pivot_x="0.498123" pivot_y="0.134393"/>
+        <file id="1" name="crystal_0.png" width="111" height="220" pivot_x="0.555012" pivot_y="0.0416141"/>
+        <file id="2" name="halo_0.png" width="138" height="35" pivot_x="0.493342" pivot_y="0.759901"/>
+        <file id="3" name="halo_back_0.png" width="136" height="41" pivot_x="0.506478" pivot_y="0.254369"/>
+        <file id="4" name="left_hinge_0.png" width="22" height="23" pivot_x="0.130165" pivot_y="0.506122"/>
+        <file id="5" name="right_hinge_0.png" width="28" height="30" pivot_x="0.787286" pivot_y="0.491686"/>
+        <file id="6" name="left_piston_bot_0.png" width="54" height="68" pivot_x="0.371622" pivot_y="0.0929577"/>
+        <file id="7" name="left_piston_mid_0.png" width="39" height="57" pivot_x="0.369942" pivot_y="0.196319"/>
+        <file id="8" name="left_piston_top_0.png" width="41" height="53" pivot_x="0.402174" pivot_y="0.115721"/>
+        <file id="9" name="pipe_left_0.png" width="92" height="126" pivot_x="0.72315" pivot_y="0.057554"/>
+        <file id="10" name="pipe_right_0.png" width="88" height="84" pivot_x="0.195326" pivot_y="0.209386"/>
+        <file id="11" name="right_piston_bot_0.png" width="50" height="69" pivot_x="0.741538" pivot_y="0.169374"/>
+        <file id="12" name="right_piston_mid_0.png" width="35" height="42" pivot_x="0.71618" pivot_y="0.147126"/>
+        <file id="13" name="right_piston_top_0.png" width="34" height="53" pivot_x="0.677083" pivot_y="0.0949074"/>
+        <file id="14" name="wheel_0.png" width="62" height="62" pivot_x="0.555347" pivot_y="0.0912621"/>
+        <file id="15" name="monitor_0.png" width="30" height="106" pivot_x="0.579545" pivot_y="0.0445545"/>
+        <file id="16" name="meter_cover_0.png" width="20" height="90" pivot_x="0.477273" pivot_y="0.0277296"/>
+        <file id="17" name="meter_0.png" width="21" height="90" pivot_x="0.510067" pivot_y="0.0386473"/>
+    </folder>
+    <entity id="0" name="crystal_power">
+        <animation id="0" name="off" length="1000" interval="100">
+            <mainline>
+                <key id="0"/>
+            </mainline>
+        </animation>
+    </entity>
+</spriter_data>
