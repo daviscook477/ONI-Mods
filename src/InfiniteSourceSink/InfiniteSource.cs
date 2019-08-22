@@ -232,5 +232,18 @@ namespace InfiniteSourceSink
                     throw new Exception("Invalid ConduitType provided to InfiniteSource: " + Type.ToString());
             }
         }
+
+        public string GetSliderTooltip()
+        {
+            switch (Type)
+            {
+                case ConduitType.Gas:
+                    return InfiniteGasSourceConfig.TemperatureSliderTooltip;
+                case ConduitType.Liquid:
+                    return InfiniteLiquidSourceConfig.TemperatureSliderTooltip;
+                default:
+                    throw new Exception("Invalid ConduitType provided to InfiniteSource: " + Type.ToString());
+            }
+        }
     }
 }

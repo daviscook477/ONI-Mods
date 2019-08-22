@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalBiome", "CrystalBiom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SizeNotIncluded", "SizeNotIncluded\SizeNotIncluded.csproj", "{20B70524-5329-4C8D-BF66-52A59B8A5D25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loggers", "Loggers\Loggers.csproj", "{7F3286D9-EC16-42B2-8AD7-96EE05D3DD84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{20B70524-5329-4C8D-BF66-52A59B8A5D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20B70524-5329-4C8D-BF66-52A59B8A5D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20B70524-5329-4C8D-BF66-52A59B8A5D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F3286D9-EC16-42B2-8AD7-96EE05D3DD84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3286D9-EC16-42B2-8AD7-96EE05D3DD84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3286D9-EC16-42B2-8AD7-96EE05D3DD84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3286D9-EC16-42B2-8AD7-96EE05D3DD84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,6 +29,11 @@ namespace TeleStorage
             return "STRINGS.UI.UISIDESCREENS.TELESTORAGE.FLOW.TOOLTIP";
         }
 
+        public string GetSliderTooltip()
+        {
+            return FlowTooltip;
+        }
+
         public float GetSliderValue(int index)
         {
             return GetComponent<TeleStorage>().Flow;

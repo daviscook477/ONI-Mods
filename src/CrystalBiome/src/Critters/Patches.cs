@@ -8,6 +8,40 @@ namespace CrystalBiome.Critters
 {
     public class Patches
     {
+
+        public static void OnLoad()
+        {
+            TUNING.CREATURES.EGG_CHANCE_MODIFIERS.MODIFIER_CREATORS.Add(
+                Traverse.Create(typeof(TUNING.CREATURES.EGG_CHANCE_MODIFIERS)).Method("CreateDietaryModifier", new[] { typeof(string), typeof(Tag), typeof(Tag), typeof(float) })
+                .GetValue<System.Action>(
+                    HatchMutedConfig.Id, 
+                    HatchMutedConfig.EggId.ToTag(), 
+                    SimHashes.Diamond.CreateTag(),
+                    0.05f / HatchTuning.STANDARD_CALORIES_PER_CYCLE));
+
+            /*Strings.Add($"STRINGS.CODEX.MUTED.TITLE", HatchMutedConfig.Name);
+            Strings.Add($"STRINGS.CODEX.MUTED.SUBTITLE", "Critter Morph");
+            Strings.Add($"STRINGS.CODEX.MUTED.BODY.CONTAINER1", "<smallcaps>Pictured: \"Muted\" Hatch variant</smallcaps>");
+            Strings.Add($"STRINGS.CODEX.MUTED.BODY.CONTAINER2", "However does the hatch obtain its calories is an often asked question. The answer is unknown as the duplicants are yet to understand the alien biology.");
+            */
+        }
+
+        [HarmonyPatch(typeof(EntityTemplates), nameof(EntityTemplates.ExtendEntityToFertileCreature))]
+        public class EntityTemplates_ExtendEntityToFertileCreature_Patch
+        {
+            private static void Prefix(string eggId, List<FertilityMonitor.BreedingChance> egg_chances)
+            {
+                if (eggId.Equals("HatchEgg"))
+                {
+                    egg_chances.Add(new FertilityMonitor.BreedingChance()
+                    {
+                        egg = HatchMutedConfig.EggId.ToTag(),
+                        weight = 0.02f
+                    });
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(GasAndLiquidConsumerMonitor.Instance), "OnMassConsumed")]
         public class GasAndLiquidConsumerMonitorInstance_OnMassConsumed_Patch
         {

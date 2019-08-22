@@ -29,6 +29,11 @@ namespace InfiniteSourceSink
             return "STRINGS.UI.UISIDESCREENS.INFINITESOURCE.FLOW.TOOLTIP";
         }
 
+        public string GetSliderTooltip()
+        {
+            return FlowTooltip;
+        }
+
         public float GetSliderValue(int index)
         {
             return GetComponent<InfiniteSource>().Flow;
