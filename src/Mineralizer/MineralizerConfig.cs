@@ -55,10 +55,9 @@ namespace Mineralizer
             Storage storage = go.AddOrGet<Storage>();
             storage.SetDefaultStoredItemModifiers(Storage.StandardSealedStorage);
             storage.showInUI = true;
-            storage.capacityKg = 600 * SALT_INPUT_RATE;
+            storage.capacityKg = 600 * SALT_INPUT_RATE + 20f;
             go.AddOrGet<LoopingSounds>();
             go.AddOrGet<Mineralizer>();
-            Prioritizable.AddRef(go);
             ElementConverter elementConverter1 = go.AddComponent<ElementConverter>();
             elementConverter1.consumedElements = new ElementConverter.ConsumedElement[2]
             {
@@ -73,36 +72,37 @@ namespace Mineralizer
             ManualDeliveryKG manualDeliveryKg = go.AddOrGet<ManualDeliveryKG>();
             manualDeliveryKg.SetStorage(storage);
             manualDeliveryKg.requestedItemTag = new Tag("Salt");
-            manualDeliveryKg.capacity = storage.capacityKg;
+            manualDeliveryKg.capacity = 600 * SALT_INPUT_RATE;
             manualDeliveryKg.refillMass = 100 * SALT_INPUT_RATE;
             manualDeliveryKg.choreTypeIDHash = Db.Get().ChoreTypes.MachineFetch.IdHash;
 
             ConduitConsumer conduitConsumer = go.AddOrGet<ConduitConsumer>();
             conduitConsumer.conduitType = ConduitType.Liquid;
             conduitConsumer.consumptionRate = 10f;
-            conduitConsumer.capacityKG = 4 * WATER_WITH_SALT_INPUT_RATE;
-            conduitConsumer.capacityTag = ElementLoader.FindElementByHash(SimHashes.Water).tag;
+            conduitConsumer.capacityKG = 20f;
+            conduitConsumer.capacityTag = GameTags.Water;
+            conduitConsumer.forceAlwaysSatisfied = true;
             conduitConsumer.wrongElementResult = ConduitConsumer.WrongElementResult.Dump;
 
             ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
             conduitDispenser.conduitType = ConduitType.Liquid;
             conduitDispenser.elementFilter = new SimHashes[1] { SimHashes.SaltWater };
+            Prioritizable.AddRef(go);
         }
 
         public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
+            base.DoPostConfigurePreview(def, go);
         }
 
         public override void DoPostConfigureUnderConstruction(GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
+            base.DoPostConfigureUnderConstruction(go);
         }
 
         public override void DoPostConfigureComplete(GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
-            go.AddOrGet<LogicOperationalController>();
+            
         }
     }
 }

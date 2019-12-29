@@ -57,7 +57,7 @@ namespace Mineralizer
                     .EventTransition(GameHashes.OperationalChanged, StopWorking, smi => !smi.GetComponent<Operational>().IsOperational)
                     .Exit(smi => smi.GetComponent<Operational>().SetActive(false, false))
                     .Exit(smi => smi.GetComponent<LoopingSounds>().StopSound("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_lP"));
-
+                    
                 StopWorking
                     .PlayAnim("working_pst")
                     .Enter(smi => smi.GetComponent<LoopingSounds>().PlayEvent(new GameSoundEvents.Event("event:/Buildings/BuildCategories/05Utilities/LiquidConditioner/LiquidConditioner_end")))
