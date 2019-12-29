@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="washer_0.png" width="203" height="177" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="pipe_3_0.png" width="34" height="74" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <obj_info name="bone_000" type="bone" w="366.049" h="10"/>
+        <obj_info name="bone_001" type="bone" w="289.387" h="10"/>
+        <obj_info name="bone_002" type="bone" w="323.155" h="10"/>
+        <animation id="0" name="NewAnimation" length="1000" interval="33">
+            <mainline>
+                <key id="0">
+                    <bone_ref id="0" timeline="0" key="0"/>
+                    <bone_ref id="1" parent="0" timeline="1" key="0"/>
+                    <bone_ref id="2" parent="0" timeline="2" key="0"/>
+                    <object_ref id="0" parent="0" timeline="3" key="0" z_index="0"/>
+                    <object_ref id="1" parent="2" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" parent="1" timeline="5" key="0" z_index="2"/>
+                </key>
+                <key id="1" time="429">
+                    <bone_ref id="0" timeline="0" key="1"/>
+                    <bone_ref id="1" parent="0" timeline="1" key="1"/>
+                    <bone_ref id="2" parent="0" timeline="2" key="1"/>
+                    <object_ref id="0" parent="0" timeline="3" key="0" z_index="0"/>
+                    <object_ref id="1" parent="2" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" parent="1" timeline="5" key="0" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="bone_000" object_type="bone">
+                <key id="0" spin="-1">
+                    <bone x="-8" y="210" angle="269.060809" scale_x="1"/>
+                </key>
+                <key id="1" time="429">
+                    <bone x="-8" y="210" angle="223.446597" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="1" name="bone_001" object_type="bone">
+                <key id="0">
+                    <bone x="140.75158" y="77.31748" angle="71.565051" scale_x="1"/>
+                </key>
+                <key id="1" time="429" spin="-1">
+                    <bone x="140.75158" y="77.31748" angle="138.460932" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="bone_002" object_type="bone">
+                <key id="0">
+                    <bone x="131.146313" y="-68.8596" angle="293.695442" scale_x="1"/>
+                </key>
+                <key id="1" time="429" spin="-1">
+                    <bone x="131.146313" y="-68.8596" angle="336.033193" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="washer_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="38.847239" y="-112.378343" angle="90.939191" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="pipe_3_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-79.760545" y="-60.887235" angle="95.983545" scale_x="2.828452" scale_y="7.614366"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="pipe_3_0_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="196.895314" y="27.896872" angle="19.37414" scale_x="1"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

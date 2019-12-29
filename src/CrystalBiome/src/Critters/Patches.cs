@@ -25,6 +25,15 @@ namespace CrystalBiome.Critters
             Strings.Add($"STRINGS.CODEX.MUTED.BODY.CONTAINER2", "However does the hatch obtain its calories is an often asked question. The answer is unknown as the duplicants are yet to understand the alien biology.");
             */
         }
+        
+        [HarmonyPatch(typeof(OilFloaterConfig), nameof(OilFloaterConfig.CreateOilFloater))]
+        public class OilFloaterConfig_CreateOilFloater_Patch
+        {
+            private static void Prefix(ref string anim_file)
+            {
+                anim_file = "new_oilfloater";
+            }
+        }
 
         [HarmonyPatch(typeof(EntityTemplates), nameof(EntityTemplates.ExtendEntityToFertileCreature))]
         public class EntityTemplates_ExtendEntityToFertileCreature_Patch
