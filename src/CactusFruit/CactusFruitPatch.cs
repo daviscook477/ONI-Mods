@@ -16,8 +16,18 @@ namespace CactusFruit
         {
             private static void Prefix()
             {
-                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.Id.ToUpperInvariant()}.NAME", CactusFruitConfig.SeedName);
-                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.Id.ToUpperInvariant()}.DESC", CactusFruitConfig.SeedDescription);
+                // cactus fruit flesh
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshConfig.Id.ToUpperInvariant()}.NAME", CactusFleshConfig.Name);
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshConfig.Id.ToUpperInvariant()}.DESC", CactusFleshConfig.Description);
+
+                // cactus fruit flesh grilled
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.NAME", CactusFleshGrilledConfig.Name);
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.DESC", CactusFleshGrilledConfig.Description);
+
+
+                // cactus fruit plant
+                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.SeedId.ToUpperInvariant()}.NAME", CactusFruitConfig.SeedName);
+                Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.SeedId.ToUpperInvariant()}.DESC", CactusFruitConfig.SeedDescription);
 
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.NAME", CactusFruitConfig.Name);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DESC", CactusFruitConfig.Description);

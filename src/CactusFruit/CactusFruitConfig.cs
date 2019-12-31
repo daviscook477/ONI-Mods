@@ -12,10 +12,10 @@ namespace CactusFruit
         public const string Id = "CactusFruit";
         public const string SeedId = "CactusFruitSeed";
 
-        public static string Name = UI.FormatAsLink("Prickling Pear", Id.ToUpper());
-        public static string SeedName = UI.FormatAsLink("Prickling Pear Seed", SeedId.ToUpper());
+        public static string Name = UI.FormatAsLink("Prickly Pear", Id.ToUpper());
+        public static string SeedName = UI.FormatAsLink("Prickly Pear Seed", SeedId.ToUpper());
 
-        public static string Description = $"Prickly to the touch, the {Name} produces both an edible flesh and flower.";
+        public static string Description = $"Spiky to the touch, the {Name} produces both an edible flesh and flower.";
         public static string SeedDescription = $"The beginnings of a {Name}. Just add {UI.FormatAsLink("Water", "WATER")}.";
         public static string DomesticatedDescription = $"This cactus {UI.FormatAsLink("Plant", "PLANTS")} survives well in the harsh, dry desert. To thrive and flower, it needs copious amounts of {UI.FormatAsLink("Water", "WATER")}.";
 

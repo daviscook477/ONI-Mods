@@ -28,11 +28,12 @@ namespace CactusFruit
                 sceneLayer: Grid.SceneLayer.Front,
                 collisionShape: EntityTemplates.CollisionShape.RECTANGLE,
                 width: 0.8f,
-                height: 0.4f);
+                height: 0.4f,
+                isPickupable: true);
 
             var foodInfo = new EdiblesManager.FoodInfo(
                 id: Id,
-                caloriesPerUnit: 400000f,
+                caloriesPerUnit: 480000f,
                 quality: TUNING.FOOD.FOOD_QUALITY_AWFUL,
                 preserveTemperatue: 255.15f,
                 rotTemperature: 277.15f,

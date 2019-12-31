@@ -54,6 +54,7 @@
     <Compile Include="CactusFleshConfig.cs" />
     <Compile Include="CactusFruitConfig.cs" />
     <Compile Include="CactusFruitPatch.cs" />
+    <Compile Include="CactusFleshGrilledConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
