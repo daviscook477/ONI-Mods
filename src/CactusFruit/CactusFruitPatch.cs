@@ -11,7 +11,7 @@ namespace CactusFruit
 {
     public class CactusFruitPatch
     {
-        public const float CyclesForGrowth = 0.1f;
+        public const float CyclesForGrowth = 4f;
 
         [HarmonyPatch(typeof(EntityConfigManager), "LoadGeneratedEntities")]
         public class EntityConfigManager_LoadGeneratedEntities_Patch
@@ -39,7 +39,7 @@ namespace CactusFruit
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.NAME", CactusFruitConfig.Name);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DESC", CactusFruitConfig.Description);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CactusFruitConfig.DomesticatedDescription);
-                CROPS.CROP_TYPES.Add(new Crop.CropVal(CactusFleshConfig.Id, CyclesForGrowth * 600.0f, 5));
+                CROPS.CROP_TYPES.Add(new Crop.CropVal(CactusFleshConfig.Id, CyclesForGrowth * 600.0f, 1));
             }
         }
 

@@ -25,7 +25,7 @@ namespace CactusFruit
         public const float TemperatureWarningHigh = 358.15f;
         public const float TemperatureLethalHigh = 448.15f;
 
-        public const float IrrigationRate = 0.025f;
+        public const float IrrigationRate = 0.04f;
 
         public GameObject CreatePrefab()
         {

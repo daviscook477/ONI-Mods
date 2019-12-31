@@ -33,7 +33,7 @@ namespace CactusFruit
 
             var foodInfo = new EdiblesManager.FoodInfo(
                 id: Id,
-                caloriesPerUnit: 240000f,
+                caloriesPerUnit: 1200000f,
                 quality: TUNING.FOOD.FOOD_QUALITY_AWFUL,
                 preserveTemperatue: 255.15f,
                 rotTemperature: 277.15f,
