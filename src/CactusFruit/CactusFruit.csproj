@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CactusFleshConfig.cs" />
     <Compile Include="CactusFlowerConfig.cs" />
+    <Compile Include="CactusFlowerSaladConfig.cs" />
     <Compile Include="CactusFruitConfig.cs" />
     <Compile Include="CactusFruitPatch.cs" />
     <Compile Include="CactusFleshGrilledConfig.cs" />

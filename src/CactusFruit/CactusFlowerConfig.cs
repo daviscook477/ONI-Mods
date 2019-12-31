@@ -13,7 +13,7 @@ namespace CactusFruit
 
         public static string Name = UI.FormatAsLink("Cactus Flower", Id.ToUpper());
 
-        public static string Description = $"The red flower of a {CactusFruitConfig.Name}. Pretty and edible.";
+        public static string Description = $"The red flower of a {CactusFruitConfig.Name}. Pretty, edible, and sugary.";
 
         public GameObject CreatePrefab()
         {
