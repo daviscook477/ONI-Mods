@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using TUNING;
 using Harmony;
+using STRINGS;
+using UnityEngine;
 
 namespace CactusFruit
 {
@@ -37,6 +39,37 @@ namespace CactusFruit
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CactusFruitConfig.DomesticatedDescription);
 
                 CROPS.CROP_TYPES.Add(new Crop.CropVal(CactusFleshConfig.Id, CyclesForGrowth * 600.0f, 5));
+            }
+        }
+
+        [HarmonyPatch(typeof(Crop), "SpawnFruit")]
+        public class Crop_SpawnFruit_Patch
+        {
+            private static void Postfix(Crop __instance)
+            {
+                if (__instance == null)
+                    return;
+                Crop.CropVal cropVal = __instance.cropVal;
+                if (string.IsNullOrEmpty(cropVal.cropId))
+                    return;
+                if (cropVal.cropId != CactusFleshConfig.Id)
+                    return;
+                GameObject gameObject = Scenario.SpawnPrefab(Grid.PosToCell(__instance.gameObject), 0, 0, CactusFruitConfig.Id, Grid.SceneLayer.Ore);
+                if (gameObject != null)
+                {
+                    float y = 0.75f;
+                    gameObject.transform.SetPosition(gameObject.transform.GetPosition() + new Vector3(0.0f, y, 0.0f));
+                    gameObject.SetActive(true);
+                    PrimaryElement component1 = gameObject.GetComponent<PrimaryElement>();
+                    component1.Units = 1.0f; // cactus produces 1 unit of flower to go with 5 units of flesh
+                    component1.Temperature = __instance.gameObject.GetComponent<PrimaryElement>().Temperature;
+                    Edible component2 = gameObject.GetComponent<Edible>();
+                    if ((bool)((UnityEngine.Object)component2))
+                        ReportManager.Instance.ReportValue(ReportManager.ReportType.CaloriesCreated, component2.Calories, StringFormatter.Replace(UI.ENDOFDAYREPORT.NOTES.HARVESTED, "{0}", component2.GetProperName()), UI.ENDOFDAYREPORT.NOTES.HARVESTED_CONTEXT);
+                }
+                else
+                    DebugUtil.LogErrorArgs(__instance.gameObject, "tried to spawn an invalid crop prefab:", CactusFruitConfig.Id);
+                __instance.Trigger(-1072826864, null);
             }
         }
     }
