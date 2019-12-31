@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="bulb_s_0.png" width="152" height="100" pivot_x="0.480263" pivot_y="0.267442"/>
+        <file id="1" name="plant_s_0.png" width="152" height="100" pivot_x="0.293059" pivot_y="0.10566"/>
+        <file id="2" name="plant_s_1.png" width="152" height="100" pivot_x="0.413608" pivot_y="0.113731"/>
+        <file id="3" name="plant_s_2.png" width="152" height="100" pivot_x="0.468391" pivot_y="0.121842"/>
+        <file id="4" name="plant_s_3.png" width="152" height="100" pivot_x="0.568868" pivot_y="0.137427"/>
+        <file id="5" name="plant_s_4.png" width="152" height="100" pivot_x="0.655925" pivot_y="0.177706"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="grow" length="132" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="3" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                </key>
+                <key id="1" time="33">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="3" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                </key>
+                <key id="2" time="66">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="3" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="2" z_index="5"/>
+                </key>
+                <key id="3" time="99">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="3" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="2" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bulb_s_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.186268" y="8.726062" scale_x="0.498148" scale_y="0.425228"/>
+                </key>
+                <key id="1" time="33" spin="0">
+                    <object folder="0" file="0" x="0.709055" y="10.285082" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="2" time="66" spin="0">
+                    <object folder="0" file="0" x="0.709055" y="10.285082" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="3" time="99" spin="0">
+                    <object folder="0" file="0" x="0.709055" y="10.285082" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="plant_s_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-16.357316" y="-1.439627" scale_x="0.59714" scale_y="0.548445"/>
+                </key>
+                <key id="1" time="33" spin="0">
+                    <object folder="0" file="1" x="-16.357316" y="-1.439627" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="2" time="66" spin="0">
+                    <object folder="0" file="1" x="-16.357316" y="-1.439627" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="plant_s_1">
+                <key id="0" spin="-1">
+                    <object folder="0" file="2" x="-6.418179" y="-2.041206" scale_x="0.59714" scale_y="0.548445"/>
+                </key>
+                <key id="1" time="33" spin="0">
+                    <object folder="0" file="2" x="-6.310995" y="-3.042045" angle="357.879758" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="2" time="66">
+                    <object folder="0" file="2" x="-6.310995" y="-3.042045" angle="357.879758" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="plant_s_2">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-2.978796" y="-2.893711" scale_x="0.59714" scale_y="0.548445"/>
+                </key>
+                <key id="1" time="33" spin="0">
+                    <object folder="0" file="3" x="-0.736011" y="-3.159522" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="2" time="66" spin="0">
+                    <object folder="0" file="3" x="-0.736011" y="-3.159522" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="plant_s_3">
+                <key id="0">
+                    <object folder="0" file="4" x="3.943108" y="-3.746216" scale_x="0.59714" scale_y="0.548445"/>
+                </key>
+                <key id="1" time="33" spin="0">
+                    <object folder="0" file="4" x="9.573457" y="-4.167867" angle="1.810611" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="2" time="66" spin="-1">
+                    <object folder="0" file="4" x="9.573457" y="-4.167867" angle="1.810611" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="plant_s_4">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="10.440481" y="-3.862563" scale_x="0.59714" scale_y="0.548445"/>
+                </key>
+                <key id="1" time="33" spin="0">
+                    <object folder="0" file="5" x="14.932884" y="-4.305483" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+                <key id="2" time="66" spin="0">
+                    <object folder="0" file="5" x="14.932884" y="-4.305483" scale_x="0.697244" scale_y="0.648702"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
