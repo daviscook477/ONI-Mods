@@ -12,8 +12,10 @@ namespace CactusFruit
         public const string Id = "CactusFruit";
         public const string SeedId = "CactusFruitSeed";
 
+        // notice that both the plant and the seed link to the plant
+        // the seed does not link to a page in the db for the seed itself
         public static string Name = UI.FormatAsLink("Prickly Pear", Id.ToUpper());
-        public static string SeedName = UI.FormatAsLink("Prickly Pear Seed", SeedId.ToUpper());
+        public static string SeedName = UI.FormatAsLink("Prickly Pear Seed", Id.ToUpper());
 
         public static string Description = $"Spiky to the touch, the {Name} produces both an edible {UI.FormatAsLink("Flesh", CactusFleshConfig.Id)} and {UI.FormatAsLink("Flower", CactusFlowerConfig.Id)}.";
         public static string SeedDescription = $"The beginnings of a {Name}. Just add {UI.FormatAsLink("Water", "WATER")}.";
