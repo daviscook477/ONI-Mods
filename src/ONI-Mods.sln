@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimationTest", "AnimationT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mineralizer", "Mineralizer\Mineralizer.csproj", "{FE8A833E-7316-47CE-A4E5-845CCC8CB304}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CactusFruit", "CactusFruit\CactusFruit.csproj", "{E49F71F8-57BD-4703-B466-96DC75515C2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{FE8A833E-7316-47CE-A4E5-845CCC8CB304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE8A833E-7316-47CE-A4E5-845CCC8CB304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE8A833E-7316-47CE-A4E5-845CCC8CB304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E49F71F8-57BD-4703-B466-96DC75515C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E49F71F8-57BD-4703-B466-96DC75515C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E49F71F8-57BD-4703-B466-96DC75515C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E49F71F8-57BD-4703-B466-96DC75515C2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
