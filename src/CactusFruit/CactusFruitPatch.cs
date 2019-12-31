@@ -25,20 +25,36 @@ namespace CactusFruit
                 // cactus fruit flesh grilled
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.NAME", CactusFleshGrilledConfig.Name);
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.DESC", CactusFleshGrilledConfig.Description);
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.RECIPEDESC", CactusFleshGrilledConfig.RecipeDescription);
 
                 // cactus fruit flower
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFlowerConfig.Id.ToUpperInvariant()}.NAME", CactusFlowerConfig.Name);
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFlowerConfig.Id.ToUpperInvariant()}.DESC", CactusFlowerConfig.Description);
 
-                // cactus fruit plant
+                // cactus fruit plant seed
                 Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.SeedId.ToUpperInvariant()}.NAME", CactusFruitConfig.SeedName);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.SeedId.ToUpperInvariant()}.DESC", CactusFruitConfig.SeedDescription);
 
+                // cactus fruit plant
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.NAME", CactusFruitConfig.Name);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DESC", CactusFruitConfig.Description);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CactusFruitConfig.DomesticatedDescription);
-
                 CROPS.CROP_TYPES.Add(new Crop.CropVal(CactusFleshConfig.Id, CyclesForGrowth * 600.0f, 5));
+            }
+        }
+
+        [HarmonyPatch(typeof(Immigration))]
+        [HarmonyPatch("ConfigureCarePackages")]
+        public static class Immigration_ConfigureCarePackages_Patch
+        {
+            public static void Postfix(ref Immigration __instance)
+            {
+                var field = Traverse.Create(__instance).Field("carePackages");
+                var list = field.GetValue<CarePackageInfo[]>().ToList();
+
+                list.Add(new CarePackageInfo(CactusFruitConfig.SeedId, 1f, () => GameClock.Instance.GetCycle() >= 48));
+
+                field.SetValue(list.ToArray());
             }
         }
 
@@ -54,7 +70,7 @@ namespace CactusFruit
                     return;
                 if (cropVal.cropId != CactusFleshConfig.Id)
                     return;
-                GameObject gameObject = Scenario.SpawnPrefab(Grid.PosToCell(__instance.gameObject), 0, 0, CactusFruitConfig.Id, Grid.SceneLayer.Ore);
+                GameObject gameObject = Scenario.SpawnPrefab(Grid.PosToCell(__instance.gameObject), 0, 0, CactusFlowerConfig.Id, Grid.SceneLayer.Ore);
                 if (gameObject != null)
                 {
                     float y = 0.75f;
@@ -68,7 +84,7 @@ namespace CactusFruit
                         ReportManager.Instance.ReportValue(ReportManager.ReportType.CaloriesCreated, component2.Calories, StringFormatter.Replace(UI.ENDOFDAYREPORT.NOTES.HARVESTED, "{0}", component2.GetProperName()), UI.ENDOFDAYREPORT.NOTES.HARVESTED_CONTEXT);
                 }
                 else
-                    DebugUtil.LogErrorArgs(__instance.gameObject, "tried to spawn an invalid crop prefab:", CactusFruitConfig.Id);
+                    DebugUtil.LogErrorArgs(__instance.gameObject, "tried to spawn an invalid crop prefab:", CactusFlowerConfig.Id);
                 __instance.Trigger(-1072826864, null);
             }
         }
