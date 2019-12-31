@@ -37,7 +37,7 @@ namespace CactusFruit
                 quality: TUNING.FOOD.FOOD_QUALITY_GOOD,
                 preserveTemperatue: 255.15f,
                 rotTemperature: 277.15f,
-                spoilTime: 2400f,
+                spoilTime: 3600f,
                 can_rot: true);
 
             var foodEntity = EntityTemplates.ExtendEntityToFood(

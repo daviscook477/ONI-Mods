@@ -48,7 +48,7 @@ namespace CactusFruit
                 template: looseEntity,
                 foodInfo: foodInfo);
 
-            var input = new[] { new ComplexRecipe.RecipeElement(CactusFleshConfig.Id, 1f) };
+            var input = new[] { new ComplexRecipe.RecipeElement(CactusFleshConfig.Id, 2f) };
             var output = new[] { new ComplexRecipe.RecipeElement(Id, 1f) };
 
             var recipeId = ComplexRecipeManager.MakeRecipeID(
