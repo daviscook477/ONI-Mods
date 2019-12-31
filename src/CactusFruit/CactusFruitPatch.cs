@@ -24,6 +24,9 @@ namespace CactusFruit
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.NAME", CactusFleshGrilledConfig.Name);
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshGrilledConfig.Id.ToUpperInvariant()}.DESC", CactusFleshGrilledConfig.Description);
 
+                // cactus fruit flower
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFlowerConfig.Id.ToUpperInvariant()}.NAME", CactusFlowerConfig.Name);
+                Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFlowerConfig.Id.ToUpperInvariant()}.DESC", CactusFlowerConfig.Description);
 
                 // cactus fruit plant
                 Strings.Add($"STRINGS.CREATURES.SPECIES.SEEDS.{CactusFruitConfig.SeedId.ToUpperInvariant()}.NAME", CactusFruitConfig.SeedName);

@@ -7,13 +7,13 @@ using UnityEngine;
 
 namespace CactusFruit
 {
-    public class CactusFleshConfig : IEntityConfig
+    public class CactusFlowerConfig : IEntityConfig
     {
-        public const string Id = "CactusFlesh";
+        public const string Id = "CactusFlower";
 
-        public static string Name = UI.FormatAsLink("Cactus Flesh", Id.ToUpper());
+        public static string Name = UI.FormatAsLink("Cactus Flower", Id.ToUpper());
 
-        public static string Description = $"The flesh of a {CactusFruitConfig.Name}. Juicy, edible, and uncomfortable.";
+        public static string Description = $"The red flower of a {CactusFruitConfig.Name}. Pretty and edible.";
 
         public GameObject CreatePrefab()
         {
@@ -23,18 +23,18 @@ namespace CactusFruit
                 desc: Description,
                 mass: 1f,
                 unitMass: false,
-                anim: Assets.GetAnim("cactusflesh_kanim"),
+                anim: Assets.GetAnim("cactusflower_kanim"),
                 initialAnim: "object",
                 sceneLayer: Grid.SceneLayer.Front,
                 collisionShape: EntityTemplates.CollisionShape.RECTANGLE,
-                width: 0.8f,
+                width: 0.6f,
                 height: 0.4f,
                 isPickupable: true);
 
             var foodInfo = new EdiblesManager.FoodInfo(
                 id: Id,
-                caloriesPerUnit: 240000f,
-                quality: TUNING.FOOD.FOOD_QUALITY_AWFUL,
+                caloriesPerUnit: 1200000f,
+                quality: TUNING.FOOD.FOOD_QUALITY_GOOD,
                 preserveTemperatue: 255.15f,
                 rotTemperature: 277.15f,
                 spoilTime: 2400f,
@@ -51,4 +51,6 @@ namespace CactusFruit
 
         public void OnSpawn(GameObject inst) { }
     }
+
+}
 }

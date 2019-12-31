@@ -58,7 +58,7 @@ namespace CactusFruit
 
             Recipe = new ComplexRecipe(recipeId, input, output)
             {
-                time = 100f,
+                time = TUNING.FOOD.RECIPES.STANDARD_COOK_TIME,
                 description = RecipeDescription,
                 nameDisplay = ComplexRecipe.RecipeNameDisplay.Result,
                 fabricators = new List<Tag> { CookingStationConfig.ID },
