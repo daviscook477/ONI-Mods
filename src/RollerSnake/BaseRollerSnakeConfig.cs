@@ -22,8 +22,6 @@ namespace RollerSnake
         public const float TemperatureWarningHigh = 358.15f;
         public const float TemperatureLethalHigh = 448.15f;
 
-        public static readonly Tag RollerSnakeSpecies = TagManager.Create(nameof(RollerSnakeSpecies));
-
         public static GameObject BaseRollerSnake(string id, string name, string desc, string anim_file, string traitId, bool is_baby, string symbolOverridePrefix = null)
         {
             GameObject placedEntity = EntityTemplates.CreatePlacedEntity(id, name, desc, Mass, Assets.GetAnim(anim_file), "idle_loop", Grid.SceneLayer.Creatures, 
@@ -48,6 +46,7 @@ namespace RollerSnake
             placedEntity.AddOrGetDef<CreatureFallMonitor.Def>();
             placedEntity.AddOrGetDef<ThreatMonitor.Def>().fleethresholdState = Health.HealthState.Dead;
             placedEntity.AddWeapon(1f, 1f, AttackProperties.DamageType.Standard, AttackProperties.TargetType.Single, 1, 0.0f);
+            placedEntity.AddOrGetDef<RanchableMonitor.Def>();
             EntityTemplates.CreateAndRegisterBaggedCreature(placedEntity, true, true, false);
             KPrefabID component = placedEntity.GetComponent<KPrefabID>();
             component.AddTag(GameTags.Creatures.Walker, false);
@@ -74,7 +73,7 @@ namespace RollerSnake
                 .Add(new PlayAnimsStates.Def(GameTags.Creatures.Poop, false, "poop", STRINGS.CREATURES.STATUSITEMS.EXPELLING_SOLID.NAME, STRINGS.CREATURES.STATUSITEMS.EXPELLING_SOLID.TOOLTIP), true)
                 .Add(new CallAdultStates.Def(), true).PopInterruptGroup()
                 .Add(new IdleStates.Def(), true);
-            EntityTemplates.AddCreatureBrain(placedEntity, chore_table, RollerSnakeSpecies, symbolOverridePrefix);
+            EntityTemplates.AddCreatureBrain(placedEntity, chore_table, id, symbolOverridePrefix);
             return placedEntity;
         }
 

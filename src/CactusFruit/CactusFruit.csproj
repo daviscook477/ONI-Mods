@@ -55,7 +55,7 @@
     <Compile Include="CactusFlowerConfig.cs" />
     <Compile Include="CactusFlowerSaladConfig.cs" />
     <Compile Include="CactusFruitConfig.cs" />
-    <Compile Include="CactusFruitPatch.cs" />
+    <Compile Include="CactusFruitPatches.cs" />
     <Compile Include="CactusFleshGrilledConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
