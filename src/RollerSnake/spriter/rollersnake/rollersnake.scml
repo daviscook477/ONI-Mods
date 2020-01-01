@@ -8,7 +8,7 @@
         <file id="4" name="tail_0.png" width="70" height="73" pivot_x="0.242975" pivot_y="0.808752"/>
         <file id="5" name="tail_1.png" width="70" height="73" pivot_x="0.128748" pivot_y="0.474048"/>
         <file id="6" name="segment_up_2.png" width="85" height="85" pivot_x="0.340426" pivot_y="0.268634"/>
-        <file id="7" name="scale_4_0.png" width="49" height="70" pivot_x="0.638743" pivot_y="0.114447"/>
+        <file id="7" name="scale_0_0.png" width="49" height="70" pivot_x="0.638743" pivot_y="0.114447"/>
         <file id="8" name="head_0.png" width="70" height="62" pivot_x="0.138128" pivot_y="0.212598"/>
         <file id="9" name="mouth_0.png" width="60" height="39" pivot_x="0.199578" pivot_y="0.322259"/>
         <file id="10" name="eye_0.png" width="40" height="31" pivot_x="0.501499" pivot_y="0.56168"/>
@@ -242,7 +242,7 @@
                     <object folder="0" file="6" x="-16.7072" y="21.6734" angle="0" scale_x="0.80667" scale_y="0.892391"/>
                 </key>
             </timeline>
-            <timeline id="4" name="scale_4_0">
+            <timeline id="4" name="scale_0_0">
                 <key id="0">
                     <object folder="0" file="7" x="-35.976805" y="42.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -435,7 +435,7 @@
                     <object_ref id="8" timeline="8" key="3" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="-35.976805" y="42.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -631,7 +631,7 @@
                     <object_ref id="8" timeline="8" key="4" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0" spin="-1">
                     <object folder="0" file="7" x="-35.976805" y="42.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -806,7 +806,7 @@
                     <object_ref id="8" timeline="8" key="2" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="-35.976805" y="42.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -968,7 +968,7 @@
                     <object_ref id="8" timeline="8" key="2" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="-35.976805" y="42.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -1108,7 +1108,7 @@
                     <object_ref id="8" timeline="5" key="1" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0" spin="-1">
                     <object folder="0" file="7" x="-44.976805" y="56.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -1294,7 +1294,7 @@
                     <object_ref id="8" timeline="8" key="7" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="-35.976805" y="42.788022" angle="314.366359" scale_x="0.525833" scale_y="0.574616"/>
                 </key>
@@ -2000,7 +2000,7 @@
                     <object_ref id="8" timeline="8" key="7" z_index="8"/>
                 </key>
             </mainline>
-            <timeline id="0" name="scale_4_0">
+            <timeline id="0" name="scale_0_0">
                 <key id="0">
                     <object folder="0" file="7" x="-27.071463" y="68.869121" angle="267.74867" scale_x="0.525833" scale_y="0.574616"/>
                 </key>

@@ -12,7 +12,7 @@ namespace RollerSnake
         public const string Id = "RollerSnake";
         public const string Name = "Roller Snake";
         public const string PluralName = "Rolling Snakes";
-        public const string Description = "A peculiar critter that moves by winding into a loop and rolling around the environment.";
+        public const string Description = "A peculiar critter that moves by winding into a loop and rolling.";
         public const string BaseTraitId = "RollerSnakeBaseTrait";
 
         public const float Hitpoints = 25f;
@@ -28,6 +28,10 @@ namespace RollerSnake
         public static float CaloriesPerKg = RollerSnakeTuning.STANDARD_CALORIES_PER_CYCLE / KgEatenPerCycle;
         public static float ProducedConversionRate = TUNING.CREATURES.CONVERSION_EFFICIENCY.BAD_1;
 
+        public static float ScaleGrowthTimeCycles = 6.0f;
+        public static float GoldAmalganPerCycle = 10.0f;
+        public static Tag EmitElement = SimHashes.GoldAmalgam.CreateTag();
+
         public static GameObject CreateRollerSnake(string id, string name, string desc, string anim_file, bool is_baby)
         {
             GameObject wildCreature = EntityTemplates.ExtendEntityToWildCreature(BaseRollerSnakeConfig.BaseRollerSnake(id, name, desc, anim_file, BaseTraitId, is_baby, null), RollerSnakeTuning.PEN_SIZE_PER_CREATURE, Lifespan);
@@ -42,7 +46,16 @@ namespace RollerSnake
                 SimHashes.Carbon.CreateTag(), 
                 CaloriesPerKg, 
                 ProducedConversionRate, null, 0.0f);
-            return BaseRollerSnakeConfig.SetupDiet(wildCreature, diet_infos, CaloriesPerKg, MinPoopSizeInKg);
+            BaseRollerSnakeConfig.SetupDiet(wildCreature, diet_infos, CaloriesPerKg, MinPoopSizeInKg);
+
+            ScaleGrowthMonitor.Def scale_monitor = wildCreature.AddOrGetDef<ScaleGrowthMonitor.Def>();
+            scale_monitor.defaultGrowthRate = (float)(1.0 / ScaleGrowthTimeCycles / 600.0);
+            scale_monitor.dropMass = GoldAmalganPerCycle * ScaleGrowthTimeCycles;
+            scale_monitor.itemDroppedOnShear = EmitElement;
+            scale_monitor.levelCount = 2;
+            scale_monitor.targetAtmosphere = SimHashes.Oxygen;
+
+            return wildCreature;
         }
         public GameObject CreatePrefab()
         {
