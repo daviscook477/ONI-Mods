@@ -26,6 +26,7 @@
         <file id="22" name="plant_b_wilt_3.png" width="150" height="150" pivot_x="0.736928" pivot_y="0.0284281"/>
         <file id="23" name="plant_b_wilt_4.png" width="150" height="150" pivot_x="0" pivot_y="1"/>
         <file id="24" name="place_0.png" width="150" height="150" pivot_x="0" pivot_y="1"/>
+        <file id="25" name="ui_0.png" width="100" height="100" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="cactusfruit">
         <animation id="0" name="grow" length="132" interval="33">
@@ -381,11 +382,23 @@
             </mainline>
             <timeline id="0" name="place_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="24" x="-47.326203" y="68.449198" scale_x="0.609835" scale_y="0.526859"/>
+                    <object folder="0" file="24" x="-47.326203" y="68.449198" angle="0" scale_x="0.609835" scale_y="0.526859"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="harvest" length="528" interval="33" looping="false">
+        <animation id="4" name="ui" length="165" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="ui_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="25" x="-46.256684" y="97.326203" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="harvest" length="528" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -479,7 +492,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="idle_empty" length="165" interval="33">
+        <animation id="6" name="idle_empty" length="165" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -515,7 +528,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="wilt1" length="165" interval="33">
+        <animation id="7" name="wilt1" length="165" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -551,7 +564,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="wilt2" length="165" interval="33">
+        <animation id="8" name="wilt2" length="165" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="5" key="0" z_index="0"/>
@@ -593,7 +606,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="8" name="wilt3" length="165" interval="33">
+        <animation id="9" name="wilt3" length="165" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>

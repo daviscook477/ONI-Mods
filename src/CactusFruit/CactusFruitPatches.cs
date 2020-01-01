@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace CactusFruit
 {
-    public class CactusFruitPatch
+    public class CactusFruitPatches
     {
         public const float CyclesForGrowth = 4f;
 
