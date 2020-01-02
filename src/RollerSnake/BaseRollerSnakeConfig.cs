@@ -16,6 +16,8 @@ namespace RollerSnake
         public const string OnDeathDropId = "Meat";
         public const int OnDeathDropCount = 1;
 
+        public const string SpeciesId = "RollerSnake";
+
         public const float DefaultTemperature = 320f;
         public const float TemperatureLethalLow = 258.15f;
         public const float TemperatureWarningLow = 308.15f;
@@ -73,7 +75,7 @@ namespace RollerSnake
                 .Add(new PlayAnimsStates.Def(GameTags.Creatures.Poop, false, "poop", STRINGS.CREATURES.STATUSITEMS.EXPELLING_SOLID.NAME, STRINGS.CREATURES.STATUSITEMS.EXPELLING_SOLID.TOOLTIP), true)
                 .Add(new CallAdultStates.Def(), true).PopInterruptGroup()
                 .Add(new IdleStates.Def(), true);
-            EntityTemplates.AddCreatureBrain(placedEntity, chore_table, id, symbolOverridePrefix);
+            EntityTemplates.AddCreatureBrain(placedEntity, chore_table, SpeciesId, symbolOverridePrefix);
             return placedEntity;
         }
 

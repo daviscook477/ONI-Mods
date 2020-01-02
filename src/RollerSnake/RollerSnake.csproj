@@ -56,6 +56,7 @@
     <Compile Include="RollerSnakeConfig.cs" />
     <Compile Include="RollerSnakePatches.cs" />
     <Compile Include="RollerSnakeTuning.cs" />
+    <Compile Include="SteelRollerSnakeConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

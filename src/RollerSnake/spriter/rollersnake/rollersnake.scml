@@ -21,6 +21,25 @@
         <file id="17" name="eye_1.png" width="40" height="31" pivot_x="0.501499" pivot_y="0.56168"/>
         <file id="18" name="snapto_tag_0.png" width="32" height="28" pivot_x="0.731781" pivot_y="0.294947"/>
         <file id="19" name="ui_0.png" width="220" height="220" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="blu_ui_0.png" width="220" height="220" pivot_x="0" pivot_y="1"/>
+	<file id="21" name="blu_segment_down_0.png" width="80" height="80" pivot_x="0.146515" pivot_y="0.552975"/>
+        <file id="22" name="blu_segment_up_0.png" width="200" height="200" pivot_x="0.311278" pivot_y="0.686636"/>
+        <file id="23" name="blu_segment_down_1.png" width="80" height="80" pivot_x="0.144385" pivot_y="0.638026"/>
+        <file id="24" name="blu_segment_down_2.png" width="80" height="80" pivot_x="0.330261" pivot_y="0.725275"/>
+        <file id="25" name="blu_tail_0.png" width="70" height="73" pivot_x="0.242975" pivot_y="0.808752"/>
+        <file id="26" name="blu_tail_1.png" width="70" height="73" pivot_x="0.128748" pivot_y="0.474048"/>
+        <file id="27" name="blu_segment_up_2.png" width="85" height="85" pivot_x="0.340426" pivot_y="0.268634"/>
+        <file id="28" name="blu_scale_0_0.png" width="49" height="70" pivot_x="0.638743" pivot_y="0.114447"/>
+        <file id="29" name="blu_head_0.png" width="70" height="62" pivot_x="0.138128" pivot_y="0.212598"/>
+        <file id="30" name="blu_mouth_0.png" width="60" height="39" pivot_x="0.199578" pivot_y="0.322259"/>
+        <file id="31" name="blu_eye_0.png" width="40" height="31" pivot_x="0.501499" pivot_y="0.56168"/>
+        <file id="32" name="blu_jaw_0.png" width="40" height="19" pivot_x="0.0754401" pivot_y="0.546112"/>
+        <file id="33" name="blu_segment_up_1.png" width="85" height="85" pivot_x="0.202749" pivot_y="0.320423"/>
+        <file id="34" name="blu_tail_2.png" width="70" height="73" pivot_x="0.176744" pivot_y="0.24431"/>
+        <file id="35" name="blu_rolled_0.png" width="220" height="172" pivot_x="0.480271" pivot_y="0.444934"/>
+        <file id="36" name="blu_mouth_1.png" width="60" height="60" pivot_x="0.199578" pivot_y="0.322259"/>
+        <file id="37" name="blu_jaw_1.png" width="60" height="40" pivot_x="0.22076" pivot_y="0.547511"/>
+        <file id="38" name="blu_eye_1.png" width="40" height="31" pivot_x="0.501499" pivot_y="0.56168"/>
     </folder>
     <entity id="0" name="rollersnake">
         <animation id="0" name="ui" length="1000" interval="33">
@@ -4029,7 +4048,19 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="21" name="floor_floor_1_0_pst" length="924" interval="33" looping="false">
+        <animation id="21" name="blu_ui" length="1000" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="blu_ui_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="20" x="-61.142857" y="62.857143" scale_x="0.5777" scale_y="0.5777"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="22" name="floor_floor_1_0_pst" length="924" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
