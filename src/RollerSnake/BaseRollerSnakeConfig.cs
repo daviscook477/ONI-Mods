@@ -35,7 +35,7 @@ namespace RollerSnake
                 moveSpeed: MoveSpeed, 
                 onDeathDropID: OnDeathDropId, 
                 onDeathDropCount: OnDeathDropCount,
-                true, false,
+                false, false,
                 lethalLowTemperature: TemperatureLethalLow,
                 warningLowTemperature: TemperatureWarningLow,
                 warningHighTemperature: TemperatureWarningHigh,
