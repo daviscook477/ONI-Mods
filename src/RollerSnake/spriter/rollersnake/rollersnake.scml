@@ -20,9 +20,22 @@
         <file id="16" name="jaw_1.png" width="60" height="40" pivot_x="0.22076" pivot_y="0.547511"/>
         <file id="17" name="eye_1.png" width="40" height="31" pivot_x="0.501499" pivot_y="0.56168"/>
         <file id="18" name="snapto_tag_0.png" width="32" height="28" pivot_x="0.731781" pivot_y="0.294947"/>
+        <file id="19" name="ui_0.png" width="220" height="220" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="rollersnake">
-        <animation id="0" name="idle_loop" length="1980" interval="33">
+        <animation id="0" name="ui" length="1000" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="ui_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="19" x="-62.234043" y="54.255319" scale_x="0.577462" scale_y="0.534303"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle_loop" length="1980" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="4" key="0" z_index="0"/>
@@ -436,7 +449,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="hit" length="363" interval="33">
+        <animation id="2" name="hit" length="363" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -544,7 +557,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="death" length="990" interval="33" looping="false">
+        <animation id="3" name="death" length="990" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -820,7 +833,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="shearing_loop" length="1980" interval="33">
+        <animation id="4" name="shearing_loop" length="1980" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="4" key="0" z_index="0"/>
@@ -1192,7 +1205,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="poop" length="1353" interval="33">
+        <animation id="5" name="poop" length="1353" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -1498,7 +1511,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="grooming_pre" length="1023" interval="33" looping="false">
+        <animation id="6" name="grooming_pre" length="1023" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -1732,7 +1745,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="grooming_loop" length="1881" interval="33">
+        <animation id="7" name="grooming_loop" length="1881" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -1966,7 +1979,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="grooming_pst" length="1023" interval="33">
+        <animation id="8" name="grooming_pst" length="1023" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -2200,7 +2213,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="8" name="excited_loop" length="792" interval="33">
+        <animation id="9" name="excited_loop" length="792" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -2392,7 +2405,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="9" name="eat_pre" length="627" interval="33" looping="false">
+        <animation id="10" name="eat_pre" length="627" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -2623,7 +2636,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="10" name="eat_pst" length="297" interval="33">
+        <animation id="11" name="eat_pst" length="297" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -2751,7 +2764,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="11" name="eat_loop" length="759" interval="33">
+        <animation id="12" name="eat_loop" length="759" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -2967,7 +2980,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="12" name="fall" length="330" interval="33">
+        <animation id="13" name="fall" length="330" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3075,7 +3088,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="13" name="floor_floor_1_0_pre" length="462" interval="33" looping="false">
+        <animation id="14" name="floor_floor_1_0_pre" length="462" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3488,7 +3501,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="14" name="floor_floor_1_0_loop" length="1551" interval="33">
+        <animation id="15" name="floor_floor_1_0_loop" length="1551" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3542,7 +3555,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="15" name="floor_floor_2_0" length="726" interval="33" looping="false">
+        <animation id="16" name="floor_floor_2_0" length="726" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3596,7 +3609,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="16" name="floor_floor_1_1" length="726" interval="33">
+        <animation id="17" name="floor_floor_1_1" length="726" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3650,7 +3663,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="17" name="floor_floor_1_2" length="726" interval="33">
+        <animation id="18" name="floor_floor_1_2" length="726" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3704,7 +3717,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="18" name="floor_floor_1_-1" length="726" interval="33">
+        <animation id="19" name="floor_floor_1_-1" length="726" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3758,7 +3771,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="19" name="floor_floor_1_-2" length="726" interval="33">
+        <animation id="20" name="floor_floor_1_-2" length="726" interval="33">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -3812,7 +3825,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="20" name="floor_floor_1_0_pst" length="924" interval="33" looping="false">
+        <animation id="21" name="floor_floor_1_0_pst" length="924" interval="33" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
