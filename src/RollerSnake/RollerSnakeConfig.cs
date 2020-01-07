@@ -4,19 +4,25 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Klei.AI;
+using STRINGS;
 
 namespace RollerSnake
 {
     public class RollerSnakeConfig : IEntityConfig
     {
         public const string Id = "RollerSnake";
-        public const string Name = "Roller Snake";
+        public static string Name = UI.FormatAsLink("Roller Snake", Id.ToUpper());
         public const string PluralName = "Rolling Snakes";
         public const string Description = "A peculiar critter that moves by winding into a loop and rolling.";
         public const string BaseTraitId = "RollerSnakeBaseTrait";
 
+        public const string EggId = "RollerSnakeEgg";
+        public static string EggName = UI.FormatAsLink("Roller Snakelet Egg", Id.ToUpper());
+
         public const float Hitpoints = 25f;
         public const float Lifespan = 50f;
+        public const float FertilityCycles = 30f;
+        public const float IncubationCycles = 10f;
 
         public static int PenSizePerCreature = TUNING.CREATURES.SPACE_REQUIREMENTS.TIER3;
         public const float CaloriesPerCycle = 120000.0f;
@@ -27,6 +33,7 @@ namespace RollerSnake
         public const float MinPoopSizeInKg = 25.0f;
         public static float CaloriesPerKg = RollerSnakeTuning.STANDARD_CALORIES_PER_CYCLE / KgEatenPerCycle;
         public static float ProducedConversionRate = TUNING.CREATURES.CONVERSION_EFFICIENCY.BAD_1;
+        public const int EggSortOrder = 700;
 
         public static float ScaleGrowthTimeCycles = 6.0f;
         public static float GoldAmalganPerCycle = 10.0f;
@@ -59,7 +66,8 @@ namespace RollerSnake
         }
         public GameObject CreatePrefab()
         {
-            return CreateRollerSnake(Id, Name, Description, "rollersnake_kanim", false);
+            GameObject rollerSnake = CreateRollerSnake(Id, Name, Description, "rollersnake_kanim", false);
+            return EntityTemplates.ExtendEntityToFertileCreature(rollerSnake, EggId, EggName, Description, "rollersnakeegg_kanim", RollerSnakeTuning.EGG_MASS, BabyRollerSnakeConfig.Id, FertilityCycles, IncubationCycles, RollerSnakeTuning.EGG_CHANCES_BASE, EggSortOrder, true, false, true, 1f);
         }
 
         public void OnPrefabInit(GameObject prefab)
