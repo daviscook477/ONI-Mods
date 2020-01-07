@@ -1492,13 +1492,13 @@
                     <object folder="0" file="10" x="21.688101" y="65.176893" angle="0" scale_x="0.499301" scale_y="0.459842"/>
                 </key>
                 <key id="2" time="528">
-                    <object folder="0" file="10" x="21.688101" y="65.176893" angle="0" scale_x="0.499301" scale_y="0.459842"/>
+                    <object folder="0" file="17" x="21.688101" y="65.176893" angle="0" scale_x="0.499301" scale_y="0.459842"/>
                 </key>
                 <key id="3" time="594" spin="0">
-                    <object folder="0" file="10" x="18.889898" y="62.95094" angle="1.662185" scale_x="0.499301" scale_y="0.459842"/>
+                    <object folder="0" file="17" x="18.889898" y="62.95094" angle="1.662185" scale_x="0.499301" scale_y="0.459842"/>
                 </key>
                 <key id="4" time="792" spin="-1">
-                    <object folder="0" file="10" x="18.889898" y="62.95094" angle="1.662185" scale_x="0.499301" scale_y="0.459842"/>
+                    <object folder="0" file="17" x="18.889898" y="62.95094" angle="1.662185" scale_x="0.499301" scale_y="0.459842"/>
                 </key>
                 <key id="5" time="891" spin="0">
                     <object folder="0" file="10" x="21.688101" y="65.176893" angle="0" scale_x="0.499301" scale_y="0.459842"/>
