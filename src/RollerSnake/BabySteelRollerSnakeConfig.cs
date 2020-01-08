@@ -9,7 +9,7 @@ namespace RollerSnake
 {
     public class BabySteelRollerSnakeConfig : IEntityConfig
     {
-        public const string Id = "BabySteelRollerSnake";
+        public const string Id = "RollerSnakeSteelBaby";
         public static string Name = UI.FormatAsLink("Hardened Roller Snakelet", SteelRollerSnakeConfig.Id.ToUpper());
         public static string Description = $"The young of a {SteelRollerSnakeConfig.Name}. Smaller and has trouble rolling up into an actual loop. ";
 

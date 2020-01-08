@@ -1,0 +1,27 @@
+id: "RollerSnakeSpecies"
+title: STRINGS.CODEX.ROLLERSNAKE.TITLE
+
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKE.SPECIES_TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKE.SPECIES_SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1
+#-----------------------------
+  - contentLayout: Vertical
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKE.BODY.CONTAINER1
+          style: Body
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKE.BODY.CONTAINER2
+          style: Body
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKESTEEL.BODY.CONTAINER2
+          style: Body

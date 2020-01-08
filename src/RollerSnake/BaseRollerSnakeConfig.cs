@@ -16,7 +16,7 @@ namespace RollerSnake
         public const string OnDeathDropId = "Meat";
         public const int OnDeathDropCount = 1;
 
-        public const string SpeciesId = "RollerSnake";
+        public const string SpeciesId = "RollerSnakeSpecies";
 
         public const float DefaultTemperature = 320f;
         public const float TemperatureLethalLow = 258.15f;

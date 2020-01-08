@@ -1,0 +1,17 @@
+id: "RollerSnakeSteel"
+title: STRINGS.CODEX.ROLLERSNAKESTEEL.TITLE
+parentEntryID: "RollerSnakeSpecies"
+layoutPriority: 2
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    showBeforeGeneratedContent: true
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKESTEEL.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKESTEEL.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1

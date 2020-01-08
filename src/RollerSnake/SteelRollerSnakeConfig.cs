@@ -10,13 +10,13 @@ namespace RollerSnake
 {
     public class SteelRollerSnakeConfig : IEntityConfig
     {
-        public const string Id = "SteelRollerSnake";
+        public const string Id = "RollerSnakeSteel";
         public static string Name = UI.FormatAsLink("Hardened Roller Snake", Id.ToUpper());
         public const string PluralName = "Hardened Rolling Snakes";
         public const string Description = "A peculiar critter that moves by winding into a loop and rolling.";
-        public const string BaseTraitId = "SteelRollerSnakeBaseTrait";
+        public const string BaseTraitId = "RollerSnakeSteelBaseTrait";
 
-        public const string EggId = "SteelRollerSnakeEgg";
+        public const string EggId = "RollerSnakeSteelEgg";
         public static string EggName = UI.FormatAsLink("Hardened Roller Snakelet Egg", Id.ToUpper());
 
         public const float Hitpoints = 50f;

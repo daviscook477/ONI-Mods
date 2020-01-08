@@ -1,0 +1,17 @@
+id: "RollerSnake"
+title: STRINGS.CODEX.ROLLERSNAKE.TITLE
+parentEntryID: "RollerSnakeSpecies"
+layoutPriority: 1
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    showBeforeGeneratedContent: true
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKE.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.ROLLERSNAKE.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1
