@@ -25,7 +25,8 @@ namespace WorldGen
             }
         }
 
-        /* see https://github.com/Pholith/ONI-Mods/blob/master/src/Pholib/Utilities.cs */
+        /* see https://github.com/Pholith/ONI-Mods/blob/master/src/Pholib/Utilities.cs 
+         * used with permission from @Pholith */
         private static List<Type> alreadyLoaded = new List<Type>();
         /// <summary>
         /// Add strings and icon for a world

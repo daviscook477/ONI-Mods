@@ -31,6 +31,12 @@ subworldFiles:
 
 startSubworldName: subworlds/forest/ForestStart
 startingBaseTemplate: forestBase
+startingBasePositionHorizontal:
+  min: 0.5
+  max: 0.5
+startingBasePositionVertical:
+  min: 0.42
+  max: 0.42
 
 globalFeatureTemplates:
   feature_geyser_generic: 12
@@ -77,13 +83,6 @@ unknownCellsAllowedSubworlds:
     command: Replace
     subworldNames:
       - subworlds/magma/Bottom
-  - tagcommand: DistanceFromTag
-    tag: AtDepths
-    minDistance: 1
-    maxDistance: 1
-    command: Replace
-    subworldNames:
-      - subworlds/frozen/Frozen
   - tagcommand: AtTag
     tag: AtSurface
     command: Replace
@@ -96,3 +95,10 @@ unknownCellsAllowedSubworlds:
     command: Replace
     subworldNames:
       - subworlds/space/Surface
+  - tagcommand: DistanceFromTag
+    tag: AtSurface
+    minDistance: 2
+    maxDistance: 2
+    command: Replace
+    subworldNames:
+      - subworlds/frozen/Frozen
