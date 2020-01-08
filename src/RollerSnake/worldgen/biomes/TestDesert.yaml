@@ -6,28 +6,26 @@ TerrainBiomeLookupTable:
     Basic:
     - content: Oxygen
       bandSize: 1
+    - content: CarbonDioxide
+      bandSize: 1
     - content: Sand
-      bandSize: 0.8
+      bandSize: 1.4
     - content: Sandstone
       bandSize: 1.6
       overrides:
         massMultiplier: 4
     - content: IronOre
-      bandSize: 1
+      bandSize: 0.8
     - content: Fossil
-      bandSize: 0.4
-    - content: CarbonDioxide
-      bandSize: 1
+      bandSize: 0.2
     Rich:
     - content: Oxygen
       bandSize: 1
-    - content: IronOre
-      bandSize: 1
-    - content: Sand
+    - content: Carbon
       bandSize: 0.8
-    - content: Sandstone
-      bandSize: 1
-    - content: Fossil
+    - content: Sand
       bandSize: 1.2
-    - content: CarbonDioxide
-      bandSize: 1
+    - content: Sandstone
+      bandSize: 1.4
+    - content: Fossil
+      bandSize: 0.6

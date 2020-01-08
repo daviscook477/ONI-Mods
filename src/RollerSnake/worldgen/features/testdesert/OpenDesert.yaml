@@ -3,7 +3,7 @@ tags:
 shape: ShortWide
 borders:
   - 1
-  - 1
+  - 2
 blobSize:
   min: 5
   max: 13
@@ -17,9 +17,13 @@ ElementChoiceGroups:
     selectionMethod: WeightedResample
     choices:
       - element: Sandstone
-        weight: 2
+        weight: 4
+      - element: Sandstone
+        weight: 1
   RoomBorderChoices1:
     selectionMethod: WeightedResample
     choices:
       - element: IronOre
+        weight: 1
+      - element: Fossil
         weight: 1

@@ -57,7 +57,7 @@ namespace CactusFruit
                 var field = Traverse.Create(__instance).Field("carePackages");
                 var list = field.GetValue<CarePackageInfo[]>().ToList();
 
-                list.Add(new CarePackageInfo(CactusFruitConfig.SeedId, 1f, () => GameClock.Instance.GetCycle() >= 48));
+                list.Add(new CarePackageInfo(CactusFruitConfig.SeedId, 1f, () => true));
 
                 field.SetValue(list.ToArray());
             }

@@ -15,10 +15,10 @@ ElementChoiceGroups:
   RoomCenterElements:
     selectionMethod: WeightedResample
     choices:
-      - element: CrudeOil
-        weight: 1
-      - element: CarbonDioxide
+      - element: Oxygen
         weight: 3
+      - element: CarbonDioxide
+        weight: 1
   RoomBorderChoices0:
     selectionMethod: WeightedResample
     choices:

@@ -65,6 +65,10 @@
     <Compile Include="RollerSnakePatches.cs" />
     <Compile Include="RollerSnakeTuning.cs" />
     <Compile Include="SteelRollerSnakeConfig.cs" />
+    <Compile Include="WorldGenPatches.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Asteroid_desert_oasis.dds" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

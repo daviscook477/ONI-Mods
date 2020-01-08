@@ -8,7 +8,6 @@ minChildCount: 4
 sampleBehaviour: PoissonDisk
 features:
   - type: features/testdesert/OpenDesert
-  - type: features/testdesert/OilWell
   - type: features/testdesert/OilPocket
 biomes:
   - name: biomes/TestDesert/Rich
@@ -18,13 +17,28 @@ biomes:
     tags:
       - CactusFruit
       - RollerSnake
+      - OilFloater
       - CactusFruitSeed
+      - LightBug
 tags:
   - IgnoreCaveOverride
 pointsOfInterest:
-  oasis_a:
-    - poi_testdesert_oasis
-  oasis_b:
+  geysers_a:
+    - poi_oilpockets_geyser_a
+    - poi_oilpockets_geyser_b
+    - poi_oilpockets_geyser_c
+  geysers_b:
+    - poi_oilpockets_geyser_d
+    - poi_oilpockets_geyser_e
+    - poi_oilpockets_geyser_f
+  geysers_c:
+    - poi_oilpockets_geyser_a
+    - poi_oilpockets_geyser_b
+    - poi_oilpockets_geyser_c
+    - poi_oilpockets_geyser_d
+    - poi_oilpockets_geyser_e
+    - poi_oilpockets_geyser_f
+  geysers_d:
     - poi_testdesert_oasis_geyser
   ruins_a:
     - poi_testdesert_frag_reservoir

@@ -23,6 +23,22 @@ namespace RollerSnake
                     0.05f / RollerSnakeTuning.STANDARD_CALORIES_PER_CYCLE));
         }
 
+        [HarmonyPatch(typeof(Immigration))]
+        [HarmonyPatch("ConfigureCarePackages")]
+        public static class Immigration_ConfigureCarePackages_Patch
+        {
+            public static void Postfix(ref Immigration __instance)
+            {
+                var field = Traverse.Create(__instance).Field("carePackages");
+                var list = field.GetValue<CarePackageInfo[]>().ToList();
+
+                list.Add(new CarePackageInfo(BabyRollerSnakeConfig.Id, 1f, () => true));
+                list.Add(new CarePackageInfo(RollerSnakeConfig.EggId, 3f, () => true));
+
+                field.SetValue(list.ToArray());
+            }
+        }
+
         [HarmonyPatch(typeof(CodexEntryGenerator), "GenerateCreatureEntries")]
         public class CodexEntryGenerator_GenerateCreatureEntries_Patch
         {

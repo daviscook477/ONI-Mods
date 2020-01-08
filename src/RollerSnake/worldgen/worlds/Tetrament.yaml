@@ -1,8 +1,8 @@
-name: Bob
-description: Boob
-spriteName: Asteroid_badlands
-coordinatePrefix: BAD-D
-difficulty: 4
+name: STRINGS.WORLDS.TETRAMENT.NAME
+description: STRINGS.WORLDS.TETRAMENT.DESCRIPTION
+spriteName: Asteroid_desert_oasis
+coordinatePrefix: DSRT-A
+difficulty: 2
 tier: 2
 
 worldsize:
@@ -13,29 +13,24 @@ layoutMethod: PowerTree # Note: We need to add weights to the items in the layer
 
 # List all the zone files to load
 subworldFiles:
-  - name: subworlds/sandstone/SandstoneStart
-  - name: subworlds/sandstone/SandstoneMiniMetal
-  - name: subworlds/sandstone/SandstoneMiniWater
-  - name: subworlds/sandstone/Sandstone
+  - name: subworlds/forest/ForestStart
+  - name: subworlds/forest/ForestMiniWater
+    weight: 0.5
+  - name: subworlds/forest/ForestMiniOxy
+  - name: subworlds/forest/ForestMiniMetal
+  - name: subworlds/forest/Forest
+  - name: subworlds/marsh/HotMarsh
   - name: subworlds/jungle/Jungle
-  - name: subworlds/jungle/JungleSolid
   - name: subworlds/Impenetrable
   - name: subworlds/magma/Bottom
-  - name: subworlds/oil/OilPockets
+  - name: subworlds/frozen/Frozen
   - name: subworlds/space/Space
   - name: subworlds/space/Surface
-  - name: subworlds/rust/Rust
-  - name: subworlds/barren/BarrenGranite
+  - name: subworlds/ocean/Ocean
   - name: subworlds/testdesert/TestDesert
 
-startSubworldName: subworlds/sandstone/SandstoneStart
-startingBaseTemplate: sandstoneBase
-startingBasePositionHorizontal:
-  min: 0.4
-  max: 0.5
-startingBasePositionVertical:
-  min: 0.45
-  max: 0.55
+startSubworldName: subworlds/forest/ForestStart
+startingBaseTemplate: forestBase
 
 globalFeatureTemplates:
   feature_geyser_generic: 12
@@ -51,38 +46,32 @@ unknownCellsAllowedSubworlds:
   - tagcommand: Default
     command: Replace
     subworldNames:
-      - subworlds/sandstone/SandstoneStart
+      - subworlds/forest/ForestStart
   - tagcommand: DistanceFromTag
     tag: AtStart
     minDistance: 1
-    maxDistance: 2
+    maxDistance: 1
     command: Replace
     subworldNames:
-      - subworlds/barren/BarrenGranite
-      - subworlds/jungle/Jungle
-      - subworlds/rust/Rust
-      - subworlds/sandstone/SandstoneMiniMetal
-      - subworlds/sandstone/SandstoneMiniWater
+      - subworlds/forest/ForestMiniOxy
+      - subworlds/forest/ForestMiniWater
+      - subworlds/forest/ForestMiniMetal
   - tagcommand: DistanceFromTag
     tag: AtStart
-    minDistance: 3
+    minDistance: 2
     maxDistance: 3
     command: Replace
     subworldNames:
-      - subworlds/barren/BarrenGranite
       - subworlds/jungle/Jungle
       - subworlds/testdesert/TestDesert
-      - subworlds/rust/Rust
   - tagcommand: DistanceFromTag
     tag: AtStart
     minDistance: 4
     maxDistance: 999
     command: Replace
     subworldNames:
-      - subworlds/barren/BarrenGranite
-      - subworlds/jungle/Jungle
-      - subworlds/testdesert/TestDesert
-      - subworlds/rust/Rust
+      - subworlds/ocean/Ocean
+      - subworlds/marsh/HotMarsh
   - tagcommand: AtTag
     tag: AtDepths
     command: Replace
@@ -91,11 +80,10 @@ unknownCellsAllowedSubworlds:
   - tagcommand: DistanceFromTag
     tag: AtDepths
     minDistance: 1
-    maxDistance: 2
+    maxDistance: 1
     command: Replace
     subworldNames:
-      - subworlds/barren/BarrenGranite
-      - subworlds/oil/OilPockets
+      - subworlds/frozen/Frozen
   - tagcommand: AtTag
     tag: AtSurface
     command: Replace
@@ -104,7 +92,7 @@ unknownCellsAllowedSubworlds:
   - tagcommand: DistanceFromTag
     tag: AtSurface
     minDistance: 1
-    maxDistance: 2
+    maxDistance: 1
     command: Replace
     subworldNames:
       - subworlds/space/Surface
