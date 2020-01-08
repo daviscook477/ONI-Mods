@@ -63,7 +63,6 @@ namespace RollerSnake
                 .Add(new BaggedStates.Def(), true)
                 .Add(new FallStates.Def(), true)
                 .Add(new StunnedStates.Def(), true)
-                .Add(new DrowningStates.Def(), true)
                 .Add(new DebugGoToStates.Def(), true)
                 .Add(new FleeStates.Def(), true)
                 .Add(new AttackStates.Def(), condition).PushInterruptGroup()

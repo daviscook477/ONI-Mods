@@ -33,6 +33,7 @@ namespace RollerSnake
         public const float MinPoopSizeInKg = 25.0f;
         public static float CaloriesPerKg = RollerSnakeTuning.STANDARD_CALORIES_PER_CYCLE / KgEatenPerCycle;
         public static float ProducedConversionRate = TUNING.CREATURES.CONVERSION_EFFICIENCY.BAD_1;
+        public const int EggSortOrder = 700;
 
         public static float ScaleGrowthTimeCycles = 6.0f;
         public static float SteelPerCycle = 10.0f;
@@ -65,7 +66,8 @@ namespace RollerSnake
         }
         public GameObject CreatePrefab()
         {
-            return CreateSteelRollerSnake(Id, Name, Description, "rollersnake_kanim", false);
+            GameObject rollerSnake = CreateSteelRollerSnake(Id, Name, Description, "rollersnake_kanim", false);
+            return EntityTemplates.ExtendEntityToFertileCreature(rollerSnake, EggId, EggName, Description, "rollersnakeegg_kanim", RollerSnakeTuning.EGG_MASS, BabySteelRollerSnakeConfig.Id, FertilityCycles, IncubationCycles, RollerSnakeTuning.EGG_CHANCES_BASE, EggSortOrder, true, false, true, 1f);
         }
 
         public void OnPrefabInit(GameObject prefab)

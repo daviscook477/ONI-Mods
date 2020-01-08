@@ -2692,6 +2692,7 @@
                     <object_ref id="6" timeline="6" key="2" z_index="6"/>
                     <object_ref id="7" timeline="7" key="2" z_index="7"/>
                     <object_ref id="8" timeline="8" key="2" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="2" z_index="9"/>
                 </key>
             </mainline>
             <timeline id="0" name="scale_0_0">
@@ -2780,6 +2781,9 @@
                     <object folder="0" file="18" x="-39.534815" y="40.499483" angle="0"/>
                 </key>
                 <key id="1" time="264" spin="0">
+                    <object folder="0" file="18" x="-39.534815" y="40.499483" angle="0"/>
+                </key>
+                <key id="2" time="297" spin="0">
                     <object folder="0" file="18" x="-39.534815" y="40.499483" angle="0"/>
                 </key>
             </timeline>
