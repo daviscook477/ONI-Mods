@@ -11,13 +11,25 @@ namespace RollerSnake
 {
     public class RollerSnakePatches
     {
+
+        public static void OnLoad()
+        {
+            TUNING.CREATURES.EGG_CHANCE_MODIFIERS.MODIFIER_CREATORS.Add(
+                Traverse.Create(typeof(TUNING.CREATURES.EGG_CHANCE_MODIFIERS)).Method("CreateDietaryModifier", new[] { typeof(string), typeof(Tag), typeof(Tag), typeof(float) })
+                .GetValue<System.Action>(
+                    SteelRollerSnakeConfig.Id,
+                    SteelRollerSnakeConfig.EggId.ToTag(),
+                    SimHashes.Obsidian.CreateTag(),
+                    0.05f / RollerSnakeTuning.STANDARD_CALORIES_PER_CYCLE));
+        }
+
         [HarmonyPatch(typeof(CodexEntryGenerator), "GenerateCreatureEntries")]
         public class CodexEntryGenerator_GenerateCreatureEntries_Patch
         {
             private static void Postfix(Dictionary<string, CodexEntry> __result)
             {
-                Strings.Add($"STRINGS.CREATURES.FAMILY.{RollerSnakeConfig.Id.ToUpperInvariant()}", RollerSnakeConfig.Name);
-                Strings.Add($"STRINGS.CREATURES.FAMILY_PLURAL.{RollerSnakeConfig.Id.ToUpperInvariant()}", RollerSnakeConfig.PluralName);
+                Strings.Add($"STRINGS.CREATURES.FAMILY.{BaseRollerSnakeConfig.SpeciesId.ToUpperInvariant()}", RollerSnakeConfig.Name);
+                Strings.Add($"STRINGS.CREATURES.FAMILY_PLURAL.{BaseRollerSnakeConfig.SpeciesId.ToUpperInvariant()}", RollerSnakeConfig.PluralName);
                 Action(BaseRollerSnakeConfig.SpeciesId, RollerSnakeConfig.PluralName, __result);
             }
         }

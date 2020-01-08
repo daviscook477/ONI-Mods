@@ -67,7 +67,7 @@ namespace RollerSnake
         public GameObject CreatePrefab()
         {
             GameObject rollerSnake = CreateSteelRollerSnake(Id, Name, Description, "rollersnake_kanim", false);
-            return EntityTemplates.ExtendEntityToFertileCreature(rollerSnake, EggId, EggName, Description, "rollersnakeegg_kanim", RollerSnakeTuning.EGG_MASS, BabySteelRollerSnakeConfig.Id, FertilityCycles, IncubationCycles, RollerSnakeTuning.EGG_CHANCES_BASE, EggSortOrder, true, false, true, 1f);
+            return EntityTemplates.ExtendEntityToFertileCreature(rollerSnake, EggId, EggName, Description, "rollersnakeegg_kanim", RollerSnakeTuning.EGG_MASS, BabySteelRollerSnakeConfig.Id, FertilityCycles, IncubationCycles, RollerSnakeTuning.EGG_CHANCES_STEEL, EggSortOrder, true, false, true, 1f);
         }
 
         public void OnPrefabInit(GameObject prefab)

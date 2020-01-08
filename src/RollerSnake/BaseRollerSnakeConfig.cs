@@ -86,10 +86,11 @@ namespace RollerSnake
                 {
                     SimHashes.Sand.CreateTag(),
                     SimHashes.SandStone.CreateTag(),
-                    SimHashes.Clay.CreateTag(),
                     SimHashes.CrushedRock.CreateTag(),
-                    SimHashes.Dirt.CreateTag(),
-                    SimHashes.SedimentaryRock.CreateTag()
+                    SimHashes.SedimentaryRock.CreateTag(),
+                    SimHashes.IgneousRock.CreateTag(),
+                    SimHashes.Obsidian.CreateTag(),
+                    SimHashes.Granite.CreateTag()
                 }, poopTag, caloriesPerKg, producedConversionRate, diseaseId, diseasePerKgProduced, false, false)
             };
         }
