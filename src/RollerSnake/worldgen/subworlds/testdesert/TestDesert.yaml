@@ -1,0 +1,37 @@
+biomeNoise: noise/subworldTestDesert
+temperatureRange: HumanHot
+density:
+  min: 20
+  max: 25
+avoidRadius: 40.0
+minChildCount: 4
+sampleBehaviour: PoissonDisk
+features:
+  - type: features/testdesert/OpenDesert
+  - type: features/testdesert/OilWell
+  - type: features/testdesert/OilPocket
+biomes:
+  - name: biomes/TestDesert/Rich
+    weight: 2
+  - name: biomes/TestDesert/Basic
+    weight: 5
+    tags:
+      - CactusFruit
+      - RollerSnake
+      - CactusFruitSeed
+tags:
+  - IgnoreCaveOverride
+pointsOfInterest:
+  oasis_a:
+    - poi_testdesert_oasis
+  oasis_b:
+    - poi_testdesert_oasis_geyser
+  ruins_a:
+    - poi_testdesert_frag_reservoir
+    - poi_testdesert_snake_room
+  ruins_b:
+    - poi_testdesert_frag_reservoir
+    - poi_testdesert_snake_room
+  spiral_a:
+    - poi_testdesert_fossil_spiral
+zoneType: Sandstone

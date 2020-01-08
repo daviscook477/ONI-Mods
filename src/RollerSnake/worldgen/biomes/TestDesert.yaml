@@ -1,0 +1,33 @@
+TerrainBiomeLookupTable:
+  # keys to remove from in-memory structure when this file is loaded
+  remove: []
+  # elements to add from in-memory structure when this file is loaded
+  add:
+    Basic:
+    - content: Oxygen
+      bandSize: 1
+    - content: Sand
+      bandSize: 0.8
+    - content: Sandstone
+      bandSize: 1.6
+      overrides:
+        massMultiplier: 4
+    - content: IronOre
+      bandSize: 1
+    - content: Fossil
+      bandSize: 0.4
+    - content: CarbonDioxide
+      bandSize: 1
+    Rich:
+    - content: Oxygen
+      bandSize: 1
+    - content: IronOre
+      bandSize: 1
+    - content: Sand
+      bandSize: 0.8
+    - content: Sandstone
+      bandSize: 1
+    - content: Fossil
+      bandSize: 1.2
+    - content: CarbonDioxide
+      bandSize: 1

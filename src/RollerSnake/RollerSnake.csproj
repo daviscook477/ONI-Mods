@@ -54,6 +54,12 @@
     <Compile Include="BabyRollerSnakeConfig.cs" />
     <Compile Include="BabySteelRollerSnakeConfig.cs" />
     <Compile Include="BaseRollerSnakeConfig.cs" />
+    <Compile Include="CactusFleshConfig.cs" />
+    <Compile Include="CactusFleshGrilledConfig.cs" />
+    <Compile Include="CactusFlowerConfig.cs" />
+    <Compile Include="CactusFlowerSaladConfig.cs" />
+    <Compile Include="CactusFruitConfig.cs" />
+    <Compile Include="CactusFruitPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RollerSnakeConfig.cs" />
     <Compile Include="RollerSnakePatches.cs" />
@@ -65,11 +71,15 @@
     <PostBuildEvent>mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST "$(ProjectDir)\anim" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim")
 IF EXIST "$(ProjectDir)\codex" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex")
+IF EXIST "$(ProjectDir)\worldgen" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen")
+IF EXIST "$(ProjectDir)\templates" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates")
 copy "$(TargetPath)" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST  "$(TargetPath)*.json" ( copy "$(TargetPath)*.json" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(TargetPath)*.txt" ( copy "$(TargetPath)*.txt" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(ProjectDir)\anim" ( xcopy "$(ProjectDir)\anim" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim" /S /Y )
 IF EXIST  "$(ProjectDir)\codex" ( xcopy "$(ProjectDir)\codex" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex" /S /Y )
+IF EXIST  "$(ProjectDir)\worldgen" ( xcopy "$(ProjectDir)\worldgen" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen" /S /Y )
+IF EXIST  "$(ProjectDir)\templates" ( xcopy "$(ProjectDir)\templates" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates" /S /Y )
 IF EXIST  "$(ProjectDir)\preview.png" ( copy "$(ProjectDir)\preview.png" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\preview.png" )</PostBuildEvent>
   </PropertyGroup>
 </Project>

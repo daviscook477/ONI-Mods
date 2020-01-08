@@ -1,0 +1,37 @@
+tags:
+  - AllowExceedNodeBorders
+shape: ShortWide
+borders:
+  - 1
+  - 1
+blobSize:
+  min: 8
+  max: 12
+ElementChoiceGroups:
+  RoomCenterElements:
+    selectionMethod: WeightedResample
+    choices:
+      - element: CrudeOil
+        weight: 2.5
+        overrides:
+          massOverride: 700
+      - element: CarbonDioxide
+        weight: 1.5
+        overrides:
+          massOverride: 1
+  RoomBorderChoices0:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Fossil
+        weight: 1
+      - element: Sandstone
+        weight: 7
+      - element: IronOre
+        weight: 2
+  RoomBorderChoices1:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Sandstone
+        weight: 3
+      - element: Sand
+        weight: 1

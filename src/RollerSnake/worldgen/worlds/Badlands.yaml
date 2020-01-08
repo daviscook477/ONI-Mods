@@ -1,0 +1,110 @@
+name: Bob
+description: Boob
+spriteName: Asteroid_badlands
+coordinatePrefix: BAD-D
+difficulty: 4
+tier: 2
+
+worldsize:
+  X: 256
+  Y: 384
+layoutMethod: PowerTree # Note: We need to add weights to the items in the layer
+#                                in order to use this.
+
+# List all the zone files to load
+subworldFiles:
+  - name: subworlds/sandstone/SandstoneStart
+  - name: subworlds/sandstone/SandstoneMiniMetal
+  - name: subworlds/sandstone/SandstoneMiniWater
+  - name: subworlds/sandstone/Sandstone
+  - name: subworlds/jungle/Jungle
+  - name: subworlds/jungle/JungleSolid
+  - name: subworlds/Impenetrable
+  - name: subworlds/magma/Bottom
+  - name: subworlds/oil/OilPockets
+  - name: subworlds/space/Space
+  - name: subworlds/space/Surface
+  - name: subworlds/rust/Rust
+  - name: subworlds/barren/BarrenGranite
+  - name: subworlds/testdesert/TestDesert
+
+startSubworldName: subworlds/sandstone/SandstoneStart
+startingBaseTemplate: sandstoneBase
+startingBasePositionHorizontal:
+  min: 0.4
+  max: 0.5
+startingBasePositionVertical:
+  min: 0.45
+  max: 0.55
+
+globalFeatureTemplates:
+  feature_geyser_generic: 12
+
+# globalFeatures:
+#   sand_geode: 30
+
+# Rivers:
+#   - River
+
+# When we are converting unknown cells, this will give us the options, processed in this order, the effects are cumlative
+unknownCellsAllowedSubworlds:
+  - tagcommand: Default
+    command: Replace
+    subworldNames:
+      - subworlds/sandstone/SandstoneStart
+  - tagcommand: DistanceFromTag
+    tag: AtStart
+    minDistance: 1
+    maxDistance: 2
+    command: Replace
+    subworldNames:
+      - subworlds/barren/BarrenGranite
+      - subworlds/jungle/Jungle
+      - subworlds/rust/Rust
+      - subworlds/sandstone/SandstoneMiniMetal
+      - subworlds/sandstone/SandstoneMiniWater
+  - tagcommand: DistanceFromTag
+    tag: AtStart
+    minDistance: 3
+    maxDistance: 3
+    command: Replace
+    subworldNames:
+      - subworlds/barren/BarrenGranite
+      - subworlds/jungle/Jungle
+      - subworlds/testdesert/TestDesert
+      - subworlds/rust/Rust
+  - tagcommand: DistanceFromTag
+    tag: AtStart
+    minDistance: 4
+    maxDistance: 999
+    command: Replace
+    subworldNames:
+      - subworlds/barren/BarrenGranite
+      - subworlds/jungle/Jungle
+      - subworlds/testdesert/TestDesert
+      - subworlds/rust/Rust
+  - tagcommand: AtTag
+    tag: AtDepths
+    command: Replace
+    subworldNames:
+      - subworlds/magma/Bottom
+  - tagcommand: DistanceFromTag
+    tag: AtDepths
+    minDistance: 1
+    maxDistance: 2
+    command: Replace
+    subworldNames:
+      - subworlds/barren/BarrenGranite
+      - subworlds/oil/OilPockets
+  - tagcommand: AtTag
+    tag: AtSurface
+    command: Replace
+    subworldNames:
+      - subworlds/space/Space
+  - tagcommand: DistanceFromTag
+    tag: AtSurface
+    minDistance: 1
+    maxDistance: 2
+    command: Replace
+    subworldNames:
+      - subworlds/space/Surface

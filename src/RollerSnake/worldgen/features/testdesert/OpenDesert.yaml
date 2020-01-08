@@ -1,0 +1,25 @@
+tags:
+  - AllowExceedNodeBorders
+shape: ShortWide
+borders:
+  - 1
+  - 1
+blobSize:
+  min: 5
+  max: 13
+ElementChoiceGroups:
+  RoomCenterElements:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Oxygen
+        weight: 2
+  RoomBorderChoices0:
+    selectionMethod: WeightedResample
+    choices:
+      - element: Sandstone
+        weight: 2
+  RoomBorderChoices1:
+    selectionMethod: WeightedResample
+    choices:
+      - element: IronOre
+        weight: 1
