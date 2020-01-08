@@ -20,6 +20,21 @@
         <file id="16" name="rolled_0.png" width="166" height="136" pivot_x="0.458248" pivot_y="0.356511"/>
         <file id="17" name="ui_0.png" width="166" height="136" pivot_x="0" pivot_y="1"/>
         <file id="18" name="blu_ui_0.png" width="166" height="136" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="blu_segment_down_0.png" width="80" height="80" pivot_x="0.140406" pivot_y="0.559809"/>
+        <file id="20" name="blu_tail_0.png" width="70" height="73" pivot_x="0.278075" pivot_y="0.793103"/>
+        <file id="21" name="blu_tail_1.png" width="70" height="73" pivot_x="0.14245" pivot_y="0.456091"/>
+        <file id="22" name="blu_tail_2.png" width="70" height="73" pivot_x="0.15528" pivot_y="0.253061"/>
+        <file id="23" name="blu_segment_down_2.png" width="80" height="80" pivot_x="0.334228" pivot_y="0.694938"/>
+        <file id="24" name="blu_segment_down_1.png" width="80" height="80" pivot_x="0.149766" pivot_y="0.614035"/>
+        <file id="25" name="blu_scale_0_0.png" width="49" height="70" pivot_x="0.621622" pivot_y="0.127923"/>
+        <file id="26" name="blu_head_0.png" width="70" height="62" pivot_x="0.131148" pivot_y="0.219573"/>
+        <file id="27" name="blu_mouth_0.png" width="60" height="39" pivot_x="0.241453" pivot_y="0.236975"/>
+        <file id="28" name="blu_mouth_1.png" width="60" height="39" pivot_x="0.263844" pivot_y="0.210256"/>
+        <file id="29" name="blu_jaw_0.png" width="40" height="19" pivot_x="0.087537" pivot_y="0.517028"/>
+        <file id="30" name="blu_jaw_1.png" width="60" height="40" pivot_x="0.225296" pivot_y="0.529501"/>
+        <file id="31" name="blu_eye_0.png" width="40" height="31" pivot_x="0.510622" pivot_y="0.547739"/>
+        <file id="32" name="blu_eye_1.png" width="40" height="31" pivot_x="0.510622" pivot_y="0.547739"/>
+        <file id="33" name="blu_rolled_0.png" width="166" height="136" pivot_x="0.458248" pivot_y="0.356511"/>
     </folder>
     <entity id="0" name="babyrollersnake">
         <animation id="0" name="idle_loop" length="1980" interval="33">
