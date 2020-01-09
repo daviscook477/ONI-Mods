@@ -9,7 +9,7 @@ namespace AquaBulb
 
         public static string Name = UI.FormatAsLink("Aqua Bulb", Id.ToUpper());
 
-        public static string Description = $"This plant survives through long periods of drought by storing water in a large bulb in its middle. It protects its water bulb with a thick, tough membrane surrounding it.";
+        public static string Description = $"This plant survives through long periods of drought by storing water in a large bulb in its middle. It protects its water bulb with a thick, tough membrane surrounding it. The {UI.FormatAsLink("Rock Crusher", RockCrusherConfig.ID.ToUpper())} can be used to extract the water within.";
 
         public const float DefaultTemperature = 320f;
 

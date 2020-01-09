@@ -10,7 +10,7 @@ namespace AquaBulb
 
         public static string Name = UI.FormatAsLink("Aqua Bulb Sack", Id.ToUpper());
 
-        public static string Description = $"The bulbous, water-filled membrane of a {AquaBulbConfig.Name}. The water within can be used by Duplicants once the membrane is ruptured.";
+        public static string Description = $"The bulbous, water-filled membrane of a {AquaBulbConfig.Name}. The water within can be used by Duplicants once the membrane is ruptured. The {UI.FormatAsLink("Rock Crusher", RockCrusherConfig.ID.ToUpper())} can be used to extract the water within.";
 
         public GameObject CreatePrefab()
         {
