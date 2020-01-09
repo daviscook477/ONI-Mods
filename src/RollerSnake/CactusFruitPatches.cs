@@ -61,6 +61,7 @@ namespace CactusFruit
                 var list = field.GetValue<CarePackageInfo[]>().ToList();
 
                 list.Add(new CarePackageInfo(CactusFruitConfig.SeedId, 1f, () => true));
+                list.Add(new CarePackageInfo(CactusFlowerSaladConfig.Id, 3f, () => GameClock.Instance.GetCycle() >= 48));
 
                 field.SetValue(list.ToArray());
             }
