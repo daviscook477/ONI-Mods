@@ -45,7 +45,6 @@ namespace RollerSnake
             placedEntity.AddOrGetDef<CreatureFallMonitor.Def>();
             placedEntity.AddOrGetDef<ThreatMonitor.Def>().fleethresholdState = Health.HealthState.Dead;
             placedEntity.AddWeapon(1f, 1f, AttackProperties.DamageType.Standard, AttackProperties.TargetType.Single, 1, 0.0f);
-            placedEntity.AddOrGetDef<RanchableMonitor.Def>();
             EntityTemplates.CreateAndRegisterBaggedCreature(placedEntity, true, true, false);
             KPrefabID component = placedEntity.GetComponent<KPrefabID>();
             component.AddTag(GameTags.Creatures.Walker, false);
