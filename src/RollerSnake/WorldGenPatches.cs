@@ -17,7 +17,7 @@ namespace WorldGen
         public class Db_Initialize_Patch
         {
             public static LocString Name = "Tetrament";
-            public static LocString Description = "A location with moderately hot temperatures, Tetrament is home to large expanses of hot, dry desert in addition to its lush forests, swamps, and jungles.\n\n<smallcaps>Tetrament is an ideal location for Duplicant life. It quite different from other locations but not more challenging.</smallcaps>\n\n";
+            public static LocString Description = "A location with moderately hot temperatures, Tetrament is home to large expanses of hot, dry desert in addition to its lush forests, swamps, and jungles.\n\n<smallcaps>Tetrament is an ideal location for Duplicant life. Its environment is quite different from other locations but is not any more challenging.</smallcaps>\n\n";
 
             public static void Prefix()
             {
