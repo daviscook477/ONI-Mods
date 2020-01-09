@@ -9,7 +9,7 @@ namespace AquaBulb
 
         public static string Name = UI.FormatAsLink("Aqua Bulb", Id.ToUpper());
 
-        public static string Description = $"Aqua Bulbs are incapable of propagating but can be harvested for a single, water-filled sack. The {UI.FormatAsLink("Rock Crusher", RockCrusherConfig.ID.ToUpper())} can be used to extract the water within it.";
+        public static string Description = $"Aqua Bulbs are incapable of propagating but can be harvested for a single, {UI.FormatAsLink("Water", "WATER")}-filled sack. The {UI.FormatAsLink("Rock Crusher", RockCrusherConfig.ID.ToUpper())} can be used to extract the water within it.";
 
         public const float DefaultTemperature = 320f;
 
