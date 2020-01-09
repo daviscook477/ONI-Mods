@@ -72,6 +72,7 @@ namespace RollerSnake
                 .Add(new CallAdultStates.Def(), true).PopInterruptGroup()
                 .Add(new IdleStates.Def(), true);
             EntityTemplates.AddCreatureBrain(placedEntity, chore_table, SpeciesId, symbolOverridePrefix);
+            placedEntity.AddTag(GameTags.Amphibious);
             return placedEntity;
         }
 

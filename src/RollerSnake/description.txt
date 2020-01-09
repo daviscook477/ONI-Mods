@@ -1,0 +1,73 @@
+[h1]Desert Biome[/h1]
+
+Adds a new biome to the game called the [b]Desert[/b] and a new asteroid called [b]Tetrament[/b] that has the new biome.
+
+[h1]New Critter[/h1]
+
+Living in the [b]Desert[/b] is a peculiar type of snake that moves around by rolling up into a loop and rolling around. [b]Roller Snakes[/b] are a new species of critter introduced in the [b]Desert Biome[/b]. They come in two variants with adult and baby versions.
+
+[list]
+[*] [b]Roller Snakes[/b] are the default type of [b]Roller Snakes[/b] and have a distinct red color.
+[*] [b]Hardened Roller Snakes[/b] are a morph of [b]Roller Snakes[/b] that are more likely to appear when a [b]Roller Snake[/b] eats [b]Obsidian[/b]. They have a distinct blue color.
+[/list]
+
+[b]Roller Snakes[/b] eat a diet of [b]Sand[/b] and [b]Raw Minerals[/b]. They excrete [b]Coal[/b] at a somewhat less efficient rate than [b]Hatches[/b]. However, [b]Roller Snakes[/b] have a metal rich rattle that may be sheared off at a [b]Shearing Staion[/b] like [b]Dreckos[/b]. They regrow this rattle every couple cycles, providing a consistent source of metal.
+
+[list]
+[*] The default [b]Roller Snakes[/b] have a rattle formed of [b]Gold Amalgam[/b] and can only grow their rattle in [b]Oxygen[/b].
+[*] The [b]Hardened Roller Snakes[/b] have a rattle formed of [b]Steel[/b] and can only grow their rattle in [b]Carbon Dioxide[/b].
+[/list]
+
+[h1]New Plants[/h1]
+
+[list]
+[*] The [b]Prickly Pear[/b] is a new fruiting cactus plant that produces both an edible flesh and flower each time it is harvested. Although it requires more [b]Water[/b] to grow than a [b]Bristle Blossom[/b] its heat tolerance makes it much easier to feed from a [b]Steam Geyser[/b] or [b]Hot Water Geyser[/b] than alternate food options. Investigate both the [b]Electric Grill[/b] and [b]Gas Range[/b] to learn of the two new meals that can be created with the food of the [b]Prickly Pear[/b]. The tooltip for the [b]Prickly Pear[/b] says it only produces cactus flesh; this is a bug - it actually produces both the cactus flesh and cactus flower which is about 2x the kcal of just the cactus flesh that is shown in the tooltip.
+[*] The [b]Aqua Bulb[/b] is a new foragable plant that provides one-time [b]Water[/b]. It is similar to the one-time food of the [b]Muckroot[/b] and [b]Hexalent[/b]. In order to extract the [b]Water[/b] from the [b]Aqua Bulb[/b] your Duplicants must use a [b]Rock Crusher[/b] since its membrane is too thick to be broken with conventional means.
+[/list]
+
+[h1]New Biome[/h1]
+
+The [b]Desert[/b] biome brings an interesting mix of critters, plants, elements, and geysers to your world. In addition to bringing 1 new critter and 2 new plants, the [b]Desert[/b] biome has a unique mix of elements. It is made up of the following critters, plants, elements, and geysers. Explore the [b]Desert[/b] in game to figure out in what proportion each is present:
+
+[list]
+[*] Roller Snake
+[*] Slickster
+[*] Shine Bug
+[*] Prickly Pear
+[*] Aqua Bulb
+[*] Sand
+[*] Sandstone
+[*] Oxygen
+[*] Carbon Dioxide
+[*] Iron Ore
+[*] Coal
+[*] Fossil
+[*] Crude Oil
+[*] Steam Geyser
+[*] Oil Reservoir
+[/list]
+
+There are also some unique points of interest for your Duplicants to discover in the [b]Desert[/b].
+
+[h1]New World[/h1]
+
+The asteroid [b]Tetrament[/b] is the new asteroid added by this mod where you can play with the [b]Desert[/b] biome. It is not intended to be a challenging map - instead it mostly serves to provide variety and a slightly different play experience than typical.
+
+[b]Tetrament[/b]'s in-game description is: "A location with moderately hot temperatures, Tetrament is home to large expanses of hot, dry desert in addition to its lush forests, swamps, and jungles. Tetrament is an ideal location for Duplicant life. Its environment is quite different from other locations but is not any more challenging."
+
+The biomes that you can find on [b]Tetrament[/b] are as follows:
+
+[list]
+[*] Forest
+[*] Desert
+[*] Caustic
+[*] Swamp
+[*] Tide Pool
+[*] Frozen
+[*] Space/Surface
+[*] Volcano/Core
+[/list]
+
+[h1]Problems/Help[/h1]
+
+If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.

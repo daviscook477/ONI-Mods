@@ -12,7 +12,7 @@ namespace RollerSnake
         public GameObject CreatePrefab()
         {
             GameObject rollerSnake = RollerSnakeConfig.CreateRollerSnake(Id, Name, Description, "babyrollersnake_kanim", true);
-            EntityTemplates.ExtendEntityToBeingABaby(rollerSnake, BaseRollerSnakeConfig.SpeciesId, null);
+            EntityTemplates.ExtendEntityToBeingABaby(rollerSnake, RollerSnakeConfig.Id, null);
             return rollerSnake;
         }
 
