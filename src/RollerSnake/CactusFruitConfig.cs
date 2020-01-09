@@ -11,8 +11,8 @@ namespace CactusFruit
 
         // notice that both the plant and the seed link to the plant
         // the seed does not link to a page in the db for the seed itself
-        public static string Name = UI.FormatAsLink("Prickly Pear", Id.ToUpper());
-        public static string SeedName = UI.FormatAsLink("Prickly Pear Seed", Id.ToUpper());
+        public static string Name = UI.FormatAsLink("Spiky Succulent", Id.ToUpper());
+        public static string SeedName = UI.FormatAsLink("Spiky Succulent Seed", Id.ToUpper());
 
         public static string Description = $"Spiky to the touch, the {Name} produces both an edible {UI.FormatAsLink("Flesh", CactusFleshConfig.Id)} and {UI.FormatAsLink("Flower", CactusFlowerConfig.Id)}.";
         public static string SeedDescription = $"The beginnings of a {Name}. Just add {UI.FormatAsLink("Water", "WATER")}.";
@@ -24,7 +24,7 @@ namespace CactusFruit
         public const float TemperatureWarningHigh = 358.15f;
         public const float TemperatureLethalHigh = 448.15f;
 
-        public const float IrrigationRate = 0.04f;
+        public const float IrrigationRate = 0.025f;
 
         public GameObject CreatePrefab()
         {

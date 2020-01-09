@@ -8,7 +8,7 @@ namespace CactusFruit
 {
     public class CactusFruitPatches
     {
-        public const float CyclesForGrowth = 4f;
+        public const float CyclesForGrowth = 12f;
 
         [HarmonyPatch(typeof(EntityConfigManager), "LoadGeneratedEntities")]
         public class EntityConfigManager_LoadGeneratedEntities_Patch
@@ -44,9 +44,9 @@ namespace CactusFruit
                 CROPS.CROP_TYPES.Add(new Crop.CropVal(CactusFleshConfig.Id, CyclesForGrowth * 600.0f, 1));
 
                 // codex info
-                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.TITLE", "Prickly Pear");
+                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.TITLE", "Spiky Succulent");
                 Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.SUBTITLE", "Edible Plant");
-                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.BODY.CONTAINER1", "The Prickly Pear is a curious plant. Able to survive without water for long periods of drought, it only truly thrives and fruits when given ample irrigation.\n\nProducing both an edible flesh and flower, cultivating the Prickly Pear provides a more varied diet for Duplicants than other edible plants.");
+                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.BODY.CONTAINER1", "The Spiky Succulent is a curious plant. Able to survive without water for long periods of drought, it only truly thrives and fruits when given ample irrigation.\n\nProducing both an edible flesh and flower, cultivating the Spiky Succulent provides a more varied diet for Duplicants than other edible plants.");
             }
         }
 

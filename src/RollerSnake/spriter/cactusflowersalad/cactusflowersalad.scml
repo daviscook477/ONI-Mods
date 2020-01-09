@@ -13,7 +13,7 @@
             </mainline>
             <timeline id="0" name="flower_salad_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-50" y="37"/>
+                    <object folder="0" file="0" x="-50" y="67" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -25,7 +25,7 @@
             </mainline>
             <timeline id="0" name="ui_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-48" y="48"/>
+                    <object folder="0" file="1" x="-46" y="58" angle="0"/>
                 </key>
             </timeline>
         </animation>
