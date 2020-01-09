@@ -38,6 +38,23 @@ namespace RollerSnake
             }
         }
 
+        [HarmonyPatch(typeof(CreatureFeederConfig))]
+        [HarmonyPatch(nameof(CreatureFeederConfig.ConfigurePost))]
+        public static class CreatureFeederConfig_ConfigurePost_Patch
+        {
+            public static void Postfix(BuildingDef def)
+            {
+                List<Tag> tagList = def.BuildingComplete.GetComponent<Storage>().storageFilters;
+                Tag[] target_species = new Tag[1]
+                {
+                    BaseRollerSnakeConfig.SpeciesId
+                };
+                foreach (KeyValuePair<Tag, Diet> collectDiet in DietManager.CollectDiets(target_species))
+                    tagList.Add(collectDiet.Key);
+                def.BuildingComplete.GetComponent<Storage>().storageFilters = tagList;
+            }
+        }
+
         [HarmonyPatch(typeof(CodexEntryGenerator), "GenerateCreatureEntries")]
         public class CodexEntryGenerator_GenerateCreatureEntries_Patch
         {
