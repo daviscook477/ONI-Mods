@@ -8,7 +8,7 @@ namespace CactusFruit
     {
         public const string Id = "CactusFlowerSalad";
 
-        public static string Name = UI.FormatAsLink("Flowers and Greens", Id.ToUpper());
+        public static string Name = UI.FormatAsLink("Flower Salad", Id.ToUpper());
 
         public static string Description = $"Delectable {CactusFlowerConfig.Name} mixed with crunchy {UI.FormatAsLink("Lettuce", "LETTUCE")}. The blend of cool and sweet makes one's taste buds delight.";
 
