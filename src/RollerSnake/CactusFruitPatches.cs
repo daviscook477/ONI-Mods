@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
 using TUNING;
 using Harmony;
 using STRINGS;
@@ -95,5 +96,35 @@ namespace CactusFruit
                 __instance.Trigger(-1072826864, null);
             }
         }
+
+        [HarmonyPatch(typeof(Crop), "InformationDescriptors")]
+        public class Crop_InformationDescriptors_Patch
+        {
+            public static void Postfix(Crop __instance, List<Descriptor> __result, GameObject go)
+            {
+                if (__instance == null)
+                    return;
+                Crop.CropVal cropVal = __instance.cropVal;
+                if (string.IsNullOrEmpty(cropVal.cropId))
+                    return;
+                if (cropVal.cropId != CactusFleshConfig.Id)
+                    return;
+                Tag tag = new Tag(CactusFlowerConfig.Id);
+                GameObject prefab = Assets.GetPrefab(tag);
+                Edible component1 = prefab.GetComponent<Edible>();
+                float calories1 = 0.0f;
+                string str1 = string.Empty;
+                if (component1 != null)
+                    calories1 = component1.FoodInfo.CaloriesPerUnit;
+                float calories2 = calories1 * 1.0f;
+                InfoDescription component2 = prefab.GetComponent<InfoDescription>();
+                if ((bool)(component2))
+                    str1 = component2.description;
+                string str2 = !GameTags.DisplayAsCalories.Contains(tag) ? (!GameTags.DisplayAsUnits.Contains(tag) ? GameUtil.GetFormattedMass(1.0f, GameUtil.TimeSlice.None, GameUtil.MetricMassFormat.UseThreshold, true, "{0:0.#}") : GameUtil.GetFormattedUnits(1.0f, GameUtil.TimeSlice.None, false)) : GameUtil.GetFormattedCalories(calories2, GameUtil.TimeSlice.None, true);
+                Descriptor descriptor1 = new Descriptor(string.Format((string)UI.UISIDESCREENS.PLANTERSIDESCREEN.YIELD, (object)prefab.GetProperName(), (object)str2), string.Format((string)UI.UISIDESCREENS.PLANTERSIDESCREEN.TOOLTIPS.YIELD, (object)str1, (object)GameUtil.GetFormattedCalories(calories1, GameUtil.TimeSlice.None, true), (object)GameUtil.GetFormattedCalories(calories2, GameUtil.TimeSlice.None, true)), Descriptor.DescriptorType.Effect, false);
+                __result.Add(descriptor1);
+            }
+        }
+
     }
 }
