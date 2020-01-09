@@ -63,6 +63,7 @@
     <Compile Include="CactusFlowerSaladConfig.cs" />
     <Compile Include="CactusFruitConfig.cs" />
     <Compile Include="CactusFruitPatches.cs" />
+    <Compile Include="CodexPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RollerSnakeConfig.cs" />
     <Compile Include="RollerSnakePatches.cs" />

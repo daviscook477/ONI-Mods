@@ -1,0 +1,25 @@
+id: "CactusFruit"
+title: STRINGS.CODEX.CACTUSFRUIT.TITLE
+
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.CACTUSFRUIT.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.CACTUSFRUIT.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.CACTUSFRUIT.BODY.CONTAINER1
+          style: Body

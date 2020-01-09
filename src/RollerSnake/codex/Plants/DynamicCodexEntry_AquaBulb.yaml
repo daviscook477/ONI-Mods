@@ -1,0 +1,25 @@
+id: "AquaBulb"
+title: STRINGS.CODEX.AQUABULB.TITLE
+
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.AQUABULB.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.AQUABULB.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.AQUABULB.BODY.CONTAINER1
+          style: Body

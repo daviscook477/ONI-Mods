@@ -42,6 +42,11 @@ namespace CactusFruit
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DESC", CactusFruitConfig.Description);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{CactusFruitConfig.Id.ToUpperInvariant()}.DOMESTICATEDDESC", CactusFruitConfig.DomesticatedDescription);
                 CROPS.CROP_TYPES.Add(new Crop.CropVal(CactusFleshConfig.Id, CyclesForGrowth * 600.0f, 1));
+
+                // codex info
+                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.TITLE", "Prickly Pear");
+                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.SUBTITLE", "Edible Plant");
+                Strings.Add($"STRINGS.CODEX.CACTUSFRUIT.BODY.CONTAINER1", "The Prickly Pear is a curious plant. Able to survive without water for long periods of drought, it only truly thrives and fruits when given ample irrigation.\n\nProducing both an edible flesh and flower, cultivating the Prickly Pear provides a more varied diet for Duplicants than other edible plants.");
             }
         }
 

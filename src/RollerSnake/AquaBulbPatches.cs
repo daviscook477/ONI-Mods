@@ -22,6 +22,11 @@ namespace AquaBulb
                 // aqua bulb plant
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{AquaBulbConfig.Id.ToUpperInvariant()}.NAME", AquaBulbConfig.Name);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.{AquaBulbConfig.Id.ToUpperInvariant()}.DESC", AquaBulbConfig.Description);
+
+                // codex
+                Strings.Add($"STRINGS.CODEX.AQUABULB.TITLE", "Aqua Bulb");
+                Strings.Add($"STRINGS.CODEX.AQUABULB.SUBTITLE", "Aqueous Plant");
+                Strings.Add($"STRINGS.CODEX.AQUABULB.BODY.CONTAINER1", "The Aqua Bulb stores large amounts of water in its bulb. Its thick protective membrane prevents critters from eating the plant for its liquid reserves.");
             }
         }
 
