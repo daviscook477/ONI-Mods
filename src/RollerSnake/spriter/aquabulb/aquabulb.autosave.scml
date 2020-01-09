@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="bulb_0.png" width="144" height="168" pivot_x="0.542373" pivot_y="0.080556"/>
+        <file id="1" name="top_0.png" width="83" height="31" pivot_x="0.505863" pivot_y="0.529933"/>
+        <file id="2" name="wilt_bulb_0.png" width="144" height="168" pivot_x="0.542373" pivot_y="0.080556"/>
+        <file id="3" name="wilt_top_0.png" width="83" height="31" pivot_x="0.505863" pivot_y="0.529933"/>
+        <file id="4" name="ui_0.png" width="120" height="160" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="aquabulb">
+        <animation id="0" name="wilt1" length="165" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bulb_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="3.626943" y="8.381215" scale_x="0.538437" scale_y="0.481539"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="top_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="3.208556" y="78.085561" scale_x="0.528146" scale_y="0.472336"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="top_0_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="1.208459" y="3.901414" angle="175.634742" scale_x="0.56037" scale_y="0.501154"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="grow_seed" length="561" interval="33">
+            <mainline>
+                <key id="0"/>
+                <key id="1" time="33">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="2" time="561">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bulb_0">
+                <key id="0" time="33" spin="0">
+                    <object folder="0" file="0" x="1.626943" y="1.145078" scale_x="0.245742" scale_y="0.08963"/>
+                </key>
+                <key id="1" time="561" spin="0">
+                    <object folder="0" file="0" x="3.626943" y="8.145078" scale_x="0.538437" scale_y="0.538437"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="top_0">
+                <key id="0" time="33" spin="0">
+                    <object folder="0" file="1" x="1.435991" y="14.11926" scale_x="0.241046" scale_y="0.087917"/>
+                </key>
+                <key id="1" time="561" spin="0">
+                    <object folder="0" file="1" x="3.208556" y="86.085561" scale_x="0.528146" scale_y="0.528146"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="top_0_000">
+                <key id="0" time="33" spin="0">
+                    <object folder="0" file="1" x="0.523148" y="0.311245" angle="175.634742" scale_x="0.255753" scale_y="0.093281"/>
+                </key>
+                <key id="1" time="561" spin="0">
+                    <object folder="0" file="1" x="1.208459" y="3.135952" angle="175.634742" scale_x="0.56037" scale_y="0.56037"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="misc" length="561" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="1" time="495">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                </key>
+                <key id="2" time="528"/>
+            </mainline>
+            <timeline id="0" name="bulb_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="3.626943" y="8.145078" scale_x="0.538437" scale_y="0.538437"/>
+                </key>
+                <key id="1" time="495" spin="0">
+                    <object folder="0" file="0" x="1.626943" y="1.145078" scale_x="0.245742" scale_y="0.08963"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="top_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.208556" y="86.085561" scale_x="0.528146" scale_y="0.528146"/>
+                </key>
+                <key id="1" time="495" spin="0">
+                    <object folder="0" file="1" x="1.435991" y="14.11926" scale_x="0.241046" scale_y="0.087917"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="top_0_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1.208459" y="3.135952" angle="175.634742" scale_x="0.56037" scale_y="0.56037"/>
+                </key>
+                <key id="1" time="495" spin="0">
+                    <object folder="0" file="1" x="0.523148" y="0.311245" angle="175.634742" scale_x="0.255753" scale_y="0.093281"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="idle" length="165" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bulb_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="3.626943" y="8.145078" scale_x="0.538437" scale_y="0.538437"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="top_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.208556" y="86.085561" scale_x="0.528146" scale_y="0.528146"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="top_0_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1.208459" y="3.135952" angle="175.634742" scale_x="0.56037" scale_y="0.56037"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="ui" length="1000" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="ui_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-33.333333" y="91.203704" scale_x="0.581189" scale_y="0.581189"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="NewAnimation" length="1000" interval="33">
+            <mainline>
+                <key id="0"/>
+            </mainline>
+        </animation>
+    </entity>
+</spriter_data>

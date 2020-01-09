@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AquaBulbConfig.cs" />
+    <Compile Include="AquaBulbPatches.cs" />
+    <Compile Include="AquaBulbSackConfig.cs" />
     <Compile Include="BabyRollerSnakeConfig.cs" />
     <Compile Include="BabySteelRollerSnakeConfig.cs" />
     <Compile Include="BaseRollerSnakeConfig.cs" />

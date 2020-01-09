@@ -13,7 +13,7 @@ namespace CactusFruit
         [HarmonyPatch(typeof(EntityConfigManager), "LoadGeneratedEntities")]
         public class EntityConfigManager_LoadGeneratedEntities_Patch
         {
-            private static void Prefix()
+            public static void Prefix()
             {
                 // cactus fruit flesh
                 Strings.Add($"STRINGS.ITEMS.FOOD.{CactusFleshConfig.Id.ToUpperInvariant()}.NAME", CactusFleshConfig.Name);
@@ -63,7 +63,7 @@ namespace CactusFruit
         [HarmonyPatch(typeof(Crop), "SpawnFruit")]
         public class Crop_SpawnFruit_Patch
         {
-            private static void Postfix(Crop __instance)
+            public static void Postfix(Crop __instance)
             {
                 if (__instance == null)
                     return;

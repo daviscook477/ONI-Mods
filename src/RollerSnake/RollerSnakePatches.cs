@@ -41,7 +41,7 @@ namespace RollerSnake
         [HarmonyPatch(typeof(CodexEntryGenerator), "GenerateCreatureEntries")]
         public class CodexEntryGenerator_GenerateCreatureEntries_Patch
         {
-            private static void Postfix(Dictionary<string, CodexEntry> __result)
+            public static void Postfix(Dictionary<string, CodexEntry> __result)
             {
                 Strings.Add($"STRINGS.CREATURES.FAMILY.{BaseRollerSnakeConfig.SpeciesId.ToUpperInvariant()}", RollerSnakeConfig.Name);
                 Strings.Add($"STRINGS.CREATURES.FAMILY_PLURAL.{BaseRollerSnakeConfig.SpeciesId.ToUpperInvariant()}", RollerSnakeConfig.PluralName);
