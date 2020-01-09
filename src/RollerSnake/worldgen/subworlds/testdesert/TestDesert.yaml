@@ -20,7 +20,7 @@ biomes:
       - RollerSnake
       - OilFloater
       - CactusFruitSeed
-      - LightBug
+      - LightBugOrange
 tags:
   - IgnoreCaveOverride
 pointsOfInterest:

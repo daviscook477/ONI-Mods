@@ -19,6 +19,14 @@ MobLookupTable:
         max: 0.25
       width: 1
       height: 2
+    LightBugOrange:
+      location: Air
+      selectMethod: Centroid
+      density:
+        min: 0.03
+        max: 0.03
+      width: 1
+      height: 1
     RollerSnake:
       location: Floor
       selectMethod: Centroid
