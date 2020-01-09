@@ -8,20 +8,20 @@ Living in the [b]Desert[/b] is a peculiar type of snake that moves around by rol
 
 [list]
 [*] [b]Roller Snakes[/b] are the default type of [b]Roller Snakes[/b] and have a distinct red color.
-[*] [b]Hardened Roller Snakes[/b] are a morph of [b]Roller Snakes[/b] that are more likely to appear when a [b]Roller Snake[/b] eats [b]Obsidian[/b]. They have a distinct blue color.
+[*] [b]Tough Roller Snakes[/b] are a morph of [b]Roller Snakes[/b] that are more likely to appear when a [b]Roller Snake[/b] eats [b]Obsidian[/b]. They have a distinct blue color.
 [/list]
 
 [b]Roller Snakes[/b] eat a diet of [b]Sand[/b] and [b]Raw Minerals[/b]. They excrete [b]Coal[/b] at a somewhat less efficient rate than [b]Hatches[/b]. However, [b]Roller Snakes[/b] have a metal rich rattle that may be sheared off at a [b]Shearing Staion[/b] like [b]Dreckos[/b]. They regrow this rattle every couple cycles, providing a consistent source of metal.
 
 [list]
 [*] The default [b]Roller Snakes[/b] have a rattle formed of [b]Gold Amalgam[/b] and can only grow their rattle in [b]Oxygen[/b].
-[*] The [b]Hardened Roller Snakes[/b] have a rattle formed of [b]Steel[/b] and can only grow their rattle in [b]Carbon Dioxide[/b].
+[*] The [b]Tough Roller Snakes[/b] have a rattle formed of [b]Steel[/b] and can only grow their rattle in [b]Carbon Dioxide[/b].
 [/list]
 
 [h1]New Plants[/h1]
 
 [list]
-[*] The [b]Prickly Pear[/b] is a new fruiting cactus plant that produces both an edible flesh and flower each time it is harvested. Although it requires more [b]Water[/b] to grow than a [b]Bristle Blossom[/b] its heat tolerance makes it much easier to feed from a [b]Steam Geyser[/b] or [b]Hot Water Geyser[/b] than alternate food options. Investigate both the [b]Electric Grill[/b] and [b]Gas Range[/b] to learn of the two new meals that can be created with the food of the [b]Prickly Pear[/b]. The tooltip for the [b]Prickly Pear[/b] says it only produces cactus flesh; this is a bug - it actually produces both the cactus flesh and cactus flower which is about 2x the kcal of just the cactus flesh that is shown in the tooltip.
+[*] The [b]Spiky Succulent[/b] is a new fruiting cactus plant that produces both an edible flesh and flower each time it is harvested. Although it requires more [b]Water[/b] to grow than a [b]Bristle Blossom[/b] its heat tolerance makes it much easier to feed from a [b]Steam Geyser[/b] or [b]Hot Water Geyser[/b] than alternate food options. Investigate both the [b]Electric Grill[/b] and [b]Gas Range[/b] to learn of the two new meals that can be created with the food of the [b]Spiky Succulent[/b]. The tooltip for the [b]Spiky Succulent[/b] says it only produces cactus flesh; this is a bug - it actually produces both the cactus flesh and cactus flower which is about 2x the kcal of just the cactus flesh that is shown in the tooltip.
 [*] The [b]Aqua Bulb[/b] is a new foragable plant that provides one-time [b]Water[/b]. It is similar to the one-time food of the [b]Muckroot[/b] and [b]Hexalent[/b]. In order to extract the [b]Water[/b] from the [b]Aqua Bulb[/b] your Duplicants must use a [b]Rock Crusher[/b] since its membrane is too thick to be broken with conventional means.
 [/list]
 
@@ -32,8 +32,8 @@ The [b]Desert[/b] biome brings an interesting mix of critters, plants, elements,
 [list]
 [*] Roller Snake
 [*] Slickster
-[*] Shine Bug
-[*] Prickly Pear
+[*] Sun Bug
+[*] Spiky Succulent
 [*] Aqua Bulb
 [*] Sand
 [*] Sandstone

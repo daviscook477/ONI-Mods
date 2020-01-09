@@ -76,9 +76,9 @@ namespace RollerSnake
                 Strings.Add($"STRINGS.CODEX.ROLLERSNAKE.BODY.CONTAINER1", "The reptilian species of Roller Snakes moves in the most peculiar way. Coiling up upon itself and rolling along in a loop is its preferred means of transportation.");
                 Strings.Add($"STRINGS.CODEX.ROLLERSNAKE.BODY.CONTAINER2", "The rattle on the tail of the Roller Snake, while effective at warning and deterring predators in the wild, is entirely decorative in captivity and can be shorn off without any damage to the animal.\n\nBecause the metal in a Roller Snake's diet is accumulated in its rattle, their rattles are highly sought after for metallurgy.");
 
-                Strings.Add($"STRINGS.CODEX.ROLLERSNAKESTEEL.TITLE", "Hardened Roller Snake");
+                Strings.Add($"STRINGS.CODEX.ROLLERSNAKESTEEL.TITLE", "Tough Roller Snake");
                 Strings.Add($"STRINGS.CODEX.ROLLERSNAKESTEEL.SUBTITLE", "Critter Morph");
-                Strings.Add($"STRINGS.CODEX.ROLLERSNAKESTEEL.BODY.CONTAINER1", "<smallcaps>Pictured: \"Hardened\" Roller Snake variant</smallcaps>");
+                Strings.Add($"STRINGS.CODEX.ROLLERSNAKESTEEL.BODY.CONTAINER1", "<smallcaps>Pictured: \"Tough\" Roller Snake variant</smallcaps>");
                 Strings.Add($"STRINGS.CODEX.ROLLERSNAKESTEEL.BODY.CONTAINER2", "Roller Snakes are known to be quite kind to their caretakers and do not bite or otherwise retaliate in response to grooming or shearing.");
             }
         }
