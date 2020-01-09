@@ -9,7 +9,7 @@ namespace RollerSnake
     {
         public const string Id = "RollerSnake";
         public static string Name = UI.FormatAsLink("Roller Snake", Id.ToUpper());
-        public const string PluralName = "Rolling Snakes";
+        public const string PluralName = "Roller Snakes";
         public const string Description = "A peculiar critter that moves by winding into a loop and rolling.";
         public const string BaseTraitId = "RollerSnakeBaseTrait";
 

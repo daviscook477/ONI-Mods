@@ -7,10 +7,18 @@ MobLookupTable:
       location: Floor
       selectMethod: Centroid
       density:
+        min: 0.19
+        max: 0.21
+      width: 1
+      height: 1
+    AquaBulb:
+      location: Floor
+      selectMethod: Centroid
+      density:
         min: 0.23
         max: 0.25
       width: 1
-      height: 1
+      height: 2
     RollerSnake:
       location: Floor
       selectMethod: Centroid

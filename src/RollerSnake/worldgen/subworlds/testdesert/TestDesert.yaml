@@ -16,6 +16,7 @@ biomes:
     weight: 5
     tags:
       - CactusFruit
+      - AquaBulb
       - RollerSnake
       - OilFloater
       - CactusFruitSeed
