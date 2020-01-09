@@ -10,7 +10,7 @@ namespace CactusFruit
 
         public static string Name = UI.FormatAsLink("Grilled Cactus Flesh", Id.ToUpper());
 
-        public static string Description = $"The grilled flesh of a {CactusFruitConfig.Name}. Grilling renders the prickly bits mostly harmless.";
+        public static string Description = $"The grilled flesh of a {CactusFruitConfig.Name}.\n\nGrilling renders the prickly bits mostly harmless.";
 
         public static string RecipeDescription = $"Tasty grilled {CactusFleshConfig.Name}.";
 

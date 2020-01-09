@@ -10,7 +10,7 @@ namespace CactusFruit
 
         public static string Name = UI.FormatAsLink("Flower Salad", Id.ToUpper());
 
-        public static string Description = $"Delectable {CactusFlowerConfig.Name} mixed with crunchy {UI.FormatAsLink("Lettuce", "LETTUCE")}. The blend of cool and sweet makes one's taste buds delight.";
+        public static string Description = $"Delectable {CactusFlowerConfig.Name} mixed with crunchy {UI.FormatAsLink("Lettuce", "LETTUCE")}.\n\nThe blend of cool and sweet makes one's taste buds delight.";
 
         public static string RecipeDescription = $"Mixed and seared {CactusFlowerSaladConfig.Name}.";
 
