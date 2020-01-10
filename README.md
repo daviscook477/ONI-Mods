@@ -15,8 +15,8 @@ Check out the Oxygen Not Included Discord [here](https://discord.gg/EBncbX2) for
 
 <a name="list-of-mods"></a>
 # List of Mods
-* [Mineralizer](https://steamcommunity.com): Adds a Mineralizer building that is the opposite of the Desalinator. It produces salt water from water and salt. Preview it on Github [here](src/Mineralizer/README.md)
-* [Roller Sakes](https://steamcommunity.com): Adds a new critter species called Roller Snakes to the game. They are snakes that curl up into loops and roll around to move. Additionally has two new plants called Spiky Succulent and Aqua Bulb. These are all found in a new biome called the Desert or can be obtained in care packages on existing maps. The Desert biome is spawned in a new asteroid called Tetrament. Preview it on Github [here](src/RollerSnake/README.md)
+* [Mineralizer](https://steamcommunity.com/sharedfiles/filedetails/?id=1952120897): Adds a Mineralizer building that is the opposite of the Desalinator. It produces salt water from water and salt. Preview it on Github [here](src/Mineralizer/README.md)
+* [Roller Sakes](https://steamcommunity.com/sharedfiles/filedetails/?id=1963899596): Adds a new critter species called Roller Snakes to the game. They are snakes that curl up into loops and roll around to move. Additionally has two new plants called Spiky Succulent and Aqua Bulb. These are all found in a new biome called the Desert or can be obtained in care packages on existing maps. The Desert biome is spawned in a new asteroid called Tetrament. Preview it on Github [here](src/RollerSnake/README.md)
 
 <a name="list-of-deprecated-mods"></a>
 # List of Deprecated Mods
