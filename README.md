@@ -1,7 +1,7 @@
 # Someone (aka test447)'s Mods for Oxygen Not Included
 <div align="center">
 
-master branch last updated to game version **LU-353781**
+master branch last updated to game version **RP-383949**
 
 </div>
 
@@ -15,6 +15,12 @@ Check out the Oxygen Not Included Discord [here](https://discord.gg/EBncbX2) for
 
 <a name="list-of-mods"></a>
 # List of Mods
+* [Mineralizer](https://steamcommunity.com): Adds a Mineralizer building that is the opposite of the Desalinator. It produces salt water from water and salt. Preview it on Github [here](src/Mineralizer/README.md)
+* [Roller Sakes](https://steamcommunity.com): Adds a new critter species called Roller Snakes to the game. They are snakes that curl up into loops and roll around to move. Additionally has two new plants called Spiky Succulent and Aqua Bulb. These are all found in a new biome called the Desert or can be obtained in care packages on existing maps. The Desert biome is spawned in a new asteroid called Tetrament. Preview it on Github [here](src/RollerSnake/README.md)
+
+<a name="list-of-deprecated-mods"></a>
+# List of Deprecated Mods
+These mods are not updated to the latest version. They were last updated for the game version **LU-353781**
 * [Infinite Liquid/Gas Sources](https://steamcommunity.com/sharedfiles/filedetails/?id=1711115962): Adds infinite sources and sinks for liquids and gasses. Useful for sandbox mode testing. Preview it on Github [here](src/InfiniteSourceSink/README.md).
 * [Advanced Storage](https://steamcommunity.com/sharedfiles/filedetails/?id=1808602247): Adds a higher tier of storage containers to the game that all share the same inventory and that can infinitely compress their contents. Makes late game liquid and gas manage somewhat simpler for a heavy resource investment. Preview it on Github [here](src/TeleStorage/README.md).
 * [Insulated Jacket](https://steamcommunity.com/sharedfiles/filedetails/?id=1809475355): Adds a new clothing type called the insulated jacket that highly increases duplicant scalding threshold and highly decreases duplicant thermal conductivity. Made out of insulation. Preview it on Github [here](src/InsulatedJacket/README.md)
@@ -41,12 +47,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Asset License
 
-Please ask for permission before using other assets included in this repository. Some parts of the binary AssetBundles included in this repository contain recolors of Klei's intellectual property. I do not claim to own these assets and will remove them from this repository upon request.
+Please ask for permission before using other assets included in this repository. I.e. art and animations may **not** be used without permission.
 
 <a name="special-thanks"></a>
 # Special Thanks
 * To [@Cairath](https://github.com/Cairath) for patience and wisdom in `mod-development` and for some config handling code.
 * To [Klei](https://www.klei.com/) for making such an amazing game in the first place and being supportive of the modding community.
+* To the (un)official Oxygen Not Included Discord modding community for support and discussions.
 
 ## More Mods
 * [Cairath's repo](https://github.com/Cairath/ONI-Mods/)
