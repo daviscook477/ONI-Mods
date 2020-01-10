@@ -57,11 +57,17 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
-IF EXIST "$(ProjectDir)\anims" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anims")
+IF EXIST "$(ProjectDir)\anim" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim")
+IF EXIST "$(ProjectDir)\codex" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex")
+IF EXIST "$(ProjectDir)\worldgen" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen")
+IF EXIST "$(ProjectDir)\templates" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates")
 copy "$(TargetPath)" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST  "$(TargetPath)*.json" ( copy "$(TargetPath)*.json" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(TargetPath)*.txt" ( copy "$(TargetPath)*.txt" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
-IF EXIST  "$(ProjectDir)\anims" ( copy "$(ProjectDir)\anims" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anims" )
+IF EXIST  "$(ProjectDir)\anim" ( xcopy "$(ProjectDir)\anim" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim" /S /Y )
+IF EXIST  "$(ProjectDir)\codex" ( xcopy "$(ProjectDir)\codex" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex" /S /Y )
+IF EXIST  "$(ProjectDir)\worldgen" ( xcopy "$(ProjectDir)\worldgen" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen" /S /Y )
+IF EXIST  "$(ProjectDir)\templates" ( xcopy "$(ProjectDir)\templates" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates" /S /Y )
 IF EXIST  "$(ProjectDir)\preview.png" ( copy "$(ProjectDir)\preview.png" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\preview.png" )</PostBuildEvent>
   </PropertyGroup>
 </Project>

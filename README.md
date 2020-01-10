@@ -17,6 +17,7 @@ Check out the Oxygen Not Included Discord [here](https://discord.gg/EBncbX2) for
 # List of Mods
 * [Mineralizer](https://steamcommunity.com/sharedfiles/filedetails/?id=1952120897): Adds a Mineralizer building that is the opposite of the Desalinator. It produces salt water from water and salt. Preview it on Github [here](src/Mineralizer/README.md)
 * [Roller Sakes](https://steamcommunity.com/sharedfiles/filedetails/?id=1963899596): Adds a new critter species called Roller Snakes to the game. They are snakes that curl up into loops and roll around to move. Additionally has two new plants called Spiky Succulent and Aqua Bulb. These are all found in a new biome called the Desert or can be obtained in care packages on existing maps. The Desert biome is spawned in a new asteroid called Tetrament. Preview it on Github [here](src/RollerSnake/README.md)
+* [Ethanol Geyser](https://steamcommunity.com/sharedfiles/filedetails/?id=1810801031): Adds a guaranteed chilled ethanol geyser spawn to the rust biome. Preview it on Github [here](src/EthanolGeyser/README.md)
 
 <a name="list-of-deprecated-mods"></a>
 # List of Deprecated Mods
@@ -25,7 +26,7 @@ These mods are not updated to the latest version. They were last updated for the
 * [Advanced Storage](https://steamcommunity.com/sharedfiles/filedetails/?id=1808602247): Adds a higher tier of storage containers to the game that all share the same inventory and that can infinitely compress their contents. Makes late game liquid and gas manage somewhat simpler for a heavy resource investment. Preview it on Github [here](src/TeleStorage/README.md).
 * [Insulated Jacket](https://steamcommunity.com/sharedfiles/filedetails/?id=1809475355): Adds a new clothing type called the insulated jacket that highly increases duplicant scalding threshold and highly decreases duplicant thermal conductivity. Made out of insulation. Preview it on Github [here](src/InsulatedJacket/README.md)
 * [Professional Attire](https://steamcommunity.com/sharedfiles/filedetails/?id=1810563583): Adds 10 new clothing styles - one for each duplicant skill that provide a bonus to the corresponding skill of duplicants that wear them. E.g. the farmer's outfit will provide `+2` to the duplicant's agriculture skill. Preview it on Github [here](src/ProfessionalAttire/README.md)
-* [Ethanol Geyser](https://steamcommunity.com/sharedfiles/filedetails/?id=1810801031): Adds a guaranteed chilled ethanol geyser spawn to the rust biome. Preview it on Github [here](src/EthanolGeyser/README.md)
+
 
 <a name="instructions"></a>
 # Instructions

@@ -67,7 +67,7 @@ namespace EthanolGeyser
                 Strings.Add($"STRINGS.CREATURES.SPECIES.GEYSER.{Id.ToUpper()}.NAME", Name);
                 Strings.Add($"STRINGS.CREATURES.SPECIES.GEYSER.{Id.ToUpper()}.DESC", Description);
 
-                __result.Add(new GeyserGenericConfig.GeyserPrefabParams("geyser_liquid_ethanol_chilled", 4, 2, new GeyserConfigurator.GeyserType(Id, SimHashes.Ethanol, 263.15f, 1000f, 2000f, 500f, 60f, 1140f, 0.1f, 0.9f, 15000f, 135000f, 0.4f, 0.8f)));
+                __result.Add(new GeyserGenericConfig.GeyserPrefabParams("geyser_liquid_ethanol_chilled_kanim", 4, 2, new GeyserConfigurator.GeyserType(Id, SimHashes.Ethanol, 263.15f, 1000f, 2000f, 500f, 60f, 1140f, 0.1f, 0.9f, 15000f, 135000f, 0.4f, 0.8f)));
             }
         }
 
