@@ -20,8 +20,8 @@
         <file id="16" name="jaw_1.png" width="60" height="40" pivot_x="0.22076" pivot_y="0.547511"/>
         <file id="17" name="eye_1.png" width="40" height="31" pivot_x="0.501499" pivot_y="0.56168"/>
         <file id="18" name="snapto_tag_0.png" width="32" height="28" pivot_x="0.731781" pivot_y="0.294947"/>
-        <file id="19" name="ui_0.png" width="220" height="220" pivot_x="0" pivot_y="1"/>
-        <file id="20" name="blu_ui_0.png" width="220" height="220" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="ui_0.png" width="167" height="163" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="blu_ui_0.png" width="166" height="154" pivot_x="0" pivot_y="1"/>
         <file id="21" name="blu_segment_down_0.png" width="80" height="80" pivot_x="0.146515" pivot_y="0.552975"/>
         <file id="22" name="blu_segment_up_0.png" width="200" height="200" pivot_x="0.311278" pivot_y="0.686636"/>
         <file id="23" name="blu_segment_down_1.png" width="80" height="80" pivot_x="0.144385" pivot_y="0.638026"/>
