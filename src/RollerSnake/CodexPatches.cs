@@ -8,6 +8,14 @@ namespace Codex
 {
     public class CodexPatches
     {
+
+        public static string ModFolderPath = null;
+        public static void OnLoad(string path)
+        {
+            ModFolderPath = path;
+            Console.WriteLine(ModFolderPath);
+        }
+
         [HarmonyPatch(typeof(CodexCache), nameof(CodexCache.CollectEntries))]
         public class CodexCache_CollectEntries_Patch
         {
@@ -30,13 +38,10 @@ namespace Codex
                 {
                     pathEnd = "/codex/Plants";
                 }
-                string assemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-                // remove "file:\
-                assemblyPath = assemblyPath.Substring("file:\\".Length);
                 string[] strArray = new string[0];
                 try
                 {
-                    strArray = Directory.GetFiles(assemblyPath + pathEnd, "*.yaml");
+                    strArray = Directory.GetFiles(ModFolderPath + pathEnd, "*.yaml");
                 }
                 catch (UnauthorizedAccessException ex)
                 {
@@ -81,13 +86,10 @@ namespace Codex
 
             public static void Postfix(string folder, List<SubEntry> __result)
             {
-                string assemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-                // remove "file:\
-                assemblyPath = assemblyPath.Substring("file:\\".Length);
                 string[] strArray = new string[0];
                 try
                 {
-                    strArray = Directory.GetFiles(assemblyPath + "/codex", "*.yaml", SearchOption.AllDirectories);
+                    strArray = Directory.GetFiles(ModFolderPath + "/codex", "*.yaml", SearchOption.AllDirectories);
                 }
                 catch (UnauthorizedAccessException ex)
                 {
