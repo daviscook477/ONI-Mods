@@ -11,6 +11,7 @@ src/lib/Unity.TextMeshPro.dll
 src/lib/Assembly-CSharp.dll
 src/lib/Assembly-CSharp-firstpass.dll
 src/lib/0Harmony.dll
+src/lib/
 
 # Built files
 Mods/
