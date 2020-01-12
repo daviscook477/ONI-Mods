@@ -56,8 +56,10 @@ namespace Mineralizer
             storage.SetDefaultStoredItemModifiers(Storage.StandardSealedStorage);
             storage.showInUI = true;
             storage.capacityKg = 600 * SALT_INPUT_RATE + 20f;
+            storage.storageFilters = new List<Tag> { GameTags.BuildableRaw, GameTags.Plastic, GameTags.Metal, GameTags.Edible  };
             go.AddOrGet<LoopingSounds>();
             go.AddOrGet<Mineralizer>();
+            //go.AddOrGet<Test>().AcceptedTags.AddRange(new List<Tag> { GameTags.BuildableRaw, GameTags.Plastic, GameTags.Metal, GameTags.Edible });
             ElementConverter elementConverter1 = go.AddComponent<ElementConverter>();
             elementConverter1.consumedElements = new ElementConverter.ConsumedElement[2]
             {
