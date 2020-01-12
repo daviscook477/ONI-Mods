@@ -1,0 +1,22 @@
+Using debug and sandbox mode can get quite frustrating when you need a source of some liquid or gas to test a new build you are making. Often you have to make a box and just fill it with lots of whatever resource your build needs.
+
+This mod puts a stop to that annoyance by adding in 4 new buildings: an infinite liquid source, infinite gas source, infinite liquid sink, and infinite gas sink.
+
+
+Features:
+* Set the element that you want to have an infinite supply of
+* Set the temperature at which your infinite supply comes out
+* Set the flow rate at which your infinite supply comes out
+* Enable/disable with automation
+* Color - sources are green and sinks are red for easy visual distinction
+
+Please note that this mod is not intended for normal gameplay. If used in the course of a normal game this mod will be completely and entirely broken. Having completely free resources creation and deletion is not balanced. However I do hope that it helps with testing out all the crazy builds that can be made in Oxygen Not Included.
+
+My Github:
+ * https://github.com/daviscook477/ONI-Mods
+This Mod:
+ * https://github.com/daviscook477/ONI-Mods/tree/master/src/InfiniteSourceSink
+
+
+FUTURE PLANS:
+I want to investigate the potential for making an infinite solid source by using the storage UI to allow the user to select what material will be infinitely placed or taken away from a solid rail. A potential improvement to the current liquid/gas sink would be to make a filtered version of it that only removes liquid/gas of a specific element from a pipeline.

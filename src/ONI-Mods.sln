@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CactusFruit", "CactusFruit\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollerSnake", "RollerSnake\RollerSnake.csproj", "{86FFAE5B-9854-4B1C-8773-838AF81A6795}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideScreen", "SideScreen\SideScreen.csproj", "{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{86FFAE5B-9854-4B1C-8773-838AF81A6795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86FFAE5B-9854-4B1C-8773-838AF81A6795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86FFAE5B-9854-4B1C-8773-838AF81A6795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
