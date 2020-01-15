@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="sculpt_temp_0.png" width="216" height="218" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="loop" length="660" interval="33">
+            <mainline>
+                <key id="0" time="363">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="528">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="sculpt_temp_0">
+                <key id="0" time="363" spin="0">
+                    <object folder="0" file="0" x="-12" y="-85" angle="0"/>
+                </key>
+                <key id="1" time="528" spin="0">
+                    <object folder="0" file="0" x="450" y="203" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

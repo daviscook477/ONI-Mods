@@ -1,0 +1,10 @@
+[h1]Pipsqueak Ice Sculpture[/h1]
+
+Adds a new variant to the ice sculpture to show a pipsqueak as an alternative to the ice sculpture of the hatch. That's literally all this mod does. Happy decorating!
+
+[h1]Problems/Help[/h1]
+
+If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
+
+[h1]Code/License[/h1]
+Code is open source and may be found in my ONI-Mods Github repository. Feel free to look at, copy, modify it, etc.. Art assets and animations may also be found in that repository but cannot be redistributed without permission.

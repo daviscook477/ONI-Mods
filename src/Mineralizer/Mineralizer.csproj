@@ -64,21 +64,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtifactSideScreen.cs" />
-    <Compile Include="GridFilterable.cs" />
-    <Compile Include="GridFilterableControl.cs" />
-    <Compile Include="GridFilterableSideScreen.cs" />
-    <Compile Include="GridSelectControl.cs" />
     <Compile Include="Mineralizer.cs" />
     <Compile Include="MineralizerConfig.cs" />
     <Compile Include="MineralizerPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SideScreenPatches.cs" />
-    <Compile Include="TagAlphabetComparer.cs" />
-    <Compile Include="Test.cs" />
-    <Compile Include="TestControl.cs" />
-    <Compile Include="TestPatches.cs" />
-    <Compile Include="TestSideScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

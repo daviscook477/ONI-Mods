@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollerSnake", "RollerSnake\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideScreen", "SideScreen\SideScreen.csproj", "{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipIceSculpture", "PipIceSculpture\PipIceSculpture.csproj", "{30082AB0-4BE0-4A4F-8020-5B5735970065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Champagne", "Champagne\Champagne.csproj", "{D824527D-7680-4576-B4F8-A85A801F6D8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30082AB0-4BE0-4A4F-8020-5B5735970065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30082AB0-4BE0-4A4F-8020-5B5735970065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30082AB0-4BE0-4A4F-8020-5B5735970065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30082AB0-4BE0-4A4F-8020-5B5735970065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D824527D-7680-4576-B4F8-A85A801F6D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D824527D-7680-4576-B4F8-A85A801F6D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D824527D-7680-4576-B4F8-A85A801F6D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D824527D-7680-4576-B4F8-A85A801F6D8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

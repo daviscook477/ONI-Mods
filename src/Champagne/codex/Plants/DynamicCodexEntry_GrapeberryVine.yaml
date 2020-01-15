@@ -1,0 +1,25 @@
+id: "GrapeVine"
+title: STRINGS.CODEX.GRAPEVINE.TITLE
+
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.GRAPEVINE.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.GRAPEVINE.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.GRAPEVINE.BODY.CONTAINER1
+          style: Body

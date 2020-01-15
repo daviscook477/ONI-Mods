@@ -11,8 +11,8 @@ namespace Codex
         public static void OnLoad()
         {
             PeterHan.PLib.PUtil.InitLibrary();
-            PeterHan.PLib.Codex.PCodex.RegisterCreatures();
-            PeterHan.PLib.Codex.PCodex.RegisterPlants();
+            PeterHan.PLib.Datafiles.PCodex.RegisterCreatures();
+            PeterHan.PLib.Datafiles.PCodex.RegisterPlants();
         }
     }
 }
