@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using TUNING;
+using STRINGS;
 using UnityEngine;
 
 namespace Mineralizer
@@ -8,9 +9,9 @@ namespace Mineralizer
     public class MineralizerConfig : IBuildingConfig
     {
         public const string Id = "Mineralizer";
-        public const string DisplayName = "Mineralizer";
-        public static string Description = $"Washing salt with water dissolves it and creates {STRINGS.UI.FormatAsLink("Salt Water", "SALTWATER")}.";
-        public static string Effect = $"Adds {STRINGS.UI.FormatAsLink("Salt", "SALT")} to {STRINGS.UI.FormatAsLink("Water", "WATER")}, producing {STRINGS.UI.FormatAsLink("Salt Water", "SALTWATER")}.";
+        public static string DisplayName = UI.FormatAsLink("Mineralizer", Id.ToUpper());
+        public static string Description = $"Washing {UI.FormatAsLink("Salt", "SALT")} with {UI.FormatAsLink("Water", "WATER")} dissolves it and creates {STRINGS.UI.FormatAsLink("Salt Water", "SALTWATER")}.";
+        public static string Effect = $"Adds {UI.FormatAsLink("Salt", "SALT")} to {UI.FormatAsLink("Water", "WATER")}, producing {STRINGS.UI.FormatAsLink("Salt Water", "SALTWATER")}.";
 
         private const float SALT_INPUT_RATE = 0.35f;
         private const float WATER_WITH_SALT_INPUT_RATE = 4.65f;
@@ -24,13 +25,13 @@ namespace Mineralizer
                 width: 4,
                 height: 2,
                 anim: "mineralizer_kanim",
-                hitpoints: BUILDINGS.HITPOINTS.TIER2,
-                construction_time: BUILDINGS.CONSTRUCTION_TIME_SECONDS.TIER2,
-                construction_mass: BUILDINGS.CONSTRUCTION_MASS_KG.TIER3,
+                hitpoints: TUNING.BUILDINGS.HITPOINTS.TIER2,
+                construction_time: TUNING.BUILDINGS.CONSTRUCTION_TIME_SECONDS.TIER2,
+                construction_mass: TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER3,
                 construction_materials: MATERIALS.ALL_METALS,
-                melting_point: BUILDINGS.MELTING_POINT_KELVIN.TIER0,
+                melting_point: TUNING.BUILDINGS.MELTING_POINT_KELVIN.TIER0,
                 build_location_rule: BuildLocationRule.OnFloor,
-                decor: BUILDINGS.DECOR.NONE,
+                decor: TUNING.BUILDINGS.DECOR.NONE,
                 noise: NOISE_POLLUTION.NOISY.TIER2,
                 0.2f
                 );
@@ -59,7 +60,6 @@ namespace Mineralizer
             storage.storageFilters = new List<Tag> { GameTags.BuildableRaw, GameTags.Plastic, GameTags.Metal, GameTags.Edible  };
             go.AddOrGet<LoopingSounds>();
             go.AddOrGet<Mineralizer>();
-            //go.AddOrGet<Test>().AcceptedTags.AddRange(new List<Tag> { GameTags.BuildableRaw, GameTags.Plastic, GameTags.Metal, GameTags.Edible });
             ElementConverter elementConverter1 = go.AddComponent<ElementConverter>();
             elementConverter1.consumedElements = new ElementConverter.ConsumedElement[2]
             {

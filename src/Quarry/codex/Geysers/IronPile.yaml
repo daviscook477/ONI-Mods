@@ -1,0 +1,25 @@
+id: "IRONPILE"
+title: STRINGS.CREATURES.SPECIES.IRON_PILE.NAME
+disabled: false
+
+contentContainers:
+#-----------------------------
+  - contentLayout: Vertical
+    lockID:
+
+    content:
+      - !CodexText
+          stringKey: STRINGS.CREATURES.SPECIES.IRON_PILE.NAME
+          style: Title
+      - !CodexDividerLine
+          preferredWidth: -1
+      - !CodexImage
+          batchedAnimPrefabSourceID: IRONPILE
+          preferredWidth: 128
+          preferredHeight: 128
+      - !CodexText
+          stringKey: STRINGS.CREATURES.SPECIES.IRON_PILE.DESC
+          style: Body
+      - !CodexDividerLine
+          preferredWidth: -1
+#-----------------------------

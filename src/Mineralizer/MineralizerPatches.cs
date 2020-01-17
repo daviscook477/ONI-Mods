@@ -26,8 +26,8 @@ namespace Mineralizer
         {
             private static void Prefix()
             {
-                var basicRefinement = new List<string>(Database.Techs.TECH_GROUPING["LiquidFiltering"]) { MineralizerConfig.Id };
-                Database.Techs.TECH_GROUPING["LiquidFiltering"] = basicRefinement.ToArray();
+                var liquidFiltering = new List<string>(Database.Techs.TECH_GROUPING["LiquidFiltering"]) { MineralizerConfig.Id };
+                Database.Techs.TECH_GROUPING["LiquidFiltering"] = liquidFiltering.ToArray();
             }
         }
     }
