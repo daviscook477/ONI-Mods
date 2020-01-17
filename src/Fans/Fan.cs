@@ -1,5 +1,4 @@
-﻿using Klei.AI;
-using KSerialization;
+﻿using KSerialization;
 using STRINGS;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using UnityEngine;
 namespace Fans
 {
     [SerializationConfig(MemberSerialization.OptIn)]
-    public class Fan : KMonoBehaviour, ISim1000ms, IEffectDescriptor
+    public class Fan : KMonoBehaviour, ISim200ms, IEffectDescriptor
     {
         public static readonly Operational.Flag FanInFlag = new Operational.Flag("fanIn", Operational.Flag.Type.Requirement);
         public static readonly Operational.Flag FanOutFlag = new Operational.Flag("fanOut", Operational.Flag.Type.Requirement);
@@ -83,7 +82,13 @@ namespace Fans
         {
             bool flag = false;
             if (!Grid.Solid[output_cell])
-                flag = Grid.Mass[output_cell] < (double)overpressureMass;
+            {
+                flag = true;
+                if (overpressureMass >= 0.0f)
+                {
+                    flag = Grid.Mass[output_cell] < (double)overpressureMass;
+                }
+            }
             return flag;
         }
 
@@ -101,6 +106,10 @@ namespace Fans
 
         public List<Descriptor> GetDescriptors(BuildingDef def)
         {
+            if (overpressureMass < 0.0f)
+            {
+                return new List<Descriptor>() { };
+            }
             string formattedMass = GameUtil.GetFormattedMass(overpressureMass, GameUtil.TimeSlice.None, GameUtil.MetricMassFormat.UseThreshold, true, "{0:0.#}");
             return new List<Descriptor>()
             {
@@ -108,7 +117,7 @@ namespace Fans
             };
         }
 
-        public void Sim1000ms(float dt)
+        public void Sim200ms(float dt)
         {
             elapsedTime += dt;
             if (elapsedTime >= OperationalUpdateInterval)
@@ -116,9 +125,9 @@ namespace Fans
                 pumpable = UpdatePumpOperational();
                 ventable = UpdateVentOperational();
                 elapsedTime = 0.0f;
-                // perform pumping
-                DoFan();
             }
+            // perform pumping
+            DoFan();
             if (operational.IsOperational && pumpable && ventable)
                 operational.SetActive(true, false);
             else

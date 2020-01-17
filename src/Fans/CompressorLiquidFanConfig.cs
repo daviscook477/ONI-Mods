@@ -5,7 +5,7 @@ using Harmony;
 
 namespace Fans
 {
-    public class HighPressureGasFan : IBuildingConfig
+    public class CompressorLiquidFanConfig : IBuildingConfig
     {
         [HarmonyPatch(typeof(GeneratedBuildings), nameof(GeneratedBuildings.LoadGeneratedBuildings))]
         public class GeneratedBuildings_LoadGeneratedBuildings_Patch
@@ -16,7 +16,7 @@ namespace Fans
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{Id.ToUpperInvariant()}.DESC", Description);
                 Strings.Add($"STRINGS.BUILDINGS.PREFABS.{Id.ToUpperInvariant()}.EFFECT", Effect);
 
-                ModUtil.AddBuildingToPlanScreen("HVAC", Id);
+                ModUtil.AddBuildingToPlanScreen("Plumbing", Id);
             }
         }
 
@@ -25,28 +25,28 @@ namespace Fans
         {
             private static void Prefix()
             {
-                var improvedGasPiping = new List<string>(Database.Techs.TECH_GROUPING["ImprovedGasPiping"]) { Id };
-                Database.Techs.TECH_GROUPING["ImprovedGasPiping"] = improvedGasPiping.ToArray();
+                var liquidTemperature = new List<string>(Database.Techs.TECH_GROUPING["LiquidTemperature"]) { Id };
+                Database.Techs.TECH_GROUPING["LiquidTemperature"] = liquidTemperature.ToArray();
             }
         }
 
-        public const string Id = "HighPressureFanBlock";
-        public static string DisplayName = UI.FormatAsLink("High Pressure Fan Block", Id.ToUpper());
-        public static string Description = $"Moves {UI.FormatAsLink("Gasses", "ELEMENTS_GAS")} from one side to the other.";
-        public static string Effect = $"Blows around {UI.FormatAsLink("Gasses", "ELEMENTS_GAS")} in high pressure areas.";
+        public const string Id = "CompressorTurbineBlock";
+        public static string DisplayName = UI.FormatAsLink("Compressor Turbine Block", Id.ToUpper());
+        public static string Description = $"Compresses {UI.FormatAsLink("Liquids", "ELEMENTS_LIQUID")} from one side to the other.";
+        public static string Effect = $"Compresses {UI.FormatAsLink("Liquids", "ELEMENTS_LIQUID")}.";
 
-        private const float SuckRate = 0.5f;
-        private const ConduitType Type = ConduitType.Gas;
-        private const float OverPressureThreshold = 20.0f;
+        private const float SuckRate = 5.0f;
+        private const ConduitType Type = ConduitType.Liquid;
+        private const float OverPressureThreshold = -1.0f;
 
         public override BuildingDef CreateBuildingDef()
         {
-            return BaseFanConfig.CreateBuildingDef(Id, "highgasfan_kanim");
+            return BaseFanConfig.CreateBuildingDef(Id, "liquidfan_kanim", false);
         }
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
         {
-            BaseFanConfig.ConfigureBuildingTemplate(go, prefab_tag);
+            BaseFanConfig.ConfigureBuildingTemplate(go, prefab_tag, false);
         }
 
         public override void DoPostConfigureComplete(GameObject go)

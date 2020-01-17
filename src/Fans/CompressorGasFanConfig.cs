@@ -5,7 +5,7 @@ using Harmony;
 
 namespace Fans
 {
-    public class HighPressureGasFan : IBuildingConfig
+    public class CompressorGasFanConfig : IBuildingConfig
     {
         [HarmonyPatch(typeof(GeneratedBuildings), nameof(GeneratedBuildings.LoadGeneratedBuildings))]
         public class GeneratedBuildings_LoadGeneratedBuildings_Patch
@@ -25,28 +25,28 @@ namespace Fans
         {
             private static void Prefix()
             {
-                var improvedGasPiping = new List<string>(Database.Techs.TECH_GROUPING["ImprovedGasPiping"]) { Id };
-                Database.Techs.TECH_GROUPING["ImprovedGasPiping"] = improvedGasPiping.ToArray();
+                var hvac = new List<string>(Database.Techs.TECH_GROUPING["HVAC"]) { Id };
+                Database.Techs.TECH_GROUPING["HVAC"] = hvac.ToArray();
             }
         }
 
-        public const string Id = "HighPressureFanBlock";
-        public static string DisplayName = UI.FormatAsLink("High Pressure Fan Block", Id.ToUpper());
-        public static string Description = $"Moves {UI.FormatAsLink("Gasses", "ELEMENTS_GAS")} from one side to the other.";
-        public static string Effect = $"Blows around {UI.FormatAsLink("Gasses", "ELEMENTS_GAS")} in high pressure areas.";
+        public const string Id = "CompressorFanBlock";
+        public static string DisplayName = UI.FormatAsLink("Compressor Fan Block", Id.ToUpper());
+        public static string Description = $"Compresses {UI.FormatAsLink("Gasses", "ELEMENTS_GAS")} from one side to the other.";
+        public static string Effect = $"Compresses {UI.FormatAsLink("Gasses", "ELEMENTS_GAS")}.";
 
         private const float SuckRate = 0.5f;
         private const ConduitType Type = ConduitType.Gas;
-        private const float OverPressureThreshold = 20.0f;
+        private const float OverPressureThreshold = -1.0f;
 
         public override BuildingDef CreateBuildingDef()
         {
-            return BaseFanConfig.CreateBuildingDef(Id, "highgasfan_kanim");
+            return BaseFanConfig.CreateBuildingDef(Id, "highgasfan_kanim", false);
         }
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
         {
-            BaseFanConfig.ConfigureBuildingTemplate(go, prefab_tag);
+            BaseFanConfig.ConfigureBuildingTemplate(go, prefab_tag, false);
         }
 
         public override void DoPostConfigureComplete(GameObject go)
