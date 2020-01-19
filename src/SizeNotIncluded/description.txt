@@ -1,0 +1,22 @@
+[h1]Tiny Worlds[/h1]
+
+Changes all world gen in the game to make smaller worlds. Designed either as a fun challenge or as a way to get more performance on lower-end computers.
+
+[h1]From 256x384 to 128x192[/h1]
+The world is 2x smaller in both the horizontal and vertical dimensions. This means you only have 1/4x the area to work in which means the game only has to simulate 1/4x the world.
+
+[h1]Balanced for Playability[/h1]
+Despite being smaller the worlds are still balanced for a good normal game playing experience.
+
+[list]
+[*] Biome sizes are made smaller so all the biomes still fit on the map.
+[*] Ores and resources are made x4 so you will not run out of important things like [b]Metal Ores[/b], [b]Fossil[/b], and [b]Algae[/b]. For example if in the normal world a tile would generate with 340kg of [b]Copper Ore[/b] then on a [b]Tiny World[/b] it will generate 1360kg instead.
+[*] Critters are more dense so you won't run out. Even though the map is smaller you will still get about the same amount of critters total.
+[/list]
+
+[h1]Problems/Help[/h1]
+
+If it crashes or hangs during world gen you should try restarting and trying again as a first solution. This is because world gen is finicky and although I have done my best to make sure world gen won't crash there is still small possibility it will not work correctly with modification.If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
+
+[h1]Code/License[/h1]
+Code is open source and may be found in my ONI-Mods Github repository. Feel free to look at, copy, modify it, etc.. Art assets and animations may also be found in that repository but cannot be redistributed without permission.
