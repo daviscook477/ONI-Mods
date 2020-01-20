@@ -15,6 +15,8 @@ Check out the Oxygen Not Included Discord [here](https://discord.gg/EBncbX2) for
 
 <a name="list-of-mods"></a>
 # List of Mods
+* [Tiny Worlds](https://steamcommunity.com/sharedfiles/filedetails/?id=1971715008): Allows you to make smaller worlds in scale from 25% area up to default 100% area. Includes balance tweaks to make smaller world sizes playable and not crash world gen. Preview it on Github [here](src/SizeNotIncluded/README.md)
+* [Pipsqueak Ice Sculpture](https://steamcommunity.com/sharedfiles/filedetails/?id=1966804624): Adds another variant to the Ice Sculpture that is a statue of the pipsqueak. Looks like the style of the hatch ice sculpture. Preview it on Github [here](src/PipsqueakIceSculpture/README.md)
 * [Mineralizer](https://steamcommunity.com/sharedfiles/filedetails/?id=1952120897): Adds a Mineralizer building that is the opposite of the Desalinator. It produces salt water from water and salt. Preview it on Github [here](src/Mineralizer/README.md)
 * [Roller Sakes](https://steamcommunity.com/sharedfiles/filedetails/?id=1963899596): Adds a new critter species called Roller Snakes to the game. They are snakes that curl up into loops and roll around to move. Additionally has two new plants called Spiky Succulent and Aqua Bulb. These are all found in a new biome called the Desert or can be obtained in care packages on existing maps. The Desert biome is spawned in a new asteroid called Tetrament. Preview it on Github [here](src/RollerSnake/README.md)
 * [Ethanol Geyser](https://steamcommunity.com/sharedfiles/filedetails/?id=1810801031): Adds a guaranteed chilled ethanol geyser spawn to the rust biome. Preview it on Github [here](src/EthanolGeyser/README.md)
@@ -38,7 +40,7 @@ All **code** in this repository is licensed under the MIT license.
 
 ## Code License
 
-Copyright 2019 Davis Cook
+Copyright 2020 Davis Cook
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

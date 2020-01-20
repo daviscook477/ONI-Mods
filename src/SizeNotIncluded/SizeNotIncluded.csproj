@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ILMerge.3.0.29\build\ILMerge.props" Condition="Exists('..\packages\ILMerge.3.0.29\build\ILMerge.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +43,13 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>..\lib\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PLib">
+      <HintPath>..\lib\PLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,16 +62,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SizeNotIncludedOptions.cs" />
     <Compile Include="SizeNotIncludedPatches.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
-IF EXIST "$(ProjectDir)\anims" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anims")
-copy "$(TargetPath)" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
+    <PostBuildEvent>"$(ILMergeConsolePath)" /ndebug /out:$(TargetName)Merged.dll $(TargetName).dll PLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v2.0.50727
+mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
+IF EXIST "$(ProjectDir)\anim" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim")
+IF EXIST "$(ProjectDir)\codex" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex")
+IF EXIST "$(ProjectDir)\worldgen" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen")
+IF EXIST "$(ProjectDir)\templates" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates")
+copy $(TargetName)Merged.dll "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST  "$(TargetPath)*.json" ( copy "$(TargetPath)*.json" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(TargetPath)*.txt" ( copy "$(TargetPath)*.txt" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
-IF EXIST  "$(ProjectDir)\anims" ( copy "$(ProjectDir)\anims" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anims" )
+IF EXIST  "$(ProjectDir)\anim" ( xcopy "$(ProjectDir)\anim" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim" /S /Y )
+IF EXIST  "$(ProjectDir)\codex" ( xcopy "$(ProjectDir)\codex" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex" /S /Y )
+IF EXIST  "$(ProjectDir)\worldgen" ( xcopy "$(ProjectDir)\worldgen" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen" /S /Y )
+IF EXIST  "$(ProjectDir)\templates" ( xcopy "$(ProjectDir)\templates" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates" /S /Y )
 IF EXIST  "$(ProjectDir)\preview.png" ( copy "$(ProjectDir)\preview.png" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\preview.png" )</PostBuildEvent>
   </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ILMerge.3.0.29\build\ILMerge.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILMerge.3.0.29\build\ILMerge.props'))" />
+  </Target>
 </Project>

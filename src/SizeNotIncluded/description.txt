@@ -14,6 +14,9 @@ Despite being smaller the worlds are still balanced for a good normal game playi
 [*] Critters are more dense so you won't run out. Even though the map is smaller you will still get about the same amount of critters total.
 [/list]
 
+[h1]Customizing World Size[/h1]
+You can choose the exact world size you want by going into the mod settings. To find settings open the mod menu in game, scroll down to [b]Tiny Worlds[/b] and click on [b]Options[/b] to choose your world size. Pick between the normal world ratio and tall worlds that are much taller than wide. Sizes range between [b]Smallest[/b], [b]Small[/b], [b]Medium[/b], [b]Large[/b], and [b]Default[/b] where [b]Default[/b] is the standard world size and everything else is smaller. Some traits are disabled from worlds between [b]Smallest[/b] and [b]Medium[/b] in size. These traits are [b]Glaciers[/b] and [b]Large/Medium/Mixed Boulders[/b]. All of the balance changes from above are scaled to fit your world size. So on a default world, no balance changes are applied to world gen and the changes scale from least affect to most affect from [b]Large[/b] to [b]Smallest[/b] world.
+
 [h1]Problems/Help[/h1]
 
 If it crashes or hangs during world gen you should try restarting and trying again as a first solution. This is because world gen is finicky and although I have done my best to make sure world gen won't crash there is still small possibility it will not work correctly with modification.If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.

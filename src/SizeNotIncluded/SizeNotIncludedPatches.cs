@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System;
 using System.Reflection;
 using System.Linq;
+using PeterHan.PLib;
+using PeterHan.PLib.Datafiles;
+using PeterHan.PLib.Options;
 
 namespace SizeNotIncluded
 {
     public class SizeNotIncludedPatches
     {
-        public static float chunkSize = 16f;
-        public static float defaultX = 256f;
-        public static float defaultY = 384f;
-        public static float xCount = 4f;
-        public static float yCount = 6;
-        public static float xAmount = xCount * chunkSize;
-        public static float yAmount = yCount * chunkSize;
-        public static float xscale = defaultX / xAmount;
-        public static float yscale = defaultY / yAmount;
         public static float maxDensity = 2.5f;
+
+        public static void OnLoad()
+        {
+            PUtil.InitLibrary();
+            POptions.RegisterOptions(typeof(SizeNotIncludedOptions));
+        }
 
         [HarmonyPatch(typeof(ProcGen.Worlds), "UpdateWorldCache")]
         public static class Worlds_UpdateWorldCache_Patch
@@ -27,7 +27,8 @@ namespace SizeNotIncluded
                 foreach(ProcGen.World world in __instance.worldCache.Values)
                 {
                     Traverse.Create(world).Property("worldsize").SetValue(
-                        new Vector2I((int) xAmount, (int) yAmount));
+                        new Vector2I((int) SizeNotIncludedOptions.Instance.XSize(),
+                            (int) SizeNotIncludedOptions.Instance.YSize()));
                 }
             }
         }
@@ -37,12 +38,7 @@ namespace SizeNotIncluded
         {
             private static bool Prefix(string target, ref float __result)
             {
-                var densityModifier = xscale * yscale;
-                Console.WriteLine($"Density modifier ended up being {densityModifier}");
-                if (densityModifier > maxDensity)
-                {
-                    densityModifier = maxDensity;
-                }
+                var densityModifier = SizeNotIncludedOptions.Instance.DensityCapped(maxDensity);
                 if (target.Equals("OverworldDensityMin"))
                 {
                     __result = 600.0f / densityModifier;
@@ -69,7 +65,7 @@ namespace SizeNotIncluded
         {
             private static void Postfix(ProcGen.MutatedWorldData __instance)
             {
-                var densityModifier = xscale * yscale;
+                var densityModifier = SizeNotIncludedOptions.Instance.Density();
                 foreach (KeyValuePair<string, ElementBandConfiguration> bandConfiguration in __instance.biomes.BiomeBackgroundElementBandConfigurations)
                 {
                     foreach (ElementGradient elementGradient in bandConfiguration.Value)
@@ -104,8 +100,14 @@ namespace SizeNotIncluded
         {
             private static void Prefix(ProcGenGame.Border __instance)
             {
-                // smaller abyssalite border so it doesn't take up most of the map
-                __instance.width = 0.5f;
+                if (__instance.element == ProcGen.SettingsCache.borders["impenetrable"])
+                {
+                    __instance.width = SizeNotIncludedOptions.Instance.NeutroniumBorder(__instance);
+                }
+                else
+                {
+                    __instance.width = SizeNotIncludedOptions.Instance.BiomeBorder(__instance);
+                }
             }
         }
 
@@ -114,6 +116,10 @@ namespace SizeNotIncluded
         {
             private static void Postfix()
             {
+                if (!SizeNotIncludedOptions.Instance.IsSmall())
+                {
+                    return;
+                }
                 var traits = Traverse.Create(typeof(ProcGen.SettingsCache)).Field("traits").GetValue<Dictionary<string, ProcGen.WorldTrait>>();
                 var lessTraits = traits.Where(pair => !pair.Value.filePath.Contains("BouldersLarge")
                     && !pair.Value.filePath.Contains("BouldersMedium")
@@ -141,13 +147,13 @@ namespace SizeNotIncluded
                     {
                         prefabName = name;
                     }
-                    if (name != null && !patched.Contains(name) )//&& critters.Contains(prefabName))
+                    if (name != null && !patched.Contains(name))
                     {
-                        var densityModifier = xscale * yscale;
-                        // surface biome gets mostly deleted. I don't know why. So just give the player lots of voles to compensate.
+                        var densityModifier = SizeNotIncludedOptions.Instance.Density();
+                        // surface biome gets mostly deleted. I don't know why. So just give the player lots of voles to compensate. squaring it is probably fine.
                         if (name.Equals("Mole") || prefabName.Equals("Mole"))
                         {
-                            densityModifier *= 4.0f;
+                            densityModifier *= densityModifier;
                         }
                         patched.Add(name);
                         typeof(ProcGen.SampleDescriber).GetProperty("density", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
