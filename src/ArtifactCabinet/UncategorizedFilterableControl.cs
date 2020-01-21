@@ -7,7 +7,6 @@ using UnityEngine;
 namespace ArtifactCabinet
 {
 	public class UncategorizedFilterableControl {
-		public static UncategorizedFilterableControl Instance = null;
 
 		/// <summary>
 		/// The margin around the scrollable area to avoid stomping on the scrollbar.
@@ -27,22 +26,22 @@ namespace ArtifactCabinet
 		/// <summary>
 		/// The size of checkboxes in this control.
 		/// </summary>
-		internal static readonly Vector2 CHECK_SIZE = new Vector2(24.0f, 24.0f);
+		internal static readonly Vector2 CHECK_SIZE = new Vector2(32.0f, 32.0f);
 
 		/// <summary>
 		/// The size of images in this control.
 		/// </summary>
-		internal static readonly Vector2 ICON_SIZE = new Vector2(64.0f, 64.0f); 
+		internal static readonly Vector2 ICON_SIZE = new Vector2(96.0f, 96.0f); 
 
 		/// <summary>
 		/// The spacing between each card.
 		/// </summary>
-		internal const int CARD_SPACING = 2;
+		internal const int CARD_SPACING = 10;
 
 		/// <summary>
 		/// The number of elements to show in each row.
 		/// </summary>
-		internal const int PER_ROW = 5;
+		internal const int PER_ROW = 3;
 
 		/// <summary>
 		/// Gets the sprite for a particular element tag.
@@ -107,7 +106,7 @@ namespace ArtifactCabinet
 		/// <summary>
 		/// The root panel of the whole control.
 		/// </summary>
-		public GameObject RootPanel { get; }
+		public PPanel RootPanel { get; }
 
 		/// <summary>
 		/// The target of the uncategorized filterable control UI.
@@ -145,7 +144,8 @@ namespace ArtifactCabinet
 				Spacing = CARD_SPACING
 			};
 			cp.OnRealize += (obj) => { childPanel = obj; };
-			RootPanel = new PPanel("UncategorizedFilterableSideScreen") {
+			RootPanel = new PPanel("UncategorizedFilterableSideScreen")
+			{
 				// White background for scroll bar
 				Direction = PanelDirection.Vertical,
 				Margin = OUTER_MARGIN,
@@ -169,18 +169,15 @@ namespace ArtifactCabinet
 				TrackSize = 8.0f,
 				FlexSize = Vector2.one,
 				BackColor = PUITuning.Colors.BackgroundLight,
-			}).SetKleiBlueColor().BuildWithFixedSize(PANEL_SIZE);
+			}).SetKleiBlueColor();
 			children = new List<UncategorizedFilterableRow>(16);
-			if (Instance != null) {
-				Debug.LogError("ISSUE! created uncategorized filterable control more than once");
-			}
-			Instance = this;
 		}
 
 		/// <summary>
 		/// Updates the list of available elements.
 		/// </summary>
 		public void Update(GameObject target) {
+			Console.WriteLine("guess what this got called and is the real source of the NPE");
 			Target = target;
 			Storage storage = Target.GetComponent<Storage>();
 			UncategorizedFilterable filterable = Target.GetComponent<UncategorizedFilterable>();
@@ -389,7 +386,7 @@ namespace ArtifactCabinet
 			}
 
 			private void OnCheck(GameObject source, int state) {
-				UncategorizedFilterable uncategorizedFilterable = UncategorizedFilterableControl.Instance.Target.GetComponent<UncategorizedFilterable>();
+				UncategorizedFilterable uncategorizedFilterable = Parent.Control.Target.GetComponent<UncategorizedFilterable>();
 				switch (state) {
 					case PCheckBox.STATE_UNCHECKED:
 						// Clicked when unchecked, check and possibly check all

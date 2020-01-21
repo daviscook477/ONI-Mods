@@ -9,6 +9,7 @@ namespace ArtifactCabinet
 	public class UncategorizedFilterableSideScreen : SideScreenContent {
 		public GameObject target;
 		public Storage storage;
+		public UncategorizedFilterableControl control;
 
 		private UncategorizedFilterable targetFilterable;
 
@@ -26,6 +27,14 @@ namespace ArtifactCabinet
 
 		protected override void OnPrefabInit() {
 			base.OnPrefabInit();
+			Console.WriteLine("creating prefab for filterable side screen");
+			if (control == null)
+			{
+				Console.WriteLine("actually making it");
+				control = new UncategorizedFilterableControl();
+				ContentContainer = control.RootPanel.AddTo(gameObject, 0);
+			}
+			Console.WriteLine("sucessfully set control to not null!");
 		}
 
 		public void Initialize(UncategorizedFilterable target) {
@@ -63,7 +72,15 @@ namespace ArtifactCabinet
 				}
 				else {
 					this.storage = this.targetFilterable.GetComponent<Storage>();
-					UncategorizedFilterableControl.Instance.Update(target);
+					Console.WriteLine("target setting");
+					if (control == null)
+					{
+						Console.WriteLine("actually making it");
+						control = new UncategorizedFilterableControl();
+						ContentContainer = control.RootPanel.AddTo(gameObject, 0);
+					}
+					Console.WriteLine("done target setting");
+					this.control.Update(target);
 				}
 			}
 		}

@@ -5,6 +5,7 @@ using System.Text;
 using Harmony;
 using UnityEngine;
 using PeterHan.PLib;
+using PeterHan.PLib.UI;
 
 namespace ArtifactCabinet
 {
@@ -34,19 +35,7 @@ namespace ArtifactCabinet
 		{
 			public static void Postfix()
 			{
-				List<DetailsScreen.SideScreenRef> sideScreens = Traverse.Create(DetailsScreen.Instance).Field("sideScreens").GetValue<List<DetailsScreen.SideScreenRef>>();
-				GameObject sideScreenContentBody = Traverse.Create(DetailsScreen.Instance).Field("sideScreenContentBody").GetValue<GameObject>();
-				UncategorizedFilterableControl uncategorizedSelectControl = new UncategorizedFilterableControl();
-				UncategorizedFilterableSideScreen screen = uncategorizedSelectControl.RootPanel.AddComponent<UncategorizedFilterableSideScreen>();
-				screen.gameObject.transform.parent = sideScreenContentBody.transform;
-				DetailsScreen.SideScreenRef myRef = new DetailsScreen.SideScreenRef
-				{
-					name = "ArtifactSideScreen",
-					screenPrefab = screen,
-					offset = new Vector2(0f, 0f),
-					screenInstance = screen
-				};
-				sideScreens.Add(myRef);
+				PUIUtils.AddSideScreenContent<UncategorizedFilterableSideScreen>();
 			}
 		}
 	}
