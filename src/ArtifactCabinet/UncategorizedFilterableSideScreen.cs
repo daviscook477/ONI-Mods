@@ -4,15 +4,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SideScreen
+namespace ArtifactCabinet
 {
-	public class GridFilterableSideScreen : SideScreenContent {
+	public class UncategorizedFilterableSideScreen : SideScreenContent {
 		public GameObject target;
 		public Storage storage;
 
-		private GridFilterable targetFilterable;
+		private UncategorizedFilterable targetFilterable;
 
-		public GridFilterableSideScreen() {
+		public UncategorizedFilterableSideScreen() {
 			activateOnSpawn = true;
 			ConsumeMouseScroll = true;
 			titleKey = "Test this is a title key";
@@ -28,23 +28,23 @@ namespace SideScreen
 			base.OnPrefabInit();
 		}
 
-		public void Initialize(GridFilterable target) {
+		public void Initialize(UncategorizedFilterable target) {
 			if (target == null) {
-				Debug.LogError((object)"GRID SELECT CONTROL: provided was null.");
+				Debug.LogError((object)"UNCATEGORIZED SELECT CONTROL: provided was null.");
 			}
 
-			Debug.Log("GRID SELECT CONTROL: Initialized");
+			Debug.Log("UNCATEGORIZED SELECT CONTROL: Initialized");
 			this.targetFilterable = target;
 			this.gameObject.SetActive(true);
 		}
 
 		private void OnRefreshData(object obj) {
 			this.SetTarget(this.targetFilterable.gameObject);
-			Debug.Log("GRID SELECT CONTROL: Onrefreshdata");
+			Debug.Log("UNCATEGORIZED SELECT CONTROL: Onrefreshdata");
 		}
 
 		public override bool IsValidForTarget(GameObject target) {
-			return target.GetComponent<GridFilterable>() != null;
+			return target.GetComponent<UncategorizedFilterable>() != null;
 		}
 
 		public override void SetTarget(GameObject target) {
@@ -53,9 +53,9 @@ namespace SideScreen
 				Debug.LogError((object)"The target object provided was null");
 			}
 			else {
-				this.targetFilterable = target.GetComponent<GridFilterable>();
+				this.targetFilterable = target.GetComponent<UncategorizedFilterable>();
 				if ((UnityEngine.Object)this.targetFilterable == (UnityEngine.Object)null)
-					Debug.LogError((object)"The target provided does not have a Grid Filterable component");
+					Debug.LogError((object)"The target provided does not have a Uncategorized Filterable component");
 				else if (!this.targetFilterable.showUserMenu)
 					DetailsScreen.Instance.DeactivateSideContent();
 				else if (this.IsStorage && !this.storage.showInUI) {
@@ -63,7 +63,7 @@ namespace SideScreen
 				}
 				else {
 					this.storage = this.targetFilterable.GetComponent<Storage>();
-					GridFilterableControl.Instance.Update(this);
+					UncategorizedFilterableControl.Instance.Update(target);
 				}
 			}
 		}

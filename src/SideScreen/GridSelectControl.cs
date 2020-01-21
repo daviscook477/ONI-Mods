@@ -22,7 +22,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mineralizer {
+namespace SideScreen
+{
 	/// <summary>
 	/// A control which allows selection of types.
 	/// </summary>

@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SideScreen
+namespace ArtifactCabinet
 {
-	public class GridFilterableControl {
-		public static GridFilterableControl Instance = null;
+	public class UncategorizedFilterableControl {
+		public static UncategorizedFilterableControl Instance = null;
 
 		/// <summary>
 		/// The margin around the scrollable area to avoid stomping on the scrollbar.
@@ -25,19 +25,24 @@ namespace SideScreen
 		private static readonly RectOffset OUTER_MARGIN = new RectOffset(6, 10, 6, 14);
 
 		/// <summary>
-		/// The size of checkboxes and images in this control.
+		/// The size of checkboxes in this control.
 		/// </summary>
-		internal static readonly Vector2 ROW_SIZE = new Vector2(24.0f, 24.0f);
+		internal static readonly Vector2 CHECK_SIZE = new Vector2(24.0f, 24.0f);
 
 		/// <summary>
-		/// The spacing between each row.
+		/// The size of images in this control.
 		/// </summary>
-		internal const int ROW_SPACING = 2;
+		internal static readonly Vector2 ICON_SIZE = new Vector2(64.0f, 64.0f); 
+
+		/// <summary>
+		/// The spacing between each card.
+		/// </summary>
+		internal const int CARD_SPACING = 2;
 
 		/// <summary>
 		/// The number of elements to show in each row.
 		/// </summary>
-		internal const int PER_ROW = 2;
+		internal const int PER_ROW = 5;
 
 		/// <summary>
 		/// Gets the sprite for a particular element tag.
@@ -52,9 +57,14 @@ namespace SideScreen
 				var component = prefab.GetComponent<KBatchedAnimController>();
 				if (component != null) {
 					var anim = component.AnimFiles[0];
+					string animName = "ui";
+					if (UncategorizedFilterablePatches.ArtifactMap.ContainsKey(elementTag.ToString()))
+					{
+						animName = UncategorizedFilterablePatches.ArtifactMap[elementTag.ToString()];
+					}
 					// Gas bottles do not have a place sprite, silence the warning
-					if (anim != null && anim.name != "gas_tank_kanim")
-						result = Def.GetUISpriteFromMultiObjectAnim(anim);
+					if (anim != null) //&& anim.name != "gas_tank_kanim")
+						result = Def.GetUISpriteFromMultiObjectAnim(anim, animName);
 				}
 			}
 			return result;
@@ -100,6 +110,11 @@ namespace SideScreen
 		public GameObject RootPanel { get; }
 
 		/// <summary>
+		/// The target of the uncategorized filterable control UI.
+		/// </summary>
+		public GameObject Target { get; set; }
+
+		/// <summary>
 		/// The "all items" checkbox.
 		/// </summary>
 		private GameObject allItems;
@@ -112,42 +127,52 @@ namespace SideScreen
 		/// <summary>
 		/// The child rows.
 		/// </summary>
-		private readonly List<GridFilterableRow> children;
+		private readonly List<UncategorizedFilterableRow> children;
 
-		public GridFilterableControl() {
+		public UncategorizedFilterableControl() {
 			// Select/deselect all types
 			var allCheckBox = new PCheckBox("SelectAll") {
 				Text = STRINGS.UI.UISIDESCREENS.TREEFILTERABLESIDESCREEN.ALLBUTTON,
-				CheckSize = ROW_SIZE,
+				CheckSize = CHECK_SIZE,
 				InitialState = PCheckBox.STATE_CHECKED,
 				OnChecked = OnCheck,
-				TextStyle = PUITuning.Fonts.TextDarkStyle
+				TextStyle = PUITuning.Fonts.TextLightStyle
 			};
 			allCheckBox.OnRealize += (obj) => { allItems = obj; };
 			var cp = new PPanel("Categories") {
 				Direction = PanelDirection.Vertical,
 				Alignment = TextAnchor.UpperLeft,
-				Spacing = ROW_SPACING
+				Spacing = CARD_SPACING
 			};
 			cp.OnRealize += (obj) => { childPanel = obj; };
-			RootPanel = new PPanel("GridFilterableSideScreen") {
+			RootPanel = new PPanel("UncategorizedFilterableSideScreen") {
 				// White background for scroll bar
 				Direction = PanelDirection.Vertical,
 				Margin = OUTER_MARGIN,
-				Alignment = TextAnchor.MiddleCenter,
+				Alignment = TextAnchor.UpperLeft,
 				Spacing = 0,
 				BackColor = PUITuning.Colors.BackgroundLight,
 				FlexSize = Vector2.one,
-			}.AddChild(new PPanel("SelectType")
+			}.AddChild(new PScrollPane("Scroll")
 			{
-				Direction = PanelDirection.Vertical,
-				Margin = ELEMENT_MARGIN,
-				FlexSize = new Vector2(1.0f, 0.0f),
-				Alignment = TextAnchor.UpperLeft
-			}.AddChild(allCheckBox).AddChild(cp)).SetKleiBlueColor().BuildWithFixedSize(PANEL_SIZE);
-			children = new List<GridFilterableRow>(16);
+				// Scroll to select elements
+				Child = new PPanel("SelectType")
+				{
+					Direction = PanelDirection.Vertical,
+					Margin = ELEMENT_MARGIN,
+					FlexSize = new Vector2(1.0f, 0.0f),
+					Alignment = TextAnchor.UpperLeft
+				}.AddChild(allCheckBox).AddChild(cp),
+				ScrollHorizontal = false,
+				ScrollVertical = true,
+				AlwaysShowVertical = true,
+				TrackSize = 8.0f,
+				FlexSize = Vector2.one,
+				BackColor = PUITuning.Colors.BackgroundLight,
+			}).SetKleiBlueColor().BuildWithFixedSize(PANEL_SIZE);
+			children = new List<UncategorizedFilterableRow>(16);
 			if (Instance != null) {
-				Debug.LogError("ISSUE! created grid filterable control more than once");
+				Debug.LogError("ISSUE! created uncategorized filterable control more than once");
 			}
 			Instance = this;
 		}
@@ -155,30 +180,28 @@ namespace SideScreen
 		/// <summary>
 		/// Updates the list of available elements.
 		/// </summary>
-		public void Update(GridFilterableSideScreen screen) {
-			Console.WriteLine("updating with the storage");
-			Storage storage = screen.storage;
-			GameObject target = screen.target;
+		public void Update(GameObject target) {
+			Target = target;
+			Storage storage = Target.GetComponent<Storage>();
+			UncategorizedFilterable filterable = Target.GetComponent<UncategorizedFilterable>();
 			if (storage.storageFilters != null && storage.storageFilters.Count >= 1) {
 				// check for which ones aren't added already and add them
 				foreach (Tag tag in storage.storageFilters) {
-					Console.WriteLine($"Should be checking presence of tag {tag.ToString()}");
 					if (!HasElement(tag)) {
-						Console.WriteLine($"Attempted to add {tag.ToString()} to the panel");
 						if (children.Count <= 0) {
-							GridFilterableRow firstRow = new GridFilterableRow(this);
+							UncategorizedFilterableRow firstRow = new UncategorizedFilterableRow(this);
 							children.Add(firstRow);
 							PUIElements.SetParent(firstRow.ChildPanel, childPanel);
 							PUIElements.SetAnchors(firstRow.ChildPanel, PUIAnchoring.Stretch, PUIAnchoring.Stretch);
 						}
-						GridFilterableRow lastRow = children[children.Count - 1];
+						UncategorizedFilterableRow lastRow = children[children.Count - 1];
 						if (lastRow.RowSize >= PER_ROW) {
-							lastRow = new GridFilterableRow(this);
+							lastRow = new UncategorizedFilterableRow(this);
 							PUIElements.SetParent(lastRow.ChildPanel, childPanel);
 							PUIElements.SetAnchors(lastRow.ChildPanel, PUIAnchoring.Stretch, PUIAnchoring.Stretch);
 							children.Add(lastRow);
 						}
-						GridFilterableSelectableEntity entity = new GridFilterableSelectableEntity(lastRow, tag);
+						UncategorizedFilterableSelectableEntity entity = new UncategorizedFilterableSelectableEntity(lastRow, tag);
 						lastRow.Children.Add(entity);
 						PUIElements.SetParent(entity.CheckBox, lastRow.ChildPanel);
 						if (PCheckBox.GetCheckState(entity.CheckBox) == PCheckBox.STATE_CHECKED)
@@ -186,6 +209,22 @@ namespace SideScreen
 							PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
 					}
 				}
+				// update the state of each to what the filter actually says
+				foreach (var child in children)
+				{
+					foreach (var entity in child.Children)
+					{
+						if (filterable.AcceptedTags.Contains(entity.ElementTag))
+						{
+							PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
+						}
+						else
+						{
+							PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_UNCHECKED);
+						}
+					}
+				}
+				UpdateFromChildren();
 			}
 			else
 				Debug.LogError((object)"If you're filtering, your storage filter should have the filters set on it");
@@ -214,7 +253,11 @@ namespace SideScreen
 			PCheckBox.SetCheckState(allItems, PCheckBox.STATE_CHECKED);
 			foreach (var child in children)
 				foreach (var entity in child.Children)
+				{
 					PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
+					Target.GetComponent<UncategorizedFilterable>().AddTagToFilter(entity.ElementTag);
+				}
+
 		}
 
 		/// <summary>
@@ -224,7 +267,10 @@ namespace SideScreen
 			PCheckBox.SetCheckState(allItems, PCheckBox.STATE_UNCHECKED);
 			foreach (var child in children)
 				foreach (var entity in child.Children)
+				{
 					PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_UNCHECKED);
+					Target.GetComponent<UncategorizedFilterable>().RemoveTagFromFilter(entity.ElementTag);
+				}
 		}
 
 		private void OnCheck(GameObject source, int state) {
@@ -244,8 +290,8 @@ namespace SideScreen
 		/// Updates the parent check box state from the children.
 		/// </summary>
 		internal void UpdateFromChildren() {
-			List<GridFilterableSelectableEntity> entities = new List<GridFilterableSelectableEntity>();
-			foreach (GridFilterableRow row in children) {
+			List<UncategorizedFilterableSelectableEntity> entities = new List<UncategorizedFilterableSelectableEntity>();
+			foreach (UncategorizedFilterableRow row in children) {
 				entities.AddRange(row.Children);
 			}
 			UpdateAllItems(allItems, entities);
@@ -254,7 +300,7 @@ namespace SideScreen
 		/// <summary>
 		/// An individual row used to organize type selection
 		/// </summary>
-		public sealed class GridFilterableRow {
+		public sealed class UncategorizedFilterableRow {
 			/// <summary>
 			/// The panel holding all children.
 			/// </summary>
@@ -263,12 +309,12 @@ namespace SideScreen
 			/// <summary>
 			/// The parent side screen.
 			/// </summary>
-			public readonly GridFilterableControl Control;
+			public readonly UncategorizedFilterableControl Control;
 
 			/// <summary>
 			/// The child elements.
 			/// </summary>
-			public readonly List<GridFilterableSelectableEntity> Children;
+			public readonly List<UncategorizedFilterableSelectableEntity> Children;
 
 			public int RowSize {
 				get {
@@ -276,13 +322,13 @@ namespace SideScreen
 				}
 			}
 
-			public GridFilterableRow(GridFilterableControl control) {
+			public UncategorizedFilterableRow(UncategorizedFilterableControl control) {
 				Control = control ?? throw new ArgumentNullException("parent");
-				Children = new List<GridFilterableSelectableEntity>(16);
+				Children = new List<UncategorizedFilterableSelectableEntity>(16);
 				ChildPanel = new PPanel("Children") {
 					Direction = PanelDirection.Horizontal,
 					Alignment = TextAnchor.MiddleLeft,
-					Spacing = ROW_SPACING,
+					Spacing = CARD_SPACING,
 					Margin = new RectOffset(0, 0, 0, 0)
 				}.Build();
 				//ChildPanel.transform.localScale = Vector3.zero;
@@ -299,7 +345,7 @@ namespace SideScreen
 		/// <summary>
 		/// An individual element choice used in type select controls.
 		/// </summary>
-		public sealed class GridFilterableSelectableEntity : IHasCheckBox {
+		public sealed class UncategorizedFilterableSelectableEntity : IHasCheckBox {
 			/// <summary>
 			/// The selection checkbox.
 			/// </summary>
@@ -313,31 +359,47 @@ namespace SideScreen
 			/// <summary>
 			/// The parent row
 			/// </summary>
-			public readonly GridFilterableRow Parent;
+			public readonly UncategorizedFilterableRow Parent;
 
-			public GridFilterableSelectableEntity(GridFilterableRow parent, Tag elementTag) {
+			public UncategorizedFilterableSelectableEntity(UncategorizedFilterableRow parent, Tag elementTag) {
 				this.Parent = parent ?? throw new ArgumentNullException("parent");
 				ElementTag = elementTag;
-				CheckBox = new PCheckBox("Select") {
+
+				CheckBox = new PPanel("Border")
+				{
+					// 1px dark border for contrast
+					Margin = new RectOffset(1, 1, 1, 1),
+					Direction = PanelDirection.Vertical,
+					Alignment = TextAnchor.MiddleCenter,
+					Spacing = 1,
+					BackColor = new Color(0, 0, 0, 255)
+				}.AddChild(new PPanel("Background")
+				{
+					Direction = PanelDirection.Vertical,
+					Alignment = TextAnchor.MiddleCenter
+				}.SetKleiBlueColor().AddChild(new PEntityToggle("Select")
+				{
 					OnChecked = OnCheck,
-					Text = ElementTag.ProperName(),
-					InitialState = PCheckBox.
-					STATE_CHECKED,
+					InitialState = PCheckBox.STATE_CHECKED,
 					Sprite = GetStorageObjectSprite(elementTag),
-					CheckSize = ROW_SIZE,
-					SpriteSize = ROW_SIZE,
-				}.Build();
+					TextAlignment = TextAnchor.UpperCenter,
+					CheckSize = CHECK_SIZE,
+					SpriteSize = ICON_SIZE,
+				})).Build();
 			}
 
 			private void OnCheck(GameObject source, int state) {
+				UncategorizedFilterable uncategorizedFilterable = UncategorizedFilterableControl.Instance.Target.GetComponent<UncategorizedFilterable>();
 				switch (state) {
 					case PCheckBox.STATE_UNCHECKED:
 						// Clicked when unchecked, check and possibly check all
 						PCheckBox.SetCheckState(CheckBox, PCheckBox.STATE_CHECKED);
+						uncategorizedFilterable.AddTagToFilter(ElementTag);
 						break;
 					default:
 						// Clicked when checked, clear and possibly uncheck
 						PCheckBox.SetCheckState(CheckBox, PCheckBox.STATE_UNCHECKED);
+						uncategorizedFilterable.RemoveTagFromFilter(ElementTag);
 						break;
 				}
 				Parent.UpdateFromChildren();

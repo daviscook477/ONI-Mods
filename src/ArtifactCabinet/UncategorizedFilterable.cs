@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System;
 using KSerialization;
 
 using UnityEngine;
 
 
-namespace SideScreen
+namespace ArtifactCabinet
 {
     [SerializationConfig(MemberSerialization.OptIn)]
-    public class GridFilterable : KMonoBehaviour, ISaveLoadable {
-        private static readonly EventSystem.IntraObjectHandler<GridFilterable> OnCopySettingsDelegate = new EventSystem.IntraObjectHandler<GridFilterable>(OnCopySettings);
+    public class UncategorizedFilterable : KMonoBehaviour, ISaveLoadable {
+        private static readonly EventSystem.IntraObjectHandler<UncategorizedFilterable> OnCopySettingsDelegate = new EventSystem.IntraObjectHandler<UncategorizedFilterable>(OnCopySettings);
         public bool showUserMenu = true;
         [SerializeField]
         [Serialize]
@@ -28,32 +28,15 @@ namespace SideScreen
         }
 
         private void OnDiscover(Tag category_tag, Tag tag) {
-            if (!this.storage.storageFilters.Contains(category_tag))
-                return;
-            bool flag = false;
-            if (WorldInventory.Instance.GetDiscoveredResourcesFromTag(category_tag).Count <= 1) {
-                foreach (Tag storageFilter in this.storage.storageFilters) {
-                    if (!(storageFilter == category_tag) && WorldInventory.Instance.IsDiscovered(storageFilter)) {
-                        flag = true;
-                        foreach (Tag tag1 in WorldInventory.Instance.GetDiscoveredResourcesFromTag(storageFilter)) {
-                            if (!this.acceptedTags.Contains(tag1))
-                                return;
-                        }
-                    }
-                }
-                if (!flag)
-                    return;
-            }
-            foreach (Tag tag1 in WorldInventory.Instance.GetDiscoveredResourcesFromTag(category_tag)) {
-                if (!(tag1 == tag) && !this.acceptedTags.Contains(tag1))
-                    return;
-            }
-            this.AddTagToFilter(tag);
+            // not really sure what to do when discovery occurs?
+            // right now we kinda show everything regardless of if the player has discovered it
+            // probably need to make a list of what is discovered and what is not
+            return;
         }
 
         protected override void OnPrefabInit() {
             base.OnPrefabInit();
-            this.Subscribe<GridFilterable>(-905833192, GridFilterable.OnCopySettingsDelegate);
+            this.Subscribe<UncategorizedFilterable>(-905833192, UncategorizedFilterable.OnCopySettingsDelegate);
         }
 
         protected override void OnSpawn() {
@@ -66,24 +49,6 @@ namespace SideScreen
             }
             if (this.OnFilterChanged != null)
                 this.OnFilterChanged(this.acceptedTags.ToArray());
-            this.RemoveIncorrectAcceptedTags();
-        }
-
-        private void RemoveIncorrectAcceptedTags() {
-            List<Tag> tagList = new List<Tag>();
-            foreach (Tag acceptedTag in this.acceptedTags) {
-                bool flag = false;
-                foreach (Tag storageFilter in this.storage.storageFilters) {
-                    if (WorldInventory.Instance.GetDiscoveredResourcesFromTag(storageFilter).Contains(acceptedTag)) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (!flag)
-                    tagList.Add(acceptedTag);
-            }
-            foreach (Tag t in tagList)
-                this.RemoveTagFromFilter(t);
         }
 
         protected override void OnCleanUp() {
@@ -91,11 +56,11 @@ namespace SideScreen
             base.OnCleanUp();
         }
 
-        private static void OnCopySettings(GridFilterable filterable, object data) {
-            GridFilterable component = ((GameObject)data).GetComponent<GridFilterable>();
+        private static void OnCopySettings(UncategorizedFilterable filterable, object data) {
+            UncategorizedFilterable component = ((GameObject)data).GetComponent<UncategorizedFilterable>();
             if (!((UnityEngine.Object)component != (UnityEngine.Object)null))
                 return;
-            //filterable.UpdateFilters((IList<Tag>)component.GetTags());
+            filterable.UpdateFilters((IList<Tag>)component.GetTags());
         }
 
         public Tag[] GetTags() {
@@ -111,11 +76,12 @@ namespace SideScreen
                 return;
             this.UpdateFilters((IList<Tag>)new List<Tag>((IEnumerable<Tag>)this.acceptedTags)
             {
-      t
-    });
+              t
+            });
         }
 
-        public void RemoveTagFromFilter(Tag t) {
+        public void RemoveTagFromFilter(Tag t)
+        {
             if (!this.ContainsTag(t))
                 return;
             List<Tag> tagList = new List<Tag>((IEnumerable<Tag>)this.acceptedTags);

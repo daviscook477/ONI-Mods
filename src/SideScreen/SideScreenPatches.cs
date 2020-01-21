@@ -7,7 +7,7 @@ using UnityEngine;
 using PeterHan.PLib;
 using PeterHan.PLib.UI;
 
-namespace Mineralizer {
+namespace SideScreen {
 	/*public class SideScreenPatches {
 
 		[HarmonyPatch(typeof(DetailsScreen), "OnPrefabInit")]
@@ -126,10 +126,30 @@ namespace Mineralizer {
 		}
 
 	}*/
+
+
+
 	public class SideScreenPatches {
 
 		public static void OnLoad() {
 			PeterHan.PLib.PUtil.InitLibrary();
+		}
+
+		[HarmonyPatch(typeof(DesalinatorConfig), "ConfigureBuildingTemplate")]
+		public class DesalinatorConfig_ConfigureBuildingTemplate_Patch
+		{
+			public static void Postfix(GameObject go)
+			{
+				go.AddComponent<GridFilterable>();
+				go.GetComponent<Storage>().storageFilters = new List<Tag>() { SimHashes.Sand.CreateTag(),
+					SimHashes.IgneousRock.CreateTag(),
+					SimHashes.Algae.CreateTag(),
+					"RubiksCube".ToTag(),
+					"Saxophone".ToTag(),
+					SimHashes.Oxygen.CreateTag(),
+					SimHashes.SaltWater.CreateTag()
+				};
+			}
 		}
 
 		[HarmonyPatch(typeof(DetailsScreen), "OnPrefabInit")]

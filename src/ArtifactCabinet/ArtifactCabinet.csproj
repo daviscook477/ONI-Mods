@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BB3B6E28-9E00-4DB3-8400-F04CE7E2D8B5}</ProjectGuid>
+    <ProjectGuid>{F1312407-0EC3-48A5-8406-E1821D78EDCB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SideScreen</RootNamespace>
-    <AssemblyName>SideScreen</AssemblyName>
+    <RootNamespace>ArtifactCabinet</RootNamespace>
+    <AssemblyName>ArtifactCabinet</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,6 +43,9 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>..\lib\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PLib">
       <HintPath>..\lib\PLib.dll</HintPath>
     </Reference>
@@ -58,6 +61,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\lib\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\lib\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
@@ -67,19 +73,20 @@
     <Reference Include="UnityEngine.UIElementsModule">
       <HintPath>..\lib\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\lib\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GridFilterable.cs" />
-    <Compile Include="GridFilterableControl.cs" />
-    <Compile Include="GridFilterableSideScreen.cs" />
-    <Compile Include="GridSelectControl.cs" />
+    <Compile Include="ArtifactCabinet.cs" />
+    <Compile Include="ArtifactCabinetConfig.cs" />
+    <Compile Include="ArtifactCabinetPatches.cs" />
+    <Compile Include="UncategorizedFilterable.cs" />
+    <Compile Include="UncategorizedFilterableControl.cs" />
+    <Compile Include="UncategorizedFilterablePatches.cs" />
+    <Compile Include="UncategorizedFilterableSideScreen.cs" />
+    <Compile Include="UncategorizedFilteredStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SideScreenPatches.cs" />
-    <Compile Include="TagAlphabetComparer.cs" />
-    <Compile Include="Test.cs" />
-    <Compile Include="TestControl.cs" />
-    <Compile Include="TestPatches.cs" />
-    <Compile Include="TestSideScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

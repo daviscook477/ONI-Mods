@@ -19,7 +19,8 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mineralizer {
+namespace SideScreen
+{
 	/// <summary>
 	/// The default comparer for Tag sorts on hash code, not alphabet. This comparer sorts
 	/// tags by alphabetical <b>proper name</b> order, case <b>in</b>sensitive.

@@ -17,7 +17,7 @@ namespace SideScreen {
 		}
 
 		public override bool IsValidForTarget(GameObject target) {
-			return true;
+			return false;
 		}
 
 		public override void SetTarget(GameObject target) {
