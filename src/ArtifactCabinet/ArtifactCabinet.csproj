@@ -78,9 +78,12 @@
     <Compile Include="ArtifactCabinet.cs" />
     <Compile Include="ArtifactCabinetConfig.cs" />
     <Compile Include="ArtifactCabinetPatches.cs" />
+    <Compile Include="IHasCheckBox.cs" />
     <Compile Include="UncategorizedFilterable.cs" />
     <Compile Include="UncategorizedFilterableControl.cs" />
+    <Compile Include="UncategorizedFilterableEntity.cs" />
     <Compile Include="UncategorizedFilterablePatches.cs" />
+    <Compile Include="UncategorizedFilterableRow.cs" />
     <Compile Include="UncategorizedFilterableSideScreen.cs" />
     <Compile Include="UncategorizedFilteredStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

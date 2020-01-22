@@ -1,4 +1,5 @@
-﻿using PeterHan.PLib.UI;
+﻿using System;
+using PeterHan.PLib.UI;
 using UnityEngine;
 
 namespace ArtifactCabinet
