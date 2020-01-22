@@ -16,7 +16,7 @@ namespace ArtifactCabinet
 		public UncategorizedFilterableSideScreen() {
 			activateOnSpawn = true;
 			ConsumeMouseScroll = true;
-			titleKey = "Test this is a title key";
+			titleKey = "STRINGS.UI.UISIDESCREENS.UNCATEGORIZED_FILTERABLE_SIDE_SCREEN.TITLE";
 		}
 
 		public bool IsStorage {
@@ -33,6 +33,7 @@ namespace ArtifactCabinet
 				Console.WriteLine("actually making it");
 				control = new UncategorizedFilterableControl();
 				ContentContainer = control.RootPanel.AddTo(gameObject, 0);
+				gameObject.SetMinUISize(UncategorizedFilterableControl.PANEL_SIZE);
 			}
 			Console.WriteLine("sucessfully set control to not null!");
 		}
@@ -78,6 +79,7 @@ namespace ArtifactCabinet
 						Console.WriteLine("actually making it");
 						control = new UncategorizedFilterableControl();
 						ContentContainer = control.RootPanel.AddTo(gameObject, 0);
+						gameObject.SetMinUISize(UncategorizedFilterableControl.PANEL_SIZE);
 					}
 					Console.WriteLine("done target setting");
 					this.control.Update(target);

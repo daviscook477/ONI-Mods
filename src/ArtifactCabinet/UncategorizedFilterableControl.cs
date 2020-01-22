@@ -3,20 +3,33 @@ using PeterHan.PLib.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Harmony;
+
 
 namespace ArtifactCabinet
 {
 	public class UncategorizedFilterableControl {
 
+		internal static ButtonSoundPlayer ButtonSounds { get; }
+
+		static UncategorizedFilterableControl()
+		{
+			ButtonSounds = new ButtonSoundPlayer()
+			{
+				Enabled = true
+			};
+		}
+
 		/// <summary>
-		/// The margin around the scrollable area to avoid stomping on the scrollbar.
+		/// The margin around each checkbox
 		/// </summary>
 		private static readonly RectOffset ELEMENT_MARGIN = new RectOffset(2, 2, 2, 2);
 
 		/// <summary>
-		/// The size of checkboxes and images in this control.
+		/// The size of the panel. Used as a minimum size to allow for scroll bar to work properly
 		/// </summary>
-		internal static readonly Vector2 PANEL_SIZE = new Vector2(360.0f, 480.0f);
+		internal static readonly Vector2 PANEL_SIZE = new Vector2(372.0f, 480.0f);
 
 		/// <summary>
 		/// The margin between the scroll pane and the window.
@@ -26,12 +39,12 @@ namespace ArtifactCabinet
 		/// <summary>
 		/// The size of checkboxes in this control.
 		/// </summary>
-		internal static readonly Vector2 CHECK_SIZE = new Vector2(32.0f, 32.0f);
+		internal static readonly Vector2 CHECK_SIZE = new Vector2(24.0f, 24.0f);
 
 		/// <summary>
 		/// The size of images in this control.
 		/// </summary>
-		internal static readonly Vector2 ICON_SIZE = new Vector2(96.0f, 96.0f); 
+		internal static readonly Vector2 ICON_SIZE = new Vector2(72.0f, 72.0f); 
 
 		/// <summary>
 		/// The spacing between each card.
@@ -39,9 +52,14 @@ namespace ArtifactCabinet
 		internal const int CARD_SPACING = 10;
 
 		/// <summary>
+		/// The margin around the outside of the cards.
+		/// </summary>
+		private static readonly RectOffset CARD_MARGIN = new RectOffset(0, 0, 0, 0);
+
+		/// <summary>
 		/// The number of elements to show in each row.
 		/// </summary>
-		internal const int PER_ROW = 3;
+		internal const int PER_ROW = 4;
 
 		/// <summary>
 		/// Gets the sprite for a particular element tag.
@@ -135,13 +153,15 @@ namespace ArtifactCabinet
 				CheckSize = CHECK_SIZE,
 				InitialState = PCheckBox.STATE_CHECKED,
 				OnChecked = OnCheck,
-				TextStyle = PUITuning.Fonts.TextLightStyle
+				TextStyle = PUITuning.Fonts.TextDarkStyle,
+				Margin = ELEMENT_MARGIN
 			};
 			allCheckBox.OnRealize += (obj) => { allItems = obj; };
 			var cp = new PPanel("Categories") {
 				Direction = PanelDirection.Vertical,
 				Alignment = TextAnchor.UpperLeft,
-				Spacing = CARD_SPACING
+				Spacing = CARD_SPACING,
+				Margin = CARD_MARGIN
 			};
 			cp.OnRealize += (obj) => { childPanel = obj; };
 			RootPanel = new PPanel("UncategorizedFilterableSideScreen")
@@ -169,7 +189,7 @@ namespace ArtifactCabinet
 				TrackSize = 8.0f,
 				FlexSize = Vector2.one,
 				BackColor = PUITuning.Colors.BackgroundLight,
-			}).SetKleiBlueColor();
+			});
 			children = new List<UncategorizedFilterableRow>(16);
 		}
 
@@ -362,6 +382,40 @@ namespace ArtifactCabinet
 				this.Parent = parent ?? throw new ArgumentNullException("parent");
 				ElementTag = elementTag;
 
+				var background = new PPanel("Background")
+				{
+					Direction = PanelDirection.Vertical,
+					Alignment = TextAnchor.MiddleCenter
+				}.AddChild(new PEntityToggle("Select")
+				{
+					OnChecked = OnCheck,
+					InitialState = PCheckBox.STATE_CHECKED,
+					Sprite = GetStorageObjectSprite(elementTag),
+					Margin = ELEMENT_MARGIN,
+					TextAlignment = TextAnchor.UpperCenter,
+					CheckSize = CHECK_SIZE,
+					SpriteSize = ICON_SIZE,
+				});
+				// Background
+				background.OnRealize += (obj) =>
+				{
+					var kImage = obj.AddComponent<KImage>();
+					var ButtonBlueStyle = ScriptableObject.CreateInstance<ColorStyleSetting>();
+					ButtonBlueStyle.activeColor = new Color(0.5033521f, 0.5444419f, 0.6985294f);
+					ButtonBlueStyle.inactiveColor = new Color(0.2431373f, 0.2627451f, 0.3411765f);
+					ButtonBlueStyle.disabledColor = new Color(0.4156863f, 0.4117647f, 0.4f);
+					ButtonBlueStyle.disabledActiveColor = new Color(0.625f, 0.6158088f, 0.5882353f);
+					ButtonBlueStyle.hoverColor = new Color(0.3461289f, 0.3739619f, 0.4852941f);
+					ButtonBlueStyle.disabledhoverColor = new Color(0.5f, 0.4898898f, 0.4595588f);
+					kImage.colorStyleSetting = ButtonBlueStyle;
+					kImage.color = ButtonBlueStyle.inactiveColor;
+
+					var kButton = obj.AddComponent<KButton>();
+					kButton.additionalKImages = new KImage[0];
+					kButton.soundPlayer = ButtonSounds;
+					kButton.bgImage = kImage;
+					kButton.colorStyleSetting = ButtonBlueStyle;
+				};
 				CheckBox = new PPanel("Border")
 				{
 					// 1px dark border for contrast
@@ -370,19 +424,7 @@ namespace ArtifactCabinet
 					Alignment = TextAnchor.MiddleCenter,
 					Spacing = 1,
 					BackColor = new Color(0, 0, 0, 255)
-				}.AddChild(new PPanel("Background")
-				{
-					Direction = PanelDirection.Vertical,
-					Alignment = TextAnchor.MiddleCenter
-				}.SetKleiBlueColor().AddChild(new PEntityToggle("Select")
-				{
-					OnChecked = OnCheck,
-					InitialState = PCheckBox.STATE_CHECKED,
-					Sprite = GetStorageObjectSprite(elementTag),
-					TextAlignment = TextAnchor.UpperCenter,
-					CheckSize = CHECK_SIZE,
-					SpriteSize = ICON_SIZE,
-				})).Build();
+				}.AddChild(background).Build();
 			}
 
 			private void OnCheck(GameObject source, int state) {
