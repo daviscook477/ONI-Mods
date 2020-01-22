@@ -65,23 +65,21 @@ namespace ArtifactCabinet
 		/// Gets the sprite for a particular element tag.
 		/// </summary>
 		/// <param name="elementTag">The tag of the element to look up.</param>
+		/// <param name="tint">The tint which will be used for the image.</param>
 		/// <returns>The sprite to use for it.</returns>
-		internal static Sprite GetStorageObjectSprite(Tag elementTag) {
+		internal static Sprite GetStorageObjectSprite(Tag elementTag, out Color tint)
+		{
 			Sprite result = null;
 			var prefab = Assets.GetPrefab(elementTag);
-			if (prefab != null) {
+			tint = Color.white;
+			if (prefab != null)
+			{
 				// Extract the UI preview image (sucks for bottles, but it is all we have)
-				var component = prefab.GetComponent<KBatchedAnimController>();
-				if (component != null) {
-					var anim = component.AnimFiles[0];
-					string animName = "ui";
-					if (UncategorizedFilterablePatches.ArtifactMap.ContainsKey(elementTag.ToString()))
-					{
-						animName = UncategorizedFilterablePatches.ArtifactMap[elementTag.ToString()];
-					}
-					// Gas bottles do not have a place sprite, silence the warning
-					if (anim != null) //&& anim.name != "gas_tank_kanim")
-						result = Def.GetUISpriteFromMultiObjectAnim(anim, animName);
+				var sprite = Def.GetUISprite(prefab);
+				if (sprite != null)
+				{
+					tint = sprite.second;
+					result = sprite.first;
 				}
 			}
 			return result;
@@ -382,6 +380,9 @@ namespace ArtifactCabinet
 				this.Parent = parent ?? throw new ArgumentNullException("parent");
 				ElementTag = elementTag;
 
+				var tint = Color.white;
+				var sprite = GetStorageObjectSprite(elementTag, out tint);
+
 				var background = new PPanel("Background")
 				{
 					Direction = PanelDirection.Vertical,
@@ -390,7 +391,8 @@ namespace ArtifactCabinet
 				{
 					OnChecked = OnCheck,
 					InitialState = PCheckBox.STATE_CHECKED,
-					Sprite = GetStorageObjectSprite(elementTag),
+					Sprite = sprite,
+					SpriteTint = tint,
 					Margin = ELEMENT_MARGIN,
 					TextAlignment = TextAnchor.UpperCenter,
 					CheckSize = CHECK_SIZE,

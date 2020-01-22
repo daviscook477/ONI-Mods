@@ -8,11 +8,11 @@ namespace ArtifactCabinet
 {
     public class UncategorizedFilteredStorage
     {
-        public static readonly HashedString FULL_PORT_ID = (HashedString)"FULL";
-        public static readonly Color32 FILTER_TINT = (Color32)Color.white;
-        public static readonly Color32 NO_FILTER_TINT = (Color32)new Color(0.5019608f, 0.5019608f, 0.5019608f, 1f);
-        public Color32 filterTint = UncategorizedFilteredStorage.FILTER_TINT;
-        public Color32 noFilterTint = UncategorizedFilteredStorage.NO_FILTER_TINT;
+        public static readonly HashedString FULL_PORT_ID = "FULL";
+        public static readonly Color32 FILTER_TINT = Color.white;
+        public static readonly Color32 NO_FILTER_TINT = new Color(0.5019608f, 0.5019608f, 0.5019608f, 1f);
+        public Color32 filterTint = FILTER_TINT;
+        public Color32 noFilterTint = NO_FILTER_TINT;
         private bool hasMeter = true;
         private KMonoBehaviour root;
         private FetchList2 fetchList;
@@ -42,21 +42,21 @@ namespace ArtifactCabinet
             this.capacityControl = capacity_control;
             this.useLogicMeter = use_logic_meter;
             this.choreType = fetch_chore_type;
-            root.Subscribe(-1697596308, new System.Action<object>(this.OnStorageChanged));
-            root.Subscribe(-543130682, new System.Action<object>(this.OnUserSettingsChanged));
+            root.Subscribe(-1697596308, new Action<object>(OnStorageChanged));
+            root.Subscribe(-543130682, new Action<object>(OnUserSettingsChanged));
             this.filterable = root.FindOrAdd<UncategorizedFilterable>();
-            this.filterable.OnFilterChanged += new System.Action<Tag[]>(this.OnFilterChanged);
+            filterable.OnFilterChanged += new Action<Tag[]>(OnFilterChanged);
             this.storage = root.GetComponent<Storage>();
-            this.storage.Subscribe(644822890, new System.Action<object>(this.OnOnlyFetchMarkedItemsSettingChanged));
-            if (UncategorizedFilteredStorage.capacityStatusItem == null)
+            storage.Subscribe(644822890, new Action<object>(OnOnlyFetchMarkedItemsSettingChanged));
+            if (capacityStatusItem == null)
             {
-                UncategorizedFilteredStorage.capacityStatusItem = new StatusItem("StorageLocker", "BUILDING", string.Empty, StatusItem.IconType.Info, NotificationType.Neutral, false, OverlayModes.None.ID, true, 129022);
-                UncategorizedFilteredStorage.capacityStatusItem.resolveStringCallback = (Func<string, object, string>)((str, data) =>
+                capacityStatusItem = new StatusItem("StorageLocker", "BUILDING", string.Empty, StatusItem.IconType.Info, NotificationType.Neutral, false, OverlayModes.None.ID, true, 129022);
+                capacityStatusItem.resolveStringCallback = (str, data) =>
                 {
                     UncategorizedFilteredStorage filteredStorage = (UncategorizedFilteredStorage)data;
                     float amountStored = filteredStorage.GetAmountStored();
                     float b = filteredStorage.storage.capacityKg;
-                    string newValue1 = Util.FormatWholeNumber((double)amountStored <= (double)b - (double)filteredStorage.storage.storageFullMargin || (double)amountStored >= (double)b ? Mathf.Floor(amountStored) : b);
+                    string newValue1 = Util.FormatWholeNumber(amountStored <= b - filteredStorage.storage.storageFullMargin || amountStored >= b ? Mathf.Floor(amountStored) : b);
                     IUserControlledCapacity component = filteredStorage.root.GetComponent<IUserControlledCapacity>();
                     if (component != null)
                         b = Mathf.Min(component.UserMaxCapacity, b);
@@ -65,27 +65,27 @@ namespace ArtifactCabinet
                     str = str.Replace("{Capacity}", newValue2);
                     str = component == null ? str.Replace("{Units}", (string)GameUtil.GetCurrentMassUnit(false)) : str.Replace("{Units}", (string)component.CapacityUnits);
                     return str;
-                });
-                UncategorizedFilteredStorage.noFilterStatusItem = new StatusItem("NoStorageFilterSet", "BUILDING", "status_item_no_filter_set", StatusItem.IconType.Custom, NotificationType.BadMinor, false, OverlayModes.None.ID, true, 129022);
+                };
+                noFilterStatusItem = new StatusItem("NoStorageFilterSet", "BUILDING", "status_item_no_filter_set", StatusItem.IconType.Custom, NotificationType.BadMinor, false, OverlayModes.None.ID, true, 129022);
             }
-            root.GetComponent<KSelectable>().SetStatusItem(Db.Get().StatusItemCategories.Main, UncategorizedFilteredStorage.capacityStatusItem, (object)this);
+            root.GetComponent<KSelectable>().SetStatusItem(Db.Get().StatusItemCategories.Main, capacityStatusItem, this);
         }
 
         public void SetHasMeter(bool has_meter)
         {
-            this.hasMeter = has_meter;
+            hasMeter = has_meter;
         }
 
         private void OnOnlyFetchMarkedItemsSettingChanged(object data)
         {
-            this.OnFilterChanged(this.filterable.GetTags());
+            OnFilterChanged(filterable.GetTags());
         }
 
         private void CreateMeter()
         {
-            if (!this.hasMeter)
+            if (!hasMeter)
                 return;
-            this.meter = new MeterController((KAnimControllerBase)this.root.GetComponent<KBatchedAnimController>(), "meter_target", "meter", Meter.Offset.Infront, Grid.SceneLayer.NoLayer, new string[2]
+            meter = new MeterController(root.GetComponent<KBatchedAnimController>(), "meter_target", "meter", Meter.Offset.Infront, Grid.SceneLayer.NoLayer, new string[2]
             {
               "meter_frame",
               "meter_level"
@@ -94,116 +94,116 @@ namespace ArtifactCabinet
 
         private void CreateLogicMeter()
         {
-            if (!this.hasMeter)
+            if (!hasMeter)
                 return;
-            this.logicMeter = new MeterController((KAnimControllerBase)this.root.GetComponent<KBatchedAnimController>(), "logicmeter_target", "logicmeter", Meter.Offset.Infront, Grid.SceneLayer.NoLayer, new string[0]);
+            logicMeter = new MeterController(root.GetComponent<KBatchedAnimController>(), "logicmeter_target", "logicmeter", Meter.Offset.Infront, Grid.SceneLayer.NoLayer, new string[0]);
         }
 
         public void CleanUp()
         {
-            if ((UnityEngine.Object)this.filterable != (UnityEngine.Object)null)
-                this.filterable.OnFilterChanged -= new System.Action<Tag[]>(this.OnFilterChanged);
-            if (this.fetchList == null)
+            if (filterable != null)
+                filterable.OnFilterChanged -= new Action<Tag[]>(OnFilterChanged);
+            if (fetchList == null)
                 return;
-            this.fetchList.Cancel("Parent destroyed");
+            fetchList.Cancel("Parent destroyed");
         }
 
         public void FilterChanged()
         {
-            if (this.hasMeter)
+            if (hasMeter)
             {
-                if (this.meter == null)
-                    this.CreateMeter();
-                if (this.logicMeter == null && this.useLogicMeter)
-                    this.CreateLogicMeter();
+                if (meter == null)
+                    CreateMeter();
+                if (logicMeter == null && useLogicMeter)
+                    CreateLogicMeter();
             }
-            this.OnFilterChanged(this.filterable.GetTags());
-            this.UpdateMeter();
+            OnFilterChanged(filterable.GetTags());
+            UpdateMeter();
         }
 
         private void OnUserSettingsChanged(object data)
         {
-            this.OnFilterChanged(this.filterable.GetTags());
-            this.UpdateMeter();
+            OnFilterChanged(filterable.GetTags());
+            UpdateMeter();
         }
 
         private void OnStorageChanged(object data)
         {
-            if (this.fetchList == null)
-                this.OnFilterChanged(this.filterable.GetTags());
-            this.UpdateMeter();
+            if (fetchList == null)
+                OnFilterChanged(filterable.GetTags());
+            UpdateMeter();
         }
 
         private void UpdateMeter()
         {
-            float percent_full = Mathf.Clamp01(this.GetAmountStored() / this.GetMaxCapacityMinusStorageMargin());
-            if (this.meter == null)
+            float percent_full = Mathf.Clamp01(GetAmountStored() / GetMaxCapacityMinusStorageMargin());
+            if (meter == null)
                 return;
-            this.meter.SetPositionPercent(percent_full);
+            meter.SetPositionPercent(percent_full);
         }
 
         public bool IsFull()
         {
-            float percent_full = Mathf.Clamp01(this.GetAmountStored() / this.GetMaxCapacityMinusStorageMargin());
-            if (this.meter != null)
-                this.meter.SetPositionPercent(percent_full);
-            return (double)percent_full >= 1.0;
+            float percent_full = Mathf.Clamp01(GetAmountStored() / GetMaxCapacityMinusStorageMargin());
+            if (meter != null)
+                meter.SetPositionPercent(percent_full);
+            return percent_full >= 1.0;
         }
 
         private void OnFetchComplete()
         {
-            this.OnFilterChanged(this.filterable.GetTags());
+            OnFilterChanged(filterable.GetTags());
         }
 
         private float GetMaxCapacity()
         {
-            float a = this.storage.capacityKg;
-            if (this.capacityControl != null)
-                a = Mathf.Min(a, this.capacityControl.UserMaxCapacity);
+            float a = storage.capacityKg;
+            if (capacityControl != null)
+                a = Mathf.Min(a, capacityControl.UserMaxCapacity);
             return a;
         }
 
         private float GetMaxCapacityMinusStorageMargin()
         {
-            return this.GetMaxCapacity() - this.storage.storageFullMargin;
+            return GetMaxCapacity() - storage.storageFullMargin;
         }
 
         private float GetAmountStored()
         {
-            float num = this.storage.MassStored();
-            if (this.capacityControl != null)
-                num = this.capacityControl.AmountStored;
+            float num = storage.MassStored();
+            if (capacityControl != null)
+                num = capacityControl.AmountStored;
             return num;
         }
 
         private void OnFilterChanged(Tag[] tags)
         {
-            KBatchedAnimController component = this.root.GetComponent<KBatchedAnimController>();
+            KBatchedAnimController component = root.GetComponent<KBatchedAnimController>();
             bool flag = tags != null && tags.Length != 0;
-            component.TintColour = !flag ? this.noFilterTint : this.filterTint;
-            if (this.fetchList != null)
+            component.TintColour = !flag ? noFilterTint : filterTint;
+            if (fetchList != null)
             {
-                this.fetchList.Cancel(string.Empty);
-                this.fetchList = (FetchList2)null;
+                fetchList.Cancel(string.Empty);
+                fetchList = null;
             }
-            float minusStorageMargin = this.GetMaxCapacityMinusStorageMargin();
-            float amountStored = this.GetAmountStored();
-            if ((double)Mathf.Max(0.0f, minusStorageMargin - amountStored) > 0.0 && flag)
+            float minusStorageMargin = GetMaxCapacityMinusStorageMargin();
+            float amountStored = GetAmountStored();
+            if (Mathf.Max(0.0f, minusStorageMargin - amountStored) > 0.0 && flag)
             {
-                float amount = Mathf.Max(0.0f, this.GetMaxCapacity() - amountStored);
-                this.fetchList = new FetchList2(this.storage, this.choreType);
-                this.fetchList.ShowStatusItem = false;
-                this.fetchList.Add(tags, this.requiredTags, this.forbiddenTags, amount, FetchOrder2.OperationalRequirement.Functional);
-                this.fetchList.Submit(new System.Action(this.OnFetchComplete), false);
+                float amount = Mathf.Max(0.0f, GetMaxCapacity() - amountStored);
+                fetchList = new FetchList2(storage, choreType);
+                fetchList.ShowStatusItem = false;
+                fetchList.Add(tags, requiredTags, forbiddenTags, amount, FetchOrder2.OperationalRequirement.Functional);
+                fetchList.Submit(new System.Action(OnFetchComplete), false);
             }
-            this.root.GetComponent<KSelectable>().ToggleStatusItem(UncategorizedFilteredStorage.noFilterStatusItem, !flag, (object)this);
+            root.GetComponent<KSelectable>().ToggleStatusItem(noFilterStatusItem, !flag, this);
         }
 
         public void SetLogicMeter(bool on)
         {
-            if (this.logicMeter == null)
+            if (logicMeter == null)
                 return;
-            this.logicMeter.SetPositionPercent(!on ? 0.0f : 1f);
+            logicMeter.SetPositionPercent(!on ? 0.0f : 1f);
         }
     }
 }

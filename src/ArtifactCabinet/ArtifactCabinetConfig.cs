@@ -9,9 +9,9 @@ namespace ArtifactCabinet
     public class ArtifactCabinetConfig : IBuildingConfig
     {
         private static readonly LogicPorts.Port OUTPUT_PORT = LogicPorts.Port.OutputPort(UncategorizedFilteredStorage.FULL_PORT_ID, new CellOffset(0, 1), 
-            (string)STRINGS.BUILDINGS.PREFABS.REFRIGERATOR.LOGIC_PORT, 
-            (string)STRINGS.BUILDINGS.PREFABS.REFRIGERATOR.LOGIC_PORT_ACTIVE, 
-            (string)STRINGS.BUILDINGS.PREFABS.REFRIGERATOR.LOGIC_PORT_INACTIVE, 
+            STRINGS.BUILDINGS.PREFABS.REFRIGERATOR.LOGIC_PORT, 
+            STRINGS.BUILDINGS.PREFABS.REFRIGERATOR.LOGIC_PORT_ACTIVE, 
+            STRINGS.BUILDINGS.PREFABS.REFRIGERATOR.LOGIC_PORT_INACTIVE, 
             false, false);
 
         public const string Id = "InteriorDecorArtifactCabinet";
@@ -75,17 +75,17 @@ namespace ArtifactCabinet
 
         public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, ArtifactCabinetConfig.OUTPUT_PORT);
+            GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
         }
 
         public override void DoPostConfigureUnderConstruction(GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, ArtifactCabinetConfig.OUTPUT_PORT);
+            GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
         }
 
         public override void DoPostConfigureComplete(GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, ArtifactCabinetConfig.OUTPUT_PORT);
+            GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
             Storage storage = go.AddOrGet<Storage>();
             storage.capacityKg = 2000f;
             storage.showInUI = true;

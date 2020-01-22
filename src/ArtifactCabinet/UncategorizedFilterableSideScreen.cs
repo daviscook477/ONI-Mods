@@ -1,7 +1,4 @@
-﻿using PeterHan.PLib;
-using PeterHan.PLib.UI;
-using System;
-using System.Collections.Generic;
+﻿using PeterHan.PLib.UI;
 using UnityEngine;
 
 namespace ArtifactCabinet
@@ -21,36 +18,31 @@ namespace ArtifactCabinet
 
 		public bool IsStorage {
 			get {
-				return (UnityEngine.Object)this.storage != (UnityEngine.Object)null;
+				return storage != null;
 			}
+		}
+
+		private void InitSideScreen()
+		{
+			control = new UncategorizedFilterableControl();
+			ContentContainer = control.RootPanel.AddTo(gameObject, 0);
+			gameObject.SetMinUISize(UncategorizedFilterableControl.PANEL_SIZE);
 		}
 
 		protected override void OnPrefabInit() {
 			base.OnPrefabInit();
-			Console.WriteLine("creating prefab for filterable side screen");
 			if (control == null)
-			{
-				Console.WriteLine("actually making it");
-				control = new UncategorizedFilterableControl();
-				ContentContainer = control.RootPanel.AddTo(gameObject, 0);
-				gameObject.SetMinUISize(UncategorizedFilterableControl.PANEL_SIZE);
-			}
-			Console.WriteLine("sucessfully set control to not null!");
+				InitSideScreen();
 		}
 
 		public void Initialize(UncategorizedFilterable target) {
 			if (target == null) {
-				Debug.LogError((object)"UNCATEGORIZED SELECT CONTROL: provided was null.");
+				Debug.LogError("UNCATEGORIZED SELECT CONTROL: provided was null.");
 			}
 
 			Debug.Log("UNCATEGORIZED SELECT CONTROL: Initialized");
-			this.targetFilterable = target;
-			this.gameObject.SetActive(true);
-		}
-
-		private void OnRefreshData(object obj) {
-			this.SetTarget(this.targetFilterable.gameObject);
-			Debug.Log("UNCATEGORIZED SELECT CONTROL: Onrefreshdata");
+			targetFilterable = target;
+			gameObject.SetActive(true);
 		}
 
 		public override bool IsValidForTarget(GameObject target) {
@@ -59,30 +51,23 @@ namespace ArtifactCabinet
 
 		public override void SetTarget(GameObject target) {
 			this.target = target;
-			if ((UnityEngine.Object)target == (UnityEngine.Object)null) {
-				Debug.LogError((object)"The target object provided was null");
+			if (target == null) {
+				Debug.LogError("The target object provided was null");
 			}
 			else {
-				this.targetFilterable = target.GetComponent<UncategorizedFilterable>();
-				if ((UnityEngine.Object)this.targetFilterable == (UnityEngine.Object)null)
-					Debug.LogError((object)"The target provided does not have a Uncategorized Filterable component");
-				else if (!this.targetFilterable.showUserMenu)
+				targetFilterable = target.GetComponent<UncategorizedFilterable>();
+				if (targetFilterable == null)
+					Debug.LogError("The target provided does not have a Uncategorized Filterable component");
+				else if (!targetFilterable.showUserMenu)
 					DetailsScreen.Instance.DeactivateSideContent();
-				else if (this.IsStorage && !this.storage.showInUI) {
+				else if (IsStorage && !storage.showInUI) {
 					DetailsScreen.Instance.DeactivateSideContent();
 				}
 				else {
-					this.storage = this.targetFilterable.GetComponent<Storage>();
-					Console.WriteLine("target setting");
+					storage = targetFilterable.GetComponent<Storage>();
 					if (control == null)
-					{
-						Console.WriteLine("actually making it");
-						control = new UncategorizedFilterableControl();
-						ContentContainer = control.RootPanel.AddTo(gameObject, 0);
-						gameObject.SetMinUISize(UncategorizedFilterableControl.PANEL_SIZE);
-					}
-					Console.WriteLine("done target setting");
-					this.control.Update(target);
+						InitSideScreen();
+					control.Update(target);
 				}
 			}
 		}
