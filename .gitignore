@@ -13,6 +13,9 @@ src/lib/Assembly-CSharp-firstpass.dll
 src/lib/0Harmony.dll
 src/lib/
 
+#ernys assets
+src/PacuMorphs/anim/
+
 # Built files
 Mods/
 Mods (unzipped)/

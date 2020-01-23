@@ -78,14 +78,20 @@ namespace ArtifactCabinet
 		public Tag ElementTag { get; }
 
 		/// <summary>
+		/// The name of this element.
+		/// </summary>
+		public string Name { get; }
+
+		/// <summary>
 		/// The parent row
 		/// </summary>
-		public readonly UncategorizedFilterableRow Parent;
+		public UncategorizedFilterableRow Parent;
 
-		public UncategorizedFilterableEntity(UncategorizedFilterableRow parent, Tag elementTag)
+		public UncategorizedFilterableEntity(UncategorizedFilterableRow parent, Tag elementTag, string name)
 		{
-			this.Parent = parent ?? throw new ArgumentNullException("parent");
+			Parent = parent;
 			ElementTag = elementTag;
+			Name = name;
 
 			var tint = Color.white;
 			var sprite = GetStorageObjectSprite(elementTag, out tint);
@@ -133,6 +139,12 @@ namespace ArtifactCabinet
 				Spacing = 1,
 				BackColor = new Color(0, 0, 0, 255)
 			}.AddChild(background).Build();
+
+			var tooltip = CheckBox.AddComponent<ToolTip>();
+			tooltip.SetSimpleTooltip(name);
+			tooltip.tooltipPivot = new Vector2(0.5f, 1f);
+			tooltip.tooltipPositionOffset = new Vector2(0.0f, -60f);
+			tooltip.parentPositionAnchor = new Vector2(0.5f, 0.5f);
 		}
 
 		private void OnCheck(GameObject source, int state)

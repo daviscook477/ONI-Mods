@@ -1,11 +1,9 @@
 ﻿using PeterHan.PLib;
 using PeterHan.PLib.UI;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
-using Harmony;
-
+using STRINGS;
 
 namespace ArtifactCabinet
 {
@@ -100,23 +98,34 @@ namespace ArtifactCabinet
 		private GameObject childPanel;
 
 		/// <summary>
+		/// Map of tag to entities. Rather than reusing UI elements in a pool, UI elements will simply be reused
+		/// per item tag. These entities will simply be added or removed from the UI structure based on the target
+		/// of the side screen.
+		/// </summary>
+		private Dictionary<Tag, UncategorizedFilterableEntity> entities;
+
+		/// <summary>
 		/// The child rows.
 		/// </summary>
-		private readonly List<UncategorizedFilterableRow> children;
+		private List<UncategorizedFilterableRow> rows;
 
 		public UncategorizedFilterableControl()
 		{
 			// Select/deselect all types
 			var allCheckBox = new PCheckBox("SelectAll")
 			{
-				Text = STRINGS.UI.UISIDESCREENS.TREEFILTERABLESIDESCREEN.ALLBUTTON,
+				Text = UI.UISIDESCREENS.TREEFILTERABLESIDESCREEN.ALLBUTTON,
 				CheckSize = ALL_CHECK_SIZE,
 				InitialState = PCheckBox.STATE_CHECKED,
 				OnChecked = OnCheck,
 				TextStyle = PUITuning.Fonts.TextDarkStyle,
 				Margin = ELEMENT_MARGIN
 			};
-			allCheckBox.OnRealize += (obj) => { allItems = obj; };
+			allCheckBox.OnRealize += (obj) => 
+			{
+				allItems = obj;
+				allItems.AddComponent<ToolTip>().SetSimpleTooltip("Allow storage of all resource choices in this container");
+			};
 			var cp = new PPanel("Categories")
 			{
 				Direction = PanelDirection.Vertical,
@@ -151,7 +160,8 @@ namespace ArtifactCabinet
 				FlexSize = Vector2.one,
 				BackColor = PUITuning.Colors.BackgroundLight,
 			});
-			children = new List<UncategorizedFilterableRow>(16);
+			rows = new List<UncategorizedFilterableRow>(4);
+			entities = new Dictionary<Tag, UncategorizedFilterableEntity>(16);
 		}
 
 		/// <summary>
@@ -161,76 +171,112 @@ namespace ArtifactCabinet
 		{
 			Target = target;
 			Storage storage = Target.GetComponent<Storage>();
-			UncategorizedFilterable filterable = Target.GetComponent<UncategorizedFilterable>();
-			if (storage.storageFilters != null && storage.storageFilters.Count >= 1)
+			if (storage.storageFilters == null || storage.storageFilters.Count < 1)
 			{
-				// check for which ones aren't added already and add them
-				foreach (Tag tag in storage.storageFilters)
-				{
-					if (!HasElement(tag))
-					{
-						if (children.Count <= 0)
-						{
-							UncategorizedFilterableRow firstRow = new UncategorizedFilterableRow(this);
-							children.Add(firstRow);
-							PUIElements.SetParent(firstRow.ChildPanel, childPanel);
-							PUIElements.SetAnchors(firstRow.ChildPanel, PUIAnchoring.Stretch, PUIAnchoring.Stretch);
-						}
-						UncategorizedFilterableRow lastRow = children[children.Count - 1];
-						if (lastRow.RowSize >= PER_ROW)
-						{
-							lastRow = new UncategorizedFilterableRow(this);
-							PUIElements.SetParent(lastRow.ChildPanel, childPanel);
-							PUIElements.SetAnchors(lastRow.ChildPanel, PUIAnchoring.Stretch, PUIAnchoring.Stretch);
-							children.Add(lastRow);
-						}
-						UncategorizedFilterableEntity entity = new UncategorizedFilterableEntity(lastRow, tag);
-						lastRow.Children.Add(entity);
-						PUIElements.SetParent(entity.CheckBox, lastRow.ChildPanel);
-						if (PCheckBox.GetCheckState(entity.CheckBox) == PCheckBox.STATE_CHECKED)
-							// Set to checked
-							PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
-					}
-				}
-				// update the state of each to what the filter actually says
-				foreach (var child in children)
-				{
-					foreach (var entity in child.Children)
-					{
-						if (filterable.AcceptedTags.Contains(entity.ElementTag))
-						{
-							PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
-						}
-						else
-						{
-							PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_UNCHECKED);
-						}
-					}
-				}
-				UpdateFromChildren();
+				PUtil.LogError("If you're filtering, your storage filter should have the filters set on it");
+				return;
 			}
-			else
-				Debug.LogError("If you're filtering, your storage filter should have the filters set on it");
+
+			HashSet<Tag> containedTags = ContainedTags();
+			HashSet<Tag> goalTags = new HashSet<Tag>(storage.storageFilters.Where(tag => WorldInventory.Instance.IsDiscovered(tag)));
+			// if this is not supposed to display the exact same UI elements rebuild the entire UI
+			// not the *most* performant way to handle things but trying to perform multiple insertions/deletions into this
+			// row system is probably *less* performant
+			if (!containedTags.SetEquals(goalTags))
+			{
+				// clear the UI
+				foreach (var row in rows)
+				{
+					// null the parent of the entity and disable it
+					foreach (var entity in row.entities)
+					{
+						PUIElements.SetParent(entity.CheckBox, null);
+						entity.CheckBox.SetActive(false);
+						entity.Parent = null;
+					}
+					// clear all the entities from this row
+					row.entities.Clear();
+					// do not null the parent of the row since it will be reused in same spot but do disable it
+					row.ChildPanel.SetActive(false);
+				}
+
+				// build the UI with tags in alphabetic order
+				List<Tag> goalList = goalTags.ToList();
+				goalList.Sort(TagAlphabetComparer.INSTANCE);
+				int rowIndex = 0;
+				foreach (Tag tag in goalList)
+				{
+					// wrap around when rows are full
+					if (rowIndex < rows.Count && rows[rowIndex].RowSize >= PER_ROW)
+					{
+						rowIndex++;
+					}
+					// build new rows as needed
+					if (rows.Count <= rowIndex)
+					{
+						UncategorizedFilterableRow newRow = new UncategorizedFilterableRow(this);
+						rows.Add(newRow);
+						PUIElements.SetParent(newRow.ChildPanel, childPanel);
+						PUIElements.SetAnchors(newRow.ChildPanel, PUIAnchoring.Stretch, PUIAnchoring.Stretch);
+					}
+					var row = rows[rowIndex];
+					row.ChildPanel.SetActive(true);
+					// build new entity for tag when it is first encountered
+					if (!entities.ContainsKey(tag))
+					{
+						UncategorizedFilterableEntity newEntity = new UncategorizedFilterableEntity(null, tag, tag.ProperName());
+						if (PCheckBox.GetCheckState(newEntity.CheckBox) == PCheckBox.STATE_CHECKED)
+							// Set to checked
+							PCheckBox.SetCheckState(newEntity.CheckBox, PCheckBox.STATE_CHECKED);
+						entities[tag] = newEntity;
+					}
+					var entity = entities[tag];
+					row.entities.Add(entity);
+					PUIElements.SetParent(entity.CheckBox, row.ChildPanel);
+					entity.CheckBox.SetActive(true);
+					entity.Parent = row;
+				}
+			}
+
+			// with the right elements in the UI it is now necessary to set the properties for each entity correctly based on
+			// if they are checked already and if they are present in the world
+			UncategorizedFilterable filterable = Target.GetComponent<UncategorizedFilterable>();
+			foreach (var row in rows)
+			{
+				foreach (var entity in row.entities)
+				{
+					// set checkbox state
+					if (filterable.AcceptedTags.Contains(entity.ElementTag))
+					{
+						PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
+					}
+					else
+					{
+						PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_UNCHECKED);
+					}
+					// set active state
+					var button = entity.CheckBox.GetComponentInChildren<KButton>();
+					button.isInteractable = WorldInventory.Instance.GetTotalAmount(entity.ElementTag) > 0.0;
+				}
+			}
+			UpdateFromChildren();
 		}
 
 		/// <summary>
-		/// Checks if an element is already a part of the UI.
+		/// Gets all tags contained in the UI currently
 		/// </summary>
-		/// <param name="tag">The tag to check.</param>
-		/// <returns>If or if not the element is already added.</returns>
-		public bool HasElement(Tag tag)
+		/// <returns>A set of tags in the UI</returns>
+		public HashSet<Tag> ContainedTags()
 		{
-			foreach (var child in children)
+			HashSet<Tag> tags = new HashSet<Tag>();
+			foreach (var row in rows)
 			{
-				foreach (var entity in child.Children)
+				foreach (var entity in row.entities)
 				{
-					if (entity.ElementTag.Equals(tag))
-					{
-						return true;
-					}
+					tags.Add(entity.ElementTag);
 				}
 			}
-			return false;
+			return tags;
 		}
 
 		/// <summary>
@@ -239,13 +285,14 @@ namespace ArtifactCabinet
 		public void CheckAll()
 		{
 			PCheckBox.SetCheckState(allItems, PCheckBox.STATE_CHECKED);
-			foreach (var child in children)
-				foreach (var entity in child.Children)
+			foreach (var row in rows)
+			{
+				foreach (var entity in row.entities)
 				{
 					PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_CHECKED);
 					Target.GetComponent<UncategorizedFilterable>().AddTagToFilter(entity.ElementTag);
 				}
-
+			}
 		}
 
 		/// <summary>
@@ -254,14 +301,21 @@ namespace ArtifactCabinet
 		public void ClearAll()
 		{
 			PCheckBox.SetCheckState(allItems, PCheckBox.STATE_UNCHECKED);
-			foreach (var child in children)
-				foreach (var entity in child.Children)
+			foreach (var row in rows)
+			{
+				foreach (var entity in row.entities)
 				{
 					PCheckBox.SetCheckState(entity.CheckBox, PCheckBox.STATE_UNCHECKED);
 					Target.GetComponent<UncategorizedFilterable>().RemoveTagFromFilter(entity.ElementTag);
 				}
+			}
 		}
 
+		/// <summary>
+		/// Handle checking for the all checkbox
+		/// </summary>
+		/// <param name="source">source of the event</param>
+		/// <param name="state">the new state of the checkbox</param>
 		private void OnCheck(GameObject source, int state)
 		{
 			switch (state)
@@ -283,9 +337,9 @@ namespace ArtifactCabinet
 		internal void UpdateFromChildren()
 		{
 			List<UncategorizedFilterableEntity> entities = new List<UncategorizedFilterableEntity>();
-			foreach (UncategorizedFilterableRow row in children)
+			foreach (UncategorizedFilterableRow row in rows)
 			{
-				entities.AddRange(row.Children);
+				entities.AddRange(row.entities);
 			}
 			UpdateAllItems(allItems, entities);
 		}

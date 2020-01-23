@@ -24,25 +24,25 @@ namespace ArtifactCabinet
 		/// <summary>
 		/// The parent side screen.
 		/// </summary>
-		public readonly UncategorizedFilterableControl Parent;
+		public UncategorizedFilterableControl Parent;
 
 		/// <summary>
 		/// The child elements.
 		/// </summary>
-		public readonly List<UncategorizedFilterableEntity> Children;
+		public List<UncategorizedFilterableEntity> entities;
 
 		public int RowSize
 		{
 			get
 			{
-				return Children.Count;
+				return entities.Count;
 			}
 		}
 
 		public UncategorizedFilterableRow(UncategorizedFilterableControl control)
 		{
 			Parent = control ?? throw new ArgumentNullException("parent");
-			Children = new List<UncategorizedFilterableEntity>(16);
+			entities = new List<UncategorizedFilterableEntity>(16);
 			ChildPanel = new PPanel("Children")
 			{
 				Direction = PanelDirection.Horizontal,

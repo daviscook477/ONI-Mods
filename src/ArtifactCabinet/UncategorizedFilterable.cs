@@ -15,14 +15,14 @@ namespace ArtifactCabinet
         public bool showUserMenu = true;
         [SerializeField]
         [Serialize]
-        private List<Tag> acceptedTags = new List<Tag>();
+        private HashSet<Tag> acceptedTags = new HashSet<Tag>();
         [MyCmpReq]
         private Storage storage;
         [MyCmpAdd]
         private CopyBuildingSettings copyBuildingSettings;
         public Action<Tag[]> OnFilterChanged;
 
-        public List<Tag> AcceptedTags
+        public HashSet<Tag> AcceptedTags
         {
             get
             {
@@ -36,7 +36,14 @@ namespace ArtifactCabinet
                 return;
             if (acceptedTags.Contains(tag))
                 return;
-            acceptedTags.Add(tag);
+            // when a tag is discovered we only add it to the filter if the filter is behaving as if all are selected
+            HashSet<Tag> storageSet = new HashSet<Tag>(storage.storageFilters.Where(storedTag => WorldInventory.Instance.IsDiscovered(storedTag)));
+            storageSet.Remove(tag);
+            if (storageSet.SetEquals(acceptedTags))
+            {
+                acceptedTags.Add(tag);
+                OnFilterChanged?.Invoke(acceptedTags.ToArray());
+            }
         }
 
         protected override void OnPrefabInit()
@@ -61,7 +68,7 @@ namespace ArtifactCabinet
 
         private void RemoveIncorrectAcceptedTags()
         {
-            List<Tag> tagList = acceptedTags.FindAll(tag => !WorldInventory.Instance.IsDiscovered(tag)).ToList();
+            List<Tag> tagList = acceptedTags.Where(tag => !WorldInventory.Instance.IsDiscovered(tag)).ToList();
             foreach (Tag t in tagList)
                 RemoveTagFromFilter(t);
         }
@@ -112,7 +119,7 @@ namespace ArtifactCabinet
         public void UpdateFilters(IList<Tag> filters)
         {
             acceptedTags.Clear();
-            acceptedTags.AddRange(filters);
+            acceptedTags.UnionWith(filters);
             OnFilterChanged?.Invoke(acceptedTags.ToArray());
             if (storage == null || storage.items == null)
                 return;

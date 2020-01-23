@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fans", "Fans\Fans.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactCabinet", "ArtifactCabinet\ArtifactCabinet.csproj", "{F1312407-0EC3-48A5-8406-E1821D78EDCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacuMorphs", "PacuMorphs\PacuMorphs.csproj", "{8A7F9410-922B-4C19-A8E0-72AA4E85C106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{F1312407-0EC3-48A5-8406-E1821D78EDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1312407-0EC3-48A5-8406-E1821D78EDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1312407-0EC3-48A5-8406-E1821D78EDCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A7F9410-922B-4C19-A8E0-72AA4E85C106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7F9410-922B-4C19-A8E0-72AA4E85C106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7F9410-922B-4C19-A8E0-72AA4E85C106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7F9410-922B-4C19-A8E0-72AA4E85C106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

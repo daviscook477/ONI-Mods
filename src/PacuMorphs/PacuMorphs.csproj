@@ -1,20 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\ILMerge.3.0.29\build\ILMerge.props" Condition="Exists('..\packages\ILMerge.3.0.29\build\ILMerge.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1312407-0EC3-48A5-8406-E1821D78EDCB}</ProjectGuid>
+    <ProjectGuid>{8A7F9410-922B-4C19-A8E0-72AA4E85C106}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArtifactCabinet</RootNamespace>
-    <AssemblyName>ArtifactCabinet</AssemblyName>
+    <RootNamespace>PacuMorphs</RootNamespace>
+    <AssemblyName>PacuMorphs</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,10 +41,7 @@
       <HintPath>..\lib\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="PLib">
-      <HintPath>..\lib\PLib.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,17 +49,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\lib\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\lib\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\lib\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\lib\UnityEngine.TextRenderingModule.dll</HintPath>
@@ -75,32 +64,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtifactCabinet.cs" />
-    <Compile Include="ArtifactCabinetConfig.cs" />
-    <Compile Include="ArtifactCabinetPatches.cs" />
-    <Compile Include="IHasCheckBox.cs" />
-    <Compile Include="TagAlphabetComparer.cs" />
-    <Compile Include="UncategorizedFilterable.cs" />
-    <Compile Include="UncategorizedFilterableControl.cs" />
-    <Compile Include="UncategorizedFilterableEntity.cs" />
-    <Compile Include="UncategorizedFilterablePatches.cs" />
-    <Compile Include="UncategorizedFilterableRow.cs" />
-    <Compile Include="UncategorizedFilterableSideScreen.cs" />
-    <Compile Include="UncategorizedFilteredStorage.cs" />
+    <Compile Include="BabyBetaPacuConfig.cs" />
+    <Compile Include="BetaPacuConfig.cs" />
+    <Compile Include="CustomPacuTuning.cs" />
+    <Compile Include="PacuMorphsPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(ILMergeConsolePath)" /ndebug /out:$(TargetName)Merged.dll $(TargetName).dll PLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v2.0.50727
-mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
+    <PostBuildEvent>mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST "$(ProjectDir)\anim" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim")
 IF EXIST "$(ProjectDir)\codex" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex")
 IF EXIST "$(ProjectDir)\worldgen" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\worldgen")
 IF EXIST "$(ProjectDir)\templates" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates")
-copy $(TargetName)Merged.dll "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
+copy "$(TargetPath)" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST  "$(TargetPath)*.json" ( copy "$(TargetPath)*.json" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(TargetPath)*.txt" ( copy "$(TargetPath)*.txt" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)" )
 IF EXIST  "$(ProjectDir)\anim" ( xcopy "$(ProjectDir)\anim" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim" /S /Y )
@@ -109,10 +86,4 @@ IF EXIST  "$(ProjectDir)\worldgen" ( xcopy "$(ProjectDir)\worldgen" "%25homepath
 IF EXIST  "$(ProjectDir)\templates" ( xcopy "$(ProjectDir)\templates" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\templates" /S /Y )
 IF EXIST  "$(ProjectDir)\preview.png" ( copy "$(ProjectDir)\preview.png" "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\preview.png" )</PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\ILMerge.3.0.29\build\ILMerge.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILMerge.3.0.29\build\ILMerge.props'))" />
-  </Target>
 </Project>
