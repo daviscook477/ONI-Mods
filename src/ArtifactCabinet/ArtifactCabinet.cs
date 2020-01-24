@@ -48,7 +48,7 @@ namespace ArtifactCabinet
         protected override void OnPrefabInit()
         {
             this.filteredStorage = new UncategorizedFilteredStorage((KMonoBehaviour)this, null, null, (IUserControlledCapacity)this, true, 
-                Db.Get().ChoreTypes.FarmFetch);
+                Db.Get().ChoreTypes.StorageFetch);
         }
 
         protected override void OnSpawn()

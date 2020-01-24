@@ -25,6 +25,11 @@ namespace ArtifactCabinet
 		internal static readonly Vector2 ALL_CHECK_SIZE = new Vector2(24.0f, 24.0f);
 
 		/// <summary>
+		/// 1px dark border everywhere except the top.
+		/// </summary>
+		private static readonly RectOffset BORDER_MARGIN = new RectOffset(1, 1, 0, 1);
+
+		/// <summary>
 		/// The margin between the scroll pane and the window.
 		/// </summary>
 		private static readonly RectOffset OUTER_MARGIN = new RectOffset(6, 10, 6, 14);
@@ -136,6 +141,13 @@ namespace ArtifactCabinet
 			cp.OnRealize += (obj) => { childPanel = obj; };
 			RootPanel = new PPanel("UncategorizedFilterableSideScreen")
 			{
+				Direction = PanelDirection.Vertical,
+				Margin = BORDER_MARGIN,
+				Alignment = TextAnchor.UpperLeft,
+				Spacing = 0,
+				BackColor = new Color(0, 0, 0, 255)
+			}.AddChild(new PPanel("Content")
+			{
 				// White background for scroll bar
 				Direction = PanelDirection.Vertical,
 				Margin = OUTER_MARGIN,
@@ -159,7 +171,7 @@ namespace ArtifactCabinet
 				TrackSize = 8.0f,
 				FlexSize = Vector2.one,
 				BackColor = PUITuning.Colors.BackgroundLight,
-			});
+			}));
 			rows = new List<UncategorizedFilterableRow>(4);
 			entities = new Dictionary<Tag, UncategorizedFilterableEntity>(16);
 		}

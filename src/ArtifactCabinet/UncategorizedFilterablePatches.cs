@@ -22,7 +22,7 @@ namespace ArtifactCabinet
 			public static void Postfix()
 			{
 				Strings.Add("STRINGS.UI.UISIDESCREENS.UNCATEGORIZED_FILTERABLE_SIDE_SCREEN.TITLE", "Automated Storage Capacity");
-				PUIUtils.AddSideScreenContent<UncategorizedFilterableSideScreen>();
+				PUIUtils.AddSideScreenContent<UncategorizedFilterableSideScreen>(inOrder: true, insertionName: "Capacity Control Side Screen");
 			}
 		}
 	}
