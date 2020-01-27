@@ -41,7 +41,7 @@ namespace Fans
 
         public override BuildingDef CreateBuildingDef()
         {
-            return BaseFanConfig.CreateBuildingDef(Id, "liquidfan_kanim", false);
+            return BaseFanConfig.CreateBuildingDef(Id, "compressorliquidfan_kanim", false);
         }
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
