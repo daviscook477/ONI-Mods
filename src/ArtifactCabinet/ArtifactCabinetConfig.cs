@@ -19,38 +19,6 @@ namespace ArtifactCabinet
         public const string Description = "Stores artifacts.";
         public const string Effect = "A handy cabinet for storing trinkets from space. Increases decor for each item stored.";
 
-        public static List<Tag> ArtifactsFilterTagList = new List<Tag>()
-        {
-            "artifact_sandstone".ToTag(),
-            "artifact_sink".ToTag(),
-            "artifact_rubikscube".ToTag(),
-            "artifact_officemug".ToTag(),
-            "artifact_obelisk".ToTag(),
-            "artifact_okayxray".ToTag(),
-            "artifact_blender".ToTag(),
-            "artifact_moldavite".ToTag(),
-            "artifact_vhs".ToTag(),
-            "artifact_saxophone".ToTag(),
-            "artifact_modernart".ToTag(),
-            "artifact_ameliaswatch".ToTag(),
-            "artifact_teapot".ToTag(),
-            "artifact_brickphone".ToTag(),
-            "artifact_robotarm".ToTag(),
-            "artifact_shieldgenerator".ToTag(),
-            "artifact_bioluminescentrock".ToTag(),
-            "artifact_stethoscope".ToTag(),
-            "artifact_eggrock".ToTag(),
-            "artifact_hatchfossil".ToTag(),
-            "artifact_rocktornado".ToTag(),
-            "artifact_pacupercolator".ToTag(),
-            "artifact_magmalamp".ToTag(),
-            "artifact_dnamodel".ToTag(),
-            "artifact_rainboweggrock".ToTag(),
-            "artifact_plasmalamp".ToTag(),
-            "artifact_solarsystem".ToTag(),
-            "artifact_moonmoonmoon".ToTag()
-        };
-
         public override BuildingDef CreateBuildingDef()
         {
             BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(
@@ -92,7 +60,7 @@ namespace ArtifactCabinet
             storage.showDescriptor = true;
             storage.allowItemRemoval = true;
             storage.fetchCategory = Storage.FetchCategory.GeneralStorage;
-            storage.storageFilters = ArtifactsFilterTagList;
+            storage.storageFilters = ArtifactCabinet.ArtifactsFilterTagList;
             go.AddOrGet<UncategorizedFilterable>();
             go.AddOrGet<ArtifactCabinet>();
             Prioritizable.AddRef(go);

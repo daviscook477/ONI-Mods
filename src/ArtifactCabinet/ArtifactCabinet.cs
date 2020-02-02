@@ -3,13 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KSerialization;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ArtifactCabinet
 {
     public class ArtifactCabinet : KMonoBehaviour, IUserControlledCapacity, IEffectDescriptor, IGameObjectEffectDescriptor
     {
+        public static List<Tag> ArtifactsFilterTagList = new List<Tag>()
+        {
+            "artifact_sandstone".ToTag(),
+            "artifact_sink".ToTag(),
+            "artifact_rubikscube".ToTag(),
+            "artifact_officemug".ToTag(),
+            "artifact_obelisk".ToTag(),
+            "artifact_okayxray".ToTag(),
+            "artifact_blender".ToTag(),
+            "artifact_moldavite".ToTag(),
+            "artifact_vhs".ToTag(),
+            "artifact_saxophone".ToTag(),
+            "artifact_modernart".ToTag(),
+            "artifact_ameliaswatch".ToTag(),
+            "artifact_teapot".ToTag(),
+            "artifact_brickphone".ToTag(),
+            "artifact_robotarm".ToTag(),
+            "artifact_shieldgenerator".ToTag(),
+            "artifact_bioluminescentrock".ToTag(),
+            "artifact_stethoscope".ToTag(),
+            "artifact_eggrock".ToTag(),
+            "artifact_hatchfossil".ToTag(),
+            "artifact_rocktornado".ToTag(),
+            "artifact_pacupercolator".ToTag(),
+            "artifact_magmalamp".ToTag(),
+            "artifact_dnamodel".ToTag(),
+            "artifact_rainboweggrock".ToTag(),
+            "artifact_plasmalamp".ToTag(),
+            "artifact_solarsystem".ToTag(),
+            "artifact_moonmoonmoon".ToTag()
+        };
+
         private class StaticDelegateWrappers
         {
             public static void OnOperationalChangedWrapper(ArtifactCabinet component, object data)
@@ -22,9 +53,14 @@ namespace ArtifactCabinet
                 component.OnCopySettings(data);
             }
 
-            public static void UpdateLogicCircuitCBWrapper(ArtifactCabinet component, object data)
+            public static void UpdateLogicCircuitWrapper(ArtifactCabinet component, object data)
             {
-                component.UpdateLogicCircuitCB(data);
+                component.UpdateLogicCircuit(data);
+            }
+
+            public static void OnStorageChangedWrapper(ArtifactCabinet component, object data)
+            {
+                component.OnStorageChanged(data);
             }
         }
 
@@ -32,8 +68,10 @@ namespace ArtifactCabinet
             = new EventSystem.IntraObjectHandler<ArtifactCabinet>(StaticDelegateWrappers.OnOperationalChangedWrapper);
         private static readonly EventSystem.IntraObjectHandler<ArtifactCabinet> OnCopySettingsDelegate
             = new EventSystem.IntraObjectHandler<ArtifactCabinet>(StaticDelegateWrappers.OnCopySettingsWrapper);
-        private static readonly EventSystem.IntraObjectHandler<ArtifactCabinet> UpdateLogicCircuitCBDelegate 
-            = new EventSystem.IntraObjectHandler<ArtifactCabinet>(StaticDelegateWrappers.UpdateLogicCircuitCBWrapper);
+        private static readonly EventSystem.IntraObjectHandler<ArtifactCabinet> UpdateLogicCircuitDelegate 
+            = new EventSystem.IntraObjectHandler<ArtifactCabinet>(StaticDelegateWrappers.UpdateLogicCircuitWrapper);
+        private static readonly EventSystem.IntraObjectHandler<ArtifactCabinet> OnStorageChangedDelegate
+            = new EventSystem.IntraObjectHandler<ArtifactCabinet>(StaticDelegateWrappers.OnStorageChangedWrapper);
 
         [Serialize]
         private float userMaxCapacity = float.PositiveInfinity;
@@ -44,38 +82,42 @@ namespace ArtifactCabinet
         [MyCmpGet]
         private LogicPorts ports;
         protected UncategorizedFilteredStorage filteredStorage;
+        private KBatchedAnimController anim;
 
         protected override void OnPrefabInit()
         {
-            this.filteredStorage = new UncategorizedFilteredStorage((KMonoBehaviour)this, null, null, (IUserControlledCapacity)this, true, 
+            filteredStorage = new UncategorizedFilteredStorage(this, null, null, this, true, 
                 Db.Get().ChoreTypes.StorageFetch);
         }
 
         protected override void OnSpawn()
         {
-            this.operational.SetActive(this.operational.IsOperational, false);
-            this.GetComponent<KAnimControllerBase>().Play((HashedString)"off", KAnim.PlayMode.Once, 1f, 0.0f);
-            this.filteredStorage.FilterChanged();
-            this.UpdateLogicCircuit();
-            this.Subscribe<ArtifactCabinet>(-592767678, ArtifactCabinet.OnOperationalChangedDelegate);
-            this.Subscribe<ArtifactCabinet>(-905833192, ArtifactCabinet.OnCopySettingsDelegate);
-            this.Subscribe<ArtifactCabinet>(-1697596308, ArtifactCabinet.UpdateLogicCircuitCBDelegate);
-            this.Subscribe<ArtifactCabinet>(-592767678, ArtifactCabinet.UpdateLogicCircuitCBDelegate);
+            operational.SetActive(operational.IsOperational, false);
+            GetComponent<KAnimControllerBase>().Play("off", KAnim.PlayMode.Once, 1f, 0.0f);
+            anim = GetComponent<KBatchedAnimController>();
+            filteredStorage.FilterChanged();
+            UpdateLogicCircuit(null);
+            OnStorageChanged(null);
+            Subscribe(-592767678, OnOperationalChangedDelegate);
+            Subscribe(-905833192, OnCopySettingsDelegate);
+            Subscribe(-1697596308, UpdateLogicCircuitDelegate);
+            Subscribe(-592767678, UpdateLogicCircuitDelegate);
+            Subscribe(-1697596308, OnStorageChangedDelegate);
         }
 
         protected override void OnCleanUp()
         {
-            this.filteredStorage.CleanUp();
+            filteredStorage.CleanUp();
         }
 
         private void OnOperationalChanged(object data)
         {
-            this.operational.SetActive(this.operational.IsOperational, false);
+            operational.SetActive(operational.IsOperational, false);
         }
 
         public bool IsActive()
         {
-            return this.operational.IsActive;
+            return operational.IsActive;
         }
 
         private void OnCopySettings(object data)
@@ -86,12 +128,25 @@ namespace ArtifactCabinet
             ArtifactCabinet component = gameObject.GetComponent<ArtifactCabinet>();
             if ((UnityEngine.Object)component == (UnityEngine.Object)null)
                 return;
-            this.UserMaxCapacity = component.UserMaxCapacity;
+            UserMaxCapacity = component.UserMaxCapacity;
+        }
+
+        private void OnStorageChanged(object data)
+        {
+            // inefficient - set the status of every symbol based on its presence
+            foreach (Tag tag in ArtifactsFilterTagList)
+            {
+                anim.SetSymbolVisiblity(tag.ToString(), false);
+            }
+            foreach (Tag tag in storage.GetAllTagsInStorage())
+            {
+                anim.SetSymbolVisiblity(tag.ToString(), true);
+            }
         }
 
         public List<Descriptor> GetDescriptors(BuildingDef def)
         {
-            return this.GetDescriptors(def.BuildingComplete);
+            return GetDescriptors(def.BuildingComplete);
         }
 
         public List<Descriptor> GetDescriptors(GameObject go)
@@ -103,13 +158,13 @@ namespace ArtifactCabinet
         {
             get
             {
-                return Mathf.Min(this.userMaxCapacity, this.storage.capacityKg);
+                return Mathf.Min(userMaxCapacity, storage.capacityKg);
             }
             set
             {
-                this.userMaxCapacity = value;
-                this.filteredStorage.FilterChanged();
-                this.UpdateLogicCircuit();
+                userMaxCapacity = value;
+                filteredStorage.FilterChanged();
+                UpdateLogicCircuit(null);
             }
         }
 
@@ -117,7 +172,7 @@ namespace ArtifactCabinet
         {
             get
             {
-                return this.storage.MassStored();
+                return storage.MassStored();
             }
         }
 
@@ -133,7 +188,7 @@ namespace ArtifactCabinet
         {
             get
             {
-                return this.storage.capacityKg;
+                return storage.capacityKg;
             }
         }
 
@@ -153,18 +208,13 @@ namespace ArtifactCabinet
             }
         }
 
-        private void UpdateLogicCircuitCB(object data)
+        private void UpdateLogicCircuit(object data)
         {
-            this.UpdateLogicCircuit();
-        }
-
-        private void UpdateLogicCircuit()
-        {
-            bool flag = this.filteredStorage.IsFull();
-            bool isOperational = this.operational.IsOperational;
+            bool flag = filteredStorage.IsFull();
+            bool isOperational = operational.IsOperational;
             bool on = flag && isOperational;
-            this.ports.SendSignal(UncategorizedFilteredStorage.FULL_PORT_ID, !on ? 0 : 1);
-            this.filteredStorage.SetLogicMeter(on);
+            ports.SendSignal(UncategorizedFilteredStorage.FULL_PORT_ID, !on ? 0 : 1);
+            filteredStorage.SetLogicMeter(on);
         }
     }
 }
