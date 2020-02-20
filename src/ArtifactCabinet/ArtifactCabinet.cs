@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using KSerialization;
 using UnityEngine;
+using Klei.AI;
 
 namespace ArtifactCabinet
 {
@@ -81,8 +82,15 @@ namespace ArtifactCabinet
         private Operational operational;
         [MyCmpGet]
         private LogicPorts ports;
+        [MyCmpReq]
+        private DecorProvider decorProvider;
         protected UncategorizedFilteredStorage filteredStorage;
         private KBatchedAnimController anim;
+        private Dictionary<Tag, AttributeModifier> decorModifier = new Dictionary<Tag, AttributeModifier>();
+
+        private const float MINIMUM_DECOR_PER_ITEM = 5f; // minimum 5 decor for each stored item
+        private const float STORED_DECOR_MODIFIER = 0.5f; // artifact cabinet halves the decor or the items put into it
+        private const int ARTIFACT_RADIUS = 5; // all artifacts have radius forced to 5
 
         protected override void OnPrefabInit()
         {
@@ -141,6 +149,39 @@ namespace ArtifactCabinet
             foreach (Tag tag in storage.GetAllTagsInStorage())
             {
                 anim.SetSymbolVisiblity(tag.ToString(), true);
+            }
+            // determine appropriate decor amount
+            Attributes attributes = this.GetAttributes();
+            if (decorModifier.Count > 0)
+            {
+                foreach (AttributeModifier attr in decorModifier.Values)
+                {
+                    attributes.Remove(attr);
+                }
+                decorModifier.Clear();
+            }
+            // probably need a hashmap from the tag of the artifact to the decor modifier and decor radius modifier for it so I can properly remove
+            // and add the components
+            foreach (GameObject go in storage.items)
+            {
+                if (go.GetComponent<DecorProvider>() != null)
+                {
+                    float decorValue = go.GetComponent<PrimaryElement>().Units * Mathf.Max(Db.Get().BuildingAttributes.Decor.Lookup(go).GetTotalValue() * STORED_DECOR_MODIFIER, MINIMUM_DECOR_PER_ITEM);
+                    string description = string.Format(STRINGS.BUILDINGS.PREFABS.ITEMPEDESTAL.DISPLAYED_ITEM_FMT, go.GetComponent<KPrefabID>().PrefabTag.ProperName());
+                    Tag prefabTag = go.GetComponent<KPrefabID>().PrefabTag;
+                    if (decorModifier.ContainsKey(prefabTag))
+                    {
+                        decorModifier[prefabTag].SetValue(decorModifier[prefabTag].Value + decorValue);
+                    }
+                    else
+                    {
+                        decorModifier[prefabTag] = new AttributeModifier(Db.Get().BuildingAttributes.Decor.Id, decorValue, description, false, false, true);
+                    }
+                }
+            }
+            foreach (AttributeModifier attr in decorModifier.Values)
+            {
+                attributes.Add(attr);
             }
         }
 

@@ -26,8 +26,8 @@ namespace ArtifactCabinet
         {
             private static void Prefix()
             {
-                var liquidFiltering = new List<string>(Database.Techs.TECH_GROUPING["LiquidFiltering"]) { ArtifactCabinetConfig.Id };
-                Database.Techs.TECH_GROUPING["LiquidFiltering"] = liquidFiltering.ToArray();
+                var basicRocketry = new List<string>(Database.Techs.TECH_GROUPING["BasicRocketry"]) { ArtifactCabinetConfig.Id };
+                Database.Techs.TECH_GROUPING["BasicRocketry"] = basicRocketry.ToArray();
             }
         }
     }

@@ -28,11 +28,11 @@ namespace ArtifactCabinet
                 anim: "artifact_cabinet_kanim",
                 hitpoints: 100,
                 construction_time: 120f,
-                construction_mass: BUILDINGS.CONSTRUCTION_MASS_KG.TIER3,
+                construction_mass: BUILDINGS.CONSTRUCTION_MASS_KG.TIER4,
                 construction_materials: MATERIALS.RAW_MINERALS,
                 melting_point: 1600f,
                 build_location_rule: BuildLocationRule.OnFloor,
-                decor: BUILDINGS.DECOR.BONUS.TIER2,
+                decor: BUILDINGS.DECOR.BONUS.TIER4,
                 noise: NOISE_POLLUTION.NONE
             );
 
@@ -55,7 +55,7 @@ namespace ArtifactCabinet
         {
             GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
             Storage storage = go.AddOrGet<Storage>();
-            storage.capacityKg = 2000f;
+            storage.capacityKg = 2500f; // 100 artifacts @ 25f each
             storage.showInUI = true;
             storage.showDescriptor = true;
             storage.allowItemRemoval = true;
