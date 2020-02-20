@@ -48,8 +48,6 @@ namespace Automation
 
         protected abstract LogicGateBase.Op GetLogicOp();
 
-        protected abstract DenseLogicGate.DenseLogicGateDescriptions GetDescriptions();
-
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
         {
             GeneratedBuildings.MakeBuildingAlwaysOperational(go);
@@ -65,27 +63,12 @@ namespace Automation
             logicGateVisualizer.outputPortOffsets = OutputPortOffsets;
         }
 
-        /// <summary>
-        /// This turns out to not actually be necessary. No where in the game is this component referenced and it doesn't do anything on its own.
-        /// This is just as an analogue to the one on the vanilla logic gates that have one of these that also does nothing.
-        /// </summary>
-        /// <param name="go">This game object being finished under construction.</param>
-        public override void DoPostConfigureUnderConstruction(GameObject go)
-        {
-            base.DoPostConfigureUnderConstruction(go);
-            DenseLogicGateVisualizer logicGateVisualizer = go.AddComponent<DenseLogicGateVisualizer>();
-            logicGateVisualizer.op = GetLogicOp();
-            logicGateVisualizer.inputPortOffsets = InputPortOffsets;
-            logicGateVisualizer.outputPortOffsets = OutputPortOffsets;
-        }
-
         public override void DoPostConfigureComplete(GameObject go)
         {
             DenseLogicGate logicGate = go.AddComponent<DenseLogicGate>();
             logicGate.op = GetLogicOp();
             logicGate.inputPortOffsets = InputPortOffsets;
             logicGate.outputPortOffsets = OutputPortOffsets;
-            go.GetComponent<KPrefabID>().prefabInitFn += game_object => game_object.GetComponent<DenseLogicGate>().SetPortDescriptions(GetDescriptions());
         }
     }
 }

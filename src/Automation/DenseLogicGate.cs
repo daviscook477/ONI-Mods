@@ -8,25 +8,6 @@ namespace Automation
     [SerializationConfig(MemberSerialization.OptIn)]
     public class DenseLogicGate : DenseLogicGateBase, ILogicEventSender, ILogicNetworkConnection
     {
-        private static readonly DenseLogicGateDescriptions.Description INPUT_ONE_MULTI_DESCRIPTION = new DenseLogicGateDescriptions.Description()
-        {
-            name = UI.LOGIC_PORTS.GATE_MULTI_INPUT_ONE_NAME,
-            active = UI.LOGIC_PORTS.GATE_MULTI_INPUT_ONE_ACTIVE,
-            inactive = UI.LOGIC_PORTS.GATE_MULTI_INPUT_ONE_INACTIVE
-        };
-        private static readonly DenseLogicGateDescriptions.Description INPUT_TWO_MULTI_DESCRIPTION  = new DenseLogicGateDescriptions.Description()
-        {
-            name = UI.LOGIC_PORTS.GATE_MULTI_INPUT_TWO_NAME,
-            active = UI.LOGIC_PORTS.GATE_MULTI_INPUT_TWO_ACTIVE,
-            inactive = UI.LOGIC_PORTS.GATE_MULTI_INPUT_TWO_INACTIVE
-        };
-        private static readonly DenseLogicGateDescriptions.Description OUTPUT_ONE_MULTI_DESCRIPTION = new DenseLogicGateDescriptions.Description()
-        {
-            name = UI.LOGIC_PORTS.GATE_MULTI_OUTPUT_ONE_NAME,
-            active = UI.LOGIC_PORTS.GATE_MULTI_OUTPUT_ONE_ACTIVE,
-            inactive = UI.LOGIC_PORTS.GATE_MULTI_OUTPUT_ONE_INACTIVE
-        };
-
         private class StaticDelegateWrappers
         {
             public static void OnBuildingBrokenWrapper(DenseLogicGate component, object data)
@@ -45,7 +26,6 @@ namespace Automation
 
         private bool connected = false;
         protected bool cleaningUp = false;
-        private DenseLogicGateDescriptions descriptions;
         [Serialize]
         protected int outputValueOne;
 
@@ -204,26 +184,6 @@ namespace Automation
             return Game.Instance.logicCircuitManager.GetNetworkForCell(PortCell(port)) != null;
         }
 
-        public void SetPortDescriptions(DenseLogicGateDescriptions descriptions)
-        {
-            this.descriptions = descriptions;
-        }
-
-        public DenseLogicGateDescriptions.Description GetPortDescription(LogicGateBase.PortId port)
-        {
-            switch (port)
-            {
-                case LogicGateBase.PortId.InputOne:
-                    return descriptions.inputOne != null ? descriptions.inputOne : (RequiresTwoInputs ? INPUT_ONE_MULTI_DESCRIPTION : INPUT_ONE_MULTI_DESCRIPTION);
-                case LogicGateBase.PortId.InputTwo:
-                    return descriptions.inputTwo != null ? descriptions.inputTwo : INPUT_TWO_MULTI_DESCRIPTION;
-                case LogicGateBase.PortId.OutputOne:
-                    return descriptions.inputOne != null ? descriptions.inputOne : OUTPUT_ONE_MULTI_DESCRIPTION;
-                default:
-                    return descriptions.outputOne;
-            }
-        }
-
         public int GetLogicValue()
         {
             return outputValueOne;
@@ -284,20 +244,6 @@ namespace Automation
 
         public void OnLogicNetworkConnectionChanged(bool connected)
         {
-        }
-
-        public class DenseLogicGateDescriptions
-        {
-            public Description inputOne;
-            public Description inputTwo;
-            public Description outputOne;
-
-            public class Description
-            {
-                public string name;
-                public string active;
-                public string inactive;
-            }
         }
     }
 }
