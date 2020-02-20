@@ -21,8 +21,8 @@ namespace Automation
             {
                 return new CellOffset[2]
                 {
-        CellOffset.none,
-        new CellOffset(0, 1)
+                    CellOffset.none,
+                    new CellOffset(0, 1)
                 };
             }
         }
@@ -35,22 +35,28 @@ namespace Automation
             }
         }
 
-        protected override DenseLogicGate.DenseLogicGateDescriptions GetDescriptions()
-        {
-            return new DenseLogicGate.DenseLogicGateDescriptions()
-            {
-                outputOne = new DenseLogicGate.DenseLogicGateDescriptions.Description()
-                {
-                    name = BUILDINGS.PREFABS.LOGICGATEAND.OUTPUT_NAME,
-                    active = BUILDINGS.PREFABS.LOGICGATEAND.OUTPUT_ACTIVE,
-                    inactive = BUILDINGS.PREFABS.LOGICGATEAND.OUTPUT_INACTIVE
-                }
-            };
-        }
-
         public override BuildingDef CreateBuildingDef()
         {
-            return CreateBuildingDef(Id, "and_dense_kanim", 2, 2);
+            var buildingDef = CreateBuildingDef(Id, "and_dense_kanim", 2, 2);
+            buildingDef.LogicInputPorts = new List<LogicPorts.Port>()
+            {
+                LogicPorts.Port.RibbonInputPort(LogicRibbonReader.INPUT_PORT_ID, new CellOffset(0, 0),
+                    UI.LOGIC_PORTS.GATE_MULTI_INPUT_ONE_NAME,
+                    UI.FormatAsAutomationState("Green Signal", UI.AutomationState.Active) + ": Provides a " + UI.FormatAsAutomationState("Green Signal", UI.AutomationState.Active) + " to its corresponding bit in the AND gate.",
+                    UI.FormatAsAutomationState("Red Signal", UI.AutomationState.Standby) + ": Provides a " + UI.FormatAsAutomationState("Red Signal", UI.AutomationState.Standby) + " to its corresponding bit in the AND gate."),
+                LogicPorts.Port.RibbonInputPort(LogicRibbonReader.INPUT_PORT_ID, new CellOffset(0, 1),
+                    UI.LOGIC_PORTS.GATE_MULTI_INPUT_ONE_NAME,
+                    UI.FormatAsAutomationState("Green Signal", UI.AutomationState.Active) + ": Provides a " + UI.FormatAsAutomationState("Green Signal", UI.AutomationState.Active) + " to its corresponding bit in the AND gate.",
+                    UI.FormatAsAutomationState("Red Signal", UI.AutomationState.Standby) + ": Provides a " + UI.FormatAsAutomationState("Red Signal", UI.AutomationState.Standby) + " to its corresponding bit in the AND gate."),
+            };
+            buildingDef.LogicOutputPorts = new List<LogicPorts.Port>()
+            {
+                LogicPorts.Port.OutputPort(LogicRibbonReader.OUTPUT_PORT_ID, new CellOffset(1, 0),
+                    BUILDINGS.PREFABS.LOGICGATEAND.OUTPUT_NAME,
+                    BUILDINGS.PREFABS.LOGICGATEAND.OUTPUT_ACTIVE,
+                    BUILDINGS.PREFABS.LOGICGATEAND.OUTPUT_INACTIVE, true, false)
+            };
+            return buildingDef;
         }
     }
 }

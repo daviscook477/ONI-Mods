@@ -37,7 +37,7 @@ namespace Automation
             buildingDef.BaseTimeUntilRepair = -1f;
             buildingDef.PermittedRotations = PermittedRotations.R360;
             buildingDef.DragBuild = true;
-            LogicGateBase.uiSrcData = Assets.instance.logicModeUIData;
+            DenseLogicGateBase.uiSrcData = Assets.instance.logicModeUIData;
             GeneratedBuildings.RegisterWithOverlay(OverlayModes.Logic.HighlightItemIDs, ID);
             return buildingDef;
         }
@@ -59,16 +59,21 @@ namespace Automation
         public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
         {
             base.DoPostConfigurePreview(def, go);
-            MoveableLogicGateVisualizer logicGateVisualizer = go.AddComponent<MoveableLogicGateVisualizer>();
+            MoveableDenseLogicGateVisualizer logicGateVisualizer = go.AddComponent<MoveableDenseLogicGateVisualizer>();
             logicGateVisualizer.op = GetLogicOp();
             logicGateVisualizer.inputPortOffsets = InputPortOffsets;
             logicGateVisualizer.outputPortOffsets = OutputPortOffsets;
         }
 
+        /// <summary>
+        /// This turns out to not actually be necessary. No where in the game is this component referenced and it doesn't do anything on its own.
+        /// This is just as an analogue to the one on the vanilla logic gates that have one of these that also does nothing.
+        /// </summary>
+        /// <param name="go">This game object being finished under construction.</param>
         public override void DoPostConfigureUnderConstruction(GameObject go)
         {
             base.DoPostConfigureUnderConstruction(go);
-            LogicGateVisualizer logicGateVisualizer = go.AddComponent<LogicGateVisualizer>();
+            DenseLogicGateVisualizer logicGateVisualizer = go.AddComponent<DenseLogicGateVisualizer>();
             logicGateVisualizer.op = GetLogicOp();
             logicGateVisualizer.inputPortOffsets = InputPortOffsets;
             logicGateVisualizer.outputPortOffsets = OutputPortOffsets;

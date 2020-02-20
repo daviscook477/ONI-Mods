@@ -45,9 +45,7 @@ namespace Automation
 
         private bool connected = false;
         protected bool cleaningUp = false;
-        private int lastAnimState = 0;
         private DenseLogicGateDescriptions descriptions;
-        private const bool IS_CIRCUIT_ENDPOINT = true;
         [Serialize]
         protected int outputValueOne;
 
@@ -68,9 +66,9 @@ namespace Automation
 
         protected override void OnSpawn()
         {
-            inputOne = CreateLogicEventHandler(InputCellOne, new Action<int>(UpdateState), null, LogicPortSpriteType.Input);
+            inputOne = CreateLogicEventHandler(InputCellOne, new Action<int>(UpdateState), null, LogicPortSpriteType.RibbonInput);
             if (RequiresTwoInputs)
-                inputTwo = CreateLogicEventHandler(InputCellTwo, new Action<int>(UpdateState), null, LogicPortSpriteType.Input);
+                inputTwo = CreateLogicEventHandler(InputCellTwo, new Action<int>(UpdateState), null, LogicPortSpriteType.RibbonInput);
             Subscribe(774203113, OnBuildingBrokenDelegate);
             Subscribe(-1735440190, OnBuildingFullyRepairedDelegate);
             BuildingHP component = GetComponent<BuildingHP>();
@@ -107,7 +105,7 @@ namespace Automation
             connected = true;
             int outputCellOne = OutputCellOne;
             logicCircuitSystem.AddToNetworks(outputCellOne, this, true);
-            outputOne = new LogicPortVisualizer(outputCellOne, LogicPortSpriteType.Output);
+            outputOne = new LogicPortVisualizer(outputCellOne, LogicPortSpriteType.RibbonOutput);
             logicCircuitManager.AddVisElem(outputOne);
             int inputCellOne = InputCellOne;
             logicCircuitSystem.AddToNetworks(inputCellOne, inputOne, true);
@@ -118,7 +116,7 @@ namespace Automation
                 logicCircuitSystem.AddToNetworks(inputCellTwo, inputTwo, true);
                 logicCircuitManager.AddVisElem((ILogicUIElement)inputTwo);
             }
-            this.RefreshAnimation();
+            RefreshAnimation();
         }
 
         private void Disconnect()
@@ -273,13 +271,13 @@ namespace Automation
             {
                 int num = GetLightBulbStateForWireState(GetValueOfLogicEventHandler(inputOne)) +
                     GetLightBulbStateForWireState(GetValueOfLogicEventHandler(inputTwo)) * 3 + 
-                    outputValueOne * 9;
+                    GetLightBulbStateForWireState(outputValueOne) * 9;
                 component.Play("on_" + num.ToString(), KAnim.PlayMode.Once, 1f, 0.0f);
             }
             else
             {
-                int num = GetLightBulbStateForWireState(GetValueOfLogicEventHandler(inputOne)) + 
-                    outputValueOne * 3;
+                int num = GetLightBulbStateForWireState(GetValueOfLogicEventHandler(inputOne)) +
+                    GetLightBulbStateForWireState(outputValueOne) * 3;
                 component.Play("on_" + num.ToString(), KAnim.PlayMode.Once, 1f, 0.0f);
             }
         }

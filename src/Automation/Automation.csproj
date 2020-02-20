@@ -55,13 +55,30 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DenseLogicGate.cs" />
+    <Compile Include="DenseLogicGateNotConfig.cs" />
+    <Compile Include="DenseLogicGateOrConfig.cs" />
     <Compile Include="DenseLogicGateAndConfig.cs" />
     <Compile Include="DenseLogicGateBase.cs" />
     <Compile Include="DenseLogicGateBaseConfig.cs" />
     <Compile Include="DenseLogicGatePatches.cs" />
+    <Compile Include="DenseLogicGateVisualizer.cs" />
+    <Compile Include="DenseLogicGateXorConfig.cs" />
+    <Compile Include="MoveableDenseLogicGateVisualizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
