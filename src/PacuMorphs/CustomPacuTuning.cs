@@ -32,5 +32,24 @@ namespace PacuMorphs
                 weight = 0.02f
             }
         };
+
+        public static List<FertilityMonitor.BreedingChance> EGG_CHANCES_ALGAE = new List<FertilityMonitor.BreedingChance>()
+        {
+            new FertilityMonitor.BreedingChance()
+            {
+                egg = "PacuEgg".ToTag(),
+                weight = 0.02f
+            },
+            new FertilityMonitor.BreedingChance()
+            {
+                egg = "PacuTropicalEgg".ToTag(),
+                weight = 0.32f
+            },
+            new FertilityMonitor.BreedingChance()
+            {
+                egg = AlgaePacuConfig.EGG_ID.ToTag(),
+                weight = 0.65f
+            },
+        };
     }
 }

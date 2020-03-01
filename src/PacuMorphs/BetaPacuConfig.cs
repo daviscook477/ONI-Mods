@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Klei.AI;
-using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine;
-using Klei.AI;
+﻿using UnityEngine;
 using STRINGS;
 
 namespace PacuMorphs
 {
     public class BetaPacuConfig : IEntityConfig
     {
-        public static readonly EffectorValues DECOR = TUNING.BUILDINGS.DECOR.BONUS.TIER4;
+        public static readonly EffectorValues DECOR = TUNING.BUILDINGS.DECOR.BONUS.TIER5;
         public const string ID = "PacuBeta";
         public const string BASE_TRAIT_ID = "PacuBetaBaseTrait";
         public const string EGG_ID = "PacuBetaEgg";
         public const float SALT_WATER_CONVERTED_PER_CYCLE = 120f;
         public const SimHashes INPUT_ELEMENT = SimHashes.SaltWater;
         public const SimHashes OUTPUT_ELEMENT = SimHashes.Water;
-        public const int EGG_SORT_ORDER = 501;
+        public const int EGG_SORT_ORDER = 503;
 
         public static string NAME = UI.FormatAsLink("Beta Fish", ID.ToUpper());
         public static string DESCRIPTION = "Every organism in the known universe finds the Pacu extremely delicious";

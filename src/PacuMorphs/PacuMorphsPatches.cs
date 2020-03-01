@@ -16,7 +16,7 @@ namespace PacuMorphs
                 .GetValue<System.Action>(
                     BetaPacuConfig.ID,
                     BetaPacuConfig.EGG_ID.ToTag(),
-                    328.15f,
+                    333.15f,
                     353.15f,
                     CustomPacuTuning.MODIFIER_PER_SECOND, false));
 
@@ -26,16 +26,27 @@ namespace PacuMorphs
                     egg = BetaPacuConfig.EGG_ID.ToTag(),
                     weight = 0.02f
                 });
-            PacuTuning.EGG_CHANCES_TROPICAL.Add(
+            PacuTuning.EGG_CHANCES_CLEANER.Add(
                 new FertilityMonitor.BreedingChance
                 {
                     egg = BetaPacuConfig.EGG_ID.ToTag(),
                     weight = 0.02f
                 });
-            PacuTuning.EGG_CHANCES_CLEANER.Add(
+
+            TUNING.CREATURES.EGG_CHANCE_MODIFIERS.MODIFIER_CREATORS.Add(
+                Traverse.Create(typeof(TUNING.CREATURES.EGG_CHANCE_MODIFIERS))
+                .Method("CreateTemperatureModifier", new[] { typeof(string), typeof(Tag), typeof(float), typeof(float), typeof(float), typeof(bool) })
+                .GetValue<System.Action>(
+                    AlgaePacuConfig.ID,
+                    AlgaePacuConfig.EGG_ID.ToTag(),
+                    333.15f,
+                    353.15f,
+                    CustomPacuTuning.MODIFIER_PER_SECOND, false));
+
+            PacuTuning.EGG_CHANCES_TROPICAL.Add(
                 new FertilityMonitor.BreedingChance
                 {
-                    egg = BetaPacuConfig.EGG_ID.ToTag(),
+                    egg = AlgaePacuConfig.EGG_ID.ToTag(),
                     weight = 0.02f
                 });
         }

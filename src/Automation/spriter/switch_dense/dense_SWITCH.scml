@@ -4,8 +4,8 @@
         <file id="0" name="light_bloom_0.png" width="32" height="34" pivot_x="0.504297" pivot_y="0.496324"/>
         <file id="1" name="light_bloom_2.png" width="32" height="34" pivot_x="0.504297" pivot_y="0.495588"/>
         <file id="2" name="light_bloom_3.png" width="32" height="34" pivot_x="0.504297" pivot_y="0.495588"/>
-        <file id="3" name="panel_0.png" width="284" height="130" pivot_x="0.515678" pivot_y="0.329309"/>
-        <file id="4" name="place_0.png" width="264" height="118" pivot_x="0.499953" pivot_y="0.5"/>
+        <file id="3" name="panel_0.png" width="256" height="126" pivot_x="0.515678" pivot_y="0.329309"/>
+        <file id="4" name="place_0.png" width="256" height="126" pivot_x="0.499953" pivot_y="0.5"/>
         <file id="5" name="ui_0.png" width="142" height="122" pivot_x="0.513908" pivot_y="0.486168"/>
         <file id="6" name="light_bloom_1.png" width="32" height="34" pivot_x="0.504297" pivot_y="0.495588"/>
     </folder>
@@ -35,30 +35,30 @@
             </mainline>
             <timeline id="0" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="2" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="1" time="33" spin="0">
-                    <object folder="0" file="2" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="2" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="2" time="66" spin="0">
-                    <object folder="0" file="2" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="2" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="3" time="99" spin="0">
-                    <object folder="0" file="2" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="2" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="2" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="1" time="33" spin="0">
-                    <object folder="0" file="2" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="2" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="2" time="66" spin="0">
-                    <object folder="0" file="2" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="2" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="3" time="99" spin="0">
-                    <object folder="0" file="2" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="2" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="panel_0">
@@ -91,12 +91,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -115,12 +115,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="6" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -139,12 +139,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -163,12 +163,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="6" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -187,12 +187,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="6" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="6" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -211,12 +211,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="6" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -235,12 +235,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -259,12 +259,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="6" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -283,12 +283,12 @@
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
         </animation>
@@ -322,36 +322,36 @@
             </mainline>
             <timeline id="0" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="1" time="33" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="2" time="66" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="3" time="99" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="4" time="132" spin="0">
-                    <object folder="0" file="1" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="1" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="1" time="33" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="2" time="66" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="3" time="99" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="4" time="132" spin="0">
-                    <object folder="0" file="1" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="1" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="panel_0">
@@ -397,30 +397,30 @@
             </mainline>
             <timeline id="0" name="light_bloom_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="1" time="33" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="2" time="66" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
                 <key id="3" time="99" spin="0">
-                    <object folder="0" file="0" x="47.176705" y="50.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
+                    <object folder="0" file="0" x="42.176705" y="49.981674" angle="0" scale_x="1.17492" scale_y="1.17492"/>
                 </key>
             </timeline>
             <timeline id="1" name="light_bloom_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="1" time="33" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="2" time="66" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
                 <key id="3" time="99" spin="0">
-                    <object folder="0" file="0" x="-60.845267" y="52.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
+                    <object folder="0" file="0" x="-55.845267" y="51.007457" angle="0" scale_x="1.174921" scale_y="1.174921"/>
                 </key>
             </timeline>
             <timeline id="2" name="panel_0">
