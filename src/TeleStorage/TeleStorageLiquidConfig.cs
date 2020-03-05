@@ -29,7 +29,7 @@ namespace TeleStorage
                 id: Id,
                 width: 2,
                 height: 3,
-                anim: "liquidtele",
+                anim: "liquidreservoir_kanim",
                 hitpoints: BUILDINGS.HITPOINTS.TIER2,
                 construction_time: BUILDINGS.CONSTRUCTION_TIME_SECONDS.TIER4,
                 construction_mass: construction_mass,
