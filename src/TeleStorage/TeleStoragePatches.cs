@@ -38,7 +38,7 @@ namespace TeleStorage
                 GameObject ___storagePanel, GameObject ___selectedTarget,
                 ref Dictionary<string, GameObject> ___storageLabels)
             {
-                if (___selectedTarget.GetComponent<TeleStorage>() == null)
+                if (___selectedTarget == null || ___selectedTarget.GetComponent<TeleStorage>() == null)
                 {
                     return;
                 }
