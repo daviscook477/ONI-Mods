@@ -16,7 +16,7 @@ namespace PacuMorphs
 
         public GameObject CreatePrefab()
         {
-            GameObject pacu = AlgaePacuConfig.CreatePacu(ID,
+            GameObject pacu = PlatePacuConfig.CreatePacu(ID,
                 NAME,
                 DESCRIPTION,
                 "metalbaby_pacu_kanim",
