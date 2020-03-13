@@ -1,6 +1,7 @@
 ﻿using Harmony;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
@@ -49,11 +50,12 @@ namespace WorldGen
 
             if (!iconName.IsNullOrWhiteSpace())
             {
-                //Load the sprite from Asteroid_****.dds (converted online from png) and set "generation action" to incorporated ressources
-                Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(className.Assembly.GetName().Name + "." + iconName + ".dds");
+                //Load the sprite from Asteroid_****.dds (converted online from png) and add it to the project and set build action to embedded resource
+                string resourceName = Assembly.GetExecutingAssembly().GetManifestResourceNames().Single(str => str.EndsWith(iconName + ".dds"));
+                Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
                 if (stream == null)
                 {
-                    throw new ArgumentException("Sprite name is not valid.");
+                    throw new ArgumentException($"Could not load the sprite at {resourceName}.");
                 }
                 Sprite sprite = CreateSpriteDXT5(stream, 512, 512);
                 Assets.Sprites.Add(iconName, sprite);

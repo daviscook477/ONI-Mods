@@ -19,7 +19,8 @@ You can choose the exact world size you want by going into the mod settings. To 
 
 [h1]Problems/Help[/h1]
 
-If it crashes or hangs during world gen you should try restarting and trying again as a first solution. This is because world gen is finicky and although I have done my best to make sure world gen won't crash there is still small possibility it will not work correctly with modification.If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
+If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
 
 [h1]Code/License[/h1]
 Code is open source and may be found in my ONI-Mods Github repository. Feel free to look at, copy, modify it, etc.. Art assets and animations may also be found in that repository but cannot be redistributed without permission.
+Github repository link [url=https://github.com/daviscook477/ONI-Mods]here[/url]

@@ -1,0 +1,17 @@
+[h1]Advanced Storage[/h1]
+
+This mod introduces an second tier of liquid and gas storage that is much more advanced than the basic liquid and gas storage that is unlocked early in tech tree. It allows for infinite compression of resources so it will never get full. Additionally all advanced storage units will share inventory, meaning that you can pipe resources into an advanced storage unit on one end of the map and then pipe them out of an advanced storage unit on the complete opposite end of the map without needing any pipes in between. The advanced storage units are able to store as many different elements at a time as you want. You can store your polluted water and normal water and petroleum all in an advanced storage unit without any trouble. This is because all of the elements in an advanced storage unit are thermally isolated. There is no heat transfer between them.
+
+If you want to move your advanced storage containers you can safely destroy them without losing your stored liquids and gasses. Simply destroy your current ones and rebuild in a new location and your liquid and gas will still be available.
+
+Since these new buildings are so technologically advanced, they are located far in the tech tree and are expensive to build. In order to gain access to the Advanced Gas Storage and Advanced Liquid Storage building, your duplicants will need to research Catalytics. Then these buildings can be found in the "Base" tab furthest to the left of the building toolbar. However advanced storage technology does not come cheap! Each storage building will requires 400kg of steel, 200kg of plastic, and 800kg of diamond to make. You can easily at a glance tell the difference between the normal storage buildings and the advanced storage buildings by their modified colors. The advanced liquid storage is purple and the advanced gas storage is light yellow.
+
+The liquid/gas is saved per world. Specifically it is saved by *world name*. That means if you make a new world with the same name as an old world it will have the same liquid/gas storage. I may eventually fix this but for now ensure you don't make many worlds with the same name. Additionally there is a bug where if you load a world with liquid/gas storage and then go back to the main menu and create a new world, the liquid/gas storage will be duplicated to that world. To avoid this bug for now, when creating a new world simply restart the game and create from title screen. I will try to fix this issue sometime soon.
+
+[h1]Problems/Help[/h1]
+
+If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
+
+[h1]Code/License[/h1]
+Code is open source and may be found in my ONI-Mods Github repository. Feel free to look at, copy, modify it, etc.. Art assets and animations may also be found in that repository but cannot be redistributed without permission.
+Github repository link [url=https://github.com/daviscook477/ONI-Mods]here[/url]

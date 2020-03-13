@@ -119,7 +119,7 @@ namespace CrystalBiome.Elements
                 Strings.Add($"STRINGS.ELEMENTS.{CrystalElement.Id.ToUpper()}.NAME", CrystalElement.Name);
                 Strings.Add($"STRINGS.ELEMENTS.{CrystalElement.Id.ToUpper()}.DESC", CrystalElement.Description);
 
-                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CorundumElement.Data, null).elements);
+                /*__result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CorundumElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(KyaniteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(SodaliteElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(PolishedCorundumElement.Data, null).elements);
@@ -128,7 +128,7 @@ namespace CrystalBiome.Elements
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(AluminumSaltElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(MineralWaterElement.Data, null).elements);
                 __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(MineralIceElement.Data, null).elements);
-                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CrystalElement.Data, null).elements);
+                __result.AddRange(YamlIO.Parse<ElementLoader.ElementEntryCollection>(CrystalElement.Data, null).elements);*/
             }
         }
 

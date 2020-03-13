@@ -1,0 +1,17 @@
+id: "PacuPlate"
+title: STRINGS.CODEX.PACUPLATE.TITLE
+parentEntryID: "PacuSpecies"
+layoutPriority: 2
+contentContainers:
+#-----------------------------
+  - showBeforeGeneratedContent: true
+    contentLayout: Vertical
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.PACUPLATE.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.PACUPLATE.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1

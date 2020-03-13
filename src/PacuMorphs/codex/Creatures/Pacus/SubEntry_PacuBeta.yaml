@@ -1,0 +1,17 @@
+id: "PacuBeta"
+title: STRINGS.CODEX.PACUBETA.TITLE
+parentEntryID: "PacuSpecies"
+layoutPriority: 1
+contentContainers:
+#-----------------------------
+  - showBeforeGeneratedContent: true
+    contentLayout: Vertical
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.PACUBETA.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.PACUBETA.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1

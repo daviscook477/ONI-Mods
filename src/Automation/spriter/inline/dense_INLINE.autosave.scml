@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="place_0.png" width="100" height="100" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="ui_0.png" width="100" height="100" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="panel_0.png" width="100" height="100" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="nand_0.png" width="37" height="32" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="nor_0.png" width="38" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="or_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="xnor_0.png" width="39" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="xor_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="and_0.png" width="31" height="32" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="light_bloom_0_0_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="light_bloom_0_1_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="light_bloom_0_2_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="light_bloom_1_0_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="light_bloom_2_0_0.png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="light_bloom_3_0_0 .png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="light_bloom_1_2_0 .png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="16" name="light_bloom_2_2_0 .png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="17" name="light_bloom_3_2_0 .png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+        <file id="18" name="in_a1_0.png" width="12" height="52" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="in_a2_0.png" width="21" height="52" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="in_a3_0.png" width="39" height="50" pivot_x="0" pivot_y="1"/>
+        <file id="21" name="in_a4_0.png" width="56" height="52" pivot_x="0" pivot_y="1"/>
+        <file id="22" name="in_b1_0.png" width="12" height="28" pivot_x="0" pivot_y="1"/>
+        <file id="23" name="in_b2_0.png" width="17" height="29" pivot_x="0" pivot_y="1"/>
+        <file id="24" name="out_1_0.png" width="62" height="38" pivot_x="0" pivot_y="1"/>
+        <file id="25" name="in_b3_0.png" width="35" height="28" pivot_x="0" pivot_y="1"/>
+        <file id="26" name="in_b4_0.png" width="53" height="28" pivot_x="0" pivot_y="1"/>
+        <file id="27" name="out_2_0.png" width="43" height="37" pivot_x="0" pivot_y="1"/>
+        <file id="28" name="out_3_0.png" width="26" height="37" pivot_x="0" pivot_y="1"/>
+        <file id="29" name="out_4_0.png" width="10" height="39" pivot_x="0" pivot_y="1"/>
+        <file id="30" name="light_bloom_1_1_0 .png" width="32" height="34" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="dense_INLINE">
+        <animation id="0" name="place" length="132" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="place_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-50.481235" y="99.982689" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="off" length="132" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="11" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="12" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="13" key="0" z_index="9"/>
+                    <object_ref id="10" timeline="14" key="0" z_index="10"/>
+                    <object_ref id="11" timeline="15" key="0" z_index="11"/>
+                    <object_ref id="12" timeline="16" key="0" z_index="12"/>
+                    <object_ref id="13" timeline="18" key="0" z_index="13"/>
+                    <object_ref id="14" timeline="19" key="0" z_index="14"/>
+                    <object_ref id="15" timeline="17" key="0" z_index="15"/>
+                    <object_ref id="16" timeline="20" key="0" z_index="16"/>
+                    <object_ref id="17" timeline="21" key="0" z_index="17"/>
+                    <object_ref id="18" timeline="22" key="0" z_index="18"/>
+                    <object_ref id="19" timeline="7" key="0" z_index="19"/>
+                    <object_ref id="20" timeline="8" key="0" z_index="20"/>
+                    <object_ref id="21" timeline="9" key="0" z_index="21"/>
+                    <object_ref id="22" timeline="10" key="0" z_index="22"/>
+                    <object_ref id="23" timeline="23" key="0" z_index="23"/>
+                    <object_ref id="24" timeline="24" key="0" z_index="24"/>
+                    <object_ref id="25" timeline="25" key="0" z_index="25"/>
+                    <object_ref id="26" timeline="26" key="0" z_index="26"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="panel_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-50.574713" y="100.287356" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="nand_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-16.052632" y="50.210526"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="nor_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-16.141236" y="51.107188"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="or_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="-15.762926" y="51.359395"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="xnor_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="-16.645649" y="51.107188"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="xor_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="7" x="-17.40227" y="51.233291"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="and_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="8" x="-15.258512" y="49.215637"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="light_bloom_0_2_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="11" x="-40" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="light_bloom_1_2_0 ">
+                <key id="0" spin="0">
+                    <object folder="0" file="15" x="-22" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="light_bloom_2_2_0 ">
+                <key id="0" spin="0">
+                    <object folder="0" file="16" x="-4" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="10" name="light_bloom_3_2_0 ">
+                <key id="0" spin="0">
+                    <object folder="0" file="17" x="14" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="11" name="in_a1_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="18" x="-29.411765" y="75.749361"/>
+                </key>
+            </timeline>
+            <timeline id="12" name="in_a2_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="19" x="-29.530201" y="75.768456"/>
+                </key>
+            </timeline>
+            <timeline id="13" name="in_a3_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="20" x="-29.362416" y="74.174497"/>
+                </key>
+            </timeline>
+            <timeline id="14" name="in_a4_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="21" x="-29.110738" y="75.852349"/>
+                </key>
+            </timeline>
+            <timeline id="15" name="in_b1_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="22" x="-29.120666" y="75"/>
+                </key>
+            </timeline>
+            <timeline id="16" name="in_b2_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="23" x="-25.778107" y="75.020134"/>
+                </key>
+            </timeline>
+            <timeline id="17" name="out_1_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="24" x="-29.697987" y="75.671141"/>
+                </key>
+            </timeline>
+            <timeline id="18" name="in_b3_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="25" x="-25.147929" y="75.295858"/>
+                </key>
+            </timeline>
+            <timeline id="19" name="in_b4_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="26" x="-25.66568" y="74.408284"/>
+                </key>
+            </timeline>
+            <timeline id="20" name="out_2_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="27" x="-10.828548" y="74.40525"/>
+                </key>
+            </timeline>
+            <timeline id="21" name="out_3_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="28" x="7.136998" y="74.733388"/>
+                </key>
+            </timeline>
+            <timeline id="22" name="out_4_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="29" x="22.723544" y="76.62018"/>
+                </key>
+            </timeline>
+            <timeline id="23" name="light_bloom_0_1_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="10" x="-40" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="24" name="light_bloom_0_0_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="9" x="-40" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="25" name="light_bloom_1_1_0 ">
+                <key id="0" spin="0">
+                    <object folder="0" file="30" x="-22" y="90" scale_x="0.8" scale_y="0.8"/>
+                </key>
+            </timeline>
+            <timeline id="26" name="light_bloom_1_0_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="12" x="29.458388" y="101.188904"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="ui" length="132" interval="33">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="ui_0">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-49.712644" y="99.425287" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -10,11 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ArtifactCabinet</RootNamespace>
     <AssemblyName>ArtifactCabinet</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,7 +95,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(ILMergeConsolePath)" /ndebug /out:$(TargetName)Merged.dll $(TargetName).dll PLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v2.0.50727
+    <PostBuildEvent>"$(ILMergeConsolePath)" /ndebug /out:$(TargetName)Merged.dll $(TargetName).dll PLib.dll /targetplatform:v4,C:\Windows\Microsoft.NET\Framework64\v4.0.30319
 mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)"
 IF EXIST "$(ProjectDir)\anim" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\anim")
 IF EXIST "$(ProjectDir)\codex" (mkdir "%25homepath%25\Documents\Klei\OxygenNotIncluded\mods\dev\$(ProjectName)\codex")
