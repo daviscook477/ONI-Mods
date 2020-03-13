@@ -18,7 +18,7 @@ namespace Loggers
             public static void Postfix(string filename)
             {
                 Console.WriteLine("Consumed load event");
-                TeleStorageData.Load(filename);
+                //TeleStorageData.Load(filename);
             }
         }
 
@@ -30,7 +30,7 @@ namespace Loggers
             public static void Postfix(string filename)
             {
                 Console.WriteLine("Consumed save event");
-                TeleStorageData.Save(filename);
+                //TeleStorageData.Save(filename);
             }
         }
 

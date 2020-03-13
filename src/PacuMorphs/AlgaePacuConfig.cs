@@ -15,9 +15,12 @@ namespace PacuMorphs
         public const string EGG_ID = "PacuAlgaeEgg";
         public const int EGG_SORT_ORDER = 504;
 
-        public static string NAME = UI.FormatAsLink("Overgrown Pacu", ID.ToUpper());
+        public static string NAME = UI.FormatAsLink("Kelp Pacu", ID.ToUpper());
         public static string DESCRIPTION = "Every organism in the known universe finds the Pacu extremely delicious";
-        public static string EGG_NAME = UI.FormatAsLink("Overgrown Fry Egg", ID.ToUpper());
+        public static string EGG_NAME = UI.FormatAsLink("Kelp Fry Egg", ID.ToUpper());
+
+        public const float MIN_TEMP = 333.15f;
+        public const float MAX_TEMP = 353.15f;
 
         public static GameObject CreatePacu(
             string id,
@@ -26,7 +29,7 @@ namespace PacuMorphs
             string anim_file,
             bool is_baby)
         {
-            GameObject wildCreature = EntityTemplates.ExtendEntityToWildCreature(BasePacuConfig.CreatePrefab(id, BASE_TRAIT_ID, name, desc, anim_file, is_baby, null, 303.15f, 353.15f), PacuTuning.PEN_SIZE_PER_CREATURE, 25f);
+            GameObject wildCreature = EntityTemplates.ExtendEntityToWildCreature(BasePacuConfig.CreatePrefab(id, BASE_TRAIT_ID, name, desc, anim_file, is_baby, null, MIN_TEMP, MAX_TEMP), PacuTuning.PEN_SIZE_PER_CREATURE, 25f);
             Diet diet = new Diet(new Diet.Info[1]
             {
               new Diet.Info(new HashSet<Tag>()

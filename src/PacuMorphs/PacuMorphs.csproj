@@ -74,10 +74,12 @@
     <Compile Include="AlgaePacuConfig.cs" />
     <Compile Include="BabyAlgaePacuConfig.cs" />
     <Compile Include="BabyBetaPacuConfig.cs" />
+    <Compile Include="BabyPlatePacuConfig.cs" />
     <Compile Include="BetaPacuConfig.cs" />
     <Compile Include="CodexPatches.cs" />
     <Compile Include="CustomPacuTuning.cs" />
     <Compile Include="PacuMorphsPatches.cs" />
+    <Compile Include="PlatePacuConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
+[h1]Infinite Sources/Sinks[/h1]
 Using debug and sandbox mode can get quite frustrating when you need a source of some liquid or gas to test a new build you are making. Often you have to make a box and just fill it with lots of whatever resource your build needs.
 
 This mod puts a stop to that annoyance by adding in 4 new buildings: an infinite liquid source, infinite gas source, infinite liquid sink, and infinite gas sink.
-
 
 Features:
 * Set the element that you want to have an infinite supply of
@@ -12,11 +12,10 @@ Features:
 
 Please note that this mod is not intended for normal gameplay. If used in the course of a normal game this mod will be completely and entirely broken. Having completely free resources creation and deletion is not balanced. However I do hope that it helps with testing out all the crazy builds that can be made in Oxygen Not Included.
 
-My Github:
- * https://github.com/daviscook477/ONI-Mods
-This Mod:
- * https://github.com/daviscook477/ONI-Mods/tree/master/src/InfiniteSourceSink
+[h1]Problems/Help[/h1]
 
+If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
 
-FUTURE PLANS:
-I want to investigate the potential for making an infinite solid source by using the storage UI to allow the user to select what material will be infinitely placed or taken away from a solid rail. A potential improvement to the current liquid/gas sink would be to make a filtered version of it that only removes liquid/gas of a specific element from a pipeline.
+[h1]Code/License[/h1]
+Code is open source and may be found in my ONI-Mods Github repository. Feel free to look at, copy, modify it, etc.. Art assets and animations may also be found in that repository but cannot be redistributed without permission.
+Github repository link [url=https://github.com/daviscook477/ONI-Mods]here[/url]

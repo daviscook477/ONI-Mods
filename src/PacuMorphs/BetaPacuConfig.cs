@@ -18,6 +18,9 @@ namespace PacuMorphs
         public static string DESCRIPTION = "Every organism in the known universe finds the Pacu extremely delicious";
         public static string EGG_NAME = UI.FormatAsLink("Beta Fry Egg", ID.ToUpper());
 
+        public const float MIN_TEMP = 323.15f;
+        public const float MAX_TEMP = 353.15f;
+
         public static GameObject CreatePacu(
     string id,
     string name,
@@ -25,7 +28,7 @@ namespace PacuMorphs
     string anim_file,
     bool is_baby)
         {
-            GameObject wildCreature = EntityTemplates.ExtendEntityToWildCreature(BasePacuConfig.CreatePrefab(id, BASE_TRAIT_ID, name, desc, anim_file, is_baby, null, 303.15f, 353.15f), PacuTuning.PEN_SIZE_PER_CREATURE, 25f);
+            GameObject wildCreature = EntityTemplates.ExtendEntityToWildCreature(BasePacuConfig.CreatePrefab(id, BASE_TRAIT_ID, name, desc, anim_file, is_baby, null, MIN_TEMP, MAX_TEMP), PacuTuning.PEN_SIZE_PER_CREATURE, 25f);
             if (!is_baby)
             {
                 wildCreature.AddComponent<Storage>().capacityKg = 10f;

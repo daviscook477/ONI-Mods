@@ -37,23 +37,15 @@ namespace ArtifactCabinet
             );
 
             buildingDef.AudioCategory = "Metal";
-
+            buildingDef.LogicOutputPorts = new List<LogicPorts.Port>()
+            {
+                OUTPUT_PORT
+            };
             return buildingDef;
-        }
-
-        public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
-        {
-            GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
-        }
-
-        public override void DoPostConfigureUnderConstruction(GameObject go)
-        {
-            GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
         }
 
         public override void DoPostConfigureComplete(GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, OUTPUT_PORT);
             Storage storage = go.AddOrGet<Storage>();
             storage.capacityKg = 2500f; // 100 artifacts @ 25f each
             storage.showInUI = true;

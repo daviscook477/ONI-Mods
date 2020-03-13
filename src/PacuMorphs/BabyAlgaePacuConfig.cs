@@ -11,8 +11,8 @@ namespace PacuMorphs
     {
         public const string ID = "PacuAlgaeBaby";
 
-        public static string NAME = UI.FormatAsLink("Overgrown Fry", AlgaePacuConfig.ID.ToUpper());
-        public static string DESCRIPTION = $"A wriggly little Overgrown Fry.\n\nIn time it will mature into an adult {UI.FormatAsLink("Overgrown Fish", AlgaePacuConfig.ID.ToUpper())}.";
+        public static string NAME = UI.FormatAsLink("Kelp Fry", AlgaePacuConfig.ID.ToUpper());
+        public static string DESCRIPTION = $"A wriggly little Kelp Fry.\n\nIn time it will mature into an adult {UI.FormatAsLink("Kelp Pacu", AlgaePacuConfig.ID.ToUpper())}.";
 
         public GameObject CreatePrefab()
         {

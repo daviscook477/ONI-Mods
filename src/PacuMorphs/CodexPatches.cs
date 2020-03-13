@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Harmony;
-using Klei;
+﻿using PeterHan.PLib;
+using PeterHan.PLib.Datafiles;
 
 namespace Codex
 {
@@ -10,8 +7,8 @@ namespace Codex
     {
         public static void OnLoad()
         {
-            PeterHan.PLib.PUtil.InitLibrary();
-            PeterHan.PLib.Datafiles.PCodex.RegisterCreatures();
+            PUtil.InitLibrary();
+            PCodex.RegisterCreatures();
         }
     }
 }

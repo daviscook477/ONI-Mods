@@ -36,6 +36,7 @@ namespace CrystalBiome.Buildings
             buildingDef.SelfHeatKilowattsWhenActive = 2f;
             buildingDef.ViewMode = OverlayModes.Power.ID;
             buildingDef.AudioCategory = "HollowMetal";
+            buildingDef.LogicInputPorts = LogicOperationalController.CreateSingleInputPortList(new CellOffset(0, 0));
             return buildingDef;
         }
 
@@ -132,19 +133,8 @@ namespace CrystalBiome.Buildings
             };
         }
 
-        public override void DoPostConfigurePreview(BuildingDef def, GameObject go)
-        {
-            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
-        }
-
-        public override void DoPostConfigureUnderConstruction(GameObject go)
-        {
-            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
-        }
-
         public override void DoPostConfigureComplete(GameObject go)
         {
-            GeneratedBuildings.RegisterLogicPorts(go, LogicOperationalController.INPUT_PORTS_0_1);
             go.AddOrGet<LogicOperationalController>();
             go.AddOrGetDef<PoweredActiveController.Def>();
             SymbolOverrideControllerUtil.AddToPrefab(go);

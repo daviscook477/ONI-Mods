@@ -5,3 +5,11 @@ Adds a new building to the Refinement tab called the Mineralizer, built with 100
 4.65kg/s of Water + 350g/s of Salt = 5kg/s of Salt Water at the cost of 360w. Does not require duplicant operation but does require duplicants to deliver salt to it. The temperature of the output will be the same as the input.
 
 The Mineralizer is a simple way to grow Waterweed using only water and salt that you've excavated. Or it is a great way to make bulk Salt Water if you need its thermal properties instead of normal Water.
+
+[h1]Problems/Help[/h1]
+
+If there are problems with the mod please reach out on the (un)official Oxygen Not Included Discord where I hang around on the modding channels as @test447. I don't pay full attention to steam comments.
+
+[h1]Code/License[/h1]
+Code is open source and may be found in my ONI-Mods Github repository. Feel free to look at, copy, modify it, etc.. Art assets and animations may also be found in that repository but cannot be redistributed without permission.
+Github repository link [url=https://github.com/daviscook477/ONI-Mods]here[/url]

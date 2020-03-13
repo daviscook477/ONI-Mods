@@ -1,0 +1,18 @@
+id: "PacuAlgae"
+title: STRINGS.CODEX.PACUALGAE.TITLE
+parentEntryID: "PacuSpecies"
+layoutPriority: 3
+#lockID: critter_gulpfish
+contentContainers:
+#-----------------------------
+  - showBeforeGeneratedContent: true
+    contentLayout: Vertical
+    content:
+      - !CodexText
+          stringKey: STRINGS.CODEX.PACUALGAE.TITLE
+          style: Title
+      - !CodexText
+          stringKey: STRINGS.CODEX.PACUALGAE.SUBTITLE
+          style: Subtitle
+      - !CodexDividerLine
+          preferredWidth: -1
