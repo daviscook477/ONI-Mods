@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Harmony;
+using HarmonyLib;
 using UnityEngine;
 
 namespace TeleStorage
@@ -34,8 +34,9 @@ namespace TeleStorage
         [HarmonyPatch("RefreshStorage")]
         public class SimpleInfoScreen_RefreshStorage_Patch
         {
-            private static void Postfix(SimpleInfoScreen __instance,
-                GameObject ___storagePanel, GameObject ___selectedTarget,
+            private static void Postfix(
+                SimpleInfoScreen __instance,
+                GameObject ___selectedTarget,
                 ref Dictionary<string, GameObject> ___storageLabels)
             {
                 if (___selectedTarget == null || ___selectedTarget.GetComponent<TeleStorage>() == null)
@@ -43,8 +44,8 @@ namespace TeleStorage
                     return;
                 }
                 ConduitType type = ___selectedTarget.GetComponent<TeleStorage>().Type;
-                ___storagePanel.gameObject.SetActive(true);
-                ___storagePanel.GetComponent<CollapsibleDetailContentPanel>().HeaderLabel.text = (!(___selectedTarget.GetComponent<MinionIdentity>() != null) ? STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_CONTENTS : STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_MINION_CONTENTS);
+                __instance.StoragePanel.gameObject.SetActive(true);
+                __instance.StoragePanel.GetComponent<CollapsibleDetailContentPanel>().HeaderLabel.text = (!(___selectedTarget.GetComponent<MinionIdentity>() != null) ? STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_CONTENTS : STRINGS.UI.DETAILTABS.DETAILS.GROUPNAME_MINION_CONTENTS);
                 if (___storageLabels == null)
                 {
                     ___storageLabels = new Dictionary<string, GameObject>();
@@ -66,7 +67,7 @@ namespace TeleStorage
                         {
                             continue;
                         }
-                        GameObject storageLabel = Traverse.Create(__instance).Method("AddOrGetStorageLabel", new Type[] { typeof(Dictionary<string, GameObject>), typeof(GameObject), typeof(string) }).GetValue<GameObject>(new object[] { ___storageLabels, ___storagePanel, "storage_" + num.ToString() });
+                        GameObject storageLabel = Traverse.Create(__instance).Method("AddOrGetStorageLabel", new Type[] { typeof(Dictionary<string, GameObject>), typeof(GameObject), typeof(string) }).GetValue<GameObject>(new object[] { ___storageLabels, __instance.StoragePanel, "storage_" + num.ToString() });
                         ++num;
                         storageLabel.GetComponentInChildren<ToolTip>().ClearMultiStringTooltip();
                         string formattedName = elementObj.name;
@@ -83,10 +84,10 @@ namespace TeleStorage
                 }
                 if (num == 0)
                 {
-                    Traverse.Create(__instance).Method("AddOrGetStorageLabel", new Type[] { typeof(Dictionary<string, GameObject>), typeof(GameObject), typeof(string) }).GetValue<GameObject>(___storageLabels, ___storagePanel, "empty").GetComponentInChildren<LocText>().text = STRINGS.UI.DETAILTABS.DETAILS.STORAGE_EMPTY;
+                    Traverse.Create(__instance).Method("AddOrGetStorageLabel", new Type[] { typeof(Dictionary<string, GameObject>), typeof(GameObject), typeof(string) }).GetValue<GameObject>(___storageLabels, __instance.StoragePanel, "empty").GetComponentInChildren<LocText>().text = STRINGS.UI.DETAILTABS.DETAILS.STORAGE_EMPTY;
 
                 }
-                Traverse.Create(___storagePanel.GetComponent<CollapsibleDetailContentPanel>().scalerMask).Method("Update").GetValue();
+                Traverse.Create(__instance.StoragePanel.GetComponent<CollapsibleDetailContentPanel>().scalerMask).Method("Update").GetValue();
             }
         }
 
@@ -108,10 +109,10 @@ namespace TeleStorage
         [HarmonyPatch("Initialize")]
         public class Db_Initialize_Patch
         {
-            private static void Prefix()
+            private static void Postfix()
             {
-                var catalytics = new List<string>(Database.Techs.TECH_GROUPING["Catalytics"]) { TeleStorageLiquidConfig.Id, TeleStorageGasConfig.Id };
-                Database.Techs.TECH_GROUPING["Catalytics"] = catalytics.ToArray();
+                Db.Get().Techs.Get("Catalytics").unlockedItemIDs.Add(TeleStorageLiquidConfig.Id);
+                Db.Get().Techs.Get("Catalytics").unlockedItemIDs.Add(TeleStorageGasConfig.Id);
             }
         }
 
