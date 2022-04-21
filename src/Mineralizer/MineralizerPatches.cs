@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Harmony;
+using HarmonyLib;
 
 namespace Mineralizer
 {
@@ -24,10 +24,14 @@ namespace Mineralizer
         [HarmonyPatch(typeof(Db), nameof(Db.Initialize))]
         public class Db_Initialize_Patch
         {
-            private static void Prefix()
+            //private static void Prefix()
+            //{
+            //    var liquidFiltering = new List<string>(Database.Techs.TECH_GROUPING["LiquidFiltering"]) { MineralizerConfig.Id };
+            //    Database.Techs.TECH_GROUPING["LiquidFiltering"] = liquidFiltering.ToArray();
+            //}
+            private static void Postfix()
             {
-                var liquidFiltering = new List<string>(Database.Techs.TECH_GROUPING["LiquidFiltering"]) { MineralizerConfig.Id };
-                Database.Techs.TECH_GROUPING["LiquidFiltering"] = liquidFiltering.ToArray();
+                Db.Get().Techs.Get("LiquidFiltering").unlockedItemIDs.Add(MineralizerConfig.Id);
             }
         }
     }
